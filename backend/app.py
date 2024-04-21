@@ -1,6 +1,8 @@
 from flask import Flask, request
 from flask_cors import CORS
 import psycopg2
+from sqlalchemy_utils import database_exists, create_database
+
 
 from config import host, user, password, db_name
 
