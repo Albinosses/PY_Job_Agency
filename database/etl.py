@@ -18,14 +18,14 @@ OLTP_params = {
     'host': 'localhost',
     'database': 'OLTP',
     'user': 'postgres',
-    'password': '1234'
+    'password': '2204'
 }
 
 OLAP_params = {
     'host': 'localhost',
     'database': 'OLAP',
     'user': 'postgres',
-    'password': '1234'
+    'password': '2204'
 }
 
 OLTP_engine = create_engine(f'postgresql+psycopg2://{OLTP_params["user"]}:{OLTP_params["password"]}@{OLTP_params["host"]}/{OLTP_params["database"]}')
@@ -337,20 +337,25 @@ etl_employee()
 
 
 def etl_time(date):
-
-    if(date == None):
-          return
-
-    month_number = date.month
-    day_of_month = date.day
-    day_of_week_name = date.strftime('%A')
-    month_name = date.strftime('%B')
-    year = date.year
+    
+    year = 1
+    month_number = 1
+    day_of_month = 1
+    weekDay = 1
 
     with OLAP_engine.connect() as connection:
+
+            if date == None:
+                date = '01-01-0001'
+            else:
+                year = date.year
+                month_number = date.month
+                day_of_month = date.day
+                weekDay = date.strftime('%A')
+        
             result = connection.execute(
-                    text("insert into \"dimTime\" (\"monthNumber\", \"dayOfMonth\", day, month, year) values (:monthNumber, :dayOfMonth, :day, :month, :year) returning id"),
-                    {"monthNumber": month_number, "dayOfMonth": day_of_month, "day": day_of_week_name, "month": month_name, "year": year}
+                    text("insert into \"dimTime\" (date, year, month, day, \"weekDay\") values (:date, :year, :month, :day, :weekDay) returning id"),
+                    {"date": date, "year": year, "month": month_number, "day": day_of_month, "weekDay": weekDay}
                 )
             inserted_pk = result.fetchone()[0]
 

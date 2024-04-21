@@ -177,12 +177,12 @@ ALTER TABLE public."dimStatus" OWNER TO postgres;
 --
 
 CREATE TABLE public."dimTime" (
-    "monthNumber" integer NOT NULL,
-    "dayOfMonth" integer NOT NULL,
-    day text NOT NULL,
-    month text NOT NULL,
+    id integer NOT NULL,
+    date date NOT NULL,
     year integer NOT NULL,
-    id integer NOT NULL
+    month integer NOT NULL,
+    day integer NOT NULL,
+    "weekDay" text NOT NULL
 );
 
 
