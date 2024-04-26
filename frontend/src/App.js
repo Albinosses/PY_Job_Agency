@@ -1,16 +1,22 @@
-import './App.css';
-import Vacancy from "./components/vacancyPage/vacancy/Vacancy";
 import SidePanel from "./components/sidePanel/SidePanel";
-import VacancyTitle from "./components/vacancyPage/vacancyTitle/VacancyTitle";
+import styles from './App.module.css';
+import VacancyPage from "./components/vacancyPage/VacancyPage";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 function App() {
-  return (
-    <div className="App">
-        <SidePanel />
-        <VacancyTitle />
-        <Vacancy />
-    </div>
-  );
+    return (
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div className={styles.App}>
+                <div className={styles.sidePanel}>
+                    <SidePanel/>
+                </div>
+                <div className={styles.content}>
+                    <VacancyPage/>
+                </div>
+            </div>
+        </LocalizationProvider>
+    );
 }
 
 export default App;

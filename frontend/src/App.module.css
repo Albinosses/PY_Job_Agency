@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sidePanel {
+  flex: 0 0 20%;
+  min-width: 200px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 20px; /* Optional: Add padding to the content */
+  overflow-y: auto; /* Optional: Add vertical scroll if content exceeds screen height */
+  min-height: 0; /* Ensure content can shrink */
+}

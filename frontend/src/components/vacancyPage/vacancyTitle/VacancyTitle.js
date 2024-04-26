@@ -17,10 +17,6 @@ function VacancyTitle() {
                     </div>
                     <div className={styles.title}>Vacancies</div>
                 </div>
-                <div className={styles.subHeader}>
-                    <div className={styles.active}>Active</div>
-                    <div className={styles.postponed}>Postponed</div>
-                </div>
             </div>
             <div className={styles.createButton}>
                 <img
