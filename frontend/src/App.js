@@ -3,16 +3,23 @@ import styles from './App.module.css';
 import VacancyPage from "./components/vacancyPage/VacancyPage";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {useState} from "react";
 
 function App() {
+    const [activePage, setActivePage] = useState('vacancy');
+
+    const handlePageChange = (page) => {
+        setActivePage(page);
+    };
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <div className={styles.App}>
                 <div className={styles.sidePanel}>
-                    <SidePanel/>
+                    <SidePanel onPageChange={handlePageChange} />
                 </div>
                 <div className={styles.content}>
-                    <VacancyPage/>
+                    {activePage === 'vacancy' && <VacancyPage/>}
                 </div>
             </div>
         </LocalizationProvider>
