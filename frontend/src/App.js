@@ -4,6 +4,7 @@ import VacancyPage from "./components/vacancyPage/VacancyPage";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {useState} from "react";
+import InterviewPage from "./components/interviewPage/InterviewPage";
 
 function App() {
     const [activePage, setActivePage] = useState('vacancy');
@@ -20,6 +21,7 @@ function App() {
                 </div>
                 <div className={styles.content}>
                     {activePage === 'vacancy' && <VacancyPage/>}
+                    {activePage === 'interview' && <InterviewPage/>}
                 </div>
             </div>
         </LocalizationProvider>

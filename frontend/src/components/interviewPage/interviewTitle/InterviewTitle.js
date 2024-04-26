@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./VacancyTitle.module.css";
+import styles from "./InterviewTitle.module.css";
 import community from "./imgs/community.png"
 import add from "./imgs/add.png"
 
-function VacancyTitle() {
+function InterviewTitle() {
     return (
         <div className={styles.container}>
             <div className={styles.section}>
@@ -12,22 +12,22 @@ function VacancyTitle() {
                         <img
                             src={community}
                             className={`${styles.icon} aspect-square`}
-                            alt="Vacancies Icon"
+                            alt="Interviews Icon"
                         />
                     </div>
-                    <div className={styles.title}>Vacancies</div>
+                    <div className={styles.title}>Interviews</div>
                 </div>
             </div>
             <div className={styles.createButton}>
                 <img
                     src={add}
                     className={`${styles.icon} aspect-square`}
-                    alt="Create Vacancy Icon"
+                    alt="Create Interview Icon"
                 />
-                <div>Create Vacancy</div>
+                <div>Create Interview</div>
             </div>
         </div>
     );
 }
 
-export default VacancyTitle;
+export default InterviewTitle;

@@ -3,6 +3,8 @@ import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
+import NumberInputIntroduction from "../../NumberInput";
+import CustomNumberInput from "../../NumberInput";
 
 function SearchFilters() {
     const [inputText, setInputText] = useState("");
@@ -33,6 +35,9 @@ function SearchFilters() {
         }
     };
 
+    const [minScore, setMinScore] = useState(0);
+    const [maxScore, setMaxScore] = useState(10);
+
     return (
         <div className={styles.container}>
             <div className={styles.filter}>
@@ -55,45 +60,33 @@ function SearchFilters() {
                             id="type-select"
                             label="Type"
                         >
-                            <MenuItem value={'F'}>Full Time</MenuItem>
-                            <MenuItem value={'P'}>Part Time</MenuItem>
-                            <MenuItem value={'C'}>Contract</MenuItem>
+                            <MenuItem value={'S'}>Screening</MenuItem>
+                            <MenuItem value={'H'}>HR manager</MenuItem>
+                            <MenuItem value={'T'}>Technical</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <FormControl sx={{m: 1, minWidth: 100}}>
-                        <InputLabel id="status-select-label">Status</InputLabel>
-                        <Select
-                            labelId="status-select-label"
-                            id="status-select"
-                            label="Type"
-                            autoWidth
-                        >
-                            <MenuItem value={'O'}>Open</MenuItem>
-                            <MenuItem value={'C'}>Closed</MenuItem>
-                            <MenuItem value={'P'}>Postponed</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <CustomNumberInput
+                        placeholder="Min score value…"
+                        value={minScore}
+                        min={0}
+                        max={maxScore}
+                        onChange={(event, val) => setMinScore(val)}
+                    />
                 </div>
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <FormControl sx={{m: 1, minWidth: 160}}>
-                        <InputLabel id="work-setting-select-label">Work Setting</InputLabel>
-                        <Select
-                            labelId="work-setting-select-label"
-                            id="work-setting-select"
-                            label="Work Setting"
-                            autoWidth
-                        >
-                            <MenuItem value={'P'}>Office</MenuItem>
-                            <MenuItem value={'R'}>Remote</MenuItem>
-                            <MenuItem value={'H'}>Hybrid</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <CustomNumberInput
+                        placeholder="Max score value…"
+                        value={maxScore}
+                        min={minScore}
+                        max={10}
+                        onChange={(event, val) => setMaxScore(val)}
+                    />
                 </div>
             </div>
             <div className={styles.filter}>
