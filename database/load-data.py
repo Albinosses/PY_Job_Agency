@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def generate_random_date():
     start_date = datetime(2020, 1, 1)
-    end_date = datetime(2020, 12, 31)
+    end_date = datetime(2023, 12, 31)
     
     # Calculate the range in days
     delta = end_date - start_date
