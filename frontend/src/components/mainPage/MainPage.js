@@ -1,16 +1,14 @@
 import React from "react";
-import VacancyTitle from "./vacancyTitle/VacancyTitle";
-import SearchFilters from "./searchFilters/SearchFilters";
-import VacancyScrollable from "./vacancyScrollable/VacancyScrollable";
+import MainTitle from "./mainTitle/MainTitle";
+import MainContent from "./mainContent/MainContent";
 
-function VacancyPage() {
+function MainPage() {
     return (
         <div className="flex flex-col w-full">
-            <VacancyTitle />
-            <SearchFilters />
-            <VacancyScrollable />
+            <MainTitle />
+            <MainContent />
         </div>
     );
 }
 
-export default VacancyPage;
+export default MainPage;
