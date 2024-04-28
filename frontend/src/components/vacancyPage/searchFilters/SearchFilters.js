@@ -7,7 +7,6 @@ import {DatePicker} from "@mui/x-date-pickers";
 function SearchFilters() {
     const [inputText, setInputText] = useState("");
     let inputHandler = (e) => {
-        //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
@@ -17,8 +16,6 @@ function SearchFilters() {
 
     const handleStartDateChange = (date) => {
         setStartDate(date);
-        // If an end date is already selected and it comes before the new start date,
-        // reset the end date to null
         if (endDate && date > endDate) {
             setEndDate(null);
         }
@@ -26,8 +23,6 @@ function SearchFilters() {
 
     const handleEndDateChange = (date) => {
         setEndDate(date);
-        // If a start date is already selected and it comes after the new end date,
-        // reset the start date to null
         if (startDate && date < startDate) {
             setStartDate(null);
         }
