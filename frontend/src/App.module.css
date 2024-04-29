@@ -16,3 +16,10 @@
   overflow-y: auto; /* Optional: Add vertical scroll if content exceeds screen height */
   min-height: 0; /* Ensure content can shrink */
 }
+
+/* globalStyles.css */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
