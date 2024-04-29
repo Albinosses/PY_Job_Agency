@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, { useContext, useState } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/system";
-import Typography from "@mui/material/Typography";
 import VacancyAddModal from "../vacancyAddModal/VacancyAddModal";
+import { useParams } from "react-router-dom";
+import { VacancyContext } from "../../../contexts/VacancyContext";
+import VacancyInfo from "./VacancyInfo";
 
 const Container = styled("div")({
     padding: "16px",
@@ -21,110 +23,21 @@ const Title = styled("h2")({
     marginBottom: "16px",
 });
 
-const StyledParagraph = styled(Typography)({
-    fontSize: "1.1rem",
-    lineHeight: "1.6",
-});
+function VacancyDetails() {
+    const { id } = useParams();
+    const { vacancies } = useContext(VacancyContext)
 
-const SkillContainer = styled("div")({
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    padding: "16px",
-    marginTop: "16px",
-});
+    const vacancy = vacancies.find(vacancy => vacancy.id === parseInt(id));
 
-function VacancyDetails({ vacancy, setVacancy, updateAllVacancies }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true)
     }
-    const handleReturnButton = () => {
-        updateAllVacancies(vacancy)
-        setVacancy(null);
-    };
-
-    const getFullEmploymentType = (abr) => {
-        switch (abr) {
-            case 'F':
-                return 'Full Time';
-            case 'P':
-                return 'Part Time';
-            case 'C':
-                return 'Contract';
-            default:
-                return '';
-        }
-    }
-
-    const getFullStatus = (abr) => {
-        switch (abr) {
-            case 'O':
-                return 'Open';
-            case 'C':
-                return 'Closed';
-            case 'P':
-                return 'Postponed';
-            default:
-                return '';
-        }
-    }
-
-    const getFullWorkSetting = (abr) => {
-        switch (abr) {
-            case 'P':
-                return 'Office';
-            case 'R':
-                return 'Remote';
-            case 'H':
-                return 'Hybrid';
-            default:
-                return '';
-        }
-    }
-
-    const getFullSkillLevel = (abr) => {
-        switch (abr) {
-            case 'J':
-                return 'Junior';
-            case 'M':
-                return 'Middle';
-            case 'S':
-                return 'Senior';
-            case 'E':
-                return 'Principal';
-            default:
-                return '';
-        }
-    }
-
 
     return (
         <Container>
-            <ReturnButton
-                onClick={handleReturnButton}
-                variant="contained"
-                color="primary"
-            >
-                Return
-            </ReturnButton>
             <Title>Vacancy Details</Title>
-            <StyledParagraph>Title: {vacancy.jobTitle}</StyledParagraph>
-            <StyledParagraph>Description: {vacancy.description}</StyledParagraph>
-            <StyledParagraph>Location: {vacancy.empCountry}</StyledParagraph>
-            <StyledParagraph>Company: {vacancy.company}</StyledParagraph>
-            <StyledParagraph>Salary: {vacancy.salary}</StyledParagraph>
-            <StyledParagraph>Employment Type: {getFullEmploymentType(vacancy.employmentType)}</StyledParagraph>
-            <StyledParagraph>Work Setting: {getFullWorkSetting(vacancy.workSetting)}</StyledParagraph>
-            <StyledParagraph>Publication Date: {vacancy.publicationDate}</StyledParagraph>
-            <StyledParagraph>Close Date: {vacancy.closeDate}</StyledParagraph>
-            <StyledParagraph>Status: {getFullStatus(vacancy.status)}</StyledParagraph>
-            {vacancy.skills.map((skill, index) => (
-                <SkillContainer key={index}>
-                    <h2>Skill: {skill.skillName}</h2>
-                    <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>
-                    <StyledParagraph>Weight: {skill.weight}</StyledParagraph>
-                </SkillContainer>
-            ))}
+            <VacancyInfo vacancy={vacancy} />
             <ReturnButton
                 onClick={handleOpen}
                 variant="contained"
@@ -138,9 +51,9 @@ function VacancyDetails({ vacancy, setVacancy, updateAllVacancies }) {
                     setOpen={setOpen}
                     modalType={'edit'}
                     data={vacancy}
-                    setVacancy={setVacancy}
                 />
             }
+            <Title>Related Interviews</Title>
         </Container>
     );
 }

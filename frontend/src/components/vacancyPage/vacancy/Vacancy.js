@@ -1,13 +1,9 @@
 import React from "react";
 import styles from "./Vacancy.module.css";
 
-function Vacancy({ vacancy, onClick }) {
-    const handleClick = () => {
-        onClick(vacancy); // Call the onClick function with the vacancy object
-    };
-
+function Vacancy({ vacancy }) {
     return (
-        <div className={styles.vacancyContainer} onClick={handleClick}>
+        <div className={styles.vacancyContainer}>
             <div className={styles.vacancyHeader}>
                 <div className={styles.vacancyTitle}>{vacancy.jobTitle}</div>
                 <div className={styles.vacancyTags}>

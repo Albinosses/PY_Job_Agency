@@ -8,6 +8,8 @@ import InterviewPage from "./components/interviewPage/InterviewPage";
 import HirePage from "./components/hirePage/HirePage";
 import MainPage from "./components/mainPage/MainPage";
 import {Route, Routes} from "react-router-dom";
+import VacancyDetails from "./components/vacancyPage/vacancyDetails/VacancyDetails";
+import {VacancyContext, VacancyProvider} from "./contexts/VacancyContext";
 
 function App() {
     const [activePage, setActivePage] = useState('main');
@@ -18,17 +20,22 @@ function App() {
 
     return (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
+
+
                 <div className={styles.App}>
                     <div className={styles.sidePanel}>
                         <SidePanel onPageChange={handlePageChange} />
                     </div>
                     <div className={styles.content}>
-                        <Routes>
-                            <Route path="/" element={<MainPage />}/>
-                            <Route path="/vacancy" element={<VacancyPage />}/>
-                            <Route path="/interview" element={<InterviewPage />}/>
-                            <Route path="/hire" element={<HirePage />}/>
-                        </Routes>
+                        <VacancyProvider>
+                            <Routes>
+                                <Route path="/" element={<MainPage />}/>
+                                <Route path="/interview" element={<InterviewPage />}/>
+                                <Route path="/hire" element={<HirePage />}/>
+                                <Route path="/vacancy" element={<VacancyPage />}/>
+                                <Route path="/vacancy/:id" element={<VacancyDetails />}/>
+                            </Routes>
+                        </VacancyProvider>
                     </div>
                 </div>
             </LocalizationProvider>

@@ -1,19 +1,22 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import Vacancy from "../vacancy/Vacancy";
 import styles from "./VacancyScrollable.module.css";
-import VacancyDetails from "../vacancyDetails/VacancyDetails";
+import {Link} from "react-router-dom";
+import {VacancyContext} from "../../../contexts/VacancyContext";
 
-function VacancyScrollable({ vacancies, handleVacancyClick }) {
+function VacancyScrollable() {
+    const {vacancies} = useContext(VacancyContext)
 
     return (
         <div className={styles.container}>
             <div className={styles.scrollableContainer}>
-                {vacancies.map((vacancy, index) => (
-                    <Vacancy
-                        key={index}
-                        vacancy={vacancy}
-                        onClick={() => handleVacancyClick(vacancy)}
-                    />
+                {vacancies.map((vacancy) => (
+                    <Link to={`/vacancy/${vacancy.id}`}>
+                        <Vacancy
+                            key={vacancy.id}
+                            vacancy={vacancy}
+                        />
+                    </Link>
                 ))}
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Box, Divider, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Typography} from "@mui/material";
 import styles from "../vacancyTitle/VacancyTitle.module.css";
 import TextField from "@mui/material/TextField";
@@ -6,6 +6,7 @@ import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
+import {VacancyContext} from "../../../contexts/VacancyContext";
 
 const style = {
     position: 'absolute',
@@ -19,11 +20,13 @@ const style = {
     p: 4,
 };
 
-function VacancyAddModal({open, setOpen, modalType, data, setVacancy}) {
+function VacancyAddModal({open, setOpen, modalType, data}) {
     const handleClose = () => {
         setOpen(false)
         resetState();
     };
+
+    const {updateVacancy} = useContext(VacancyContext)
 
     const resetState = () => {
         setJobTitle("");
@@ -164,7 +167,7 @@ function VacancyAddModal({open, setOpen, modalType, data, setVacancy}) {
             closeDate: endDate.format('YYYY-MM-DD'), // Format the date as needed
             skills: items,
         };
-        setVacancy(vacancyData)
+        updateVacancy(vacancyData)
         handleClose()
     }
 
