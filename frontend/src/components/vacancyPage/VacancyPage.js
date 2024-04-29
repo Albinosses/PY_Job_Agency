@@ -5,15 +5,6 @@ import VacancyScrollable from "./vacancyScrollable/VacancyScrollable";
 import VacancyDetails from "./vacancyDetails/VacancyDetails";
 
 function VacancyPage() {
-    const [vacancies, setVacancies] = useState([]);
-    const [selectedVacancy, setSelectedVacancy ] = useState(null)
-
-    const handleVacancyClick = (vacancy) => {
-        console.log("Navigate to vacancy details page for:", vacancy);
-        setSelectedVacancy(vacancy)
-    };
-
-    // Mock data while API is not available
     const mockVacancies = [
         {
             id: 1,
@@ -21,26 +12,26 @@ function VacancyPage() {
             company:"Samsung",
             empCountry: "USA",
             description: "Lorem ipsum dolor sit amet...",
-            salary: "$80,000 - $100,000",
-            employmentType: "Full-time",
-            workSetting: "Remote",
+            salary: 100000,
+            employmentType: 'F',
+            workSetting: 'R',
             publicationDate: "2024-04-27",
             closeDate: "2024-05-27",
-            status: "Open",
+            status: 'C',
             skills: [
                 {
-                    skill: "Researching",
-                    level: "Junior",
+                    skillName: "Researching",
+                    level: "J",
                     weight: 50
                 },
                 {
-                    skill: "OOP",
-                    level: "Middle",
+                    skillName: "OOP",
+                    level: "M",
                     weight: 25
                 },
                 {
-                    skill: "SQL",
-                    level: "Middle",
+                    skillName: "SQL",
+                    level: "M",
                     weight: 25
                 }
             ]
@@ -51,20 +42,20 @@ function VacancyPage() {
             company: "Apple",
             empCountry: "USA",
             description: "Lorem ipsum dolor sit amet...",
-            salary: "$90,000 - $120,000",
-            employmentType: "Full-time",
-            workSetting: "Office",
+            salary: 120000,
+            employmentType: "F",
+            workSetting: "P",
             publicationDate: "2024-04-25",
             closeDate: "2024-05-25",
-            status: "Open",
+            status: "O",
             skills: [
                 {
-                    skill: "Researching",
+                    skillName: "Researching",
                     level: "J",
                     weight: 50
                 },
                 {
-                    skill: "OOP",
+                    skillName: "OOP",
                     level: "S",
                     weight: 50
                 }
@@ -72,9 +63,21 @@ function VacancyPage() {
         }
     ];
 
-    useEffect(() => {
-        setVacancies(mockVacancies);
-    }, [mockVacancies]);
+    const [vacancies, setVacancies] = useState(mockVacancies);
+    const [selectedVacancy, setSelectedVacancy ] = useState(null)
+
+    const handleVacancyClick = (vacancy) => {
+        console.log("Navigate to vacancy details page for:", vacancy);
+        setSelectedVacancy(vacancy)
+    };
+
+    const updateVacancy = (updatedVacancy) => {
+        setVacancies((prevVacancies) =>
+            prevVacancies.map((vacancy) =>
+                vacancy.id === updatedVacancy.id ? updatedVacancy : vacancy
+            )
+        );
+    };
 
     return (
         <div className="flex flex-col w-full">
@@ -93,6 +96,7 @@ function VacancyPage() {
                     <VacancyDetails
                         vacancy={ selectedVacancy }
                         setVacancy={ setSelectedVacancy }
+                        updateAllVacancies={ updateVacancy }
                     />
                 </>
             )}
