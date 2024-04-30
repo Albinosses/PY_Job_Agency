@@ -1,34 +1,14 @@
 import React, { useContext, useState } from "react";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/system";
 import VacancyAddModal from "../vacancyAddModal/VacancyAddModal";
 import { useParams } from "react-router-dom";
 import { VacancyContext } from "../../../contexts/VacancyContext";
 import VacancyInfo from "./VacancyInfo";
-import {InterviewContext} from "../../../contexts/InterviewContext";
 import InterviewScrollable from "../../interviewPage/interviewScrollable/InterviewScrollable";
-
-const Container = styled("div")({
-    padding: "16px",
-    backgroundColor: "#fff",
-    borderRadius: "8px",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-    margin: "0 auto",
-});
-
-const ReturnButton = styled(Button)({
-    margin: "16px",
-});
-
-const Title = styled("h2")({
-    textAlign: "center",
-    marginBottom: "16px",
-});
+import {Container, ReturnButton, Title} from "../../StyledComponents";
 
 function VacancyDetails() {
     const { id } = useParams();
     const { vacancies } = useContext(VacancyContext)
-    const { interviews } = useContext(InterviewContext)
 
     const vacancy = vacancies.find(vacancy => vacancy.id === parseInt(id));
 

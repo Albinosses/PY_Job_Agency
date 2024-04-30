@@ -1,18 +1,5 @@
 import React from "react";
-import { styled } from "@mui/system";
-import Typography from "@mui/material/Typography";
-
-const StyledParagraph = styled(Typography)({
-    fontSize: "1.1rem",
-    lineHeight: "1.6",
-});
-
-const SkillContainer = styled("div")({
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    padding: "16px",
-    marginTop: "16px",
-});
+import {StyledParagraph, SkillContainer} from "../../StyledComponents";
 
 function VacancyInfo({ vacancy }) {
     const getFullEmploymentType = (abr) => {

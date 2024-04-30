@@ -3,7 +3,6 @@ import Interview from "../interview/Interview";
 import styles from "./InterviewScrollable.module.css";
 import {InterviewContext} from "../../../contexts/InterviewContext";
 import {Link} from "react-router-dom";
-import Vacancy from "../../vacancyPage/vacancy/Vacancy";
 
 function InterviewScrollable({ vacancyId }) {
     const { interviews } = useContext(InterviewContext)

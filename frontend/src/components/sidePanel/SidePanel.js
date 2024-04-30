@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "./SidePanel.module.css";
 import vacanciesButton from "./imgs/vacanciesButton.png"
 import hiresButton from "./imgs/hiresButton.png"
