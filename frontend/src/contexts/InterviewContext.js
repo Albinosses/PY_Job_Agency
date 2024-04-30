@@ -10,14 +10,14 @@ const mockInterviews = [
         candidate : {
             name : "Oleg",
             surname : "Ivanchuk",
-            birtDate : "2004-04-27",
+            birthDate : "2004-04-27",
             gender : "M",
             email : "example@gmail.com"
         },
         interviewer : {
             name : "Some",
             surname : "Interviewer",
-            birtDate : "2000-05-22",
+            birthDate : "2000-05-22",
             gender : "F",
             email : "example44@gmail.com"
         },
@@ -33,14 +33,14 @@ const mockInterviews = [
         candidate : {
             name : "Para",
             surname : "Mud",
-            birtDate : "2002-01-14",
+            birthDate : "2002-01-14",
             gender : "F",
             email : "example55@gmail.com"
         },
         interviewer : {
             name : "Second",
             surname : "Interview",
-            birtDate : "1900-05-22",
+            birthDate : "1900-05-22",
             gender : "M",
             email : "example4466@gmail.com"
         },
