@@ -4,23 +4,17 @@ import vacanciesButton from "./imgs/vacanciesButton.png"
 import hiresButton from "./imgs/hiresButton.png"
 import interviewsButton from "./imgs/interviewsButton.png"
 import mainButton from "./imgs/mainButton.png"
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 function SidePanel({ onPageChange }) {
-    const [selectedItem, setSelectedItem] = useState('main');
-    const handleClick = (page) => {
-        onPageChange(page);
-        setSelectedItem(page);
-    };
+    const location = useLocation();
+    const selectedItem = location.pathname.substring(1);
 
     return (
         <div className={styles.container}>
             <div className={styles.title}>HR System</div>
             <Link to="/" >
-                <div
-                    className={`${styles.section} ${selectedItem === 'main' ? styles.blue : ''}`}
-                    onClick={() => handleClick('main')}
-                >
+                <div className={`${styles.section} ${selectedItem === '' ? styles.blue : ''}`}>
                     <div className={styles.content}>
                         <img
                             src={mainButton}
@@ -32,9 +26,7 @@ function SidePanel({ onPageChange }) {
             </Link>
             <Link to="/vacancy">
                 <div
-                    className={`${styles.section} ${selectedItem === 'vacancy' ? styles.blue : ''}`}
-                    onClick={() => handleClick('vacancy')}
-                >
+                    className={`${styles.section} ${selectedItem === 'vacancy' ? styles.blue : ''}`}>
                     <div className={styles.content}>
                         <img
                             src={vacanciesButton}
@@ -46,10 +38,8 @@ function SidePanel({ onPageChange }) {
             </Link>
             <Link to="/interview">
                 <div
-                    className={`${styles.section} ${selectedItem === 'interview' ? styles.blue : ''}`}
-                    onClick={() => handleClick('interview')}
-                >
-                    <div className={styles.content} onClick={() => handleClick('interview')}>
+                    className={`${styles.section} ${selectedItem === 'interview' ? styles.blue : ''}`}>
+                    <div className={styles.content}>
                         <img
                             src={hiresButton}
                             alt="Interviews"
@@ -60,9 +50,7 @@ function SidePanel({ onPageChange }) {
             </Link>
             <Link to="/hire">
                 <div
-                    className={`${styles.section} ${selectedItem === 'hire' ? styles.blue : ''}`}
-                    onClick={() => handleClick('hire')}
-                >
+                    className={`${styles.section} ${selectedItem === 'hire' ? styles.blue : ''}`}>
                     <div className={styles.content}>
                         <img
                             src={interviewsButton}

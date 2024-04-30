@@ -5,6 +5,8 @@ import VacancyAddModal from "../vacancyAddModal/VacancyAddModal";
 import { useParams } from "react-router-dom";
 import { VacancyContext } from "../../../contexts/VacancyContext";
 import VacancyInfo from "./VacancyInfo";
+import {InterviewContext} from "../../../contexts/InterviewContext";
+import InterviewScrollable from "../../interviewPage/interviewScrollable/InterviewScrollable";
 
 const Container = styled("div")({
     padding: "16px",
@@ -26,6 +28,7 @@ const Title = styled("h2")({
 function VacancyDetails() {
     const { id } = useParams();
     const { vacancies } = useContext(VacancyContext)
+    const { interviews } = useContext(InterviewContext)
 
     const vacancy = vacancies.find(vacancy => vacancy.id === parseInt(id));
 
@@ -54,6 +57,7 @@ function VacancyDetails() {
                 />
             }
             <Title>Related Interviews</Title>
+            <InterviewScrollable vacancyId={vacancy.id} />
         </Container>
     );
 }
