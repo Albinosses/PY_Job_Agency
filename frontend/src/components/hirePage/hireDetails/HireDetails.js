@@ -1,32 +1,33 @@
+import {Link, useNavigate, useParams} from "react-router-dom";
 import React, {useContext} from "react";
-import {Link, useParams, useNavigate} from "react-router-dom";
-import {InterviewContext} from "../../../contexts/InterviewContext";
-import {Container, ReturnButton, Title} from "../../StyledComponents";
-import InterviewInfo from "./InterviewInfo";
-import Vacancy from "../../vacancyPage/vacancy/Vacancy";
 import {VacancyContext} from "../../../contexts/VacancyContext";
+import {HireContext} from "../../../contexts/HireContext";
+import {Container, ReturnButton, Title} from "../../StyledComponents";
+import Vacancy from "../../vacancyPage/vacancy/Vacancy";
+import HireInfo from "./HireInfo";
 
-function InterviewDetails() {
+
+const HireDetails = () => {
     const { id } = useParams();
-    const { interviews, deleteInterview } = useContext(InterviewContext)
+    const { hires, deleteHire } = useContext(HireContext)
     const { vacancies } = useContext(VacancyContext)
     const navigate = useNavigate()
 
 
-    const interview = interviews.find(interview => interview.id === parseInt(id));
+    const hire = hires.find(hire => hire.id === parseInt(id));
 
-    const vacancy = vacancies.find(vacancy => vacancy.id === interview.vacancyId)
+    const vacancy = vacancies.find(vacancy => vacancy.id === hire.vacancyId)
 
     const handleDelete = () => {
-        deleteInterview(interview.id)
-        navigate(`/interview`)
+        deleteHire(hire.id)
+        navigate(`/hire`)
     }
 
     return (
         <>
             <Container>
                 <Title>Interview Details</Title>
-                <InterviewInfo interview={interview}/>
+                <HireInfo hire={hire}/>
                 <ReturnButton
                     // onClick={handleOpen}
                     variant="contained"
@@ -44,9 +45,9 @@ function InterviewDetails() {
             </Container>
             <Container>
                 <Title>Related Vacancy</Title>
-                <Link to={`/vacancy/${interview.vacancyId}`}>
+                <Link to={`/vacancy/${hire.vacancyId}`}>
                     <Vacancy
-                        key={interview.vacancyId}
+                        key={hire.vacancyId}
                         vacancy={vacancy}
                     />
                 </Link>
@@ -55,4 +56,4 @@ function InterviewDetails() {
     )
 }
 
-export default InterviewDetails
+export default HireDetails

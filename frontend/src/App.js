@@ -11,6 +11,8 @@ import VacancyDetails from "./components/vacancyPage/vacancyDetails/VacancyDetai
 import {VacancyProvider} from "./contexts/VacancyContext";
 import {InterviewProvider} from "./contexts/InterviewContext";
 import InterviewDetails from "./components/interviewPage/interviewDetails/InterviewDetails";
+import {HireProvider} from "./contexts/HireContext";
+import HireDetails from "./components/hirePage/hireDetails/HireDetails";
 
 function App() {
     return (
@@ -22,14 +24,17 @@ function App() {
                     <div className={styles.content}>
                         <VacancyProvider>
                             <InterviewProvider>
-                                <Routes>
-                                    <Route path="/" element={<MainPage />}/>
-                                    <Route path="/interview" element={<InterviewPage />}/>
-                                    <Route path="/interview/:id" element={<InterviewDetails />}/>
-                                    <Route path="/hire" element={<HirePage />}/>
-                                    <Route path="/vacancy" element={<VacancyPage />}/>
-                                    <Route path="/vacancy/:id" element={<VacancyDetails />}/>
-                                </Routes>
+                                <HireProvider>
+                                    <Routes>
+                                        <Route path="/" element={<MainPage />}/>
+                                        <Route path="/interview" element={<InterviewPage />}/>
+                                        <Route path="/interview/:id" element={<InterviewDetails />}/>
+                                        <Route path="/hire" element={<HirePage />}/>
+                                        <Route path="/hire/:id" element={<HireDetails />}/>
+                                        <Route path="/vacancy" element={<VacancyPage />}/>
+                                        <Route path="/vacancy/:id" element={<VacancyDetails />}/>
+                                    </Routes>
+                                </HireProvider>
                             </InterviewProvider>
                         </VacancyProvider>
                     </div>
