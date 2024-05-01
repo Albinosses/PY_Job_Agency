@@ -1,5 +1,5 @@
 import React from "react";
-import ContactInfo from "../../candidate/ContactInfo";
+import ContactInfo from "../../contact/ContactInfo";
 import styles from "./HireInfo.module.css"
 import {StyledParagraph} from "../../StyledComponents";
 

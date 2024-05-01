@@ -9,6 +9,7 @@ import {InterviewContext} from "../../../contexts/InterviewContext";
 import {HireContext} from "../../../contexts/HireContext";
 import HireScrollable from "../../hirePage/hireScrollable/HireScrollable";
 import {useNavigate} from "react-router-dom";
+import InterviewModal from "../../interviewPage/interviewModal/InterviewModal";
 
 function VacancyDetails() {
     const {id} = useParams();
@@ -19,9 +20,24 @@ function VacancyDetails() {
 
     const vacancy = vacancies.find(vacancy => vacancy.id === parseInt(id));
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {
-        setOpen(true)
+    const [openVacancy, setOpenVacancy] = useState(false);
+    const [openInterview, setOpenInterview] = useState(false);
+    const [openHire, setOpenHire] = useState(false)
+
+    const handleOpen = (type) => {
+        switch (type) {
+            case 'vacancy':
+                setOpenVacancy(true)
+                break
+            case 'interview':
+                setOpenInterview(true)
+                break
+            case 'hire':
+                setOpenHire(true)
+                break
+            default:
+                return
+        }
     }
 
     const handleDelete = () => {
@@ -34,7 +50,7 @@ function VacancyDetails() {
             <Title>Vacancy Details</Title>
             <VacancyInfo vacancy={vacancy}/>
             <ReturnButton
-                onClick={handleOpen}
+                onClick={() => handleOpen('vacancy')}
                 variant="contained"
                 color="primary"
             >
@@ -47,14 +63,37 @@ function VacancyDetails() {
             >
                 Delete
             </ReturnButton>
-            {open &&
+            {openVacancy &&
                 <VacancyAddModal
-                    open={open}
-                    setOpen={setOpen}
+                    open={openVacancy}
+                    setOpen={setOpenVacancy}
                     modalType={'edit'}
                     data={vacancy}
                 />
             }
+            {openInterview &&
+                <InterviewModal
+                    open={openInterview}
+                    setOpen={setOpenInterview}
+                    modalType={'create'}
+                />
+            }
+            <div>
+                <ReturnButton
+                    onClick={() => handleOpen('interview')}
+                    variant="contained"
+                    color="primary"
+                >
+                    Add related interview
+                </ReturnButton>
+                <ReturnButton
+                    onClick={() => handleOpen('hire')}
+                    variant="contained"
+                    color="primary"
+                >
+                    Add related hire
+                </ReturnButton>
+            </div>
             {interviews.some(interview => interview.vacancyId === vacancy.id) &&
                 <>
                     <Title>Related Interviews</Title>
