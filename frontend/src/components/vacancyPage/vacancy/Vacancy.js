@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Vacancy.module.css";
 
-function Vacancy({ vacancy }) {
+function Vacancy({vacancy}) {
     return (
         <div className={styles.vacancyContainer}>
             <div className={styles.vacancyHeader}>

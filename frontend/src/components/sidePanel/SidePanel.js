@@ -6,14 +6,14 @@ import interviewsButton from "./imgs/interviewsButton.png"
 import mainButton from "./imgs/mainButton.png"
 import {Link, useLocation} from "react-router-dom";
 
-function SidePanel({ onPageChange }) {
+function SidePanel({onPageChange}) {
     const location = useLocation();
     const selectedItem = location.pathname.substring(1);
 
     return (
         <div className={styles.container}>
             <div className={styles.title}>HR System</div>
-            <Link to="/" >
+            <Link to="/">
                 <div className={`${styles.section} ${selectedItem === '' ? styles.blue : ''}`}>
                     <div className={styles.content}>
                         <img

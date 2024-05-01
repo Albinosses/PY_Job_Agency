@@ -7,9 +7,9 @@ import Vacancy from "../../vacancyPage/vacancy/Vacancy";
 import {VacancyContext} from "../../../contexts/VacancyContext";
 
 function InterviewDetails() {
-    const { id } = useParams();
-    const { interviews, deleteInterview } = useContext(InterviewContext)
-    const { vacancies } = useContext(VacancyContext)
+    const {id} = useParams();
+    const {interviews, deleteInterview} = useContext(InterviewContext)
+    const {vacancies} = useContext(VacancyContext)
     const navigate = useNavigate()
 
 

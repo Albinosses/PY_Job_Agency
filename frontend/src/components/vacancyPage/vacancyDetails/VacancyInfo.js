@@ -1,7 +1,7 @@
 import React from "react";
 import {StyledParagraph, SkillContainer} from "../../StyledComponents";
 
-function VacancyInfo({ vacancy }) {
+function VacancyInfo({vacancy}) {
     const getFullEmploymentType = (abr) => {
         switch (abr) {
             case 'F':

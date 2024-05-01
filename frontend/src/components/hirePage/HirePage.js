@@ -6,9 +6,9 @@ import SearchFilters from "./searchFilters/SearchFilters";
 function VacancyPage() {
     return (
         <div className="flex flex-col w-full">
-            <HireTitle />
-            <SearchFilters />
-            <HireScrollable />
+            <HireTitle/>
+            <SearchFilters/>
+            <HireScrollable/>
         </div>
     );
 }

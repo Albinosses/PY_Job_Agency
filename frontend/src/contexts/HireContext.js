@@ -5,13 +5,13 @@ export const HireContext = createContext({})
 const mockHires = [
     {
         id: 1,
-        vacancyId : 1,
-        employee : {
-            name : "Vasyl",
-            surname : "Syman",
-            birthDate : "2004-01-14",
-            gender : "M",
-            email : "vasyl@email.com"
+        vacancyId: 1,
+        employee: {
+            name: "Vasyl",
+            surname: "Syman",
+            birthDate: "2004-01-14",
+            gender: "M",
+            email: "vasyl@email.com"
         },
         hireDate: "2024-08-22",
         resume: null,
@@ -37,7 +37,7 @@ export const HireProvider = ({children}) => {
     }
 
     return (
-        <HireContext.Provider value={{ hires, setHires, updateHire, deleteHire }}>
+        <HireContext.Provider value={{hires, setHires, updateHire, deleteHire}}>
             {children}
         </HireContext.Provider>
     );

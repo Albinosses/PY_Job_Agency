@@ -8,9 +8,9 @@ import HireInfo from "./HireInfo";
 
 
 const HireDetails = () => {
-    const { id } = useParams();
-    const { hires, deleteHire } = useContext(HireContext)
-    const { vacancies } = useContext(VacancyContext)
+    const {id} = useParams();
+    const {hires, deleteHire} = useContext(HireContext)
+    const {vacancies} = useContext(VacancyContext)
     const navigate = useNavigate()
 
 

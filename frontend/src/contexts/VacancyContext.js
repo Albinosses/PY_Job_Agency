@@ -9,7 +9,7 @@ const mockVacancies = [
     {
         id: 1,
         jobTitle: "Software Engineer",
-        company:"Samsung",
+        company: "Samsung",
         empCountry: "USA",
         description: "Lorem ipsum dolor sit amet...",
         salary: 100000,
@@ -63,7 +63,7 @@ const mockVacancies = [
     }
 ];
 
-export const VacancyProvider = ({ children }) => {
+export const VacancyProvider = ({children}) => {
     const {setInterviews} = useContext(InterviewContext)
     const {setHires} = useContext(HireContext)
 
@@ -82,17 +82,17 @@ export const VacancyProvider = ({ children }) => {
             prevVacancies.filter((vacancy) => vacancy.id !== id)
         );
 
-        setInterviews( (prevInterviews) =>
+        setInterviews((prevInterviews) =>
             prevInterviews.filter((interview) => interview.vacancyId !== id)
         )
 
-        setHires( (prevHires) =>
+        setHires((prevHires) =>
             prevHires.filter((hire) => hire.vacancyId !== id)
         )
     }
 
     return (
-        <VacancyContext.Provider value={{ vacancies, setVacancies, updateVacancy, deleteVacancy }}>
+        <VacancyContext.Provider value={{vacancies, setVacancies, updateVacancy, deleteVacancy}}>
             {children}
         </VacancyContext.Provider>
     );

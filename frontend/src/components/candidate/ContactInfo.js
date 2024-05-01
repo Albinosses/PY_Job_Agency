@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./ContactInfo.module.css";
 
-const ContactInfo = ({ contact, owner }) => {
-    const { name, surname, birthDate, gender, email } = contact;
+const ContactInfo = ({contact, owner}) => {
+    const {name, surname, birthDate, gender, email} = contact;
 
     const getFullGender = (abr) => {
         switch (abr) {

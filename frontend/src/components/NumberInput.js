@@ -3,7 +3,7 @@ import {
     Unstable_NumberInput as BaseNumberInput,
     numberInputClasses,
 } from '@mui/base/Unstable_NumberInput';
-import { styled } from '@mui/system';
+import {styled} from '@mui/system';
 
 const CustomNumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
     return (
@@ -53,7 +53,7 @@ const grey = {
 };
 
 const StyledInputRoot = styled('div')(
-    ({ theme }) => `
+    ({theme}) => `
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   border-radius: 8px;
@@ -87,7 +87,7 @@ const StyledInputRoot = styled('div')(
 );
 
 const StyledInputElement = styled('input')(
-    ({ theme }) => `
+    ({theme}) => `
   font-size: 0.875rem;
   font-family: inherit;
   font-weight: 400;
@@ -104,7 +104,7 @@ const StyledInputElement = styled('input')(
 );
 
 const StyledButton = styled('button')(
-    ({ theme }) => `
+    ({theme}) => `
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;

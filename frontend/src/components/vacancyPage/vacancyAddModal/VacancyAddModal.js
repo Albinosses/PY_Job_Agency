@@ -37,7 +37,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setEndDate(null);
         setSalary(null);
         setStatus(null);
-        setItems([{ weight: null, skillName: "", level: "" }]);
+        setItems([{weight: null, skillName: "", level: ""}]);
     };
 
     const [jobTitle, setJobTitle] = useState("")
@@ -84,10 +84,10 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setStatus(e.target.value)
     }
 
-    const [items, setItems] = useState([{ weight: null, skillName: "", level: "" }]);
+    const [items, setItems] = useState([{weight: null, skillName: "", level: ""}]);
 
     const handleAddItem = () => {
-        setItems([...items, { weight: null, skillName: "", level: "" }]);
+        setItems([...items, {weight: null, skillName: "", level: ""}]);
         console.log(items)
     };
 
@@ -171,7 +171,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         handleClose()
     }
 
-    return(
+    return (
         <Modal
             open={open}
             onClose={handleClose}
@@ -261,7 +261,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                         onChange={handleSalaryChange}
                     />
                 </div>
-                <Divider />
+                <Divider/>
                 <div className={styles.container}>
                     {items.map((item, index) => (
                         <Grid container spacing={2} key={index} alignItems="center">
@@ -303,7 +303,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                                     <Button
                                         variant="contained"
                                         onClick={() => handleRemoveItem(index)}
-                                        sx={{ marginRight: 1 }}
+                                        sx={{marginRight: 1}}
                                     >
                                         -
                                     </Button>

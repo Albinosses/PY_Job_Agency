@@ -1,4 +1,4 @@
-import { styled } from "@mui/system";
+import {styled} from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 

@@ -4,13 +4,13 @@ import styles from "./HireScrollable.module.css";
 import {HireContext} from "../../../contexts/HireContext";
 import {Link} from "react-router-dom";
 
-function HireScrollable({ vacancyId }) {
-    const { hires } = useContext(HireContext)
+function HireScrollable({vacancyId}) {
+    const {hires} = useContext(HireContext)
 
     return (
         <div className={styles.container}>
             <div className={styles.scrollableContainer}>
-                { vacancyId ? (
+                {vacancyId ? (
                     hires
                         .filter(hire => hire.vacancyId === vacancyId)
                         .map(hire => (

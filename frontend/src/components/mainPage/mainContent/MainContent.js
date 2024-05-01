@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import Button from "@mui/material/Button";
 import {Chip} from "@mui/material";
 import styles from "./MainContent.module.css"
@@ -43,7 +43,7 @@ function MainContent() {
         setDbIsInitialized(false)
         setDbIsBeingInitialized(true)
 
-        setTimeout(function() {
+        setTimeout(function () {
             setDbIsBeingInitialized(false)
             setDbIsInitialized(true)
         }, 5000)
@@ -53,53 +53,53 @@ function MainContent() {
         setIncrementalEtlIsDone(false)
         setIncrementalEtlIsRun(true)
 
-        setTimeout(function() {
+        setTimeout(function () {
             setIncrementalEtlIsRun(false)
             setIncrementalEtlIsDone(true)
         }, 5000)
     }
 
     return (
-            <div className={styles.container}>
-                <div className={styles.buttonContainer}>
-                    <Button
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        size="large"
-                    >
-                        Upload file
-                        <VisuallyHiddenInput type="file" accept='.csv' onChange={handleFileUpload}/>
-                    </Button>
-                    {uploadedFile ?
-                        <Chip label={uploadedFile.name} />:
-                        <Chip label="predefined dataset" />
-                    }
-                </div>
-                <div className={styles.buttonContainer}>
-                    <Button
-                        variant="contained"
-                        onClick={handleRunDbsInit}
-                        size="large"
-                    >
-                        Initialize Databases
-                    </Button>
-                    {dbIsBeingInitialized && <CircularProgress />}
-                    {dbIsInitialized && <CheckIcon />}
-                </div>
-                <div className={styles.buttonContainer}>
-                    <Button
-                        variant="contained"
-                        onClick={handleRunIncrementalEtl}
-                        size="large"
-                    >
-                        Run Incremental ETL
-                    </Button>
-                    {incrementalEtlIsRun && <CircularProgress />}
-                    {incrementalEtlIsDone && <CheckIcon />}
-                </div>
+        <div className={styles.container}>
+            <div className={styles.buttonContainer}>
+                <Button
+                    component="label"
+                    role={undefined}
+                    variant="contained"
+                    tabIndex={-1}
+                    size="large"
+                >
+                    Upload file
+                    <VisuallyHiddenInput type="file" accept='.csv' onChange={handleFileUpload}/>
+                </Button>
+                {uploadedFile ?
+                    <Chip label={uploadedFile.name}/> :
+                    <Chip label="predefined dataset"/>
+                }
             </div>
+            <div className={styles.buttonContainer}>
+                <Button
+                    variant="contained"
+                    onClick={handleRunDbsInit}
+                    size="large"
+                >
+                    Initialize Databases
+                </Button>
+                {dbIsBeingInitialized && <CircularProgress/>}
+                {dbIsInitialized && <CheckIcon/>}
+            </div>
+            <div className={styles.buttonContainer}>
+                <Button
+                    variant="contained"
+                    onClick={handleRunIncrementalEtl}
+                    size="large"
+                >
+                    Run Incremental ETL
+                </Button>
+                {incrementalEtlIsRun && <CircularProgress/>}
+                {incrementalEtlIsDone && <CheckIcon/>}
+            </div>
+        </div>
     );
 }
 
