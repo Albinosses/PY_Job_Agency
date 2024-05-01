@@ -16,30 +16,30 @@ import HireDetails from "./components/hirePage/hireDetails/HireDetails";
 
 function App() {
     return (
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <div className={styles.App}>
-                    <div className={styles.sidePanel}>
-                        <SidePanel/>
-                    </div>
-                    <div className={styles.content}>
-                        <VacancyProvider>
-                            <InterviewProvider>
-                                <HireProvider>
-                                    <Routes>
-                                        <Route path="/" element={<MainPage />}/>
-                                        <Route path="/interview" element={<InterviewPage />}/>
-                                        <Route path="/interview/:id" element={<InterviewDetails />}/>
-                                        <Route path="/hire" element={<HirePage />}/>
-                                        <Route path="/hire/:id" element={<HireDetails />}/>
-                                        <Route path="/vacancy" element={<VacancyPage />}/>
-                                        <Route path="/vacancy/:id" element={<VacancyDetails />}/>
-                                    </Routes>
-                                </HireProvider>
-                            </InterviewProvider>
-                        </VacancyProvider>
-                    </div>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div className={styles.App}>
+                <div className={styles.sidePanel}>
+                    <SidePanel/>
                 </div>
-            </LocalizationProvider>
+                <div className={styles.content}>
+                    <InterviewProvider>
+                        <HireProvider>
+                            <VacancyProvider>
+                                <Routes>
+                                    <Route path="/" element={<MainPage/>}/>
+                                    <Route path="/interview" element={<InterviewPage/>}/>
+                                    <Route path="/interview/:id" element={<InterviewDetails/>}/>
+                                    <Route path="/hire" element={<HirePage/>}/>
+                                    <Route path="/hire/:id" element={<HireDetails/>}/>
+                                    <Route path="/vacancy" element={<VacancyPage/>}/>
+                                    <Route path="/vacancy/:id" element={<VacancyDetails/>}/>
+                                </Routes>
+                            </VacancyProvider>
+                        </HireProvider>
+                    </InterviewProvider>
+                </div>
+            </div>
+        </LocalizationProvider>
 
     );
 }

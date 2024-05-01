@@ -1,4 +1,6 @@
-import {createContext, useState} from "react";
+import {createContext, useContext, useState} from "react";
+import {InterviewContext} from "./InterviewContext";
+import {HireContext} from "./HireContext";
 
 export const VacancyContext = createContext({})
 
@@ -62,6 +64,9 @@ const mockVacancies = [
 ];
 
 export const VacancyProvider = ({ children }) => {
+    const {setInterviews} = useContext(InterviewContext)
+    const {setHires} = useContext(HireContext)
+
     const [vacancies, setVacancies] = useState(mockVacancies);
 
     const updateVacancy = (updatedVacancy) => {
@@ -72,8 +77,22 @@ export const VacancyProvider = ({ children }) => {
         );
     };
 
+    const deleteVacancy = (id) => {
+        setVacancies((prevVacancies) =>
+            prevVacancies.filter((vacancy) => vacancy.id !== id)
+        );
+
+        setInterviews( (prevInterviews) =>
+            prevInterviews.filter((interview) => interview.vacancyId !== id)
+        )
+
+        setHires( (prevHires) =>
+            prevHires.filter((hire) => hire.vacancyId !== id)
+        )
+    }
+
     return (
-        <VacancyContext.Provider value={{ vacancies, setVacancies, updateVacancy }}>
+        <VacancyContext.Provider value={{ vacancies, setVacancies, updateVacancy, deleteVacancy }}>
             {children}
         </VacancyContext.Provider>
     );
