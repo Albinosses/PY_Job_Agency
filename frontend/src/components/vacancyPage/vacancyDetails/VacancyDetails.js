@@ -5,10 +5,12 @@ import { VacancyContext } from "../../../contexts/VacancyContext";
 import VacancyInfo from "./VacancyInfo";
 import InterviewScrollable from "../../interviewPage/interviewScrollable/InterviewScrollable";
 import {Container, ReturnButton, Title} from "../../StyledComponents";
+import {InterviewContext} from "../../../contexts/InterviewContext";
 
 function VacancyDetails() {
     const { id } = useParams();
     const { vacancies } = useContext(VacancyContext)
+    const { interviews } = useContext(InterviewContext)
 
     const vacancy = vacancies.find(vacancy => vacancy.id === parseInt(id));
 
@@ -36,8 +38,13 @@ function VacancyDetails() {
                     data={vacancy}
                 />
             }
-            <Title>Related Interviews</Title>
-            <InterviewScrollable vacancyId={vacancy.id} />
+            {interviews.some(interview => interview.vacancyId === vacancy.id) &&
+                <>
+                    <Title>Related Interviews</Title>
+                    <InterviewScrollable vacancyId={vacancy.id} />
+                </>
+            }
+
         </Container>
     );
 }

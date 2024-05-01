@@ -63,8 +63,14 @@ export const InterviewProvider = ({ children }) => {
         );
     };
 
+    const deleteInterview = (id) => {
+        setInterviews((prevInterviews) =>
+            prevInterviews.filter((interview) => interview.id !== id)
+        );
+    }
+
     return (
-        <InterviewContext.Provider value={{ interviews, setInterviews, updateInterview }}>
+        <InterviewContext.Provider value={{ interviews, setInterviews, updateInterview, deleteInterview }}>
             {children}
         </InterviewContext.Provider>
     );

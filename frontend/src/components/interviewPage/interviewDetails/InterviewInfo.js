@@ -1,6 +1,7 @@
 import React from "react";
 import ContactInfo from "../../candidate/ContactInfo";
 import styles from "./InterviewInfo.module.css";
+import {StyledParagraph} from "../../StyledComponents";
 
 function InterviewInfo({ interview }) {
     const getFullType = (abr) => {
@@ -19,16 +20,14 @@ function InterviewInfo({ interview }) {
     return (
         <>
             <div className={styles.container}>
-                <ContactInfo contact={interview.candidate} owner={"Candidate Contact"} />
-                <ContactInfo contact={interview.interviewer} owner={"Interviewer Contact"} />
+                <ContactInfo contact={interview.candidate} owner={"Candidate"} />
+                <ContactInfo contact={interview.interviewer} owner={"Interviewer"} />
             </div>
-            {/*{interview.skills.map((skill, index) => (*/}
-            {/*    <SkillContainer key={index}>*/}
-            {/*        <h2>Skill: {skill.skillName}</h2>*/}
-            {/*        <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>*/}
-            {/*        <StyledParagraph>Weight: {skill.weight}</StyledParagraph>*/}
-            {/*    </SkillContainer>*/}
-            {/*))}*/}
+            <StyledParagraph>Interview Type: {getFullType(interview.InterviewType)}</StyledParagraph>
+            <StyledParagraph>Interview Date: {interview.InterviewDate}</StyledParagraph>
+            <StyledParagraph>Duration: {interview.duration} min</StyledParagraph>
+            <StyledParagraph>Feedback: {interview.feedback}</StyledParagraph>
+            <StyledParagraph>Total Score: {interview.score} / 10</StyledParagraph>
         </>
     );
 }
