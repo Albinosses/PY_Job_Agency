@@ -1,0 +1,57 @@
+.vacancyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 6px 2px;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 10px;
+}
+
+.vacancyHeader {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.vacancyTitle {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.vacancyTags {
+    display: flex;
+    gap: 5px;
+    padding-top: 2px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: #4a90e2;
+}
+
+.vacancyTag {
+    padding: 2px 5px;
+    background-color: #f0f5ff;
+    border-radius: 5px;
+}
+
+.vacancyDate {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #666;
+}
+
+.vacancyLink {
+    align-self: flex-end;
+    margin-top: 15px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #0069d9;
+}
