@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Box, FormControl, InputLabel, MenuItem, Modal, Select} from "@mui/material";
 import ContactInfoEdit from "../../contact/ContactInfoEdit";
 import styles from "../../contact/ContactInfo.module.css";
@@ -7,6 +7,7 @@ import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {InterviewContext} from "../../../contexts/InterviewContext";
 
 const style = {
     position: 'absolute',
@@ -21,6 +22,8 @@ const style = {
 };
 
 const InterviewModal = ({open, setOpen, modalType, data}) => {
+
+    const { updateInterview } = useContext(InterviewContext)
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -60,18 +63,23 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
 
     const handleAddInterview = () => {
-        const result = {
+        //CALL to API for new items creation
+        handleClose()
+    }
+
+    const handleEditInterview = () => {
+        const vacancyData = {
+            id: data.id,
+            vacancyId: data.vacancyId,
             candidate: candidate,
             interviewer: interviewer,
             InterviewType: interviewType,
-            InterviewDate: interviewDate.format('YYYY-MM-DD'),
+            InterviewDate: dayjs(interviewDate).format('YYYY-MM-DD'),
             duration: duration,
             feedback: feedback,
             score: score
-        }
-
-        console.log(result)
-
+        };
+        updateInterview(vacancyData)
         handleClose()
     }
 
@@ -144,13 +152,24 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                     />
                 </div>
                 <div className={styles.editContainer}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleAddInterview}
-                    >
-                        Add
-                    </Button>
+                    {modalType === 'create' &&
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleAddInterview}
+                        >
+                            Add
+                        </Button>
+                    }
+                    {modalType === 'edit' &&
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleEditInterview}
+                        >
+                            Save
+                        </Button>
+                    }
                 </div>
             </Box>
         </Modal>
