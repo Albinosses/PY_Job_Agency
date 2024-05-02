@@ -8,7 +8,7 @@ db_params = {
     'host': 'localhost',
     'database': 'OLTP',
     'user': 'postgres',
-    'password': '2204'
+    'password': '1234'
 }
 
 engine = create_engine(f'postgresql+psycopg2://{db_params["user"]}:{db_params["password"]}@{db_params["host"]}/{db_params["database"]}')

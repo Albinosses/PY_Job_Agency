@@ -18,14 +18,14 @@ OLTP_params = {
     'host': 'localhost',
     'database': 'OLTP',
     'user': 'postgres',
-    'password': '2204'
+    'password': '1234'
 }
 
 OLAP_params = {
     'host': 'localhost',
     'database': 'OLAP',
     'user': 'postgres',
-    'password': '2204'
+    'password': '1234'
 }
 
 OLTP_engine = create_engine(f'postgresql+psycopg2://{OLTP_params["user"]}:{OLTP_params["password"]}@{OLTP_params["host"]}/{OLTP_params["database"]}')

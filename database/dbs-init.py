@@ -6,21 +6,21 @@ from sqlalchemy_utils import database_exists, create_database
 base_db_params = {
     'hostname': 'localhost',
     'username': 'postgres',
-    'password': '2204',
+    'password': '1234',
     'database': 'postgres',
 }
 
 OLTP_params = {
     'host': 'localhost',
     'user': 'postgres',
-    'password': '2204',
+    'password': '1234',
     'database': 'OLTP'
 }
 
 OLAP_params = {
     'host': 'localhost',
     'user': 'postgres',
-    'password': '2204',
+    'password': '1234',
     'database': 'OLAP'
 }
 
