@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Box, FormControl, InputLabel, MenuItem, Modal, Select} from "@mui/material";
 import ContactInfoEdit from "../../contact/ContactInfoEdit";
 import styles from "../../contact/ContactInfo.module.css";
@@ -23,48 +23,48 @@ const style = {
 const InterviewModal = ({open, setOpen, modalType, data}) => {
     const handleClose = () => {
         setOpen(false)
-        //resetState();
+        resetState();
     };
-
-    const [formData, setFormData] = useState({
-        id: "",
-        vacancyId: "",
-        candidate: {
-            name: "",
-            surname: "",
-            birthDate: "",
-            gender: "",
-            email: ""
-        },
-        interviewer: {
-            name: "",
-            surname: "",
-            birthDate: "",
-            gender: "",
-            email: ""
-        },
-        InterviewType: "",
-        InterviewDate: "",
-        duration: "",
-        feedback: "",
-        score: ""
-    })
 
     const [score, setScore] = useState("")
     const [duration, setDuration] = useState("")
     const [feedback, setFeedback] = useState("")
-    const [interviewDate, setInterviewDate] = useState("")
+    const [interviewDate, setInterviewDate] = useState(data?.InterviewDate || "")
     const [interviewType, setInterviewType] = useState("")
     const [candidate, setCandidate] = useState({})
     const [interviewer, setInterviewer] = useState({})
+
+    const resetState = () => {
+        setCandidate({});
+        setInterviewer({});
+        setInterviewType('');
+        setInterviewDate('');
+        setFeedback('');
+        setDuration('');
+        setScore('');
+    }
+
+    useEffect(() => {
+        if (modalType === "edit") {
+            setCandidate(data.candidate);
+            setInterviewer(data.interviewer);
+            setInterviewType(data.InterviewType);
+            setInterviewDate(data.InterviewDate);
+            setFeedback(data.feedback);
+            setDuration(data.duration);
+            setScore(data.score);
+        } else {
+            resetState()
+        }
+    }, [modalType, data]);
 
 
     const handleAddInterview = () => {
         const result = {
             candidate: candidate,
             interviewer: interviewer,
-            interviewType: interviewType,
-            interviewDate: interviewDate,
+            InterviewType: interviewType,
+            InterviewDate: interviewDate.format('YYYY-MM-DD'),
             duration: duration,
             feedback: feedback,
             score: score
@@ -86,13 +86,13 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                 <div className={styles.editContainer}>
                     <ContactInfoEdit
                         owner="Candidate"
-                        type="create"
+                        type={modalType}
                         contact={candidate}
                         setContact={setCandidate}
                     />
                     <ContactInfoEdit
                         owner="Interviewer"
-                        type="create"
+                        type={modalType}
                         contact={interviewer}
                         setContact={setInterviewer}
                     />

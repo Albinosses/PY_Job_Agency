@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./ContactInfo.module.css";
 import TextField from "@mui/material/TextField";
 import {DatePicker} from "@mui/x-date-pickers";
@@ -6,6 +6,26 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import dayjs from "dayjs";
 
 const ContactInfoEdit = ({type, owner, contact, setContact}) => {
+
+    const [gender, setGender] = useState(contact?.gender || "")
+    const [birthDate, setBirthDate] = useState(contact?.birthDate || "")
+
+    useEffect(() => {
+        if (type === 'edit') {
+            setGender(contact.gender);
+            setBirthDate(contact.birthDate);
+        }
+    }, [type, contact.gender, contact.birthDate]);
+
+    const handleGenderChange = (e) => {
+        setGender(e.target.value)
+        setContact({...contact, gender: e.target.value})
+    }
+
+    const handleBirthDateChange = (date) => {
+        setBirthDate(date)
+        setContact({...contact, birthDate: date.format('YYYY-MM-DD')})
+    }
 
     return (
         <div className={styles.editContactContainer}>
@@ -34,8 +54,8 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                 <DatePicker
                     sx={{width: 300}}
                     label="Birth date"
-                    onChange={(date) => setContact({...contact, birthDate: date})}
-                    value={dayjs(contact.birthDate)}
+                    onChange={handleBirthDateChange}
+                    value={dayjs(birthDate)}
                 />
             </div>
             <div className={styles.inputItem}>
@@ -46,8 +66,8 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                         labelId="gender-select-label"
                         id="gender-select"
                         label="Gender"
-                        value={contact.gender}
-                        onChange={(e) => setContact({...contact, gender: e.target.value})}
+                        value={gender}
+                        onChange={handleGenderChange}
                     >
                         <MenuItem sx={{width: 300}} value={'M'}>Male</MenuItem>
                         <MenuItem sx={{width: 300}} value={'F'}>Female</MenuItem>

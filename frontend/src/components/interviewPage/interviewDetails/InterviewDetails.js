@@ -1,10 +1,11 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Link, useParams, useNavigate} from "react-router-dom";
 import {InterviewContext} from "../../../contexts/InterviewContext";
 import {Container, ReturnButton, Title} from "../../StyledComponents";
 import InterviewInfo from "./InterviewInfo";
 import Vacancy from "../../vacancyPage/vacancy/Vacancy";
 import {VacancyContext} from "../../../contexts/VacancyContext";
+import InterviewModal from "../interviewModal/InterviewModal";
 
 function InterviewDetails() {
     const {id} = useParams();
@@ -17,9 +18,15 @@ function InterviewDetails() {
 
     const vacancy = vacancies.find(vacancy => vacancy.id === interview.vacancyId)
 
+    const [open, setOpen] = useState(false);
+
     const handleDelete = () => {
         deleteInterview(interview.id)
         navigate(`/interview`)
+    }
+
+    const handleEdit = () => {
+        setOpen(true)
     }
 
     return (
@@ -28,12 +35,20 @@ function InterviewDetails() {
                 <Title>Interview Details</Title>
                 <InterviewInfo interview={interview}/>
                 <ReturnButton
-                    // onClick={handleOpen}
+                    onClick={handleEdit}
                     variant="contained"
                     color="primary"
                 >
                     Edit
                 </ReturnButton>
+                {open &&
+                    <InterviewModal
+                        open={open}
+                        setOpen={setOpen}
+                        modalType={'edit'}
+                        data={interview}
+                    />
+                }
                 <ReturnButton
                     onClick={handleDelete}
                     variant="contained"
