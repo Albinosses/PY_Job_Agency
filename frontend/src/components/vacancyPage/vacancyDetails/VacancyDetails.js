@@ -10,6 +10,7 @@ import {HireContext} from "../../../contexts/HireContext";
 import HireScrollable from "../../hirePage/hireScrollable/HireScrollable";
 import {useNavigate} from "react-router-dom";
 import InterviewModal from "../../interviewPage/interviewModal/InterviewModal";
+import HireModal from "../../hirePage/hireModal/HireModal";
 
 function VacancyDetails() {
     const {id} = useParams();
@@ -75,6 +76,13 @@ function VacancyDetails() {
                 <InterviewModal
                     open={openInterview}
                     setOpen={setOpenInterview}
+                    modalType={'create'}
+                />
+            }
+            {openHire &&
+                <HireModal
+                    open={openHire}
+                    setOpen={setOpenHire}
                     modalType={'create'}
                 />
             }

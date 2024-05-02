@@ -61,6 +61,33 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
         }
     }, [modalType, data]);
 
+    const [isValid, setIsValid] = useState(false);
+
+    const isContactValid = (contact) => {
+        if (Object.keys(contact).length !== 5) {
+            return false
+        }
+
+        return contact.name.trim() !== "" &&
+            contact.surname.trim() !== "" &&
+            contact.date !== null &&
+            contact.gender !== "" &&
+            contact.email.trim() !== ""
+    }
+
+    useEffect(() => {
+        const allInputsFilled =
+            feedback.trim() !== "" &&
+            interviewType !== "" &&
+            interviewDate !== null &&
+            duration !== null &&
+            score !== null &&
+            isContactValid(interviewer) &&
+            isContactValid(candidate)
+
+        setIsValid(allInputsFilled);
+    }, [feedback, interviewer, candidate, interviewType, interviewDate, duration, score]);
+
 
     const handleAddInterview = () => {
         //CALL to API for new items creation
@@ -68,7 +95,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     }
 
     const handleEditInterview = () => {
-        const vacancyData = {
+        const interviewData = {
             id: data.id,
             vacancyId: data.vacancyId,
             candidate: candidate,
@@ -79,7 +106,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
             feedback: feedback,
             score: score
         };
-        updateInterview(vacancyData)
+        updateInterview(interviewData)
         handleClose()
     }
 
@@ -157,6 +184,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                             variant="contained"
                             color="primary"
                             onClick={handleAddInterview}
+                            disabled={!isValid}
                         >
                             Add
                         </Button>
@@ -166,6 +194,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                             variant="contained"
                             color="primary"
                             onClick={handleEditInterview}
+                            disabled={!isValid}
                         >
                             Save
                         </Button>
