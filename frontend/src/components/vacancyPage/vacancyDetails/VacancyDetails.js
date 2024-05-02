@@ -11,10 +11,11 @@ import HireScrollable from "../../hirePage/hireScrollable/HireScrollable";
 import {useNavigate} from "react-router-dom";
 import InterviewModal from "../../interviewPage/interviewModal/InterviewModal";
 import HireModal from "../../hirePage/hireModal/HireModal";
+import dayjs from "dayjs";
 
 function VacancyDetails() {
     const {id} = useParams();
-    const {vacancies, deleteVacancy} = useContext(VacancyContext)
+    const {vacancies, deleteVacancy, updateVacancy, isVacancyClosed} = useContext(VacancyContext)
     const {interviews} = useContext(InterviewContext)
     const {hires} = useContext(HireContext)
     const navigate = useNavigate()
@@ -46,6 +47,13 @@ function VacancyDetails() {
         navigate(`/vacancy`)
     }
 
+    const handleCloseVacancy= () => {
+        vacancy.status = 'C'
+        vacancy.closeDate = dayjs().format('YYYY-MM-DD')
+
+        updateVacancy(vacancy)
+    }
+
     return (
         <Container>
             <Title>Vacancy Details</Title>
@@ -56,6 +64,14 @@ function VacancyDetails() {
                 color="primary"
             >
                 Edit
+            </ReturnButton>
+            <ReturnButton
+                onClick={handleCloseVacancy}
+                variant="contained"
+                color="primary"
+                disabled={isVacancyClosed(vacancy.id)}
+            >
+                Close
             </ReturnButton>
             <ReturnButton
                 onClick={handleDelete}

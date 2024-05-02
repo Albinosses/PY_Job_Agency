@@ -66,7 +66,9 @@ function VacancyInfo({vacancy}) {
             <StyledParagraph>Employment Type: {getFullEmploymentType(vacancy.employmentType)}</StyledParagraph>
             <StyledParagraph>Work Setting: {getFullWorkSetting(vacancy.workSetting)}</StyledParagraph>
             <StyledParagraph>Publication Date: {vacancy.publicationDate}</StyledParagraph>
-            <StyledParagraph>Close Date: {vacancy.closeDate}</StyledParagraph>
+            {vacancy.status === 'C' &&
+                <StyledParagraph>Close Date: {vacancy.closeDate}</StyledParagraph>
+            }
             <StyledParagraph>Status: {getFullStatus(vacancy.status)}</StyledParagraph>
             {vacancy.skills.map((skill, index) => (
                 <SkillContainer key={index}>
