@@ -249,7 +249,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                     />
                     <DatePicker
                         label="Close date"
-                        value={endDate}
+                        value={status !== 'C' ? null : endDate}
                         onChange={handleEndDateChange}
                         minDate={startDate}
                         disabled={status !== 'C'}
