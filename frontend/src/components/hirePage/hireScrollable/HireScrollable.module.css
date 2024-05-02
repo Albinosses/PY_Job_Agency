@@ -13,3 +13,11 @@
     padding: 10px; /* Add padding for better aesthetics */
     box-sizing: border-box;
 }
+
+.circularProgressContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: auto;
+}
