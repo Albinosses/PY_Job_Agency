@@ -13,6 +13,9 @@ import {InterviewProvider} from "./contexts/InterviewContext";
 import InterviewDetails from "./components/interviewPage/interviewDetails/InterviewDetails";
 import {HireProvider} from "./contexts/HireContext";
 import HireDetails from "./components/hirePage/hireDetails/HireDetails";
+import VacancyDashboard from "./components/dashboards/vacancyDashboard/VacancyDashboard";
+import InterviewDashboard from "./components/dashboards/vacancyDashboard/InterviewDashboard";
+import HireDashboard from "./components/dashboards/vacancyDashboard/HireDashboard";
 
 function App() {
     return (
@@ -33,6 +36,9 @@ function App() {
                                     <Route path="/hire/:id" element={<HireDetails/>}/>
                                     <Route path="/vacancy" element={<VacancyPage/>}/>
                                     <Route path="/vacancy/:id" element={<VacancyDetails/>}/>
+                                    <Route path="/dashboard/vacancy" element={<VacancyDashboard/>}/>
+                                    <Route path="/dashboard/interview" element={<InterviewDashboard/>}/>
+                                    <Route path="/dashboard/hire" element={<HireDashboard/>}/>
                                 </Routes>
                             </VacancyProvider>
                         </HireProvider>

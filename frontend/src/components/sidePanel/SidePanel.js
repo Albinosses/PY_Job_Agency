@@ -100,7 +100,7 @@ function SidePanel({onPageChange}) {
                             className={`${styles.section} ${selectedItem.endsWith('dashboard/interview') ? styles.blue : ''}`}
                         >
                             <div className={styles.submenuItem}>
-                                Hires
+                                Interviews
                             </div>
                         </div>
                     </Link>
