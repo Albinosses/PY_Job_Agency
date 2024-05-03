@@ -24,7 +24,7 @@ function HireScrollable({vacancyId}) {
                                 <Link to={`/hire/${hire.id}`}>
                                     <Hire
                                         key={hire.id}
-                                        vacancy={hire}
+                                        hire={hire}
                                     />
                                 </Link>
                             ))) : (
@@ -32,7 +32,7 @@ function HireScrollable({vacancyId}) {
                             <Link to={`/hire/${hire.id}`}>
                                 <Hire
                                     key={hire.id}
-                                    vacancy={hire}
+                                    hire={hire}
                                 />
                             </Link>
                         )))}

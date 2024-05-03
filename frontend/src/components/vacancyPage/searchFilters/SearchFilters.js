@@ -1,11 +1,22 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
+import {VacancyContext} from "../../../contexts/VacancyContext";
 
 function SearchFilters() {
     const [inputText, setInputText] = useState("");
+    const [sortOrder, setSortOrder] = useState("");
+    const {vacancies, setVacancies} = useContext(VacancyContext)
+
+    useEffect(() => {
+        const savedSortOrder = localStorage.getItem("vacancies_sortOrder");
+        if (savedSortOrder) {
+            setSortOrder(savedSortOrder);
+        }
+    }, []);
+
     let inputHandler = (e) => {
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
@@ -27,6 +38,30 @@ function SearchFilters() {
             setStartDate(null);
         }
     };
+
+    const changeSortOrder = (e) => {
+        const newSortOrder = e.target.value;
+        localStorage.setItem("vacancies_sortOrder", newSortOrder);
+        setSortOrder(newSortOrder);
+
+        if (newSortOrder === 'new_first'){
+            const sortedVacancies = [...vacancies].sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+            setVacancies(sortedVacancies);
+        }
+        if (newSortOrder === 'old_first'){
+            const sortedVacancies = [...vacancies].sort((a, b) => new Date(a.publicationDate) - new Date(b.publicationDate));
+            setVacancies(sortedVacancies);
+        }
+        if (newSortOrder === 'big_salary_first'){
+            const sortedVacancies = [...vacancies].sort((a, b) => b.salary - a.salary);
+            setVacancies(sortedVacancies);
+        }
+        if (newSortOrder === 'small_salary_first'){
+            const sortedVacancies = [...vacancies].sort((a, b) => a.salary - b.salary);
+            setVacancies(sortedVacancies);
+        }
+    }
+
 
     return (
         <div className={styles.container}>
@@ -118,6 +153,8 @@ function SearchFilters() {
                             labelId="sort-setting-select-label"
                             id="sort-setting-select"
                             label="Sort Setting"
+                            onChange={changeSortOrder}
+                            value={sortOrder}
                             autoWidth
                         >
                             <MenuItem value={'old_first'}>Old first</MenuItem>

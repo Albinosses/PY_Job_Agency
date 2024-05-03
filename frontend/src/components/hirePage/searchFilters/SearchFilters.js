@@ -1,11 +1,23 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
+import {InterviewContext} from "../../../contexts/InterviewContext";
+import {HireContext} from "../../../contexts/HireContext";
 
 function SearchFilters() {
     const [inputText, setInputText] = useState("");
+    const [sortOrder, setSortOrder] = useState("");
+    const {hires, setHires} = useContext(HireContext)
+
+    useEffect(() => {
+        const savedSortOrder = localStorage.getItem("hires_sortOrder");
+        if (savedSortOrder) {
+            setSortOrder(savedSortOrder);
+        }
+    }, []);
+
     let inputHandler = (e) => {
         //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
@@ -17,8 +29,6 @@ function SearchFilters() {
 
     const handleStartDateChange = (date) => {
         setStartDate(date);
-        // If an end date is already selected and it comes before the new start date,
-        // reset the end date to null
         if (endDate && date > endDate) {
             setEndDate(null);
         }
@@ -26,12 +36,25 @@ function SearchFilters() {
 
     const handleEndDateChange = (date) => {
         setEndDate(date);
-        // If a start date is already selected and it comes after the new end date,
-        // reset the start date to null
         if (startDate && date < startDate) {
             setStartDate(null);
         }
     };
+
+    const changeSortOrder = (e) => {
+        const newSortOrder = e.target.value;
+        localStorage.setItem("hires_sortOrder", newSortOrder);
+        setSortOrder(newSortOrder);
+
+        if (newSortOrder === 'new_first'){
+            const sortedVacancies = [...hires].sort((a, b) => new Date(b.hireDate) - new Date(a.hireDate));
+            setHires(sortedVacancies);
+        }
+        if (newSortOrder === 'old_first'){
+            const sortedVacancies = [...hires].sort((a, b) => new Date(a.hireDate) - new Date(b.hireDate));
+            setHires(sortedVacancies);
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -73,6 +96,8 @@ function SearchFilters() {
                             id="sort-setting-select"
                             label="Sort Setting"
                             autoWidth
+                            onChange={changeSortOrder}
+                            value={sortOrder}
                         >
                             <MenuItem value={'old_first'}>Old first</MenuItem>
                             <MenuItem value={'new_first'}>New first</MenuItem>

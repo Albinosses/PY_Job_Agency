@@ -24,7 +24,7 @@ function InterviewScrollable({vacancyId}) {
                                 <Link to={`/interview/${interview.id}`}>
                                     <Interview
                                         key={interview.id}
-                                        vacancy={interview}
+                                        interview={interview}
                                     />
                                 </Link>
                             ))) : (
@@ -32,7 +32,7 @@ function InterviewScrollable({vacancyId}) {
                             <Link to={`/interview/${interview.id}`}>
                                 <Interview
                                     key={interview.id}
-                                    vacancy={interview}
+                                    interview={interview}
                                 />
                             </Link>
                         )))}

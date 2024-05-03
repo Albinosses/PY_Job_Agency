@@ -1,13 +1,23 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
-import NumberInputIntroduction from "../../NumberInput";
 import CustomNumberInput from "../../NumberInput";
+import {InterviewContext} from "../../../contexts/InterviewContext";
 
 function SearchFilters() {
     const [inputText, setInputText] = useState("");
+    const [sortOrder, setSortOrder] = useState("");
+    const {interviews, setInterviews} = useContext(InterviewContext)
+
+    useEffect(() => {
+        const savedSortOrder = localStorage.getItem("interviews_sortOrder");
+        if (savedSortOrder) {
+            setSortOrder(savedSortOrder);
+        }
+    }, []);
+
     let inputHandler = (e) => {
         //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
@@ -37,6 +47,37 @@ function SearchFilters() {
 
     const [minScore, setMinScore] = useState(0);
     const [maxScore, setMaxScore] = useState(10);
+
+    const changeSortOrder = (e) => {
+        const newSortOrder = e.target.value;
+        localStorage.setItem("interviews_sortOrder", newSortOrder);
+        setSortOrder(newSortOrder);
+
+        if (newSortOrder === 'new_first'){
+            const sortedVacancies = [...interviews].sort((a, b) => new Date(b.InterviewDate) - new Date(a.InterviewDate));
+            setInterviews(sortedVacancies);
+        }
+        if (newSortOrder === 'old_first'){
+            const sortedVacancies = [...interviews].sort((a, b) => new Date(a.InterviewDate) - new Date(b.InterviewDate));
+            setInterviews(sortedVacancies);
+        }
+        if (newSortOrder === 'long_first'){
+            const sortedVacancies = [...interviews].sort((a, b) => b.duration - a.duration);
+            setInterviews(sortedVacancies);
+        }
+        if (newSortOrder === 'short_first'){
+            const sortedVacancies = [...interviews].sort((a, b) => a.duration - b.duration);
+            setInterviews(sortedVacancies);
+        }
+        if (newSortOrder === 'big_score_first'){
+            const sortedVacancies = [...interviews].sort((a, b) => b.score - a.score);
+            setInterviews(sortedVacancies);
+        }
+        if (newSortOrder === 'small_score_first'){
+            const sortedVacancies = [...interviews].sort((a, b) => a.score - b.score);
+            setInterviews(sortedVacancies);
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -116,6 +157,8 @@ function SearchFilters() {
                             labelId="sort-setting-select-label"
                             id="sort-setting-select"
                             label="Sort Setting"
+                            onChange={changeSortOrder}
+                            value={sortOrder}
                             autoWidth
                         >
                             <MenuItem value={'old_first'}>Old first</MenuItem>
