@@ -9,6 +9,11 @@ function VacancyPage() {
             <VacancyTitle/>
             <SearchFilters/>
             <VacancyScrollable/>
+            <iframe
+                width={1000}
+                height={400}
+                src="https://public.tableau.com/views/Vacancies_17147379559880/Dashboard1?:showVizHome=no&:embed=true"
+            />
         </div>
     );
 }
