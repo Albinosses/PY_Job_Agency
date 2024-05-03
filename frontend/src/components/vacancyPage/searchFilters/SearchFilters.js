@@ -42,7 +42,7 @@ function SearchFilters() {
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <FormControl sx={{m: 1, minWidth: 85}}>
+                    <FormControl sx={{minWidth: 85}}>
                         <InputLabel id="type-select-label">Type</InputLabel>
                         <Select
                             autoWidth
@@ -59,7 +59,7 @@ function SearchFilters() {
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <FormControl sx={{m: 1, minWidth: 100}}>
+                    <FormControl sx={{minWidth: 100}}>
                         <InputLabel id="status-select-label">Status</InputLabel>
                         <Select
                             labelId="status-select-label"
@@ -76,7 +76,7 @@ function SearchFilters() {
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <FormControl sx={{m: 1, minWidth: 160}}>
+                    <FormControl sx={{minWidth: 160}}>
                         <InputLabel id="work-setting-select-label">Work Setting</InputLabel>
                         <Select
                             labelId="work-setting-select-label"
@@ -108,6 +108,24 @@ function SearchFilters() {
                         onChange={handleEndDateChange}
                         minDate={startDate}
                     />
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <FormControl sx={{minWidth: 160}}>
+                        <InputLabel id="sort-setting-select-label">Sort</InputLabel>
+                        <Select
+                            labelId="sort-setting-select-label"
+                            id="sort-setting-select"
+                            label="Sort Setting"
+                            autoWidth
+                        >
+                            <MenuItem value={'old_first'}>Old first</MenuItem>
+                            <MenuItem value={'new_first'}>New first</MenuItem>
+                            <MenuItem value={'big_salary_first'}>Big salary first </MenuItem>
+                            <MenuItem value={'small_salary_first'}>Small salary first </MenuItem>
+                        </Select>
+                    </FormControl>
                 </div>
             </div>
         </div>

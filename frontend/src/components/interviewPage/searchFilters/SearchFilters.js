@@ -52,7 +52,7 @@ function SearchFilters() {
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <FormControl sx={{m: 1, minWidth: 85}}>
+                    <FormControl sx={{minWidth: 85}}>
                         <InputLabel id="type-select-label">Type</InputLabel>
                         <Select
                             autoWidth
@@ -106,6 +106,26 @@ function SearchFilters() {
                         onChange={handleEndDateChange}
                         minDate={startDate}
                     />
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <FormControl sx={{minWidth: 160}}>
+                        <InputLabel id="sort-setting-select-label">Sort</InputLabel>
+                        <Select
+                            labelId="sort-setting-select-label"
+                            id="sort-setting-select"
+                            label="Sort Setting"
+                            autoWidth
+                        >
+                            <MenuItem value={'old_first'}>Old first</MenuItem>
+                            <MenuItem value={'new_first'}>New first</MenuItem>
+                            <MenuItem value={'long_first'}>Long first </MenuItem>
+                            <MenuItem value={'short_first'}>Short first </MenuItem>
+                            <MenuItem value={'big_score_first'}>Big score first </MenuItem>
+                            <MenuItem value={'small_score_first'}>Small score first </MenuItem>
+                        </Select>
+                    </FormControl>
                 </div>
             </div>
         </div>
