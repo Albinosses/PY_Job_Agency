@@ -3,11 +3,11 @@ import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
-import {InterviewContext} from "../../../contexts/InterviewContext";
 import {HireContext} from "../../../contexts/HireContext";
+import Button from "@mui/material/Button";
+import dayjs from "dayjs";
 
 function SearchFilters() {
-    const [inputText, setInputText] = useState("");
     const [sortOrder, setSortOrder] = useState("");
     const {hires, setHires} = useContext(HireContext)
 
@@ -16,16 +16,34 @@ function SearchFilters() {
         if (savedSortOrder) {
             setSortOrder(savedSortOrder);
         }
+
+        const savedHires = localStorage.getItem("hires");
+        console.log(savedHires)
+        if (savedHires) {
+            const parsedHires = JSON.parse(savedHires);
+            setInputText(parsedHires.input)
+            setStartDate(parsedHires.startDate === null ? null : dayjs(parsedHires.startDate));
+            setEndDate(parsedHires.endDate === null ? null : dayjs(parsedHires.endDate));
+        }
     }, []);
 
+    const [inputText, setInputText] = useState("");
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    const saveFiltersToLocalStorage = () => {
+        const hiresObject = {
+            input: inputText,
+            startDate: startDate,
+            endDate: endDate
+        };
+        localStorage.setItem("hires", JSON.stringify(hiresObject));
+    };
+
     let inputHandler = (e) => {
-        //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
-
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
 
     const handleStartDateChange = (date) => {
         setStartDate(date);
@@ -56,6 +74,31 @@ function SearchFilters() {
         }
     }
 
+    const [clearFilters, setClearFilters] = useState(false)
+
+    const handleClearFilters = () => {
+        setClearFilters(true)
+
+        setInputText('')
+        setStartDate(null)
+        setEndDate(null)
+        setSortOrder('')
+
+        localStorage.setItem("hires_sortOrder", '');
+        setSortOrder('');
+    }
+
+    useEffect(() => {
+        if(clearFilters){
+            saveFiltersToLocalStorage();
+            setClearFilters(false)
+        }
+    }, [clearFilters]);
+
+    const handleApplyFilters = () => {
+        saveFiltersToLocalStorage()
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.filter}>
@@ -65,6 +108,7 @@ function SearchFilters() {
                         onChange={inputHandler}
                         variant="outlined"
                         label="Search"
+                        value={inputText}
                     />
                 </div>
             </div>
@@ -103,6 +147,26 @@ function SearchFilters() {
                             <MenuItem value={'new_first'}>New first</MenuItem>
                         </Select>
                     </FormControl>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleApplyFilters}
+                    >
+                        Apply
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleClearFilters}
+                    >
+                        Clear
+                    </Button>
                 </div>
             </div>
         </div>

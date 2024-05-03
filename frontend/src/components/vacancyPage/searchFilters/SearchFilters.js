@@ -4,10 +4,11 @@ import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
 import {VacancyContext} from "../../../contexts/VacancyContext";
+import dayjs from "dayjs";
+import Button from "@mui/material/Button";
 
 function SearchFilters() {
-    const [inputText, setInputText] = useState("");
-    const [sortOrder, setSortOrder] = useState("");
+    const [sortOrder, setSortOrder] = useState('');
     const {vacancies, setVacancies} = useContext(VacancyContext)
 
     useEffect(() => {
@@ -15,15 +16,57 @@ function SearchFilters() {
         if (savedSortOrder) {
             setSortOrder(savedSortOrder);
         }
+
+        const savedVacancies = localStorage.getItem("vacancies");
+        if (savedVacancies) {
+            const parsedVacancies = JSON.parse(savedVacancies);
+            setInputText(parsedVacancies.input)
+            setType(parsedVacancies.type);
+            setStatus(parsedVacancies.status);
+            setWorkSetting(parsedVacancies.workSetting);
+            setStartDate(parsedVacancies.startDate === null ? null : dayjs(parsedVacancies.startDate));
+            setEndDate(parsedVacancies.endDate === null ? null : dayjs(parsedVacancies.endDate));
+        }
     }, []);
+
+    const [inputText, setInputText] = useState('');
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [type, setType] = useState('');
+    const [status, setStatus] = useState('')
+    const [workSetting, setWorkSetting] = useState('')
+
+    const saveFiltersToLocalStorage = () => {
+        const vacanciesObject = {
+            input: inputText,
+            type: type,
+            status: status,
+            workSetting: workSetting,
+            startDate: startDate,
+            endDate: endDate
+        };
+        localStorage.setItem("vacancies", JSON.stringify(vacanciesObject));
+    };
+
+    const saveTypeToLocalStorage = (e) => {
+        const value = e.target.value;
+        setType(value);
+    };
+
+    const saveStatusToLocalStorage = (e) => {
+        const value = e.target.value;
+        setStatus(value);
+    };
+
+    const saveWorkSettingToLocalStorage = (e) => {
+        const value = e.target.value;
+        setWorkSetting(value);
+    };
 
     let inputHandler = (e) => {
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
-
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
 
     const handleStartDateChange = (date) => {
         setStartDate(date);
@@ -62,6 +105,33 @@ function SearchFilters() {
         }
     }
 
+    const [clearFilters, setClearFilters] = useState(false)
+
+    const handleClearFilters = () => {
+        setClearFilters(true)
+
+        setInputText('')
+        setType('')
+        setStatus('')
+        setWorkSetting('')
+        setStartDate(null)
+        setEndDate(null)
+        setSortOrder('')
+
+        localStorage.setItem("vacancies_sortOrder", '');
+        setSortOrder('');
+    }
+
+    useEffect(() => {
+        if(clearFilters){
+            saveFiltersToLocalStorage();
+            setClearFilters(false)
+        }
+    }, [clearFilters]);
+
+    const handleApplyFilters = () => {
+        saveFiltersToLocalStorage()
+    }
 
     return (
         <div className={styles.container}>
@@ -72,6 +142,7 @@ function SearchFilters() {
                         onChange={inputHandler}
                         variant="outlined"
                         label="Search"
+                        value={inputText}
                     />
                 </div>
             </div>
@@ -80,10 +151,12 @@ function SearchFilters() {
                     <FormControl sx={{minWidth: 85}}>
                         <InputLabel id="type-select-label">Type</InputLabel>
                         <Select
-                            autoWidth
                             labelId="type-select-label"
                             id="type-select"
                             label="Type"
+                            value={type}
+                            onChange={saveTypeToLocalStorage}
+                            autoWidth
                         >
                             <MenuItem value={'F'}>Full Time</MenuItem>
                             <MenuItem value={'P'}>Part Time</MenuItem>
@@ -100,6 +173,8 @@ function SearchFilters() {
                             labelId="status-select-label"
                             id="status-select"
                             label="Type"
+                            onChange={saveStatusToLocalStorage}
+                            value={status}
                             autoWidth
                         >
                             <MenuItem value={'O'}>Open</MenuItem>
@@ -117,6 +192,8 @@ function SearchFilters() {
                             labelId="work-setting-select-label"
                             id="work-setting-select"
                             label="Work Setting"
+                            onChange={saveWorkSettingToLocalStorage}
+                            value={workSetting}
                             autoWidth
                         >
                             <MenuItem value={'P'}>Office</MenuItem>
@@ -163,6 +240,26 @@ function SearchFilters() {
                             <MenuItem value={'small_salary_first'}>Small salary first </MenuItem>
                         </Select>
                     </FormControl>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleApplyFilters}
+                    >
+                        Apply
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleClearFilters}
+                    >
+                        Clear
+                    </Button>
                 </div>
             </div>
         </div>

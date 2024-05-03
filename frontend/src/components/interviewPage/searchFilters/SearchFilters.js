@@ -5,9 +5,10 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
 import {InterviewContext} from "../../../contexts/InterviewContext";
+import dayjs from "dayjs";
+import Button from "@mui/material/Button";
 
 function SearchFilters() {
-    const [inputText, setInputText] = useState("");
     const [sortOrder, setSortOrder] = useState("");
     const {interviews, setInterviews} = useContext(InterviewContext)
 
@@ -16,21 +17,58 @@ function SearchFilters() {
         if (savedSortOrder) {
             setSortOrder(savedSortOrder);
         }
+
+        const savedInterviews = localStorage.getItem("interviews");
+        if (savedInterviews) {
+            const parsedInterviews = JSON.parse(savedInterviews);
+            setInputText(parsedInterviews.input)
+            setType(parsedInterviews.type);
+            setMinScore(parsedInterviews.minScore);
+            setMaxScore(parsedInterviews.maxScore);
+            setStartDate(parsedInterviews.startDate === null ? null : dayjs(parsedInterviews.startDate));
+            setEndDate(parsedInterviews.endDate === null ? null : dayjs(parsedInterviews.endDate));
+        }
     }, []);
 
+    const [inputText, setInputText] = useState("");
+    const [type, setType] = useState('');
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [minScore, setMinScore] = useState(0);
+    const [maxScore, setMaxScore] = useState(10);
+
+    const saveFiltersToLocalStorage = () => {
+        const interviewsObject = {
+            input: inputText,
+            type: type,
+            startDate: startDate,
+            endDate: endDate,
+            minScore: minScore,
+            maxScore: maxScore,
+        };
+        localStorage.setItem("interviews", JSON.stringify(interviewsObject));
+    };
+
+    const saveMinScoreToLocalStorage = (e, v) => {
+        setMinScore(v);
+    };
+
+    const saveMaxScoreToLocalStorage = (e, v) => {
+        setMaxScore(v);
+    };
+
+    const saveTypeToLocalStorage = (e) => {
+        const value = e.target.value;
+        setType(value);
+    };
+
     let inputHandler = (e) => {
-        //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
 
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-
     const handleStartDateChange = (date) => {
         setStartDate(date);
-        // If an end date is already selected and it comes before the new start date,
-        // reset the end date to null
         if (endDate && date > endDate) {
             setEndDate(null);
         }
@@ -38,15 +76,10 @@ function SearchFilters() {
 
     const handleEndDateChange = (date) => {
         setEndDate(date);
-        // If a start date is already selected and it comes after the new end date,
-        // reset the start date to null
         if (startDate && date < startDate) {
             setStartDate(null);
         }
     };
-
-    const [minScore, setMinScore] = useState(0);
-    const [maxScore, setMaxScore] = useState(10);
 
     const changeSortOrder = (e) => {
         const newSortOrder = e.target.value;
@@ -79,6 +112,34 @@ function SearchFilters() {
         }
     }
 
+    const [clearFilters, setClearFilters] = useState(false)
+
+    const handleClearFilters = () => {
+        setClearFilters(true)
+
+        setInputText('')
+        setType('')
+        setMinScore(0)
+        setMaxScore(10)
+        setStartDate(null)
+        setEndDate(null)
+        setSortOrder('')
+
+        localStorage.setItem("interviews_sortOrder", '');
+        setSortOrder('');
+    }
+
+    useEffect(() => {
+        if(clearFilters){
+            saveFiltersToLocalStorage();
+            setClearFilters(false)
+        }
+    }, [clearFilters]);
+
+    const handleApplyFilters = () => {
+        saveFiltersToLocalStorage()
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.filter}>
@@ -88,6 +149,7 @@ function SearchFilters() {
                         onChange={inputHandler}
                         variant="outlined"
                         label="Search"
+                        value={inputText}
                     />
                 </div>
             </div>
@@ -100,6 +162,8 @@ function SearchFilters() {
                             labelId="type-select-label"
                             id="type-select"
                             label="Type"
+                            value={type}
+                            onChange={saveTypeToLocalStorage}
                         >
                             <MenuItem value={'S'}>Screening</MenuItem>
                             <MenuItem value={'H'}>HR manager</MenuItem>
@@ -108,25 +172,35 @@ function SearchFilters() {
                     </FormControl>
                 </div>
             </div>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
-                    <CustomNumberInput
-                        placeholder="Min score value…"
-                        value={minScore}
-                        min={0}
-                        max={maxScore}
-                        onChange={(event, val) => setMinScore(val)}
-                    />
+            <div>
+                <div className={styles.minScoreContainer}>
+                    <span>Min-score:</span>
                 </div>
             </div>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
                     <CustomNumberInput
-                        placeholder="Max score value…"
+                        sx={{width: 62}}
+                        value={minScore}
+                        min={0}
+                        max={maxScore}
+                        onChange={saveMinScoreToLocalStorage}
+                    />
+                </div>
+            </div>
+            <div>
+                <div className={styles.minScoreContainer}>
+                    <span>Max-score:</span>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <CustomNumberInput
+                        sx={{width: 62}}
                         value={maxScore}
                         min={minScore}
                         max={10}
-                        onChange={(event, val) => setMaxScore(val)}
+                        onChange={saveMaxScoreToLocalStorage}
                     />
                 </div>
             </div>
@@ -169,6 +243,26 @@ function SearchFilters() {
                             <MenuItem value={'small_score_first'}>Small score first </MenuItem>
                         </Select>
                     </FormControl>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleApplyFilters}
+                    >
+                        Apply
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleClearFilters}
+                    >
+                        Clear
+                    </Button>
                 </div>
             </div>
         </div>
