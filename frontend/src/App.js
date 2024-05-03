@@ -13,9 +13,9 @@ import {InterviewProvider} from "./contexts/InterviewContext";
 import InterviewDetails from "./components/interviewPage/interviewDetails/InterviewDetails";
 import {HireProvider} from "./contexts/HireContext";
 import HireDetails from "./components/hirePage/hireDetails/HireDetails";
-import VacancyDashboard from "./components/dashboards/vacancyDashboard/VacancyDashboard";
-import InterviewDashboard from "./components/dashboards/vacancyDashboard/InterviewDashboard";
-import HireDashboard from "./components/dashboards/vacancyDashboard/HireDashboard";
+import VacancyDashboard from "./components/dashboards/VacancyDashboard";
+import InterviewDashboard from "./components/dashboards/InterviewDashboard";
+import HireDashboard from "./components/dashboards/HireDashboard";
 
 function App() {
     return (
