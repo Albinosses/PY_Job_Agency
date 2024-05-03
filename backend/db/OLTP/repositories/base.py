@@ -1,24 +1,14 @@
-import re
-from abc import ABC, abstractmethod
+from db.OLTP.models import Vacancy
+from db import db
 
 
-class UserBaseRepository(ABC):
-
-    @staticmethod
-    @abstractmethod
-    def create(full_name: str, phone: str, password: str):
-        raise NotImplementedError()
+class VacancyRepository:
 
     @staticmethod
-    @abstractmethod
-    def get_by_id(user_id: str):
-        raise NotImplementedError()
+    def get_all():
+        print("getall called")
+        print(db.get_engine)
+        query = Vacancy.query
+        return query.all()
+    
 
-    @staticmethod
-    @abstractmethod
-    def get_by_phone(phone: str):
-        raise NotImplementedError()
-
-    @staticmethod
-    def clear_phone(phone: str):
-        return re.sub(r"\D", "", phone)

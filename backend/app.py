@@ -1,21 +1,22 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_jwt_extended import JWTManager
+#from flask_jwt_extended import JWTManager
 
-from config import Config
 from db import db, migrate
-from db import models  # noqa
+from db.OLTP import models  # noqa
 from services import api_bp
+from config import Config
 
 
 def create_app():
+    print(Config.db.port)
     app = Flask(__name__)
     CORS(app)
 
+    app.config["SQLALCHEMY_DATABASE_URI"] = Config.db.uri
+
     db.init_app(app)
     migrate.init_app(app, db)
-
-    # app.config["CORS_HEADERS"] = "Content-Type"
 
     app.register_blueprint(api_bp)
 
