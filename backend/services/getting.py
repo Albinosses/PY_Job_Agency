@@ -2,7 +2,7 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company
+from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillSetVacancy, SkillLevel
 from services.models import VacancyRepository
 
 
@@ -52,10 +52,19 @@ def get_vacancy(id):
     vacancy = Vacancy.query.get(id)
     hires = Hire.query.filter_by(vacancyId=id)
     intervies = Interview.query.filter_by(vacancyId=id)
+    skillset = SkillSetVacancy.query.filter_by(vacancyId=id)
+    skills = []
+    for skill in skillset:
+        s = {}
+        s["skillName"] = SkillLevel.query.filter_by(id=skill.skillId).first().skill
+        s["weight"] = skill.weight
+        s["level"] = SkillLevel.query.filter_by(id=skill.skillId).first().level
+        skills.append(s)
     return jsonify(
         {
             "vacancy": vacancy.json(),
             "hires:": [h.json() for h in hires],
             "intervies:": [i.json() for i in intervies],
+            "skills": skills
         }
     ), 200
