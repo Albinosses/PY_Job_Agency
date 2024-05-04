@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Interview from "../interview/Interview";
 import styles from "./InterviewScrollable.module.css";
 import {InterviewContext} from "../../../contexts/InterviewContext";
@@ -9,16 +9,27 @@ function InterviewScrollable({interviewsObj}) {
 
     const {interviews, setInterviews, setCurrentInterview} = useContext(InterviewContext)
 
+    const [currentPage, setCurrentPage] = useState(1);
+
     useEffect(() => {
         setCurrentInterview(undefined)
         if (!interviewsObj || Object.keys(interviewsObj).length === 0) {
-            fetch('http://127.0.0.1:8003/api/get/interviews?page=1')
+            fetch(`http://127.0.0.1:8003/api/get/interviews?page=${currentPage}`)
                 .then(response => response.json())
                 .then(data => setInterviews(data.interviews))
                 .catch(err => console.log(err));
         }
-    }, [interviewsObj, setInterviews]);
+    }, [currentPage, interviewsObj, setInterviews, setCurrentInterview]);
 
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage((prevPage) => prevPage - 1);
+        }
+    };
 
     return (
         <>
@@ -33,7 +44,8 @@ function InterviewScrollable({interviewsObj}) {
                         {interviewsObj ? (
                             interviewsObj
                                 .map(interview => (
-                                    <Link to={`/interview/${interview.id}`} onClick={() => setCurrentInterview(interview)}>
+                                    <Link to={`/interview/${interview.id}`}
+                                          onClick={() => setCurrentInterview(interview)}>
                                         <Interview
                                             key={interview.id}
                                             interview={interview}
@@ -48,6 +60,12 @@ function InterviewScrollable({interviewsObj}) {
                                     />
                                 </Link>
                             )))}
+                        <div className={styles.pagination}>
+                            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                                Previous
+                            </button>
+                            <button onClick={handleNextPage}>Next</button>
+                        </div>
                     </div>
                 </div>
             }
