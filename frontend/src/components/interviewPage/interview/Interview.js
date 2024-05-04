@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import styles from "./Interview.module.css";
 import {GeneralContext} from "../../../contexts/GeneralContext";
+import dayjs from "dayjs";
 
 function Interview({interview}) {
     const {countries, companies} = useContext(GeneralContext)
@@ -12,7 +13,7 @@ function Interview({interview}) {
                     <div className={styles.vacancyTag}>Company</div>
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{interview.interviewDate}</div>
+            <div className={styles.vacancyDate}>{dayjs(interview.InterviewDate).format('YYYY-MM-DD')}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
 

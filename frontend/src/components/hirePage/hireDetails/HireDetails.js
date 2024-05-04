@@ -51,7 +51,7 @@ const HireDetails = () => {
             {currentHire && currentVacancy &&
                 <>
                     <Container>
-                        <Title>Interview Details</Title>
+                        <Title>Hire Details</Title>
                         <HireInfo hire={currentHire} employeeContactId={employeeContactId}/>
                         <ReturnButton
                             onClick={handleEdit}

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import ContactInfo from "../../contact/ContactInfo";
 import styles from "./InterviewInfo.module.css";
 import {StyledParagraph} from "../../StyledComponents";
+import dayjs from "dayjs";
 
 function InterviewInfo({interview}) {
     const getFullType = (abr) => {
@@ -43,7 +44,7 @@ function InterviewInfo({interview}) {
                 </div>
             }
             <StyledParagraph>Interview Type: {getFullType(interview.InterviewType)}</StyledParagraph>
-            <StyledParagraph>Interview Date: {interview.InterviewDate}</StyledParagraph>
+            <StyledParagraph>Interview Date: {dayjs(interview.InterviewDate).format('YYYY-MM-DD')}</StyledParagraph>
             <StyledParagraph>Duration: {interview.duration} min</StyledParagraph>
             <StyledParagraph>Feedback: {interview.feedback}</StyledParagraph>
             <StyledParagraph>Total Score: {interview.score} / 10</StyledParagraph>
