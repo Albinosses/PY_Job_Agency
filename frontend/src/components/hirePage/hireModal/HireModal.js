@@ -10,6 +10,7 @@ const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
+    height: 650,
     transform: 'translate(-50%, -50%)',
     width: 950,
     bgcolor: 'background.paper',
@@ -18,7 +19,7 @@ const style = {
     p: 4,
 };
 
-const HireModal = ({open, setOpen, modalType, data}) => {
+const HireModal = ({open, setOpen, modalType, data, employeeContactId}) => {
 
     const {updateHire} = useContext(HireContext)
     const handleClose = () => {
@@ -30,14 +31,21 @@ const HireModal = ({open, setOpen, modalType, data}) => {
     const [employee, setEmployee] = useState({})
 
     const resetState = () => {
-        setEmployee({});
+        setEmployee({id: 'temp'});
         setHireDate('');
     }
 
     useEffect(() => {
         if (modalType === "edit") {
-            setEmployee(data.employee);
             setHireDate(data.hireDate);
+
+            fetch(`http://127.0.0.1:8003/api/get/contact?id=${employeeContactId}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setEmployee(data)
+                })
+                .catch(err => console.log(err));
         } else {
             resetState()
         }
@@ -46,7 +54,7 @@ const HireModal = ({open, setOpen, modalType, data}) => {
     const [isValid, setIsValid] = useState(false);
 
     const isContactValid = (contact) => {
-        if (Object.keys(contact).length !== 5) {
+        if (Object.keys(contact).length !== 7) {
             return false
         }
 
@@ -54,7 +62,8 @@ const HireModal = ({open, setOpen, modalType, data}) => {
             contact.surname.trim() !== "" &&
             contact.date !== '' &&
             contact.gender !== "" &&
-            contact.email.trim() !== ""
+            contact.email.trim() !== "" &&
+            contact.countryId !== null
     }
 
     useEffect(() => {

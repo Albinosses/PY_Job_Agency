@@ -14,6 +14,7 @@ const HireDetails = () => {
     const navigate = useNavigate()
 
     const [open, setOpen] = useState(false);
+    const [employeeContactId, setEmployeeContactId] = useState()
 
     useEffect(() => {
         fetch(`http://127.0.0.1:8003/api/get/hire/${id}`)
@@ -29,6 +30,7 @@ const HireDetails = () => {
                     skills: modifiedSkills
                 };
 
+                setEmployeeContactId(data.employeeContactId)
                 setCurrentHire(data.hire)
                 setCurrentVacancy(updatedVacancy);
             })
@@ -50,7 +52,7 @@ const HireDetails = () => {
                 <>
                     <Container>
                         <Title>Interview Details</Title>
-                        <HireInfo hire={currentHire}/>
+                        <HireInfo hire={currentHire} employeeContactId={employeeContactId}/>
                         <ReturnButton
                             onClick={handleEdit}
                             variant="contained"
@@ -64,6 +66,7 @@ const HireDetails = () => {
                                 setOpen={setOpen}
                                 modalType={'edit'}
                                 data={currentHire}
+                                employeeContactId={employeeContactId}
                             />
                         }
                         <ReturnButton
