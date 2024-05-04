@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 import {VacancyContext} from "../../../contexts/VacancyContext";
 import {GeneralContext} from "../../../contexts/GeneralContext";
+import {useNavigate} from "react-router-dom";
 
 const style = {
     position: 'absolute',
@@ -26,6 +27,7 @@ const style = {
 
 function VacancyAddModal({open, setOpen, modalType, data}) {
     const {countries, companies} = useContext(GeneralContext)
+    const navigate = useNavigate()
 
     const [countryId, setCountryId] = useState(modalType === 'create' ? '' : 0)
     const [companyId, setCompanyId] = useState(modalType === 'create' ? '' : 0)
@@ -33,7 +35,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setCompanyId(e.target.value)
     }
 
-
+    //don't touch!!!
     console.log(data)
     const handleClose = () => {
         setOpen(false)
@@ -165,10 +167,44 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
 
     }, [modalType, data]);
 
-    const handleAddVacancy = () => {
-        handleClose()
-        //CALL to API for new items creation
-    }
+    const handleAddVacancy = async () => {
+        const data = {
+            'companyId': companyId,
+            'empCountryId': countryId,
+            'jobTitle': jobTitle,
+            'salary': salary,
+            'employmentType': type,
+            'workSetting': workSetting,
+            'publicationDate': '12/12/2022',
+            'status': status,
+            'description': description,
+            'closeDate': '12/12/2022'
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/insert/vacancy', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            console.log(responseData)
+            navigate(`/vacancy/${responseData.id}`);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
+    };
+
 
     const handleEditVacancy = () => {
         const vacancyData = {
