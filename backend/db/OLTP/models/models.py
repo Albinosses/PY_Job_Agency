@@ -271,6 +271,22 @@ class Interview(db.Model):
     )
     Vacancy_: Mapped["Vacancy"] = relationship("Vacancy", back_populates="Interview")
 
+    def __repr__(self):
+        return f"<Interview {self.vacancyId} {self.feedback}>"
+
+    def json(self):
+        return {
+            "id": self.id,
+            "vacancyId": self.vacancyId,
+            "candidateId": self.candidateId,
+            "interviewerId": self.interviewerId,
+            "interviewType": self.interviewType,
+            "interviewDate": self.interviewDate,
+            "duration": self.duration,
+            "feedback": self.feedback,
+            "score": self.score,
+        }
+
 
 class SkillSetEmployee(db.Model):
     __tablename__ = "SkillSetEmployee"
