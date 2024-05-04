@@ -9,6 +9,7 @@ function HireScrollable({hiresObj}) {
     const {hires, setHires, setCurrentHire} = useContext(HireContext)
 
     useEffect(() => {
+        setCurrentHire(undefined)
         if(!hiresObj || Object.keys(hiresObj).length === 0){
             fetch('http://127.0.0.1:8003/api/get/hires?page=1')
                 .then(response => response.json())

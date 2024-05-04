@@ -10,6 +10,7 @@ function InterviewScrollable({interviewsObj}) {
     const {interviews, setInterviews, setCurrentInterview} = useContext(InterviewContext)
 
     useEffect(() => {
+        setCurrentInterview(undefined)
         if (!interviewsObj || Object.keys(interviewsObj).length === 0) {
             fetch('http://127.0.0.1:8003/api/get/interviews?page=1')
                 .then(response => response.json())

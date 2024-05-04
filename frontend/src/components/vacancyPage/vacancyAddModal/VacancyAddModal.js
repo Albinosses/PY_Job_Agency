@@ -14,7 +14,10 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 1000,
+    width: 1100,
+    maxHeight: '80%', // Set maximum height to 80%
+    overflowY: 'auto', // Enable vertical scroll if content overflows
+    overflowX: 'hidden',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -24,8 +27,12 @@ const style = {
 function VacancyAddModal({open, setOpen, modalType, data}) {
     const {countries, companies} = useContext(GeneralContext)
 
-    const [country, setCountry] = useState()
-    const [company, setCompany] = useState()
+    const [countryId, setCountryId] = useState(modalType === 'create' ? '' : 0)
+    const [companyId, setCompanyId] = useState(modalType === 'create' ? '' : 0)
+    const handleCompanyChange = (e) => {
+        setCompanyId(e.target.value)
+    }
+
 
     console.log(data)
     const handleClose = () => {
@@ -43,7 +50,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setStartDate(null);
         setEndDate(null);
         setSalary(null);
-        setStatus(null);
+        setStatus('');
         setItems([{weight: null, skillName: "", level: ""}]);
     };
 
@@ -86,7 +93,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setSalary(v)
     }
 
-    const [status, setStatus] = useState(null)
+    const [status, setStatus] = useState('')
     const handleChangeStatus = (e) => {
         setStatus(e.target.value)
     }
@@ -139,15 +146,19 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
 
     useEffect(() => {
         if (modalType === 'edit') {
+            console.log(data.empCountryId)
+
             setJobTitle(data.jobTitle);
             setDescription(data.description);
             setWorkSetting(data.workSetting);
             setType(data.employmentType);
             setSalary(data.salary);
             setStatus(data.status);
-            // setStartDate(dayjs(data.publicationDate));
-            // setEndDate(dayjs(data.closeDate));
-            // setItems(data.skills);
+            setCountryId(data.empCountryId)
+            setCompanyId(data.companyId)
+            setStartDate(dayjs(data.publicationDate));
+            setEndDate(dayjs(data.closeDate));
+            setItems(data.skills);
         } else {
             resetState();
         }
@@ -268,11 +279,11 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                             labelId="company-select-label"
                             id="company-select"
                             label="Company"
-                            value={company}
-                            onChange={(e) => {setCompany(e.target.value)}}
+                            value={companyId}
+                            onChange={handleCompanyChange}
                         >
-                            {companies.map(company => (
-                                <MenuItem value={company.id}>
+                            {companies.map((company) => (
+                                <MenuItem value={company.id} key={company.id}>
                                     {company.name}
                                 </MenuItem>
                             ))}
@@ -285,8 +296,8 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                             labelId="country-select-label"
                             id="country-select"
                             label="Country"
-                            value={country}
-                            onChange={(e) => {setCountry(e.target.value)}}
+                            value={countryId}
+                            onChange={(e) => {setCountryId(e.target.value)}}
                         >
                             {countries.map(country => (
                                 <MenuItem value={country.id}>
@@ -304,62 +315,62 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                 </div>
                 <Divider/>
                 <div className={styles.container}>
-                    {/*{items.map((item, index) => (*/}
-                    {/*    <Grid container spacing={2} key={index} alignItems="center">*/}
-                    {/*        <Grid item xs={4}>*/}
-                    {/*            <TextField*/}
-                    {/*                label="Skill Name"*/}
-                    {/*                value={item.skillName}*/}
-                    {/*                onChange={(e) => handleChange(index, 'skillName', e.target.value)}*/}
-                    {/*            />*/}
-                    {/*        </Grid>*/}
-                    {/*        <Grid item xs={2}>*/}
-                    {/*            <FormControl sx={{m: 1, minWidth: 100}}>*/}
-                    {/*                <InputLabel id="level-select-label">Level</InputLabel>*/}
-                    {/*                <Select*/}
-                    {/*                    labelId="level-select-label"*/}
-                    {/*                    label="Level"*/}
-                    {/*                    autoWidth*/}
-                    {/*                    value={item.level}*/}
-                    {/*                    onChange={(e) => handleChange(index, 'level', e.target.value)}*/}
-                    {/*                >*/}
-                    {/*                    <MenuItem value={'J'}>Junior</MenuItem>*/}
-                    {/*                    <MenuItem value={'M'}>Middle</MenuItem>*/}
-                    {/*                    <MenuItem value={'S'}>Senior</MenuItem>*/}
-                    {/*                    <MenuItem value={'E'}>Principal</MenuItem>*/}
-                    {/*                </Select>*/}
-                    {/*            </FormControl>*/}
-                    {/*        </Grid>*/}
-                    {/*        <Grid item xs={3}>*/}
-                    {/*            <CustomNumberInput*/}
-                    {/*                placeholder="weight"*/}
-                    {/*                value={item.weight}*/}
-                    {/*                min={0}*/}
-                    {/*                max={100}*/}
-                    {/*                onChange={(e, v) => handleChange(index, 'weight', v)}*/}
-                    {/*            />*/}
-                    {/*        </Grid>*/}
-                    {/*        <Grid item xs={2}>*/}
-                    {/*            {items.length > 1 && (*/}
-                    {/*                <Button*/}
-                    {/*                    variant="contained"*/}
-                    {/*                    onClick={() => handleRemoveItem(index)}*/}
-                    {/*                    sx={{marginRight: 1}}*/}
-                    {/*                >*/}
-                    {/*                    -*/}
-                    {/*                </Button>*/}
-                    {/*            )}*/}
-                    {/*            {items.length - 1 === index && (*/}
-                    {/*                <Button*/}
-                    {/*                    variant="contained"*/}
-                    {/*                    onClick={handleAddItem}*/}
-                    {/*                >*/}
-                    {/*                    +*/}
-                    {/*                </Button>*/}
-                    {/*            )}*/}
-                    {/*        </Grid>*/}
-                    {/*    </Grid>*/}
-                    {/*))}*/}
+                    {items.map((item, index) => (
+                        <Grid container spacing={2} key={index} alignItems="center">
+                            <Grid item xs={4}>
+                                <TextField
+                                    label="Skill Name"
+                                    value={item.skillName}
+                                    onChange={(e) => handleChange(index, 'skillName', e.target.value)}
+                                />
+                            </Grid>
+                            <Grid item xs={2}>
+                                <FormControl sx={{m: 1, minWidth: 100}}>
+                                    <InputLabel id="level-select-label">Level</InputLabel>
+                                    <Select
+                                        labelId="level-select-label"
+                                        label="Level"
+                                        autoWidth
+                                        value={item.level}
+                                        onChange={(e) => handleChange(index, 'level', e.target.value)}
+                                    >
+                                        <MenuItem value={'J'}>Junior</MenuItem>
+                                        <MenuItem value={'M'}>Middle</MenuItem>
+                                        <MenuItem value={'S'}>Senior</MenuItem>
+                                        <MenuItem value={'E'}>Principal</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <CustomNumberInput
+                                    placeholder="weight"
+                                    value={item.weight}
+                                    min={0}
+                                    max={100}
+                                    onChange={(e, v) => handleChange(index, 'weight', v)}
+                                />
+                            </Grid>
+                            <Grid item xs={2}>
+                                {items.length > 1 && (
+                                    <Button
+                                        variant="contained"
+                                        onClick={() => handleRemoveItem(index)}
+                                        sx={{marginRight: 1}}
+                                    >
+                                        -
+                                    </Button>
+                                )}
+                                {items.length - 1 === index && (
+                                    <Button
+                                        variant="contained"
+                                        onClick={handleAddItem}
+                                    >
+                                        +
+                                    </Button>
+                                )}
+                            </Grid>
+                        </Grid>
+                    ))}
                 </div>
                 <div className={styles.centeredDiv}>
                     {modalType === 'create' &&

@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 
 function VacancyDetails() {
     const {id} = useParams();
-    const {isVacancyClosed, currentVacancy, setCurrentVacancy, setVacancies} = useContext(VacancyContext)
+    const {isVacancyClosed, currentVacancy, setCurrentVacancy} = useContext(VacancyContext)
     const {interviews, setInterviews} = useContext(InterviewContext)
     const {hires, setHires} = useContext(HireContext)
 
@@ -29,10 +29,22 @@ function VacancyDetails() {
         fetch(`http://127.0.0.1:8003/api/get/vacancy/${id}`)
             .then(response => response.json())
             .then(data => {
+                const modifiedSkills = data.skills.map(skill => ({
+                    ...skill,
+                    weight: parseInt(skill.weight * 100)
+                }));
+
+                const updatedVacancy = {
+                    ...data.vacancy,
+                    skills: modifiedSkills
+                };
+
+
+                console.log(data)
+
                 setHires(data.hires)
                 setInterviews(data.interviews)
-                setCurrentVacancy(data.vacancy)
-                setVacancies(prevVacancies => [...prevVacancies, data.vacancy]);
+                setCurrentVacancy(updatedVacancy)
             })
             .catch(err => console.log(err))
     }, []);
