@@ -1,11 +1,13 @@
 import React, {useContext} from "react";
 import {StyledParagraph, SkillContainer} from "../../StyledComponents";
 import {GeneralContext} from "../../../contexts/GeneralContext";
+import {VacancyContext} from "../../../contexts/VacancyContext";
 
-function VacancyInfo({vacancy}) {
+function VacancyInfo() {
     const {countries, companies} = useContext(GeneralContext)
+    const {currentVacancy} = useContext(VacancyContext)
 
-    console.log(vacancy)
+    console.log(currentVacancy)
     const getFullEmploymentType = (abr) => {
         switch (abr) {
             case 'F':
@@ -62,25 +64,29 @@ function VacancyInfo({vacancy}) {
 
     return (
         <>
-            <StyledParagraph>Title: {vacancy.jobTitle}</StyledParagraph>
-            <StyledParagraph>Description: {vacancy.description}</StyledParagraph>
-            <StyledParagraph>Location: {countries.find(country => country.id === vacancy.empCountryId).name}</StyledParagraph>
-            <StyledParagraph>Company: {companies.find(company => company.id === vacancy.companyId).name}</StyledParagraph>
-            <StyledParagraph>Salary: {vacancy.salary}</StyledParagraph>
-            <StyledParagraph>Employment Type: {getFullEmploymentType(vacancy.employmentType)}</StyledParagraph>
-            <StyledParagraph>Work Setting: {getFullWorkSetting(vacancy.workSetting)}</StyledParagraph>
-            <StyledParagraph>Publication Date: {vacancy.publicationDate}</StyledParagraph>
-            {vacancy.status === 'C' &&
-                <StyledParagraph>Close Date: {vacancy.closeDate}</StyledParagraph>
+            {currentVacancy &&
+                <>
+                    <StyledParagraph>Title: {currentVacancy.jobTitle}</StyledParagraph>
+                    <StyledParagraph>Description: {currentVacancy.description}</StyledParagraph>
+                    <StyledParagraph>Location: {countries.find(country => country.id === currentVacancy.empCountryId).name}</StyledParagraph>
+                    <StyledParagraph>Company: {companies.find(company => company.id === currentVacancy.companyId).name}</StyledParagraph>
+                    <StyledParagraph>Salary: {currentVacancy.salary}</StyledParagraph>
+                    <StyledParagraph>Employment Type: {getFullEmploymentType(currentVacancy.employmentType)}</StyledParagraph>
+                    <StyledParagraph>Work Setting: {getFullWorkSetting(currentVacancy.workSetting)}</StyledParagraph>
+                    <StyledParagraph>Publication Date: {currentVacancy.publicationDate}</StyledParagraph>
+                    {currentVacancy.status === 'C' &&
+                        <StyledParagraph>Close Date: {currentVacancy.closeDate}</StyledParagraph>
+                    }
+                    <StyledParagraph>Status: {getFullStatus(currentVacancy.status)}</StyledParagraph>
+                    {currentVacancy.skills.map((skill, index) => (
+                        <SkillContainer key={index}>
+                            <h2>Skill: {skill.skillName}</h2>
+                            <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>
+                            <StyledParagraph>Weight: {skill.weight}</StyledParagraph>
+                        </SkillContainer>
+                    ))}
+                </>
             }
-            <StyledParagraph>Status: {getFullStatus(vacancy.status)}</StyledParagraph>
-            {vacancy.skills.map((skill, index) => (
-                <SkillContainer key={index}>
-                    <h2>Skill: {skill.skillName}</h2>
-                    <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>
-                    <StyledParagraph>Weight: {skill.weight}</StyledParagraph>
-                </SkillContainer>
-            ))}
         </>
     );
 }

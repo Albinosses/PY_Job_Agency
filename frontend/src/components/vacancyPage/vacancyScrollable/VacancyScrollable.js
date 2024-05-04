@@ -9,7 +9,7 @@ function VacancyScrollable() {
     const {vacancies, setVacancies, setCurrentVacancy} = useContext(VacancyContext)
 
     useEffect(() => {
-        setCurrentVacancy({})
+        setCurrentVacancy(undefined)
         fetch('http://127.0.0.1:8003/api/get/vacancies?page=1')
             .then(response => response.json())
             .then(data => {setVacancies(data.vacancies)} )
