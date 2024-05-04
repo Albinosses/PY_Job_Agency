@@ -1,24 +1,52 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
+import {HireContext} from "../../../contexts/HireContext";
+import Button from "@mui/material/Button";
+import dayjs from "dayjs";
 
 function SearchFilters() {
+    const [sortOrder, setSortOrder] = useState("");
+    const {hires, setHires} = useContext(HireContext)
+
+    useEffect(() => {
+        const savedSortOrder = localStorage.getItem("hires_sortOrder");
+        if (savedSortOrder) {
+            setSortOrder(savedSortOrder);
+        }
+
+        const savedHires = localStorage.getItem("hires");
+        console.log(savedHires)
+        if (savedHires) {
+            const parsedHires = JSON.parse(savedHires);
+            setInputText(parsedHires.input)
+            setStartDate(parsedHires.startDate === null ? null : dayjs(parsedHires.startDate));
+            setEndDate(parsedHires.endDate === null ? null : dayjs(parsedHires.endDate));
+        }
+    }, []);
+
     const [inputText, setInputText] = useState("");
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    const saveFiltersToLocalStorage = () => {
+        const hiresObject = {
+            input: inputText,
+            startDate: startDate,
+            endDate: endDate
+        };
+        localStorage.setItem("hires", JSON.stringify(hiresObject));
+    };
+
     let inputHandler = (e) => {
-        //convert input text to lower case
         let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
 
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-
     const handleStartDateChange = (date) => {
         setStartDate(date);
-        // If an end date is already selected and it comes before the new start date,
-        // reset the end date to null
         if (endDate && date > endDate) {
             setEndDate(null);
         }
@@ -26,12 +54,50 @@ function SearchFilters() {
 
     const handleEndDateChange = (date) => {
         setEndDate(date);
-        // If a start date is already selected and it comes after the new end date,
-        // reset the start date to null
         if (startDate && date < startDate) {
             setStartDate(null);
         }
     };
+
+    const changeSortOrder = (e) => {
+        const newSortOrder = e.target.value;
+        localStorage.setItem("hires_sortOrder", newSortOrder);
+        setSortOrder(newSortOrder);
+
+        if (newSortOrder === 'new_first'){
+            const sortedVacancies = [...hires].sort((a, b) => new Date(b.hireDate) - new Date(a.hireDate));
+            setHires(sortedVacancies);
+        }
+        if (newSortOrder === 'old_first'){
+            const sortedVacancies = [...hires].sort((a, b) => new Date(a.hireDate) - new Date(b.hireDate));
+            setHires(sortedVacancies);
+        }
+    }
+
+    const [clearFilters, setClearFilters] = useState(false)
+
+    const handleClearFilters = () => {
+        setClearFilters(true)
+
+        setInputText('')
+        setStartDate(null)
+        setEndDate(null)
+        setSortOrder('')
+
+        localStorage.setItem("hires_sortOrder", '');
+        setSortOrder('');
+    }
+
+    useEffect(() => {
+        if(clearFilters){
+            saveFiltersToLocalStorage();
+            setClearFilters(false)
+        }
+    }, [clearFilters]);
+
+    const handleApplyFilters = () => {
+        saveFiltersToLocalStorage()
+    }
 
     return (
         <div className={styles.container}>
@@ -42,6 +108,7 @@ function SearchFilters() {
                         onChange={inputHandler}
                         variant="outlined"
                         label="Search"
+                        value={inputText}
                     />
                 </div>
             </div>
@@ -62,6 +129,44 @@ function SearchFilters() {
                         onChange={handleEndDateChange}
                         minDate={startDate}
                     />
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <FormControl sx={{minWidth: 160}}>
+                        <InputLabel id="sort-setting-select-label">Sort</InputLabel>
+                        <Select
+                            labelId="sort-setting-select-label"
+                            id="sort-setting-select"
+                            label="Sort Setting"
+                            autoWidth
+                            onChange={changeSortOrder}
+                            value={sortOrder}
+                        >
+                            <MenuItem value={'old_first'}>Old first</MenuItem>
+                            <MenuItem value={'new_first'}>New first</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleApplyFilters}
+                    >
+                        Apply
+                    </Button>
+                </div>
+            </div>
+            <div className={styles.filter}>
+                <div className={styles.filterContent}>
+                    <Button
+                        variant="contained"
+                        onClick={handleClearFilters}
+                    >
+                        Clear
+                    </Button>
                 </div>
             </div>
         </div>

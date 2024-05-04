@@ -16,6 +16,20 @@ const mockHires = [
         hireDate: "2024-08-22",
         resume: null,
         resumeUploadDate: null
+    },
+    {
+        id: 2,
+        vacancyId: 1,
+        employee: {
+            name: "Sho",
+            surname: "Blia",
+            birthDate: "2002-02-03",
+            gender: "M",
+            email: "vasyl@email.com"
+        },
+        hireDate: "2025-08-22",
+        resume: null,
+        resumeUploadDate: null
     }
 ]
 

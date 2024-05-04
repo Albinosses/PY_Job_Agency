@@ -10,6 +10,11 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
     const [gender, setGender] = useState(contact?.gender || "")
     const [birthDate, setBirthDate] = useState(contact?.birthDate || "")
 
+    const [nameIsValid, setNameIsValid] = useState(true)
+    const [surnameIsValid, setSurnameIsValid] = useState(true)
+    const [emailIsValid, setEmailIsValid] = useState(true)
+
+
     useEffect(() => {
         if (type === 'edit') {
             setGender(contact.gender);
@@ -27,6 +32,28 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
         setContact({...contact, birthDate: date.format('YYYY-MM-DD')})
     }
 
+    const handleNameChange = (e) => {
+        setContact({...contact, name: e.target.value})
+
+        const reg = new RegExp("^[A-Za-z]+$")
+        setNameIsValid(reg.test(e.target.value))
+    }
+
+    const handleSurnameChange = (e) => {
+        setContact({...contact, surname: e.target.value})
+
+        const reg = new RegExp("^[A-Za-z]+$")
+        setSurnameIsValid(reg.test(e.target.value))
+    }
+
+    const handleEmailChange = (e) => {
+        setContact({...contact, email: e.target.value})
+
+        const reg = new RegExp("^\\S+@\\S+\\.\\S+$")
+        setEmailIsValid(reg.test(e.target.value))
+    }
+
+
     return (
         <div className={styles.editContactContainer}>
             <h2 className={styles.title}>{owner}</h2>
@@ -34,9 +61,10 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                 <TextField
                     sx={{width: 300}}
                     id="outlined-basic"
-                    onChange={(e) => setContact({...contact, name: e.target.value})}
+                    onChange={handleNameChange}
                     variant="outlined"
                     label="Name"
+                    error={!nameIsValid}
                     value={contact.name}
                 />
             </div>
@@ -44,9 +72,10 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                 <TextField
                     sx={{width: 300}}
                     id="outlined-basic"
-                    onChange={(e) => setContact({...contact, surname: e.target.value})}
+                    onChange={handleSurnameChange}
                     variant="outlined"
                     label="Surname"
+                    error={!surnameIsValid}
                     value={contact.surname}
                 />
             </div>
@@ -79,10 +108,11 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                     sx={{width: 300}}
                     type="email"
                     id="outlined-basic"
-                    onChange={(e) => setContact({...contact, email: e.target.value})}
+                    onChange={handleEmailChange}
                     variant="outlined"
                     label="Email"
                     value={contact.email}
+                    error={!emailIsValid}
                 />
             </div>
         </div>

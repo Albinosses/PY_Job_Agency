@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Hire.module.css";
 
-function Hire() {
+function Hire({hire}) {
     return (
         <div className={styles.vacancyContainer}>
             <div className={styles.vacancyHeader}>
@@ -10,7 +10,7 @@ function Hire() {
                     <div className={styles.vacancyTag}>Company</div>
                 </div>
             </div>
-            <div className={styles.vacancyDate}>01 Feb 2024</div>
+            <div className={styles.vacancyDate}>{hire.hireDate}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
     );

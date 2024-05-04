@@ -91,8 +91,12 @@ export const VacancyProvider = ({children}) => {
         )
     }
 
+    const isVacancyClosed = (id) => {
+        return vacancies.find(vacancy => vacancy.id === id).status === 'C';
+    }
+
     return (
-        <VacancyContext.Provider value={{vacancies, setVacancies, updateVacancy, deleteVacancy}}>
+        <VacancyContext.Provider value={{vacancies, setVacancies, updateVacancy, deleteVacancy, isVacancyClosed}}>
             {children}
         </VacancyContext.Provider>
     );

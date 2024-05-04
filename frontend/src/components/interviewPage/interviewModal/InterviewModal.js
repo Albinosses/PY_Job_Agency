@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Box, FormControl, InputLabel, MenuItem, Modal, Select} from "@mui/material";
 import ContactInfoEdit from "../../contact/ContactInfoEdit";
 import styles from "../../contact/ContactInfo.module.css";
@@ -7,6 +7,7 @@ import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import {InterviewContext} from "../../../contexts/InterviewContext";
 
 const style = {
     position: 'absolute',
@@ -21,6 +22,8 @@ const style = {
 };
 
 const InterviewModal = ({open, setOpen, modalType, data}) => {
+
+    const { updateInterview } = useContext(InterviewContext)
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -58,20 +61,52 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
         }
     }, [modalType, data]);
 
+    const [isValid, setIsValid] = useState(false);
+
+    const isContactValid = (contact) => {
+        if (Object.keys(contact).length !== 5) {
+            return false
+        }
+
+        return contact.name.trim() !== "" &&
+            contact.surname.trim() !== "" &&
+            contact.date !== null &&
+            contact.gender !== "" &&
+            contact.email.trim() !== ""
+    }
+
+    useEffect(() => {
+        const allInputsFilled =
+            feedback.trim() !== "" &&
+            interviewType !== "" &&
+            interviewDate !== null &&
+            duration !== null &&
+            score !== null &&
+            isContactValid(interviewer) &&
+            isContactValid(candidate)
+
+        setIsValid(allInputsFilled);
+    }, [feedback, interviewer, candidate, interviewType, interviewDate, duration, score]);
+
 
     const handleAddInterview = () => {
-        const result = {
+        //CALL to API for new items creation
+        handleClose()
+    }
+
+    const handleEditInterview = () => {
+        const interviewData = {
+            id: data.id,
+            vacancyId: data.vacancyId,
             candidate: candidate,
             interviewer: interviewer,
             InterviewType: interviewType,
-            InterviewDate: interviewDate.format('YYYY-MM-DD'),
+            InterviewDate: dayjs(interviewDate).format('YYYY-MM-DD'),
             duration: duration,
             feedback: feedback,
             score: score
-        }
-
-        console.log(result)
-
+        };
+        updateInterview(interviewData)
         handleClose()
     }
 
@@ -144,13 +179,26 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                     />
                 </div>
                 <div className={styles.editContainer}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleAddInterview}
-                    >
-                        Add
-                    </Button>
+                    {modalType === 'create' &&
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleAddInterview}
+                            disabled={!isValid}
+                        >
+                            Add
+                        </Button>
+                    }
+                    {modalType === 'edit' &&
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleEditInterview}
+                            disabled={!isValid}
+                        >
+                            Save
+                        </Button>
+                    }
                 </div>
             </Box>
         </Modal>
