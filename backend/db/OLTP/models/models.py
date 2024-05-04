@@ -41,6 +41,16 @@ class Country(db.Model):
         "Vacancy", uselist=True, back_populates="Country_"
     )
 
+    def __repr__(self):
+        return f"<Country {self.id} {self.name}>"
+
+    def json(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
+
 
 class SkillLevel(db.Model):
     __tablename__ = "SkillLevel"
@@ -86,6 +96,17 @@ class Company(db.Model):
     Vacancy: Mapped[List["Vacancy"]] = relationship(
         "Vacancy", uselist=True, back_populates="Company_"
     )
+    def __repr__(self):
+        return f"<Company {self.id} {self.name}>"
+
+    def json(self):
+        return {
+            "id": self.id,
+            "countryId": self.countryId,
+            "name": self.name,
+            "size": self.size,
+        }
+
 
 
 class Contact(db.Model):
@@ -235,6 +256,16 @@ class Hire(db.Model):
 
     Employee_: Mapped["Employee"] = relationship("Employee", back_populates="Hire")
     Vacancy_: Mapped["Vacancy"] = relationship("Vacancy", back_populates="Hire")
+    def __repr__(self):
+        return f"<Hire {self.vacancyId} {self.hireDate}>"
+
+    def json(self):
+        return {
+            "id": self.id,
+            "vacancyId": self.vacancyId,
+            "employeeId": self.employeeId,
+            "hireDate": self.hireDate
+        }
 
 
 class Interview(db.Model):

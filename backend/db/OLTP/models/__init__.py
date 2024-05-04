@@ -1,4 +1,4 @@
-from .models import Vacancy, Interview
+from .models import Vacancy, Interview,Hire, Country, Company
 
 
-__all__ = ["Vacancy","Interview"]
+__all__ = ["Vacancy","Interview","Hire", "Country", "Company"]
