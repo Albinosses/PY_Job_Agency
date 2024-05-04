@@ -18,14 +18,6 @@ function InterviewTitle() {
                     <div className={styles.title}>Interviews</div>
                 </div>
             </div>
-            <div className={styles.createButton}>
-                <img
-                    src={add}
-                    className={`${styles.icon} aspect-square`}
-                    alt="Create Interview Icon"
-                />
-                <div>Create Interview</div>
-            </div>
         </div>
     );
 }

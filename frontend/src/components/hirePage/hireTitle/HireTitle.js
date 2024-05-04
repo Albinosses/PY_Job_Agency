@@ -18,14 +18,6 @@ function HireTitle() {
                     <div className={styles.title}>Hires</div>
                 </div>
             </div>
-            <div className={styles.createButton}>
-                <img
-                    src={add}
-                    className={`${styles.icon} aspect-square`}
-                    alt="Create Hire Icon"
-                />
-                <div>Create Hire</div>
-            </div>
         </div>
     );
 }

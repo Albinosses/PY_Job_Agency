@@ -64,10 +64,9 @@ const StyledInputRoot = styled('div')(
         theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
     };
   display: grid;
-  grid-template-columns: 1fr 19px;
+  grid-template-columns: 40px 19px;
   grid-template-rows: 1fr 1fr;
   overflow: hidden;
-  column-gap: 8px;
   padding: 4px;
 
   &.${numberInputClasses.focused} {
@@ -98,7 +97,6 @@ const StyledInputElement = styled('input')(
   background: inherit;
   border: none;
   border-radius: inherit;
-  padding: 8px 12px;
   outline: 0;
 `,
 );

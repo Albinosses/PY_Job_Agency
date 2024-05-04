@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./SidePanel.module.css";
 import vacanciesButton from "./imgs/vacanciesButton.png"
 import hiresButton from "./imgs/hiresButton.png"
@@ -9,6 +9,12 @@ import {Link, useLocation} from "react-router-dom";
 function SidePanel({onPageChange}) {
     const location = useLocation();
     const selectedItem = location.pathname.substring(1);
+
+    const [dashboardsMenuIsOpen, setDashboardsMenuIsOpen] = useState(false)
+
+    const handleOpenDashboardMenu = () => {
+        setDashboardsMenuIsOpen(!dashboardsMenuIsOpen)
+    }
 
     return (
         <div className={styles.container}>
@@ -60,6 +66,46 @@ function SidePanel({onPageChange}) {
                     </div>
                 </div>
             </Link>
+                <div className={styles.section}>
+                    <div className={styles.content}
+                        onClick={handleOpenDashboardMenu}
+                    >
+                        {/*<img src={submenuButton} alt="Submenu" />*/}
+                        <div>Dashboards</div>
+                    </div>
+                </div>
+            { dashboardsMenuIsOpen  && (
+                <div className={styles.submenu}>
+                    <Link to="/dashboard/vacancy">
+                        <div
+                            className={`${styles.section} ${selectedItem.endsWith('dashboard/vacancy') ? styles.blue : ''}`}
+                        >
+                            <div
+                                className={styles.submenuItem}>
+                                Vacancies
+                            </div>
+                        </div>
+                    </Link>
+                    <Link to="/dashboard/hire">
+                        <div
+                            className={`${styles.section} ${selectedItem.endsWith('dashboard/hire') ? styles.blue : ''}`}
+                        >
+                            <div className={styles.submenuItem}>
+                                Hires
+                            </div>
+                        </div>
+                    </Link>
+                    <Link to="/dashboard/interview">
+                        <div
+                            className={`${styles.section} ${selectedItem.endsWith('dashboard/interview') ? styles.blue : ''}`}
+                        >
+                            <div className={styles.submenuItem}>
+                                Interviews
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,10 +1,11 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {VacancyContext} from "../../../contexts/VacancyContext";
 import {HireContext} from "../../../contexts/HireContext";
 import {Container, ReturnButton, Title} from "../../StyledComponents";
 import Vacancy from "../../vacancyPage/vacancy/Vacancy";
 import HireInfo from "./HireInfo";
+import HireModal from "../hireModal/HireModal";
 
 
 const HireDetails = () => {
@@ -18,9 +19,15 @@ const HireDetails = () => {
 
     const vacancy = vacancies.find(vacancy => vacancy.id === hire.vacancyId)
 
+    const [open, setOpen] = useState(false);
+
     const handleDelete = () => {
         deleteHire(hire.id)
         navigate(`/hire`)
+    }
+
+    const handleEdit = () => {
+        setOpen(true)
     }
 
     return (
@@ -29,12 +36,20 @@ const HireDetails = () => {
                 <Title>Interview Details</Title>
                 <HireInfo hire={hire}/>
                 <ReturnButton
-                    // onClick={handleOpen}
+                    onClick={handleEdit}
                     variant="contained"
                     color="primary"
                 >
                     Edit
                 </ReturnButton>
+                {open &&
+                    <HireModal
+                        open={open}
+                        setOpen={setOpen}
+                        modalType={'edit'}
+                        data={hire}
+                    />
+                }
                 <ReturnButton
                     onClick={handleDelete}
                     variant="contained"
