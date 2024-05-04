@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./ContactInfo.module.css";
+import {GeneralContext} from "../../contexts/GeneralContext";
 
 const ContactInfo = ({contact, owner}) => {
-    const {name, surname, birthDate, gender, email} = contact;
+    const {name, surname, birthDate, gender, email, countryId} = contact;
+
+    const {countries} = useContext(GeneralContext)
 
     const getFullGender = (abr) => {
         switch (abr) {
@@ -33,6 +36,10 @@ const ContactInfo = ({contact, owner}) => {
             <div className={styles.infoItem}>
                 <span className={styles.label}>Gender:</span>
                 <span className={styles.info}>{getFullGender(gender)}</span>
+            </div>
+            <div className={styles.infoItem}>
+                <span className={styles.label}>Country:</span>
+                <span className={styles.info}>{countries.find(country => country.id === countryId).name}</span>
             </div>
             <div className={styles.infoItem}>
                 <span className={styles.label}>Email:</span>

@@ -1,17 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./ContactInfo.module.css";
 import TextField from "@mui/material/TextField";
 import {DatePicker} from "@mui/x-date-pickers";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import dayjs from "dayjs";
+import {GeneralContext} from "../../contexts/GeneralContext";
 
 const ContactInfoEdit = ({type, owner, contact, setContact}) => {
+
+    const {countries} = useContext(GeneralContext)
 
     const [gender, setGender] = useState(contact?.gender || "")
     const [birthDate, setBirthDate] = useState(contact?.birthDate || "")
     const [name, setName] = useState(contact?.name || "")
     const [surname, setSurname] = useState(contact?.surname || "")
     const [email, setEmail] = useState(contact?.email || "")
+    const [countryId, setCountryId] = useState(contact?.countryId || "")
 
     const [nameIsValid, setNameIsValid] = useState(true)
     const [surnameIsValid, setSurnameIsValid] = useState(true)
@@ -19,14 +23,13 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
 
 
     useEffect(() => {
-        console.log(contact)
-
         if (type === 'edit') {
             setSurname(contact.surname)
             setEmail(contact.email)
             setName(contact.name)
-            setGender(contact.gender);
-            setBirthDate(contact.birthDate);
+            setGender(contact.gender)
+            setBirthDate(contact.birthDate)
+            setCountryId(contact.countryId)
         }
     }, [type, contact.gender, contact.birthDate]);
 
@@ -63,6 +66,11 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
         const reg = new RegExp("^\\S+@\\S+\\.\\S+$")
         setEmailIsValid(reg.test(e.target.value))
         setEmail(e.target.value)
+    }
+
+    const handleCountryChange = (e) => {
+        setContact({...contact, countryId: e.target.value})
+        setCountryId(e.target.value)
     }
 
 
@@ -112,6 +120,25 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                     >
                         <MenuItem sx={{width: 300}} value={'M'}>Male</MenuItem>
                         <MenuItem sx={{width: 300}} value={'F'}>Female</MenuItem>
+                    </Select>
+                </FormControl>
+            </div>
+            <div className={styles.inputItem}>
+                <FormControl sx={{width: 300}}>
+                    <InputLabel id="country-select-label">Country</InputLabel>
+                    <Select
+                        autoWidth
+                        labelId="country-select-label"
+                        id="country-select"
+                        label="Country"
+                        value={countryId}
+                        onChange={handleCountryChange}
+                    >
+                        {countries.map(country => (
+                            <MenuItem value={country.id}>
+                                {country.name}
+                            </MenuItem>
+                        ))}
                     </Select>
                 </FormControl>
             </div>
