@@ -74,3 +74,15 @@ def get_contact():
     id = request.args.get("id", type=int) 
     contact = Contact.query.get(id)
     return jsonify(contact.json()), 200
+
+@get_bp.route("/interview/<id>", methods=["GET"])
+def get_interview(id):
+    interview = Interview.query.get(id)
+    vacancy = Vacancy.query.filter_by(id=interview.vacancyId).first()
+    return jsonify(
+        {
+            "interview": interview.json(),
+            "vacancy": vacancy.json()
+        }
+    ), 200
+
