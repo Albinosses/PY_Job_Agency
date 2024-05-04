@@ -51,7 +51,6 @@ class Country(db.Model):
         }
 
 
-
 class SkillLevel(db.Model):
     __tablename__ = "SkillLevel"
     __table_args__ = (
@@ -96,6 +95,7 @@ class Company(db.Model):
     Vacancy: Mapped[List["Vacancy"]] = relationship(
         "Vacancy", uselist=True, back_populates="Company_"
     )
+
     def __repr__(self):
         return f"<Company {self.id} {self.name}>"
 
@@ -106,7 +106,6 @@ class Company(db.Model):
             "name": self.name,
             "size": self.size,
         }
-
 
 
 class Contact(db.Model):
@@ -146,6 +145,20 @@ class Contact(db.Model):
         foreign_keys="[Interview.interviewerId]",
         back_populates="Contact1",
     )
+
+    def __repr__(self):
+        return f"<Contact {self.id} {self.name}>"
+
+    def json(self):
+        return {
+            "id": self.id,
+            "countryId": self.countryId,
+            "name": self.name,
+            "surname": self.surname,
+            "birthDate": self.birthDate,
+            "gender": self.gender,
+            "email": self.email,
+        }
 
 
 class Employee(db.Model):
@@ -235,7 +248,7 @@ class Vacancy(db.Model):
             "publicationDate": self.publicationDate,
             "status": self.status,
             "description": self.description,
-            "closeDate": self.closeDate
+            "closeDate": self.closeDate,
         }
 
 
@@ -256,6 +269,7 @@ class Hire(db.Model):
 
     Employee_: Mapped["Employee"] = relationship("Employee", back_populates="Hire")
     Vacancy_: Mapped["Vacancy"] = relationship("Vacancy", back_populates="Hire")
+
     def __repr__(self):
         return f"<Hire {self.vacancyId} {self.hireDate}>"
 
@@ -264,7 +278,7 @@ class Hire(db.Model):
             "id": self.id,
             "vacancyId": self.vacancyId,
             "employeeId": self.employeeId,
-            "hireDate": self.hireDate
+            "hireDate": self.hireDate,
         }
 
 
