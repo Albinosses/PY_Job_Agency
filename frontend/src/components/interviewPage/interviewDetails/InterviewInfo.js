@@ -19,10 +19,10 @@ function InterviewInfo({interview}) {
 
     return (
         <>
-            <div className={styles.container}>
-                <ContactInfo contact={interview.candidate} owner={"Candidate"}/>
-                <ContactInfo contact={interview.interviewer} owner={"Interviewer"}/>
-            </div>
+            {/*<div className={styles.container}>*/}
+            {/*    <ContactInfo contact={interview.candidate} owner={"Candidate"}/>*/}
+            {/*    <ContactInfo contact={interview.interviewer} owner={"Interviewer"}/>*/}
+            {/*</div>*/}
             <StyledParagraph>Interview Type: {getFullType(interview.InterviewType)}</StyledParagraph>
             <StyledParagraph>Interview Date: {interview.InterviewDate}</StyledParagraph>
             <StyledParagraph>Duration: {interview.duration} min</StyledParagraph>

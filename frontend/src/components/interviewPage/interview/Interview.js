@@ -9,7 +9,7 @@ function Interview({interview}) {
                     <div className={styles.vacancyTag}>Company</div>
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{interview.InterviewDate}</div>
+            <div className={styles.vacancyDate}>{interview.interviewDate}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
     );
