@@ -69,11 +69,13 @@ def get_vacancy(id):
         }
     ), 200
 
+
 @get_bp.route("/contact", methods=["GET"])
 def get_contact():
     id = request.args.get("id", type=int) 
     contact = Contact.query.get(id)
     return jsonify(contact.json()), 200
+
 
 @get_bp.route("/interview/<id>", methods=["GET"])
 def get_interview(id):
@@ -82,6 +84,18 @@ def get_interview(id):
     return jsonify(
         {
             "interview": interview.json(),
+            "vacancy": vacancy.json()
+        }
+    ), 200
+
+
+@get_bp.route("/hire/<id>", methods=["GET"])
+def get_hire(id):
+    hire = Hire.query.get(id)
+    vacancy = Vacancy.query.filter_by(id=hire.vacancyId).first()
+    return jsonify(
+        {
+            "hire": hire.json(),
             "vacancy": vacancy.json()
         }
     ), 200
