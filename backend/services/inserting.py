@@ -3,7 +3,7 @@ from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.OLTP.models import Vacancy, Interview, Hire, Country, Company
-from services.models import VacancyRepository, InterviewRepository
+from services.models import VacancyRepository, InterviewRepository, HireRepository
 
 
 insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
@@ -41,3 +41,14 @@ def insert_interview():
         score=request_data["score"],
     )
     return jsonify(new_interview.json()), 200
+
+@insert_bp.route("/hire", methods=["POST"])
+def insert_hire():
+    # TODO: ДОРОБИТИ І ЗРОБИТИ ЛОГІЧНО З ФРОНТОМ
+    request_data = request.get_json()
+    new_hire = HireRepository.create(
+        vacancyId=request_data["vacancyId"],
+        employeeId=request_data["employeeId"],
+        hireDate=request_data["hireDate"]
+    )
+    return jsonify(new_hire.json()), 200

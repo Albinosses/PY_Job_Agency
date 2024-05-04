@@ -1,4 +1,4 @@
-from .base import VacancyRepository, InterviewRepository
+from .base import VacancyRepository, InterviewRepository, HireRepository
 
 
-__all__ = ["VacancyRepository", "InterviewRepository"]
+__all__ = ["VacancyRepository", "InterviewRepository","HireRepository"]
