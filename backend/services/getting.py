@@ -2,7 +2,7 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillSetVacancy, SkillLevel, Contact
+from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillSetVacancy, SkillLevel, Contact, Employee
 from services.models import VacancyRepository
 
 
@@ -101,6 +101,7 @@ def get_interview(id):
 @get_bp.route("/hire/<id>", methods=["GET"])
 def get_hire(id):
     hire = Hire.query.get(id)
+    contactId = Employee.query.filter_by(id=hire.employeeId).first().contactId
     vacancy = Vacancy.query.filter_by(id=hire.vacancyId).first()
     skillset = SkillSetVacancy.query.filter_by(vacancyId=id)
     skills = []
@@ -114,6 +115,7 @@ def get_hire(id):
         {
             "hire": hire.json(),
             "vacancy": vacancy.json(),
+            "employeeContactId": contactId
             "skills": skills
         }
     ), 200
