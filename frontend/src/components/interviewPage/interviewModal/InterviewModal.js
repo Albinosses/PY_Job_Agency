@@ -80,13 +80,9 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     const [isValid, setIsValid] = useState(false);
 
     const isContactValid = (contact) => {
-        console.log(contact)
-
         if (Object.keys(contact).length !== 7) {
             return false
         }
-
-        console.log(contact.date)
 
         return contact.name.trim() !== "" &&
             contact.surname.trim() !== "" &&
