@@ -16,18 +16,16 @@ function HireInfo({hire, employeeContactId}) {
                 setEmployeeContact(data)
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [employeeContactId]);
 
     return (
         <>
             { employeeContact &&
-                <>
-                    <div className={styles.container}>
-                        <ContactInfo contact={employeeContact} owner={"Hired Employee"}/>
-                    </div>
-                    <StyledParagraph>Hire Date: {dayjs(hire.hireDate).format('YYYY-MM-DD')}</StyledParagraph>
-                </>
+                <div className={styles.container}>
+                    <ContactInfo contact={employeeContact} owner={"Hired Employee"}/>
+                </div>
             }
+            <StyledParagraph>Hire Date: {dayjs(hire.hireDate).format('YYYY-MM-DD')}</StyledParagraph>
         </>
     );
 }
