@@ -3,7 +3,7 @@ from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.OLTP.models import Vacancy, Interview, Hire, Country, Company
-from services.models import VacancyRepository
+from services.models import VacancyRepository, InterviewRepository
 
 
 insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
@@ -11,7 +11,6 @@ insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
 
 @insert_bp.route("/vacancy", methods=["POST"])
 def insert_vacancy():
-    # TODO: Add filtering
     request_data = request.get_json()
     new_vacancy = VacancyRepository.create(
         companyId=request_data["companyId"],
@@ -26,3 +25,19 @@ def insert_vacancy():
         closeDate=request_data["closeDate"],
     )
     return jsonify(new_vacancy.json()), 200
+
+
+@insert_bp.route("/interview", methods=["POST"])
+def insert_interview():
+    request_data = request.get_json()
+    new_interview = InterviewRepository.create(
+        vacancyId=request_data["vacancyId"],
+        candidateId=request_data["candidateId"],
+        interviewerId=request_data["interviewerId"],
+        interviewType=request_data["interviewType"],
+        interviewDate=request_data["interviewDate"],
+        duration=request_data["duration"],
+        feedback=request_data["feedback"],
+        score=request_data["score"],
+    )
+    return jsonify(new_interview.json()), 200
