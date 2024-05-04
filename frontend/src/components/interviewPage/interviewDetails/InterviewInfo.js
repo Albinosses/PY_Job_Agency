@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ContactInfo from "../../contact/ContactInfo";
 import styles from "./InterviewInfo.module.css";
 import {StyledParagraph} from "../../StyledComponents";
@@ -17,12 +17,31 @@ function InterviewInfo({interview}) {
         }
     }
 
+
+    const [interviewer, setInterviewer] = useState()
+
+    const [candidate, setCandidate] = useState()
+
+    useEffect(() => {
+        fetch(`http://127.0.0.1:8003/api/get/contact?id=${interview.candidateId}`)
+            .then(response => response.json())
+            .then(data => setCandidate(data))
+            .catch(err => console.log(err));
+
+        fetch(`http://127.0.0.1:8003/api/get/contact?id=${interview.interviewerId}`)
+            .then(response => response.json())
+            .then(data => setInterviewer(data))
+            .catch(err => console.log(err));
+    }, []);
+
     return (
         <>
-            {/*<div className={styles.container}>*/}
-            {/*    <ContactInfo contact={interview.candidate} owner={"Candidate"}/>*/}
-            {/*    <ContactInfo contact={interview.interviewer} owner={"Interviewer"}/>*/}
-            {/*</div>*/}
+            {candidate && interviewer &&
+                <div className={styles.container}>
+                    <ContactInfo contact={candidate} owner={"Candidate"}/>
+                    <ContactInfo contact={interviewer} owner={"Interviewer"}/>
+                </div>
+            }
             <StyledParagraph>Interview Type: {getFullType(interview.InterviewType)}</StyledParagraph>
             <StyledParagraph>Interview Date: {interview.InterviewDate}</StyledParagraph>
             <StyledParagraph>Duration: {interview.duration} min</StyledParagraph>

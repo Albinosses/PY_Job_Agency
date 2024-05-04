@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams, useNavigate} from "react-router-dom";
 import {InterviewContext} from "../../../contexts/InterviewContext";
 import {Container, ReturnButton, Title} from "../../StyledComponents";
@@ -16,6 +16,7 @@ function InterviewDetails() {
     const vacancy = vacancies.find(vacancy => vacancy.id === currentInterview.vacancyId)
 
     const [open, setOpen] = useState(false);
+
 
     const handleDelete = () => {
         //deleteInterview(interview.id)
