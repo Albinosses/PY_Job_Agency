@@ -60,12 +60,14 @@ function InterviewScrollable({interviewsObj}) {
                                     />
                                 </Link>
                             )))}
-                        <div className={styles.pagination}>
-                            <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                                Previous
-                            </button>
-                            <button onClick={handleNextPage}>Next</button>
-                        </div>
+                        {(!interviewsObj || Object.keys(interviewsObj).length === 0) &&
+                            <div className={styles.pagination}>
+                                <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                                    Previous
+                                </button>
+                                <button onClick={handleNextPage}>Next</button>
+                            </div>
+                        }
                     </div>
                 </div>
             }

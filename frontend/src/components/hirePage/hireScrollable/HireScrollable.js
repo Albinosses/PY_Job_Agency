@@ -58,12 +58,14 @@ function HireScrollable({hiresObj}) {
                                     />
                                 </Link>
                             )))}
-                        <div className={styles.pagination}>
-                            <button onClick={handlePrevPage} disabled={currentPage === 1}>
-                                Previous
-                            </button>
-                            <button onClick={handleNextPage}>Next</button>
-                        </div>
+                        {(!hiresObj || Object.keys(hiresObj).length === 0) &&
+                            <div className={styles.pagination}>
+                                <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                                    Previous
+                                </button>
+                                <button onClick={handleNextPage}>Next</button>
+                            </div>
+                        }
                     </div>
                 </div>
             }
