@@ -2,7 +2,7 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillSetVacancy, SkillLevel
+from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillSetVacancy, SkillLevel, Contact
 from services.models import VacancyRepository
 
 
@@ -68,3 +68,9 @@ def get_vacancy(id):
             "skills": skills
         }
     ), 200
+
+@get_bp.route("/contact", methods=["GET"])
+def get_contact():
+    id = request.args.get("id", type=int) 
+    contact = Contact.query.get(id)
+    return jsonify(contact.json()), 200
