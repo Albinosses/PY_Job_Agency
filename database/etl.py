@@ -11,21 +11,26 @@ from sqlalchemy import create_engine, text
 from collections import defaultdict
 from datetime import datetime
 import random
+from dotenv import load_dotenv
+import os
+
+dotenv_path = os.path.join(os.getcwd(), ".env")
+load_dotenv(dotenv_path)
 
 
 # Define the database connection parameters
 OLTP_params = {
-    'host': 'localhost',
-    'database': 'OLTP',
-    'user': 'postgres',
-    'password': '2204'
+    'host': os.getenv("oltp_host"),
+    'database': os.getenv("oltp_db_name"),
+    'user': os.getenv("oltp_user"),
+    'password': os.getenv("oltp_password")
 }
 
 OLAP_params = {
-    'host': 'localhost',
-    'database': 'OLAP',
-    'user': 'postgres',
-    'password': '2204'
+    'host': os.getenv("olap_host"),
+    'database': os.getenv("olap_db_name"),
+    'user': os.getenv("olap_user"),
+    'password': os.getenv("olap_password")
 }
 
 OLTP_engine = create_engine(f'postgresql+psycopg2://{OLTP_params["user"]}:{OLTP_params["password"]}@{OLTP_params["host"]}/{OLTP_params["database"]}')

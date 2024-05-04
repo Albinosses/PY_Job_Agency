@@ -2,13 +2,18 @@
 import psycopg2
 import pandas as pd
 from sqlalchemy import create_engine, text
+from dotenv import load_dotenv
+import os
+
+dotenv_path = os.path.join(os.getcwd(), ".env")
+load_dotenv(dotenv_path)
 
 # Define the database connection parameters
 db_params = {
-    'host': 'localhost',
-    'database': 'OLTP',
-    'user': 'postgres',
-    'password': '2204'
+    'host': os.getenv("oltp_host"),
+    'database': os.getenv("oltp_db_name"),
+    'user': os.getenv("oltp_user"),
+    'password': os.getenv("oltp_password")
 }
 
 engine = create_engine(f'postgresql+psycopg2://{db_params["user"]}:{db_params["password"]}@{db_params["host"]}/{db_params["database"]}')

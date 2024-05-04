@@ -1,49 +1,33 @@
-from flask import Flask, request
+from flask import Flask
 from flask_cors import CORS
-import psycopg2
-from sqlalchemy_utils import database_exists, create_database
+#from flask_jwt_extended import JWTManager
+
+from db import db, migrate
+from db.OLTP import models  # noqa
+from services import api_bp
+from config import Config
 
 
-from config import host, user, password, db_name
+def create_app():
+    print(Config.db.port)
+    app = Flask(__name__)
+    CORS(app)
 
-app = Flask(__name__)
-app.debug = True
+    app.config["SQLALCHEMY_DATABASE_URI"] = Config.db.uri
 
-cors = CORS(app)
+    db.init_app(app)
+    migrate.init_app(app, db)
 
+    app.register_blueprint(api_bp)
 
-# DONT FORGET TO USE COMMITS IN CONNECTION
-def db_connect():
-    try:
-        connection = psycopg2.connect(
-            host=host, user=user, password=password, database=db_name
-        )
-        print("[INFO] Connection opened")
+    with app.app_context():
+        db.create_all()
 
-        cursor = connection.cursor()
-        print("[INFO] Cursor created")
+    print(app.url_map)
 
-        return connection, cursor
-    except Exception as _ex:
-        print("[INFO] Error while working with PostgreSQL ", _ex)
-        raise ValueError("[ERROR]Couldn't connect to the database, problem: ", _ex)
-
-def db_close(connection, cursor):
-    if cursor:
-        cursor.close()
-        print("[INFO] PostgreSQL cursor closed")
-    if connection:
-        connection.close()
-        print("[INFO] PostgreSQL connection closed")
-
-@app.route("/hello")
-def hello():
-    connection, cursor = db_connect()
-    cursor.execute('SELECT * FROM "SkillLevel";')
-    skills = cursor.fetchall()
-    db_close(connection, cursor)
-    return skills
+    return app
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8001)
+    app = create_app()
+    app.run(debug=True, port=8003)
