@@ -6,9 +6,9 @@ import {StyledParagraph} from "../../StyledComponents";
 function HireInfo({hire}) {
     return (
         <>
-            <div className={styles.container}>
-                <ContactInfo contact={hire.employee} owner={"Hired Employee"}/>
-            </div>
+            {/*<div className={styles.container}>*/}
+            {/*    <ContactInfo contact={hire.employee} owner={"Hired Employee"}/>*/}
+            {/*</div>*/}
             <StyledParagraph>Hire Date: {hire.hireDate}</StyledParagraph>
         </>
     );

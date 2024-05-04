@@ -7,22 +7,18 @@ import Vacancy from "../../vacancyPage/vacancy/Vacancy";
 import HireInfo from "./HireInfo";
 import HireModal from "../hireModal/HireModal";
 
-
 const HireDetails = () => {
     const {id} = useParams();
-    const {hires, deleteHire} = useContext(HireContext)
+    const {hires, deleteHire, currentHire} = useContext(HireContext)
     const {vacancies} = useContext(VacancyContext)
     const navigate = useNavigate()
 
-
-    const hire = hires.find(hire => hire.id === parseInt(id));
-
-    const vacancy = vacancies.find(vacancy => vacancy.id === hire.vacancyId)
+    const vacancy = vacancies.find(vacancy => vacancy.id === currentHire.vacancyId)
 
     const [open, setOpen] = useState(false);
 
     const handleDelete = () => {
-        deleteHire(hire.id)
+        //deleteHire(hire.id)
         navigate(`/hire`)
     }
 
@@ -34,7 +30,7 @@ const HireDetails = () => {
         <>
             <Container>
                 <Title>Interview Details</Title>
-                <HireInfo hire={hire}/>
+                <HireInfo hire={currentHire}/>
                 <ReturnButton
                     onClick={handleEdit}
                     variant="contained"
@@ -47,7 +43,7 @@ const HireDetails = () => {
                         open={open}
                         setOpen={setOpen}
                         modalType={'edit'}
-                        data={hire}
+                        data={currentHire}
                     />
                 }
                 <ReturnButton
@@ -60,9 +56,9 @@ const HireDetails = () => {
             </Container>
             <Container>
                 <Title>Related Vacancy</Title>
-                <Link to={`/vacancy/${hire.vacancyId}`}>
+                <Link to={`/vacancy/${currentHire.vacancyId}`}>
                     <Vacancy
-                        key={hire.vacancyId}
+                        key={currentHire.vacancyId}
                         vacancy={vacancy}
                     />
                 </Link>

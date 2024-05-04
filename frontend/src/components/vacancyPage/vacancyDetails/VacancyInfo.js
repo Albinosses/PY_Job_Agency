@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import {StyledParagraph, SkillContainer} from "../../StyledComponents";
+import {GeneralContext} from "../../../contexts/GeneralContext";
 
 function VacancyInfo({vacancy}) {
+    const {countries, companies} = useContext(GeneralContext)
     const getFullEmploymentType = (abr) => {
         switch (abr) {
             case 'F':
@@ -60,8 +62,8 @@ function VacancyInfo({vacancy}) {
         <>
             <StyledParagraph>Title: {vacancy.jobTitle}</StyledParagraph>
             <StyledParagraph>Description: {vacancy.description}</StyledParagraph>
-            <StyledParagraph>Location: {vacancy.empCountry}</StyledParagraph>
-            <StyledParagraph>Company: {vacancy.company}</StyledParagraph>
+            <StyledParagraph>Location: {countries.find(country => country.id === vacancy.empCountryId).name}</StyledParagraph>
+            <StyledParagraph>Company: {companies.find(company => company.id === vacancy.companyId).name}</StyledParagraph>
             <StyledParagraph>Salary: {vacancy.salary}</StyledParagraph>
             <StyledParagraph>Employment Type: {getFullEmploymentType(vacancy.employmentType)}</StyledParagraph>
             <StyledParagraph>Work Setting: {getFullWorkSetting(vacancy.workSetting)}</StyledParagraph>
@@ -70,13 +72,13 @@ function VacancyInfo({vacancy}) {
                 <StyledParagraph>Close Date: {vacancy.closeDate}</StyledParagraph>
             }
             <StyledParagraph>Status: {getFullStatus(vacancy.status)}</StyledParagraph>
-            {vacancy.skills.map((skill, index) => (
-                <SkillContainer key={index}>
-                    <h2>Skill: {skill.skillName}</h2>
-                    <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>
-                    <StyledParagraph>Weight: {skill.weight}</StyledParagraph>
-                </SkillContainer>
-            ))}
+            {/*{vacancy.skills.map((skill, index) => (*/}
+            {/*    <SkillContainer key={index}>*/}
+            {/*        <h2>Skill: {skill.skillName}</h2>*/}
+            {/*        <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>*/}
+            {/*        <StyledParagraph>Weight: {skill.weight}</StyledParagraph>*/}
+            {/*    </SkillContainer>*/}
+            {/*))}*/}
         </>
     );
 }

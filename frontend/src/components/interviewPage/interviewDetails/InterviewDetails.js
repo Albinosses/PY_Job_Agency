@@ -9,19 +9,16 @@ import InterviewModal from "../interviewModal/InterviewModal";
 
 function InterviewDetails() {
     const {id} = useParams();
-    const {interviews, deleteInterview} = useContext(InterviewContext)
+    const {interviews, deleteInterview, currentInterview} = useContext(InterviewContext)
     const {vacancies} = useContext(VacancyContext)
     const navigate = useNavigate()
 
-
-    const interview = interviews.find(interview => interview.id === parseInt(id));
-
-    const vacancy = vacancies.find(vacancy => vacancy.id === interview.vacancyId)
+    const vacancy = vacancies.find(vacancy => vacancy.id === currentInterview.vacancyId)
 
     const [open, setOpen] = useState(false);
 
     const handleDelete = () => {
-        deleteInterview(interview.id)
+        //deleteInterview(interview.id)
         navigate(`/interview`)
     }
 
@@ -33,7 +30,7 @@ function InterviewDetails() {
         <>
             <Container>
                 <Title>Interview Details</Title>
-                <InterviewInfo interview={interview}/>
+                <InterviewInfo interview={currentInterview}/>
                 <ReturnButton
                     onClick={handleEdit}
                     variant="contained"
@@ -46,7 +43,7 @@ function InterviewDetails() {
                         open={open}
                         setOpen={setOpen}
                         modalType={'edit'}
-                        data={interview}
+                        data={currentInterview}
                     />
                 }
                 <ReturnButton
@@ -59,9 +56,9 @@ function InterviewDetails() {
             </Container>
             <Container>
                 <Title>Related Vacancy</Title>
-                <Link to={`/vacancy/${interview.vacancyId}`}>
+                <Link to={`/vacancy/${currentInterview.vacancyId}`}>
                     <Vacancy
-                        key={interview.vacancyId}
+                        key={currentInterview.vacancyId}
                         vacancy={vacancy}
                     />
                 </Link>
