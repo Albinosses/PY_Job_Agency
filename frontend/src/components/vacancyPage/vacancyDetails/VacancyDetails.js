@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 
 function VacancyDetails() {
     const {id} = useParams();
-    const {isVacancyClosed, currentVacancy, setCurrentVacancy, setVacancies} = useContext(VacancyContext)
+    const {isVacancyClosed, currentVacancy, setCurrentVacancy} = useContext(VacancyContext)
     const {interviews, setInterviews} = useContext(InterviewContext)
     const {hires, setHires} = useContext(HireContext)
 
@@ -45,7 +45,6 @@ function VacancyDetails() {
                 setHires(data.hires)
                 setInterviews(data.interviews)
                 setCurrentVacancy(updatedVacancy)
-                setVacancies(prevVacancies => [...prevVacancies, updatedVacancy]);
             })
             .catch(err => console.log(err))
     }, []);

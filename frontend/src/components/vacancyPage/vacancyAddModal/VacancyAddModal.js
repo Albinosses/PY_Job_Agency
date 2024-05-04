@@ -156,8 +156,8 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
             setStatus(data.status);
             setCountryId(data.empCountryId)
             setCompanyId(data.companyId)
-            // setStartDate(dayjs(data.publicationDate));
-            // setEndDate(dayjs(data.closeDate));
+            setStartDate(dayjs(data.publicationDate));
+            setEndDate(dayjs(data.closeDate));
             setItems(data.skills);
         } else {
             resetState();

@@ -4,6 +4,8 @@ import {GeneralContext} from "../../../contexts/GeneralContext";
 
 function VacancyInfo({vacancy}) {
     const {countries, companies} = useContext(GeneralContext)
+
+    console.log(vacancy)
     const getFullEmploymentType = (abr) => {
         switch (abr) {
             case 'F':

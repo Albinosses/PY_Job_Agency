@@ -81,10 +81,19 @@ def get_contact():
 def get_interview(id):
     interview = Interview.query.get(id)
     vacancy = Vacancy.query.filter_by(id=interview.vacancyId).first()
+    skillset = SkillSetVacancy.query.filter_by(vacancyId=id)
+    skills = []
+    for skill in skillset:
+        s = {}
+        s["skillName"] = SkillLevel.query.filter_by(id=skill.skillId).first().skill
+        s["weight"] = skill.weight
+        s["level"] = SkillLevel.query.filter_by(id=skill.skillId).first().level
+        skills.append(s)
     return jsonify(
         {
             "interview": interview.json(),
-            "vacancy": vacancy.json()
+            "vacancy": vacancy.json(),
+            "skills": skills
         }
     ), 200
 
