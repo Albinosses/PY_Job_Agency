@@ -72,13 +72,13 @@ function VacancyInfo({vacancy}) {
                 <StyledParagraph>Close Date: {vacancy.closeDate}</StyledParagraph>
             }
             <StyledParagraph>Status: {getFullStatus(vacancy.status)}</StyledParagraph>
-            {/*{vacancy.skills.map((skill, index) => (*/}
-            {/*    <SkillContainer key={index}>*/}
-            {/*        <h2>Skill: {skill.skillName}</h2>*/}
-            {/*        <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>*/}
-            {/*        <StyledParagraph>Weight: {skill.weight}</StyledParagraph>*/}
-            {/*    </SkillContainer>*/}
-            {/*))}*/}
+            {vacancy.skills.map((skill, index) => (
+                <SkillContainer key={index}>
+                    <h2>Skill: {skill.skillName}</h2>
+                    <StyledParagraph>Level: {getFullSkillLevel(skill.level)}</StyledParagraph>
+                    <StyledParagraph>Weight: {skill.weight}</StyledParagraph>
+                </SkillContainer>
+            ))}
         </>
     );
 }

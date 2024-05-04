@@ -63,8 +63,8 @@ def get_vacancy(id):
     return jsonify(
         {
             "vacancy": vacancy.json(),
-            "hires:": [h.json() for h in hires],
-            "intervies:": [i.json() for i in intervies],
+            "hires": [h.json() for h in hires],
+            "interviews": [i.json() for i in intervies],
             "skills": skills
         }
     ), 200
