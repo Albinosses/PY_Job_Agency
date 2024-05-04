@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./Interview.module.css";
+import {GeneralContext} from "../../../contexts/GeneralContext";
 
 function Interview({interview}) {
+    const {countries, companies} = useContext(GeneralContext)
+
     return (
         <div className={styles.vacancyContainer}>
             <div className={styles.vacancyHeader}>
@@ -9,9 +12,10 @@ function Interview({interview}) {
                     <div className={styles.vacancyTag}>Company</div>
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{interview.InterviewDate}</div>
+            <div className={styles.vacancyDate}>{interview.interviewDate}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
+
     );
 }
 

@@ -67,7 +67,8 @@ export const VacancyProvider = ({children}) => {
     const {setInterviews} = useContext(InterviewContext)
     const {setHires} = useContext(HireContext)
 
-    const [vacancies, setVacancies] = useState(mockVacancies);
+    const [vacancies, setVacancies] = useState([]);
+    const [currentVacancy, setCurrentVacancy] = useState()
 
     const updateVacancy = (updatedVacancy) => {
         setVacancies((prevVacancies) =>
@@ -91,12 +92,12 @@ export const VacancyProvider = ({children}) => {
         )
     }
 
-    const isVacancyClosed = (id) => {
-        return vacancies.find(vacancy => vacancy.id === id).status === 'C';
+    const isVacancyClosed = (vacancy) => {
+        return vacancy.status === "C"
     }
 
     return (
-        <VacancyContext.Provider value={{vacancies, setVacancies, updateVacancy, deleteVacancy, isVacancyClosed}}>
+        <VacancyContext.Provider value={{vacancies, setVacancies, updateVacancy, deleteVacancy, isVacancyClosed, currentVacancy, setCurrentVacancy}}>
             {children}
         </VacancyContext.Provider>
     );

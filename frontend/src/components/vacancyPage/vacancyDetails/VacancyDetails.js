@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import VacancyAddModal from "../vacancyAddModal/VacancyAddModal";
 import {useParams} from "react-router-dom";
 import {VacancyContext} from "../../../contexts/VacancyContext";
@@ -15,16 +15,27 @@ import dayjs from "dayjs";
 
 function VacancyDetails() {
     const {id} = useParams();
-    const {vacancies, deleteVacancy, updateVacancy, isVacancyClosed} = useContext(VacancyContext)
-    const {interviews} = useContext(InterviewContext)
-    const {hires} = useContext(HireContext)
-    const navigate = useNavigate()
+    const {isVacancyClosed, currentVacancy, setCurrentVacancy, setVacancies} = useContext(VacancyContext)
+    const {interviews, setInterviews} = useContext(InterviewContext)
+    const {hires, setHires} = useContext(HireContext)
 
-    const vacancy = vacancies.find(vacancy => vacancy.id === parseInt(id));
+    const navigate = useNavigate()
 
     const [openVacancy, setOpenVacancy] = useState(false);
     const [openInterview, setOpenInterview] = useState(false);
     const [openHire, setOpenHire] = useState(false)
+
+    useEffect(() => {
+        fetch(`http://127.0.0.1:8003/api/get/vacancy/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setHires(data.hires)
+                setInterviews(data.interviews)
+                setCurrentVacancy(data.vacancy)
+                setVacancies(prevVacancies => [...prevVacancies, data.vacancy]);
+            })
+            .catch(err => console.log(err))
+    }, []);
 
     const handleOpen = (type) => {
         switch (type) {
@@ -43,91 +54,95 @@ function VacancyDetails() {
     }
 
     const handleDelete = () => {
-        deleteVacancy(vacancy.id)
+        //deleteVacancy(vacancy.id)
         navigate(`/vacancy`)
     }
 
     const handleCloseVacancy= () => {
-        vacancy.status = 'C'
-        vacancy.closeDate = dayjs().format('YYYY-MM-DD')
+        currentVacancy.status = 'C'
+        currentVacancy.closeDate = dayjs().format('YYYY-MM-DD')
 
-        updateVacancy(vacancy)
+        //updateVacancy(vacancy)
     }
 
     return (
         <Container>
             <Title>Vacancy Details</Title>
-            <VacancyInfo vacancy={vacancy}/>
-            <ReturnButton
-                onClick={() => handleOpen('vacancy')}
-                variant="contained"
-                color="primary"
-            >
-                Edit
-            </ReturnButton>
-            <ReturnButton
-                onClick={handleCloseVacancy}
-                variant="contained"
-                color="primary"
-                disabled={isVacancyClosed(vacancy.id)}
-            >
-                Close
-            </ReturnButton>
-            <ReturnButton
-                onClick={handleDelete}
-                variant="contained"
-                color="primary"
-            >
-                Delete
-            </ReturnButton>
-            {openVacancy &&
-                <VacancyAddModal
-                    open={openVacancy}
-                    setOpen={setOpenVacancy}
-                    modalType={'edit'}
-                    data={vacancy}
-                />
-            }
-            {openInterview &&
-                <InterviewModal
-                    open={openInterview}
-                    setOpen={setOpenInterview}
-                    modalType={'create'}
-                />
-            }
-            {openHire &&
-                <HireModal
-                    open={openHire}
-                    setOpen={setOpenHire}
-                    modalType={'create'}
-                />
-            }
-            <div>
-                <ReturnButton
-                    onClick={() => handleOpen('interview')}
-                    variant="contained"
-                    color="primary"
-                >
-                    Add related interview
-                </ReturnButton>
-                <ReturnButton
-                    onClick={() => handleOpen('hire')}
-                    variant="contained"
-                    color="primary"
-                >
-                    Add related hire
-                </ReturnButton>
-            </div>
-            {interviews.some(interview => interview.vacancyId === vacancy.id) &&
+            {currentVacancy &&
                 <>
-                    <Title>Related Interviews</Title>
-                    <InterviewScrollable vacancyId={vacancy.id}/>
-                </>
-            }
-            {hires.some(hire => hire.vacancyId === vacancy.id) &&
-                <>
-                    <Title>Related Hires</Title>
-                    <HireScrollable vacancyId={vacancy.id}/>
+                    <VacancyInfo vacancy={currentVacancy}/>
+                    <ReturnButton
+                        onClick={() => handleOpen('vacancy')}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Edit
+                    </ReturnButton>
+                    <ReturnButton
+                        onClick={handleCloseVacancy}
+                        variant="contained"
+                        color="primary"
+                        disabled={isVacancyClosed(currentVacancy)}
+                    >
+                        Close
+                    </ReturnButton>
+                    <ReturnButton
+                        onClick={handleDelete}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Delete
+                    </ReturnButton>
+                    {openVacancy &&
+                        <VacancyAddModal
+                            open={openVacancy}
+                            setOpen={setOpenVacancy}
+                            modalType={'edit'}
+                            data={currentVacancy}
+                        />
+                    }
+                    {openInterview &&
+                        <InterviewModal
+                            open={openInterview}
+                            setOpen={setOpenInterview}
+                            modalType={'create'}
+                        />
+                    }
+                    {openHire &&
+                        <HireModal
+                            open={openHire}
+                            setOpen={setOpenHire}
+                            modalType={'create'}
+                        />
+                    }
+                    <div>
+                        <ReturnButton
+                            onClick={() => handleOpen('interview')}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Add related interview
+                        </ReturnButton>
+                        <ReturnButton
+                            onClick={() => handleOpen('hire')}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Add related hire
+                        </ReturnButton>
+                    </div>
+                    {interviews.some(interview => interview.vacancyId === currentVacancy.id) &&
+                        <>
+                            <Title>Related Interviews</Title>
+                            <InterviewScrollable interviewsObj={interviews}/>
+                        </>
+                    }
+                    {hires.some(hire => hire.vacancyId === currentVacancy.id) &&
+                        <>
+                            <Title>Related Hires</Title>
+                            <HireScrollable hiresObj={hires}/>
+                        </>
+                    }
                 </>
             }
         </Container>

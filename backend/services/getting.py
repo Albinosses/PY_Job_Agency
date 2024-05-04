@@ -16,7 +16,7 @@ def get_vacancies():
     vacancies = Vacancy.query.filter_by(jobTitle="Data Scientist").paginate(
         page=page, per_page=10
     )
-    return jsonify({"page": page, "vacancies:": [v.json() for v in vacancies]}), 200
+    return jsonify({"page": page, "vacancies": [v.json() for v in vacancies]}), 200
 
 
 @get_bp.route("/interviews", methods=["GET"])
@@ -24,7 +24,7 @@ def get_interviews():
     # TODO: Add filtering
     page = request.args.get("page", 1, type=int)
     interviews = Interview.query.filter_by().paginate(page=page, per_page=10)
-    return jsonify({"page": page, "interviews:": [i.json() for i in interviews]}), 200
+    return jsonify({"page": page, "interviews": [i.json() for i in interviews]}), 200
 
 
 @get_bp.route("/hires", methods=["GET"])
@@ -32,7 +32,7 @@ def get_hires():
     # TODO: Add filtering
     page = request.args.get("page", 1, type=int)
     hires = Hire.query.filter_by().paginate(page=page, per_page=10)
-    return jsonify({"page": page, "hires:": [h.json() for h in hires]}), 200
+    return jsonify({"page": page, "hires": [h.json() for h in hires]}), 200
 
 
 @get_bp.route("/countries", methods=["GET"])

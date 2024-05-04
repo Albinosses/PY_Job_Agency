@@ -7,6 +7,7 @@ import CustomNumberInput from "../../NumberInput";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 import {VacancyContext} from "../../../contexts/VacancyContext";
+import {GeneralContext} from "../../../contexts/GeneralContext";
 
 const style = {
     position: 'absolute',
@@ -21,6 +22,12 @@ const style = {
 };
 
 function VacancyAddModal({open, setOpen, modalType, data}) {
+    const {countries, companies} = useContext(GeneralContext)
+
+    const [country, setCountry] = useState()
+    const [company, setCompany] = useState()
+
+    console.log(data)
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -138,9 +145,9 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
             setType(data.employmentType);
             setSalary(data.salary);
             setStatus(data.status);
-            setStartDate(dayjs(data.publicationDate));
-            setEndDate(dayjs(data.closeDate));
-            setItems(data.skills);
+            // setStartDate(dayjs(data.publicationDate));
+            // setEndDate(dayjs(data.closeDate));
+            // setItems(data.skills);
         } else {
             resetState();
         }
@@ -163,9 +170,9 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
             employmentType: type,
             workSetting: workSetting,
             status: status,
-            publicationDate: startDate.format('YYYY-MM-DD'), // Format the date as needed
-            closeDate: endDate.format('YYYY-MM-DD'), // Format the date as needed
-            skills: items,
+            // publicationDate: startDate.format('YYYY-MM-DD'), // Format the date as needed
+            // closeDate: endDate.format('YYYY-MM-DD'), // Format the date as needed
+            // skills: items,
         };
         updateVacancy(vacancyData)
         handleClose()
@@ -254,6 +261,40 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                         minDate={startDate}
                         disabled={status !== 'C'}
                     />
+                    <FormControl sx={{m: 1, minWidth: 100}}>
+                        <InputLabel id="company-select-label">Company</InputLabel>
+                        <Select
+                            autoWidth
+                            labelId="company-select-label"
+                            id="company-select"
+                            label="Company"
+                            value={company}
+                            onChange={(e) => {setCompany(e.target.value)}}
+                        >
+                            {companies.map(company => (
+                                <MenuItem value={company.id}>
+                                    {company.name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <FormControl sx={{m: 1, minWidth: 100}}>
+                        <InputLabel id="country-select-label">Country</InputLabel>
+                        <Select
+                            autoWidth
+                            labelId="country-select-label"
+                            id="country-select"
+                            label="Country"
+                            value={country}
+                            onChange={(e) => {setCountry(e.target.value)}}
+                        >
+                            {countries.map(country => (
+                                <MenuItem value={country.id}>
+                                    {country.name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                     <CustomNumberInput
                         placeholder="salary"
                         value={salary}
@@ -263,62 +304,62 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                 </div>
                 <Divider/>
                 <div className={styles.container}>
-                    {items.map((item, index) => (
-                        <Grid container spacing={2} key={index} alignItems="center">
-                            <Grid item xs={4}>
-                                <TextField
-                                    label="Skill Name"
-                                    value={item.skillName}
-                                    onChange={(e) => handleChange(index, 'skillName', e.target.value)}
-                                />
-                            </Grid>
-                            <Grid item xs={2}>
-                                <FormControl sx={{m: 1, minWidth: 100}}>
-                                    <InputLabel id="level-select-label">Level</InputLabel>
-                                    <Select
-                                        labelId="level-select-label"
-                                        label="Level"
-                                        autoWidth
-                                        value={item.level}
-                                        onChange={(e) => handleChange(index, 'level', e.target.value)}
-                                    >
-                                        <MenuItem value={'J'}>Junior</MenuItem>
-                                        <MenuItem value={'M'}>Middle</MenuItem>
-                                        <MenuItem value={'S'}>Senior</MenuItem>
-                                        <MenuItem value={'E'}>Principal</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={3}>
-                                <CustomNumberInput
-                                    placeholder="weight"
-                                    value={item.weight}
-                                    min={0}
-                                    max={100}
-                                    onChange={(e, v) => handleChange(index, 'weight', v)}
-                                />
-                            </Grid>
-                            <Grid item xs={2}>
-                                {items.length > 1 && (
-                                    <Button
-                                        variant="contained"
-                                        onClick={() => handleRemoveItem(index)}
-                                        sx={{marginRight: 1}}
-                                    >
-                                        -
-                                    </Button>
-                                )}
-                                {items.length - 1 === index && (
-                                    <Button
-                                        variant="contained"
-                                        onClick={handleAddItem}
-                                    >
-                                        +
-                                    </Button>
-                                )}
-                            </Grid>
-                        </Grid>
-                    ))}
+                    {/*{items.map((item, index) => (*/}
+                    {/*    <Grid container spacing={2} key={index} alignItems="center">*/}
+                    {/*        <Grid item xs={4}>*/}
+                    {/*            <TextField*/}
+                    {/*                label="Skill Name"*/}
+                    {/*                value={item.skillName}*/}
+                    {/*                onChange={(e) => handleChange(index, 'skillName', e.target.value)}*/}
+                    {/*            />*/}
+                    {/*        </Grid>*/}
+                    {/*        <Grid item xs={2}>*/}
+                    {/*            <FormControl sx={{m: 1, minWidth: 100}}>*/}
+                    {/*                <InputLabel id="level-select-label">Level</InputLabel>*/}
+                    {/*                <Select*/}
+                    {/*                    labelId="level-select-label"*/}
+                    {/*                    label="Level"*/}
+                    {/*                    autoWidth*/}
+                    {/*                    value={item.level}*/}
+                    {/*                    onChange={(e) => handleChange(index, 'level', e.target.value)}*/}
+                    {/*                >*/}
+                    {/*                    <MenuItem value={'J'}>Junior</MenuItem>*/}
+                    {/*                    <MenuItem value={'M'}>Middle</MenuItem>*/}
+                    {/*                    <MenuItem value={'S'}>Senior</MenuItem>*/}
+                    {/*                    <MenuItem value={'E'}>Principal</MenuItem>*/}
+                    {/*                </Select>*/}
+                    {/*            </FormControl>*/}
+                    {/*        </Grid>*/}
+                    {/*        <Grid item xs={3}>*/}
+                    {/*            <CustomNumberInput*/}
+                    {/*                placeholder="weight"*/}
+                    {/*                value={item.weight}*/}
+                    {/*                min={0}*/}
+                    {/*                max={100}*/}
+                    {/*                onChange={(e, v) => handleChange(index, 'weight', v)}*/}
+                    {/*            />*/}
+                    {/*        </Grid>*/}
+                    {/*        <Grid item xs={2}>*/}
+                    {/*            {items.length > 1 && (*/}
+                    {/*                <Button*/}
+                    {/*                    variant="contained"*/}
+                    {/*                    onClick={() => handleRemoveItem(index)}*/}
+                    {/*                    sx={{marginRight: 1}}*/}
+                    {/*                >*/}
+                    {/*                    -*/}
+                    {/*                </Button>*/}
+                    {/*            )}*/}
+                    {/*            {items.length - 1 === index && (*/}
+                    {/*                <Button*/}
+                    {/*                    variant="contained"*/}
+                    {/*                    onClick={handleAddItem}*/}
+                    {/*                >*/}
+                    {/*                    +*/}
+                    {/*                </Button>*/}
+                    {/*            )}*/}
+                    {/*        </Grid>*/}
+                    {/*    </Grid>*/}
+                    {/*))}*/}
                 </div>
                 <div className={styles.centeredDiv}>
                     {modalType === 'create' &&

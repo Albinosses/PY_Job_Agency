@@ -16,6 +16,7 @@ import HireDetails from "./components/hirePage/hireDetails/HireDetails";
 import VacancyDashboard from "./components/dashboards/VacancyDashboard";
 import InterviewDashboard from "./components/dashboards/InterviewDashboard";
 import HireDashboard from "./components/dashboards/HireDashboard";
+import {GeneralContextProvider} from "./contexts/GeneralContext";
 
 function App() {
     return (
@@ -25,24 +26,26 @@ function App() {
                     <SidePanel/>
                 </div>
                 <div className={styles.content}>
-                    <InterviewProvider>
-                        <HireProvider>
-                            <VacancyProvider>
-                                <Routes>
-                                    <Route path="/" element={<MainPage/>}/>
-                                    <Route path="/interview" element={<InterviewPage/>}/>
-                                    <Route path="/interview/:id" element={<InterviewDetails/>}/>
-                                    <Route path="/hire" element={<HirePage/>}/>
-                                    <Route path="/hire/:id" element={<HireDetails/>}/>
-                                    <Route path="/vacancy" element={<VacancyPage/>}/>
-                                    <Route path="/vacancy/:id" element={<VacancyDetails/>}/>
-                                    <Route path="/dashboard/vacancy" element={<VacancyDashboard/>}/>
-                                    <Route path="/dashboard/interview" element={<InterviewDashboard/>}/>
-                                    <Route path="/dashboard/hire" element={<HireDashboard/>}/>
-                                </Routes>
-                            </VacancyProvider>
-                        </HireProvider>
-                    </InterviewProvider>
+                    <GeneralContextProvider>
+                        <InterviewProvider>
+                            <HireProvider>
+                                <VacancyProvider>
+                                    <Routes>
+                                        <Route path="/" element={<MainPage/>}/>
+                                        <Route path="/interview" element={<InterviewPage/>}/>
+                                        <Route path="/interview/:id" element={<InterviewDetails/>}/>
+                                        <Route path="/hire" element={<HirePage/>}/>
+                                        <Route path="/hire/:id" element={<HireDetails/>}/>
+                                        <Route path="/vacancy" element={<VacancyPage/>}/>
+                                        <Route path="/vacancy/:id" element={<VacancyDetails/>}/>
+                                        <Route path="/dashboard/vacancy" element={<VacancyDashboard/>}/>
+                                        <Route path="/dashboard/interview" element={<InterviewDashboard/>}/>
+                                        <Route path="/dashboard/hire" element={<HireDashboard/>}/>
+                                    </Routes>
+                                </VacancyProvider>
+                            </HireProvider>
+                        </InterviewProvider>
+                    </GeneralContextProvider>
                 </div>
             </div>
         </LocalizationProvider>

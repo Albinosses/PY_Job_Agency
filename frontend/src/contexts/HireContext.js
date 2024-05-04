@@ -35,6 +35,7 @@ const mockHires = [
 
 export const HireProvider = ({children}) => {
     const [hires, setHires] = useState(mockHires);
+    const [currentHire, setCurrentHire] = useState()
 
     const updateHire = (updatedHire) => {
         setHires((prevHires) =>
@@ -51,7 +52,7 @@ export const HireProvider = ({children}) => {
     }
 
     return (
-        <HireContext.Provider value={{hires, setHires, updateHire, deleteHire}}>
+        <HireContext.Provider value={{hires, setHires, updateHire, deleteHire, currentHire, setCurrentHire}}>
             {children}
         </HireContext.Provider>
     );
