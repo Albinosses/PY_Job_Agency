@@ -16,23 +16,31 @@ import HireDetails from "./components/hirePage/hireDetails/HireDetails";
 import VacancyDashboard from "./components/dashboards/VacancyDashboard";
 import InterviewDashboard from "./components/dashboards/InterviewDashboard";
 import HireDashboard from "./components/dashboards/HireDashboard";
-import {GeneralContextProvider} from "./contexts/GeneralContext";
+import {GeneralContext, GeneralContextProvider} from "./contexts/GeneralContext";
 import Graphs from "./components/dashboards/Graphs";
+import LoginPage from "./components/login/LoginPage";
+import {useContext, useEffect, useState} from "react";
 
 function App() {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <div className={styles.App}>
-                <div className={styles.sidePanel}>
-                    <SidePanel/>
-                </div>
-                <div className={styles.content}>
-                    <GeneralContextProvider>
-                        <InterviewProvider>
-                            <HireProvider>
-                                <VacancyProvider>
-                                    <Routes>
-                                        <Route path="/" element={<MainPage/>}/>
+        <GeneralContextProvider>
+            <InterviewProvider>
+                <HireProvider>
+                    <VacancyProvider>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <div className={styles.App}>
+                                {isLoggedIn && (
+                                    <div className={styles.sidePanel}>
+                                        <SidePanel/>
+                                    </div>
+                                )}
+                                <div className={styles.content}>
+                                <Routes>
+                                        <Route path="/" element={<LoginPage/>}/>
+                                        <Route path="/main" element={<MainPage setIsLoggedIn={setIsLoggedIn}/>}/>
                                         <Route path="/interview" element={<InterviewPage/>}/>
                                         <Route path="/interview/:id" element={<InterviewDetails/>}/>
                                         <Route path="/hire" element={<HirePage/>}/>
@@ -44,14 +52,13 @@ function App() {
                                         <Route path="/dashboard/hire" element={<HireDashboard/>}/>
                                         <Route path="/dashboard/graph" element={<Graphs/>}/>
                                     </Routes>
-                                </VacancyProvider>
-                            </HireProvider>
-                        </InterviewProvider>
-                    </GeneralContextProvider>
-                </div>
-            </div>
-        </LocalizationProvider>
-
+                                </div>
+                            </div>
+                        </LocalizationProvider>
+                    </VacancyProvider>
+                </HireProvider>
+            </InterviewProvider>
+        </GeneralContextProvider>
     );
 }
 
