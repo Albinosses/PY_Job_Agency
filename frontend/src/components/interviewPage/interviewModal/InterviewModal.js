@@ -33,13 +33,17 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     const [duration, setDuration] = useState("")
     const [feedback, setFeedback] = useState("")
     const [interviewDate, setInterviewDate] = useState(data?.InterviewDate || "")
-    const [interviewType, setInterviewType] = useState("")
-    const [candidate, setCandidate] = useState({})
+    const [interviewType, setInterviewType] = useState("H")
     const [interviewer, setInterviewer] = useState({})
+    const [candidate, setCandidate] = useState({})
 
+
+    useEffect(() => {
+
+    }, []);
     const resetState = () => {
-        setCandidate({});
-        setInterviewer({});
+        setCandidate({id: 'temp'});
+        setInterviewer({id: 'temp'});
         setInterviewType('');
         setInterviewDate('');
         setFeedback('');
@@ -49,13 +53,25 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
     useEffect(() => {
         if (modalType === "edit") {
-            setCandidate(data.candidate);
-            setInterviewer(data.interviewer);
-            setInterviewType(data.InterviewType);
-            setInterviewDate(data.InterviewDate);
+            setInterviewType(data.interviewType);
+            setInterviewDate(data.interviewDate);
             setFeedback(data.feedback);
             setDuration(data.duration);
             setScore(data.score);
+
+            fetch(`http://127.0.0.1:8003/api/get/contact?id=${data.candidateId}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    setCandidate(data)
+                })
+                .catch(err => console.log(err));
+
+            fetch(`http://127.0.0.1:8003/api/get/contact?id=${data.interviewerId}`)
+                .then(response => response.json())
+                .then(data => setInterviewer(data))
+                .catch(err => console.log(err));
+
         } else {
             resetState()
         }
@@ -64,7 +80,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     const [isValid, setIsValid] = useState(false);
 
     const isContactValid = (contact) => {
-        if (Object.keys(contact).length !== 5) {
+        if (Object.keys(contact).length !== 7) {
             return false
         }
 
@@ -72,7 +88,8 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
             contact.surname.trim() !== "" &&
             contact.date !== null &&
             contact.gender !== "" &&
-            contact.email.trim() !== ""
+            contact.email.trim() !== "" &&
+            contact.countryId !== null
     }
 
     useEffect(() => {

@@ -1,14 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import styles from "./ContactInfo.module.css";
 import TextField from "@mui/material/TextField";
 import {DatePicker} from "@mui/x-date-pickers";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import dayjs from "dayjs";
+import {GeneralContext} from "../../contexts/GeneralContext";
 
 const ContactInfoEdit = ({type, owner, contact, setContact}) => {
 
+    const {countries} = useContext(GeneralContext)
+
     const [gender, setGender] = useState(contact?.gender || "")
     const [birthDate, setBirthDate] = useState(contact?.birthDate || "")
+    const [name, setName] = useState(contact?.name || "")
+    const [surname, setSurname] = useState(contact?.surname || "")
+    const [email, setEmail] = useState(contact?.email || "")
+    const [countryId, setCountryId] = useState(contact?.countryId || "")
 
     const [nameIsValid, setNameIsValid] = useState(true)
     const [surnameIsValid, setSurnameIsValid] = useState(true)
@@ -17,19 +24,24 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
 
     useEffect(() => {
         if (type === 'edit') {
-            setGender(contact.gender);
-            setBirthDate(contact.birthDate);
+            setSurname(contact.surname)
+            setEmail(contact.email)
+            setName(contact.name)
+            setGender(contact.gender)
+            setBirthDate(contact.birthDate)
+            setCountryId(contact.countryId)
         }
     }, [type, contact.gender, contact.birthDate]);
 
     const handleGenderChange = (e) => {
-        setGender(e.target.value)
         setContact({...contact, gender: e.target.value})
+        setGender(e.target.value)
     }
 
     const handleBirthDateChange = (date) => {
+        console.log(date)
+        setContact({...contact, birthDate: dayjs(date).format('YYYY-MM-DD')})
         setBirthDate(date)
-        setContact({...contact, birthDate: date.format('YYYY-MM-DD')})
     }
 
     const handleNameChange = (e) => {
@@ -37,6 +49,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
 
         const reg = new RegExp("^[A-Za-z]+$")
         setNameIsValid(reg.test(e.target.value))
+        setName(e.target.value)
     }
 
     const handleSurnameChange = (e) => {
@@ -44,6 +57,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
 
         const reg = new RegExp("^[A-Za-z]+$")
         setSurnameIsValid(reg.test(e.target.value))
+        setSurname(e.target.value)
     }
 
     const handleEmailChange = (e) => {
@@ -51,6 +65,12 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
 
         const reg = new RegExp("^\\S+@\\S+\\.\\S+$")
         setEmailIsValid(reg.test(e.target.value))
+        setEmail(e.target.value)
+    }
+
+    const handleCountryChange = (e) => {
+        setContact({...contact, countryId: e.target.value})
+        setCountryId(e.target.value)
     }
 
 
@@ -65,7 +85,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                     variant="outlined"
                     label="Name"
                     error={!nameIsValid}
-                    value={contact.name}
+                    value={name}
                 />
             </div>
             <div className={styles.inputItem}>
@@ -76,7 +96,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                     variant="outlined"
                     label="Surname"
                     error={!surnameIsValid}
-                    value={contact.surname}
+                    value={surname}
                 />
             </div>
             <div className={styles.inputItem}>
@@ -104,6 +124,25 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                 </FormControl>
             </div>
             <div className={styles.inputItem}>
+                <FormControl sx={{width: 300}}>
+                    <InputLabel id="country-select-label">Country</InputLabel>
+                    <Select
+                        autoWidth
+                        labelId="country-select-label"
+                        id="country-select"
+                        label="Country"
+                        value={countryId}
+                        onChange={handleCountryChange}
+                    >
+                        {countries.map(country => (
+                            <MenuItem value={country.id}>
+                                {country.name}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </div>
+            <div className={styles.inputItem}>
                 <TextField
                     sx={{width: 300}}
                     type="email"
@@ -111,7 +150,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                     onChange={handleEmailChange}
                     variant="outlined"
                     label="Email"
-                    value={contact.email}
+                    value={email}
                     error={!emailIsValid}
                 />
             </div>

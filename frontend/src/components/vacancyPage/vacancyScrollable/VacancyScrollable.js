@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Vacancy from "../vacancy/Vacancy";
 import styles from "./VacancyScrollable.module.css";
 import {Link} from "react-router-dom";
@@ -6,15 +6,28 @@ import {VacancyContext} from "../../../contexts/VacancyContext";
 import {CircularProgress} from "@mui/material";
 
 function VacancyScrollable() {
-    const {vacancies, setVacancies} = useContext(VacancyContext)
+    const {vacancies, setVacancies, setCurrentVacancy} = useContext(VacancyContext)
+
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8003/api/get/vacancies?page=1')
+        setCurrentVacancy(undefined)
+        fetch(`http://127.0.0.1:8003/api/get/vacancies?page=${currentPage}`)
             .then(response => response.json())
             .then(data => {setVacancies(data.vacancies)} )
             .catch(err => console.log(err))
         console.log(vacancies)
-    }, [setVacancies]);
+    }, [setVacancies, currentPage]);
+
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage((prevPage) => prevPage - 1);
+        }
+    };
 
     return (
         <>
@@ -34,6 +47,12 @@ function VacancyScrollable() {
                                 />
                             </Link>
                         ))}
+                        <div className={styles.pagination}>
+                            <button onClick={handlePrevPage} disabled={currentPage === 1}>
+                                Previous
+                            </button>
+                            <button onClick={handleNextPage}>Next</button>
+                        </div>
                     </div>
                 </div>
             }

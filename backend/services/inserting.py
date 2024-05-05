@@ -2,8 +2,8 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company
-from services.models import VacancyRepository, InterviewRepository, HireRepository
+from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillLevel, SkillSetVacancy
+from services.models import VacancyRepository, InterviewRepository, HireRepository, SkillSetVacancyRepository
 
 
 insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
@@ -12,6 +12,7 @@ insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
 @insert_bp.route("/vacancy", methods=["POST"])
 def insert_vacancy():
     request_data = request.get_json()
+    skills = request_data["skills"]
     new_vacancy = VacancyRepository.create(
         companyId=request_data["companyId"],
         empCountryId=request_data["empCountryId"],
@@ -24,6 +25,9 @@ def insert_vacancy():
         description=request_data["description"],
         closeDate=request_data["closeDate"],
     )
+    for skill in skills:
+        skillId = SkillLevel.query.filter_by(skill=skill.skillName, level=skill.level)
+        SkillSetVacancyRepository.create(vacancyId=new_vacancy.id, skillId=skillId, weight=skill.weight)
     return jsonify(new_vacancy.json()), 200
 
 

@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from "./Hire.module.css";
 import {GeneralContext} from "../../../contexts/GeneralContext";
+import dayjs from "dayjs";
 
 function Hire({hire}) {
     const {countries, companies} = useContext(GeneralContext)
@@ -25,7 +26,7 @@ function Hire({hire}) {
                     }
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{hire.hireDate}</div>
+            <div className={styles.vacancyDate}>{dayjs(hire.hireDate).format('YYYY-MM-DD')}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
     );

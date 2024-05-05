@@ -63,8 +63,8 @@ def get_vacancy(id):
     return jsonify(
         {
             "vacancy": vacancy.json(),
-            "hires:": [h.json() for h in hires],
-            "intervies:": [i.json() for i in intervies],
+            "hires": [h.json() for h in hires],
+            "interviews": [i.json() for i in intervies],
             "skills": skills
         }
     ), 200
@@ -81,10 +81,19 @@ def get_contact():
 def get_interview(id):
     interview = Interview.query.get(id)
     vacancy = Vacancy.query.filter_by(id=interview.vacancyId).first()
+    skillset = SkillSetVacancy.query.filter_by(vacancyId=id)
+    skills = []
+    for skill in skillset:
+        s = {}
+        s["skillName"] = SkillLevel.query.filter_by(id=skill.skillId).first().skill
+        s["weight"] = skill.weight
+        s["level"] = SkillLevel.query.filter_by(id=skill.skillId).first().level
+        skills.append(s)
     return jsonify(
         {
             "interview": interview.json(),
-            "vacancy": vacancy.json()
+            "vacancy": vacancy.json(),
+            "skills": skills
         }
     ), 200
 
@@ -94,11 +103,20 @@ def get_hire(id):
     hire = Hire.query.get(id)
     contactId = Employee.query.filter_by(id=hire.employeeId).first().contactId
     vacancy = Vacancy.query.filter_by(id=hire.vacancyId).first()
+    skillset = SkillSetVacancy.query.filter_by(vacancyId=id)
+    skills = []
+    for skill in skillset:
+        s = {}
+        s["skillName"] = SkillLevel.query.filter_by(id=skill.skillId).first().skill
+        s["weight"] = skill.weight
+        s["level"] = SkillLevel.query.filter_by(id=skill.skillId).first().level
+        skills.append(s)
     return jsonify(
         {
             "hire": hire.json(),
             "vacancy": vacancy.json(),
-            "employeeContactId": contactId
+            "employeeContactId": contactId,
+            "skills": skills
         }
     ), 200
 
