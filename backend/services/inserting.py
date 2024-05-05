@@ -11,6 +11,7 @@ from db.OLTP.models import (
     SkillLevel,
     SkillSetVacancy,
     Contact,
+    Employee
 )
 from services.models import (
     VacancyRepository,
@@ -119,9 +120,35 @@ def insert_interview():
 def insert_hire():
     # TODO: ДОРОБИТИ І ЗРОБИТИ ЛОГІЧНО З ФРОНТОМ
     request_data = request.get_json()
+    employee_info = request_data["employeeInfo"]
+    emplyeeContactId = Contact.query.filter_by(
+        countryId=employee_info["countryId"],
+        name=employee_info["name"],
+        surname=employee_info["surname"],
+        birthDate=employee_info["birthDate"],
+        gender=employee_info["gender"],
+        email=employee_info["email"],
+    ).first()
+    if emplyeeContactId is None:
+        emplyeeContactId = InterviewRepository.create_candidate(
+        countryId=employee_info["countryId"],
+        name=employee_info["name"],
+        surname=employee_info["surname"],
+        birthDate=employee_info["birthDate"],
+        gender=employee_info["gender"],
+        email=employee_info["email"],
+    )
+    employeeId = Employee.query.filter_by(contactId=emplyeeContactId.id).first()
+    if employeeId is None:
+        employeeId = HireRepository.create_employee(
+            contactId=emplyeeContactId.id,
+            resume = None,
+            resumeUploadDate=employee_info["resumeUploadDate"]
+        )
+    
     new_hire = HireRepository.create(
         vacancyId=request_data["vacancyId"],
-        employeeId=request_data["employeeId"],
+        employeeId=employeeId.id,
         hireDate=request_data["hireDate"],
     )
     return jsonify(new_hire.json()), 200
