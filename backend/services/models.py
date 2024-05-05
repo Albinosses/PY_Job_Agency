@@ -1,5 +1,5 @@
 from typing import TypedDict
-from db.OLTP.repositories import VacancyRepository, InterviewRepository, HireRepository
+from db.OLTP.repositories import VacancyRepository, InterviewRepository, HireRepository, SkillSetVacancyRepository
 from enum import Enum
 
 
