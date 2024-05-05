@@ -5,6 +5,24 @@ from datetime import datetime
 
 class VacancyRepository:
     @staticmethod
+    def delete(id: str):
+        vacancy = Vacancy.query.get(id)
+        skillsets = SkillSetVacancy.query.filter_by(vacancyId=id).all()
+        interviews = Interview.query.filter_by(vacancyId=id).all()
+        for i in interviews:
+            i.vacancyId = None
+        hires = Hire.query.filter_by(vacancyId=id).all()
+        for h in hires:
+            h.vacancyId = None
+        for s in skillsets:
+
+            db.session.delete(s)
+        db.session.delete(vacancy)
+        db.session.commit()
+        return 1
+    
+
+    @staticmethod
     def get_by_id(id: str):
         return Vacancy.query.get(id)
 
@@ -144,6 +162,12 @@ class InterviewRepository:
         db.session.refresh(new_interview)
         return new_interview
 
+    @staticmethod
+    def delete(id: str):
+        interview = Interview.query.get(id)
+        db.session.delete(interview)
+        db.session.commit()
+        return 1
 
 class HireRepository:
     @staticmethod
@@ -189,6 +213,13 @@ class HireRepository:
         db.session.flush()
         db.session.refresh(new_hire)
         return new_hire
+
+    @staticmethod
+    def delete(id: str):
+        hire = Hire.query.get(id)
+        db.session.delete(hire)
+        db.session.commit()
+        return 1
 
 
 class SkillSetVacancyRepository:
