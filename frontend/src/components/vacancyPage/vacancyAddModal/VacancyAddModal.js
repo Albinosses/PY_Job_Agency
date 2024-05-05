@@ -178,7 +178,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
             'publicationDate': dayjs(startDate).format('MM/DD/YYYY'),
             'status': status,
             'description': description,
-            'closeDate': status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : null,
+            'closeDate': status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : '01/01/0001',
             'skills': items
         };
 

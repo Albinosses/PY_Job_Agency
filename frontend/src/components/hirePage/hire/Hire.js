@@ -21,7 +21,7 @@ function Hire({hire}) {
             <div className={styles.vacancyHeader}>
                 <div className={styles.vacancyTags}>
                     <div className={styles.vacancyTag}>Country</div>
-                    {vacancy &&
+                    {vacancy && companies &&
                         <div className={styles.vacancyTag}>{companies.find(company => company.id === vacancy.companyId).name}</div>
                     }
                 </div>
