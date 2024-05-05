@@ -2,8 +2,22 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillLevel, SkillSetVacancy
-from services.models import VacancyRepository, InterviewRepository, HireRepository, SkillSetVacancyRepository
+from db.OLTP.models import (
+    Vacancy,
+    Interview,
+    Hire,
+    Country,
+    Company,
+    SkillLevel,
+    SkillSetVacancy,
+    Contact,
+)
+from services.models import (
+    VacancyRepository,
+    InterviewRepository,
+    HireRepository,
+    SkillSetVacancyRepository,
+)
 
 
 insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
@@ -26,26 +40,67 @@ def insert_vacancy():
         closeDate=request_data["closeDate"],
     )
     for skill in skills:
-        print(skill["skillName"],skill["level"])
-        skillId = SkillLevel.query.filter_by(skill=skill["skillName"], level=skill["level"]).first()
+        print(skill["skillName"], skill["level"])
+        skillId = SkillLevel.query.filter_by(
+            skill=skill["skillName"], level=skill["level"]
+        ).first()
         if skillId is None:
-            skillId = SkillSetVacancyRepository.create_skill(skill=skill["skillName"], level=skill["level"])
-        SkillSetVacancyRepository.create(vacancyId=new_vacancy.id, skillId=skillId.id, weight=skill["weight"]/100)
+            skillId = SkillSetVacancyRepository.create_skill(
+                skill=skill["skillName"], level=skill["level"]
+            )
+        SkillSetVacancyRepository.create(
+            vacancyId=new_vacancy.id, skillId=skillId.id, weight=skill["weight"] / 100
+        )
     return jsonify(new_vacancy.json()), 200
 
 
 @insert_bp.route("/interview", methods=["POST"])
 def insert_interview():
     request_data = request.get_json()
+    candidate_info = request_data["candidateInfo"]
     # create or get candidate
+    candidateId = Contact.query.filter_by(
+        countryId=candidate_info["сountryId"],
+        name=candidate_info["name"],
+        surname=candidate_info["surname"],
+        birthDate=candidate_info["birthDate"],
+        gender=candidate_info["gender"],
+        email=candidate_info["email"],
+    ).first()
+    if candidateId is None:
+        candidateId = InterviewRepository.create_candidate(
+            candidate_info["сountryId"],
+            candidate_info["name"],
+            candidate_info["surname"],
+            candidate_info["birthDate"],
+            candidate_info["gender"],
+            candidate_info["email"],
+        )
 
-    #create or get interviewer
-
+    # create or get interviewer
+    interviewer_info = request_data["interviewerInfo"]
+    interviewerId = Contact.query.filter_by(
+        countryId=interviewer_info["сountryId"],
+        name=interviewer_info["name"],
+        surname=interviewer_info["surname"],
+        birthDate=interviewer_info["birthDate"],
+        gender=interviewer_info["gender"],
+        email=interviewer_info["email"],
+    ).first()
+    if interviewerId is None:
+        interviewerId = InterviewRepository.create_interviewer(
+            interviewer_info["сountryId"],
+            interviewer_info["name"],
+            interviewer_info["surname"],
+            interviewer_info["birthDate"],
+            interviewer_info["gender"],
+            interviewer_info["email"],
+        )
 
     new_interview = InterviewRepository.create(
         vacancyId=request_data["vacancyId"],
-        candidateId=request_data["candidateId"],
-        interviewerId=request_data["interviewerId"],
+        candidateId=candidateId,
+        interviewerId=interviewerId,
         interviewType=request_data["interviewType"],
         interviewDate=request_data["interviewDate"],
         duration=request_data["duration"],
@@ -54,6 +109,7 @@ def insert_interview():
     )
     return jsonify(new_interview.json()), 200
 
+
 @insert_bp.route("/hire", methods=["POST"])
 def insert_hire():
     # TODO: ДОРОБИТИ І ЗРОБИТИ ЛОГІЧНО З ФРОНТОМ
@@ -61,6 +117,6 @@ def insert_hire():
     new_hire = HireRepository.create(
         vacancyId=request_data["vacancyId"],
         employeeId=request_data["employeeId"],
-        hireDate=request_data["hireDate"]
+        hireDate=request_data["hireDate"],
     )
     return jsonify(new_hire.json()), 200

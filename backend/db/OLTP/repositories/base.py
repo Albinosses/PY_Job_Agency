@@ -59,8 +59,55 @@ class InterviewRepository:
         return Interview.query.get(id)
     
     @staticmethod
-    def create_or_get_interviewer(id: str):
-        return 1
+    def create_interviewer(countryId,name,surname,birthDate,gender,email):
+        birthDate_obj = datetime.strptime(birthDate, "%m/%d/%Y")
+
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+        birthDate = birthDate_obj.strftime("%Y-%m-%d")
+
+        last_id = Contact.query.order_by(Contact.id.desc()).first()
+        id = last_id.id + 1
+
+        new_interviewer = Contact(
+            id=id,
+            countryId=countryId,
+            name=name,
+            surname=surname,
+            birthDate=birthDate,
+            gender=gender,
+            email=email
+        )
+        db.session.add(new_interviewer)
+        db.session.commit()
+        db.session.flush()
+        db.session.refresh(new_interviewer)
+        return new_interviewer
+    
+    @staticmethod
+    def create_candidate(countryId,name,surname,birthDate,gender,email):
+        birthDate_obj = datetime.strptime(birthDate, "%m/%d/%Y")
+
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+        birthDate = birthDate_obj.strftime("%Y-%m-%d")
+
+        last_id = Contact.query.order_by(Contact.id.desc()).first()
+        id = last_id.id + 1
+
+        new_candidate = Contact(
+            id=id,
+            countryId=countryId,
+            name=name,
+            surname=surname,
+            birthDate=birthDate,
+            gender=gender,
+            email=email
+        )
+        db.session.add(new_candidate)
+        db.session.commit()
+        db.session.flush()
+        db.session.refresh(new_candidate)
+        return new_candidate
+
     @staticmethod
     def create(
         vacancyId,
