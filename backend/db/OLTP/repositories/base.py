@@ -1,4 +1,4 @@
-from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy
+from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel
 from db import db
 from datetime import datetime
 
@@ -139,3 +139,20 @@ class SkillSetVacancyRepository:
         db.session.flush()
         db.session.refresh(new_skillset)
         return new_skillset
+    
+    @staticmethod
+    def create_skill(skill,level):
+        last_id = SkillLevel.query.order_by(SkillLevel.id.desc()).first()
+        id = last_id.id + 1
+
+        new_skill = SkillLevel(
+            id=id, skill=skill, level=level
+        )
+
+        db.session.add(new_skill)
+        db.session.commit()
+        db.session.flush()
+        db.session.refresh(new_skill)
+        return new_skill
+    
+

@@ -26,8 +26,11 @@ def insert_vacancy():
         closeDate=request_data["closeDate"],
     )
     for skill in skills:
-        skillId = SkillLevel.query.filter_by(skill=skill.skillName, level=skill.level)
-        SkillSetVacancyRepository.create(vacancyId=new_vacancy.id, skillId=skillId, weight=skill.weight)
+        print(skill["skillName"],skill["level"])
+        skillId = SkillLevel.query.filter_by(skill=skill["skillName"], level=skill["level"]).first()
+        if skillId is None:
+            skillId = SkillSetVacancyRepository.create_skill(skill=skill["skillName"], level=skill["level"])
+        SkillSetVacancyRepository.create(vacancyId=new_vacancy.id, skillId=skillId.id, weight=skill["weight"]/100)
     return jsonify(new_vacancy.json()), 200
 
 
