@@ -6,6 +6,8 @@ import dayjs from "dayjs";
 import {DatePicker} from "@mui/x-date-pickers";
 import Button from "@mui/material/Button";
 import {HireContext} from "../../../contexts/HireContext";
+import {VacancyContext} from "../../../contexts/VacancyContext";
+import {useNavigate} from "react-router-dom";
 const style = {
     position: 'absolute',
     top: '50%',
@@ -20,8 +22,9 @@ const style = {
 };
 
 const HireModal = ({open, setOpen, modalType, data, employeeContactId}) => {
-
+    const {currentVacancy} = useContext(VacancyContext)
     const {updateHire} = useContext(HireContext)
+    const navigate = useNavigate()
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -75,9 +78,41 @@ const HireModal = ({open, setOpen, modalType, data, employeeContactId}) => {
     }, [hireDate, employee]);
 
 
-    const handleAddHire = () => {
-        //CALL to API for new items creation
-        handleClose()
+    const handleAddHire = async () => {
+        const updatedEmployee = {...employee}
+        delete updatedEmployee.id
+        updatedEmployee.resumeUploadDate = "02/02/2024"
+
+        const dataToSend = {
+            'vacancyId': currentVacancy.id,
+            'hireDate': dayjs(hireDate).format('MM/DD/YYYY'),
+            'employeeInfo': updatedEmployee
+        };
+
+        console.log(dataToSend)
+
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/insert/hire', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            console.log(responseData)
+            navigate(`/hire/${responseData.id}`);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
     }
 
     const handleEditHire = () => {
