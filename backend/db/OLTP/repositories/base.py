@@ -1,4 +1,4 @@
-from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Contact
+from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Contact, Employee
 from db import db
 from datetime import datetime
 
@@ -149,6 +149,27 @@ class HireRepository:
     @staticmethod
     def get_by_id(id: str):
         return Interview.query.get(id)
+    @staticmethod
+    def create_employee(contactId, resume, resumeUploadDate):
+        resumeUploadDate_obj = datetime.strptime(resumeUploadDate, "%m/%d/%Y")
+
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+        resumeUploadDate = resumeUploadDate_obj.strftime("%Y-%m-%d")
+
+        last_id = Employee.query.order_by(Employee.id.desc()).first()
+        id = last_id.id + 1
+
+        new_hire = Employee(
+            id=id,
+            contactId=contactId,
+            resume=resume,
+            resumeUploadDate=resumeUploadDate,
+        )
+        db.session.add(new_hire)
+        db.session.commit()
+        db.session.flush()
+        db.session.refresh(new_hire)
+        return new_hire
 
     @staticmethod
     def create(vacancyId, employeeId, hireDate):
