@@ -62,10 +62,23 @@ function VacancyDetails() {
         }
     }
 
-    const handleDelete = () => {
-        //deleteVacancy(vacancy.id)
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8003/api/delete/vacancy/${id}`, {
+                method: "DELETE",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
 
-        navigate(`/vacancy`)
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+            navigate(`/vacancy`)
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        }
     }
 
     const handleCloseVacancy= () => {
