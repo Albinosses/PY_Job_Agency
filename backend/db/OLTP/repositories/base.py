@@ -1,4 +1,4 @@
-from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Interviewer, Candidate, Contact
+from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Contact
 from db import db
 from datetime import datetime
 
@@ -60,7 +60,7 @@ class InterviewRepository:
     
     @staticmethod
     def create_or_get_interviewer(id: str):
-
+        return 1
     @staticmethod
     def create(
         vacancyId,
