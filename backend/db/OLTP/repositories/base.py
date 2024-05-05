@@ -61,11 +61,9 @@ class InterviewRepository:
     @staticmethod
     def create_interviewer(countryId,name,surname,birthDate,gender,email):
         birthDate_obj = datetime.strptime(birthDate, "%m/%d/%Y")
-
+        
         # Now format the datetime objects into the correct format "%Y-%m-%d"
         birthDate = birthDate_obj.strftime("%Y-%m-%d")
-        
-        print(birthDate)
 
         last_id = Contact.query.order_by(Contact.id.desc()).first()
         id = last_id.id + 1

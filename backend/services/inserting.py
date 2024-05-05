@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -63,11 +63,16 @@ def insert_interview():
     # countryId = candidate_info["countryId"]
     # print(countryId)
     # create or get candidate
+    birthDate_obj = datetime.strptime(candidate_info["birthDate"], "%m/%d/%Y")
+
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+    birthDate = birthDate_obj.strftime("%Y-%m-%d")
+    
     candidateId = Contact.query.filter_by(
         countryId=countryId,
         name=candidate_info["name"],
         surname=candidate_info["surname"],
-        birthDate=candidate_info["birthDate"],
+        birthDate=birthDate, #here
         gender=candidate_info["gender"],
         email=candidate_info["email"],
     ).first()
