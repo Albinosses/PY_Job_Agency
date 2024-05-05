@@ -37,9 +37,24 @@ const HireDetails = () => {
             .catch(err => console.log(err))
     }, []);
 
-    const handleDelete = () => {
-        //deleteHire(hire.id)
-        navigate(`/hire`)
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8003/api/delete/hire/${id}`, {
+                method: "DELETE",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            console.log(response)
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+            navigate(`/hire`)
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        }
     }
 
     const handleEdit = () => {

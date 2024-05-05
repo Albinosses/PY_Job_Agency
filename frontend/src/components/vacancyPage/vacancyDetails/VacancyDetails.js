@@ -64,6 +64,7 @@ function VacancyDetails() {
 
     const handleDelete = () => {
         //deleteVacancy(vacancy.id)
+
         navigate(`/vacancy`)
     }
 
