@@ -213,18 +213,21 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         const vacancyData = {
             id: data.id,
             jobTitle: jobTitle,
-            company: "company",
-            empCountry: "country",
+            companyId: companyId,
+            empCountryId: countryId,
             description: description,
             salary: salary,
             employmentType: type,
             workSetting: workSetting,
             status: status,
-            // publicationDate: startDate.format('YYYY-MM-DD'), // Format the date as needed
-            // closeDate: endDate.format('YYYY-MM-DD'), // Format the date as needed
-            // skills: items,
+            publicationDate: dayjs(startDate).format('MM/DD/YYYY'), // Format the date as needed
+            closeDate: status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : '01/01/0001', // Format the date as needed
+            skills: items,
         };
-        updateVacancy(vacancyData)
+
+        console.log(vacancyData)
+
+        //updateVacancy(vacancyData)
         handleClose()
     }
 

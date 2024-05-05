@@ -40,7 +40,7 @@ function VacancyScrollable() {
                 <div className={styles.container}>
                     <div className={styles.scrollableContainer}>
                         {vacancies.map((vacancy) => (
-                            <Link to={`/vacancy/${vacancy.id}`}>
+                            <Link  key={vacancy.id} to={`/vacancy/${vacancy.id}`}>
                                 <Vacancy
                                     key={vacancy.id}
                                     vacancy={vacancy}
