@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import {StyledParagraph, SkillContainer} from "../../StyledComponents";
 import {GeneralContext} from "../../../contexts/GeneralContext";
 import {VacancyContext} from "../../../contexts/VacancyContext";
+import dayjs from "dayjs";
 
 function VacancyInfo() {
     const {countries, companies} = useContext(GeneralContext)
@@ -73,9 +74,9 @@ function VacancyInfo() {
                     <StyledParagraph>Salary: {currentVacancy.salary}</StyledParagraph>
                     <StyledParagraph>Employment Type: {getFullEmploymentType(currentVacancy.employmentType)}</StyledParagraph>
                     <StyledParagraph>Work Setting: {getFullWorkSetting(currentVacancy.workSetting)}</StyledParagraph>
-                    <StyledParagraph>Publication Date: {currentVacancy.publicationDate}</StyledParagraph>
+                    <StyledParagraph>Publication Date: {dayjs(currentVacancy.publicationDate).format('YYYY-MM-DD')}</StyledParagraph>
                     {currentVacancy.status === 'C' &&
-                        <StyledParagraph>Close Date: {currentVacancy.closeDate}</StyledParagraph>
+                        <StyledParagraph>Close Date: {dayjs(currentVacancy.closeDate).format('YYYY-MM-DD')}</StyledParagraph>
                     }
                     <StyledParagraph>Status: {getFullStatus(currentVacancy.status)}</StyledParagraph>
                     {currentVacancy.skills.map((skill, index) => (

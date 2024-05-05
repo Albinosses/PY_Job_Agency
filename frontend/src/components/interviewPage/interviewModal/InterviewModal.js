@@ -42,8 +42,8 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
     }, []);
     const resetState = () => {
-        setCandidate({});
-        setInterviewer({});
+        setCandidate({id: 'temp'});
+        setInterviewer({id: 'temp'});
         setInterviewType('');
         setInterviewDate('');
         setFeedback('');
@@ -88,7 +88,8 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
             contact.surname.trim() !== "" &&
             contact.date !== null &&
             contact.gender !== "" &&
-            contact.email.trim() !== ""
+            contact.email.trim() !== "" &&
+            contact.countryId !== null
     }
 
     useEffect(() => {

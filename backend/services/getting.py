@@ -115,7 +115,7 @@ def get_hire(id):
         {
             "hire": hire.json(),
             "vacancy": vacancy.json(),
-            "employeeContactId": contactId
+            "employeeContactId": contactId,
             "skills": skills
         }
     ), 200

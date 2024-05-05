@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import styles from "./Vacancy.module.css";
 import {GeneralContext} from "../../../contexts/GeneralContext";
+import dayjs from "dayjs";
 
 function Vacancy({vacancy}) {
 
@@ -16,7 +17,7 @@ function Vacancy({vacancy}) {
                     <div className={styles.vacancyTag}>{companies.find(company => company.id === vacancy.companyId).name}</div>
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{vacancy.publicationDate} - {vacancy.closeDate}</div>
+            <div className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')} - {dayjs(vacancy.closeDate).format('YYYY-MM-DD')}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
     );
