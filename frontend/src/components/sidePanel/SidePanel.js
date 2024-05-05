@@ -104,6 +104,15 @@ function SidePanel({onPageChange}) {
                             </div>
                         </div>
                     </Link>
+                    <Link to="/dashboard/graph">
+                        <div
+                            className={`${styles.section} ${selectedItem.endsWith('dashboard/graph') ? styles.blue : ''}`}
+                        >
+                            <div className={styles.submenuItem}>
+                                Graphs
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             )}
         </div>

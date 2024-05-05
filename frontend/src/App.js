@@ -17,6 +17,7 @@ import VacancyDashboard from "./components/dashboards/VacancyDashboard";
 import InterviewDashboard from "./components/dashboards/InterviewDashboard";
 import HireDashboard from "./components/dashboards/HireDashboard";
 import {GeneralContextProvider} from "./contexts/GeneralContext";
+import Graphs from "./components/dashboards/Graphs";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                                         <Route path="/dashboard/vacancy" element={<VacancyDashboard/>}/>
                                         <Route path="/dashboard/interview" element={<InterviewDashboard/>}/>
                                         <Route path="/dashboard/hire" element={<HireDashboard/>}/>
+                                        <Route path="/dashboard/graph" element={<Graphs/>}/>
                                     </Routes>
                                 </VacancyProvider>
                             </HireProvider>

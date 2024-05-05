@@ -1,6 +1,7 @@
 import React from "react";
 import MainTitle from "./mainTitle/MainTitle";
 import MainContent from "./mainContent/MainContent";
+import Graphs from "../dashboards/Graphs";
 
 function MainPage() {
     return (
