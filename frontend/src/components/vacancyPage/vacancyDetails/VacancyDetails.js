@@ -39,9 +39,6 @@ function VacancyDetails() {
                     skills: modifiedSkills
                 };
 
-
-                console.log(data)
-
                 setHires(data.hires)
                 setInterviews(data.interviews)
                 setCurrentVacancy(updatedVacancy)

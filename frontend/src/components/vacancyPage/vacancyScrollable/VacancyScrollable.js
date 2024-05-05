@@ -16,7 +16,6 @@ function VacancyScrollable() {
             .then(response => response.json())
             .then(data => {setVacancies(data.vacancies)} )
             .catch(err => console.log(err))
-        console.log(vacancies)
     }, [setVacancies, currentPage]);
 
     const handleNextPage = () => {

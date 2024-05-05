@@ -35,8 +35,6 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setCompanyId(e.target.value)
     }
 
-    //don't touch!!!
-    console.log(data)
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -148,8 +146,6 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
 
     useEffect(() => {
         if (modalType === 'edit') {
-            console.log(data.empCountryId)
-
             setJobTitle(data.jobTitle);
             setDescription(data.description);
             setWorkSetting(data.workSetting);

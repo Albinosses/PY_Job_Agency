@@ -8,7 +8,6 @@ function VacancyInfo() {
     const {countries, companies} = useContext(GeneralContext)
     const {currentVacancy} = useContext(VacancyContext)
 
-    console.log(currentVacancy)
     const getFullEmploymentType = (abr) => {
         switch (abr) {
             case 'F':

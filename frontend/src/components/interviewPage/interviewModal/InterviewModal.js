@@ -51,8 +51,6 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
     useEffect(() => {
         if (modalType === "edit") {
-            console.log(data.vacancyId)
-
             setInterviewType(data.interviewType);
             setInterviewDate(data.interviewDate);
             setFeedback(data.feedback);
@@ -61,10 +59,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
             fetch(`http://127.0.0.1:8003/api/get/contact?id=${data.candidateId}`)
                 .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    setCandidate(data)
-                })
+                .then(data => setCandidate(data))
                 .catch(err => console.log(err));
 
             fetch(`http://127.0.0.1:8003/api/get/contact?id=${data.interviewerId}`)
