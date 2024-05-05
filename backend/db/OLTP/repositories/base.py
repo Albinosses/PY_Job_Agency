@@ -1,4 +1,4 @@
-from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel
+from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Interviewer, Candidate, Contact
 from db import db
 from datetime import datetime
 
@@ -27,7 +27,8 @@ class VacancyRepository:
         # Now format the datetime objects into the correct format "%Y-%m-%d"
         publicationDate = publicationDate_obj.strftime("%Y-%m-%d")
         closeDate = closeDate_obj.strftime("%Y-%m-%d")
-
+        if status != "C":
+            closeDate = None
         # last id
         last_id = Vacancy.query.order_by(Vacancy.id.desc()).first()
         id = last_id.id + 1
@@ -56,6 +57,9 @@ class InterviewRepository:
     @staticmethod
     def get_by_id(id: str):
         return Interview.query.get(id)
+    
+    @staticmethod
+    def create_or_get_interviewer(id: str):
 
     @staticmethod
     def create(
