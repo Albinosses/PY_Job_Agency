@@ -8,6 +8,7 @@ import CustomNumberInput from "../../NumberInput";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import {InterviewContext} from "../../../contexts/InterviewContext";
+import {VacancyContext} from "../../../contexts/VacancyContext";
 
 const style = {
     position: 'absolute',
@@ -24,6 +25,7 @@ const style = {
 const InterviewModal = ({open, setOpen, modalType, data}) => {
 
     const { updateInterview } = useContext(InterviewContext)
+    const {currentVacancy} = useContext(VacancyContext)
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -37,10 +39,6 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     const [interviewer, setInterviewer] = useState({})
     const [candidate, setCandidate] = useState({})
 
-
-    useEffect(() => {
-
-    }, []);
     const resetState = () => {
         setCandidate({id: 'temp'});
         setInterviewer({id: 'temp'});
@@ -53,6 +51,8 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
     useEffect(() => {
         if (modalType === "edit") {
+            console.log(data.vacancyId)
+
             setInterviewType(data.interviewType);
             setInterviewDate(data.interviewDate);
             setFeedback(data.feedback);
@@ -107,6 +107,20 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
 
 
     const handleAddInterview = () => {
+        console.log(currentVacancy)
+        const dataToSend = {
+            'vacancyId': currentVacancy.id,
+            'interviewType': interviewType,
+            'interviewDate': interviewDate,
+            'duration': duration,
+            'feedback': feedback,
+            'score': score,
+            'candidateInfo': candidate,
+            'interviewerInfo': interviewer
+        };
+
+        console.log(dataToSend)
+
         //CALL to API for new items creation
         handleClose()
     }
@@ -125,6 +139,10 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
         };
         updateInterview(interviewData)
         handleClose()
+    }
+
+    const handleInterviewDateChange = (date) => {
+        setInterviewDate(dayjs(date).format('YYYY-MM-DD'))
     }
 
     return (
@@ -168,7 +186,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                     <DatePicker
                         sx={{width: 300}}
                         label="Interview Date"
-                        onChange={(date) => setInterviewDate(date)}
+                        onChange={handleInterviewDateChange}
                         value={dayjs(interviewDate)}
                     />
                     <TextField
