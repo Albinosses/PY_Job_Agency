@@ -39,7 +39,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
     }
 
     const handleBirthDateChange = (date) => {
-        setContact({...contact, birthDate: dayjs(date).format('YYYY-MM-DD')})
+        setContact({...contact, birthDate: dayjs(date).format('MM/DD/YYYY')})
         setBirthDate(date)
     }
 

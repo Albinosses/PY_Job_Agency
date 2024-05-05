@@ -9,6 +9,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import {InterviewContext} from "../../../contexts/InterviewContext";
 import {VacancyContext} from "../../../contexts/VacancyContext";
+import {useNavigate} from "react-router-dom";
 
 const style = {
     position: 'absolute',
@@ -23,9 +24,9 @@ const style = {
 };
 
 const InterviewModal = ({open, setOpen, modalType, data}) => {
-
     const { updateInterview } = useContext(InterviewContext)
     const {currentVacancy} = useContext(VacancyContext)
+    const navigate = useNavigate()
     const handleClose = () => {
         setOpen(false)
         resetState();
@@ -100,24 +101,49 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
         setIsValid(allInputsFilled);
     }, [feedback, interviewer, candidate, interviewType, interviewDate, duration, score]);
 
+    const handleAddInterview = async () => {
+        const updatedInterviewer = {...interviewer}
+        delete updatedInterviewer.id
 
-    const handleAddInterview = () => {
-        console.log(currentVacancy)
+        const updatedCandidate = {...candidate}
+        delete updatedCandidate.id
+
+
         const dataToSend = {
             'vacancyId': currentVacancy.id,
             'interviewType': interviewType,
-            'interviewDate': interviewDate,
+            'interviewDate': dayjs(interviewDate).format('MM/DD/YYYY'),
             'duration': duration,
             'feedback': feedback,
             'score': score,
-            'candidateInfo': candidate,
-            'interviewerInfo': interviewer
+            'candidateInfo': updatedCandidate,
+            'interviewerInfo': updatedInterviewer
         };
 
         console.log(dataToSend)
 
-        //CALL to API for new items creation
-        handleClose()
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/insert/interview', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            console.log(responseData)
+            navigate(`/interview/${responseData.id}`);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
     }
 
     const handleEditInterview = () => {
