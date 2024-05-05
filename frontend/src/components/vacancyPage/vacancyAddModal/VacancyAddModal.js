@@ -175,11 +175,13 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
             'salary': salary,
             'employmentType': type,
             'workSetting': workSetting,
-            'publicationDate': '12/12/2022',
+            'publicationDate': dayjs(startDate).format('MM/DD/YYYY'),
             'status': status,
             'description': description,
-            'closeDate': '12/12/2022'
+            'closeDate': status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : null
         };
+
+        console.log(data)
 
         try {
             const response = await fetch('http://127.0.0.1:8003/api/insert/vacancy', {
