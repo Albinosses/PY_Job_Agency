@@ -1,4 +1,4 @@
-from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Interviewer, Candidate, Contact
+from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Contact
 from db import db
 from datetime import datetime
 
