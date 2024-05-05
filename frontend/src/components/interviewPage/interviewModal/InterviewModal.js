@@ -31,22 +31,22 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
         resetState();
     };
 
-    const [score, setScore] = useState("")
-    const [duration, setDuration] = useState("")
+    const [score, setScore] = useState(0)
+    const [duration, setDuration] = useState(0)
     const [feedback, setFeedback] = useState("")
-    const [interviewDate, setInterviewDate] = useState(data?.InterviewDate || "")
+    const [interviewDate, setInterviewDate] = useState(null)
     const [interviewType, setInterviewType] = useState("H")
     const [interviewer, setInterviewer] = useState({})
     const [candidate, setCandidate] = useState({})
 
     const resetState = () => {
-        setCandidate({id: 'temp'});
-        setInterviewer({id: 'temp'});
+        setCandidate({id: 'temp', birthDate: null});
+        setInterviewer({id: 'temp',  birthDate: null});
         setInterviewType('');
-        setInterviewDate('');
+        setInterviewDate(null);
         setFeedback('');
-        setDuration('');
-        setScore('');
+        setDuration(0);
+        setScore(0);
     }
 
     useEffect(() => {
@@ -137,7 +137,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     }
 
     const handleInterviewDateChange = (date) => {
-        setInterviewDate(dayjs(date).format('YYYY-MM-DD'))
+        setInterviewDate(date)
     }
 
     return (
@@ -182,7 +182,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                         sx={{width: 300}}
                         label="Interview Date"
                         onChange={handleInterviewDateChange}
-                        value={dayjs(interviewDate)}
+                        value={interviewDate}
                     />
                     <TextField
                         sx={{width: 300}}
