@@ -66,13 +66,13 @@ def generate_random_date_between(start_date_str, end_date_str):
 
     
 
-data = pd.read_csv("./jobs_in_data.csv") # Завантаження первинних даних з датасету
+data = pd.read_csv("./database/jobs_in_data.csv") # Завантаження первинних даних з датасету
 
 all_countries = pd.concat([data["company_location"], data["employee_residence"]], ignore_index=True) # Отримуємо унікальні країни, які знаходяться в датасеті
 
 countries = pd.DataFrame(all_countries.unique(),columns=["name"]) # створення окремого датасету для країн з метою первинної заливки в OLTP
 
-countries.to_csv("./data/countries.csv",index=False)
+countries.to_csv("./database/data/countries.csv",index=False)
 
 names = ['John', 'Emily', 'Michael', 'Sophia', 'William', 'Emma', 'Matthew', 'Olivia', 'James', 'Ava',
          'Daniel', 'Isabella', 'Ethan', 'Mia', 'Alexander', 'Charlotte', 'David', 'Abigail', 'Joseph', 'Elizabeth']
@@ -135,7 +135,7 @@ entry = {"name":name,"surname":surname,"birthDate":birthDate,"gender":gender,"em
 data_list.append(entry)
 
 contacts = pd.DataFrame(data_list, columns=["name","surname","birthDate","gender","email","countryId"]) 
-contacts.to_csv("./data/contacts.csv",index=False) # збереження контактів у csv форматі]
+contacts.to_csv("./database/data/contacts.csv",index=False) # збереження контактів у csv форматі]
 
 skills = ["Python Programming","SQL", "Data Cleaning","Exploratory Data Analysis (EDA)","Data Manipulation","Excel","Data Mining","Basic Statistics","Data Preprocessing","Research Skills"]
 levels = ["J","M","S","E"]
@@ -145,7 +145,7 @@ for skill in skills:
         skills_pd.append({"skill":skill,"level":level})
 
 skills_pd = pd.DataFrame(skills_pd, columns = ["skill","level"])
-skills_pd.to_csv("./data/skills.csv", index=False) 
+skills_pd.to_csv("./database/data/skills.csv", index=False) 
 
 skill_set_vacancy = []
 
@@ -173,7 +173,7 @@ for i in range(len(data)):
     
 skill_set_vacancy_df =pd.DataFrame(skill_set_vacancy, columns=["vacancyId","skillId","weight"])
 
-skill_set_vacancy_df.to_csv("./data/skill_set_vacancy.csv", index=False)
+skill_set_vacancy_df.to_csv("./database/data/skill_set_vacancy.csv", index=False)
 
 # COMPANIES DF
 companies = [
@@ -215,7 +215,7 @@ companies_pd = pd.DataFrame(companies_pd,columns=["countryId", "name","size"])
 
 companies_pd_unique = companies_pd.drop_duplicates(subset=["name"]).reset_index(drop=True)
 
-companies_pd_unique.to_csv("./data/companies.csv", index=False)
+companies_pd_unique.to_csv("./database/data/companies.csv", index=False)
 
 
 vacancies_closed = [] # 7000 
@@ -323,7 +323,7 @@ vacancies_opened =pd.DataFrame(vacancies_opened, columns=["companyId","empCountr
 vacancies_postponed =pd.DataFrame(vacancies_postponed, columns=["companyId","empCountryId","jobTitle","description","salary","employmentType","workSetting","publicationDate","closeDate","status"])
 
 vacancies_combined = pd.concat([vacancies_closed, vacancies_opened, vacancies_postponed], ignore_index=True)
-vacancies_combined.to_csv("./data/vacancies.csv", index=False)
+vacancies_combined.to_csv("./database/data/vacancies.csv", index=False)
 
 
 employee = []
@@ -334,7 +334,7 @@ for i in range(len(vacancies_closed)):
     employee.append({"contactId":contactId,"resume":resume,"resumeUploadDate":resumeUploadDate})
 
 employee_df =pd.DataFrame(employee, columns=["contactId","resume","resumeUploadDate"])
-employee_df.to_csv("./data/employee_without_resume.csv",index=False)
+employee_df.to_csv("./database/data/employee_without_resume.csv",index=False)
 
 hire = []
 for i in range(len(vacancies_closed)):
@@ -344,7 +344,7 @@ for i in range(len(vacancies_closed)):
     hire.append({"vacancyId":vacancyId,"employeeId":employeeId,"hireDate":hireDate})
 
 hire_df =pd.DataFrame(hire, columns=["vacancyId","employeeId","hireDate"])
-hire_df.to_csv("./data/hire.csv",index=False)
+hire_df.to_csv("./database/data/hire.csv",index=False)
 
 skill_set_employee = []
 for i in range(len(vacancies_closed)):
@@ -365,7 +365,7 @@ for i in range(len(vacancies_closed)):
         skill_set_employee.append({"ownerId":ownerId,"skillId":skillId})
     
 skill_set_employee_df = pd.DataFrame(skill_set_employee,columns=["ownerId","skillId"])
-skill_set_employee_df.to_csv("./data/skill_set_employee.csv", index=False)
+skill_set_employee_df.to_csv("./database/data/skill_set_employee.csv", index=False)
 
 interview = []
 interviewers = [9356,9357] # id в contacts людей, що проводять інтерв'ю
@@ -426,4 +426,4 @@ for i in range(len(vacancies_postponed)):
         interview.append({"vacancyId":vacancyId,"candidateId":candidateId,"interviewerId":interviewerId,"interviewType":interviewType,"interviewDate":interviewDate,"duration":duration,"feedback":feedback,"score":score})
 
 interview_df = pd.DataFrame(interview,columns=["vacancyId","candidateId","interviewerId","interviewType","interviewDate","duration","feedback","score"])
-interview_df.to_csv("./data/interviews.csv", index=False)
+interview_df.to_csv("./database/data/interviews.csv", index=False)

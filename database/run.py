@@ -1,7 +1,7 @@
 import subprocess
 
 # List of files to run
-files_to_run = ["dbs-init.py", "load-data.py", "push-data.py", "etl.py"]
+files_to_run = ["./database/dbs-init.py", "./database/load-data.py", "./database/push-data.py", "./database/etl.py"]
 
 
 # Loop through the files and run them one by one
