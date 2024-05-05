@@ -60,7 +60,7 @@ class InterviewRepository:
     
     @staticmethod
     def create_or_get_interviewer(id: str):
-
+        return 1
     @staticmethod
     def create(
         vacancyId,

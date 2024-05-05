@@ -2,7 +2,7 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillLevel, SkillSetVacancy, Candidate, Interviewer
+from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillLevel, SkillSetVacancy
 from services.models import VacancyRepository, InterviewRepository, HireRepository, SkillSetVacancyRepository
 
 
@@ -38,7 +38,7 @@ def insert_vacancy():
 def insert_interview():
     request_data = request.get_json()
     # create or get candidate
-    
+
     #create or get interviewer
 
 
