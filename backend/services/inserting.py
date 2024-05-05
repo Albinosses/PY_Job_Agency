@@ -58,9 +58,12 @@ def insert_vacancy():
 def insert_interview():
     request_data = request.get_json()
     candidate_info = request_data["candidateInfo"]
+    countryId = candidate_info["countryId"]
+    # countryId = candidate_info["countryId"]
+    # print(countryId)
     # create or get candidate
     candidateId = Contact.query.filter_by(
-        countryId=candidate_info["сountryId"],
+        countryId=countryId,
         name=candidate_info["name"],
         surname=candidate_info["surname"],
         birthDate=candidate_info["birthDate"],
@@ -69,18 +72,20 @@ def insert_interview():
     ).first()
     if candidateId is None:
         candidateId = InterviewRepository.create_candidate(
-            candidate_info["сountryId"],
-            candidate_info["name"],
-            candidate_info["surname"],
-            candidate_info["birthDate"],
-            candidate_info["gender"],
-            candidate_info["email"],
+            countryId=countryId,
+            name=candidate_info["name"],
+            surname=candidate_info["surname"],
+            birthDate=candidate_info["birthDate"],
+            gender=candidate_info["gender"],
+            email=candidate_info["email"],
         )
 
     # create or get interviewer
     interviewer_info = request_data["interviewerInfo"]
+    countryId = interviewer_info["countryId"]
+    print(interviewer_info)
     interviewerId = Contact.query.filter_by(
-        countryId=interviewer_info["сountryId"],
+        countryId=countryId,
         name=interviewer_info["name"],
         surname=interviewer_info["surname"],
         birthDate=interviewer_info["birthDate"],
@@ -89,18 +94,18 @@ def insert_interview():
     ).first()
     if interviewerId is None:
         interviewerId = InterviewRepository.create_interviewer(
-            interviewer_info["сountryId"],
-            interviewer_info["name"],
-            interviewer_info["surname"],
-            interviewer_info["birthDate"],
-            interviewer_info["gender"],
-            interviewer_info["email"],
+            countryId=countryId,
+            name=interviewer_info["name"],
+            surname=interviewer_info["surname"],
+            birthDate=interviewer_info["birthDate"],
+            gender=interviewer_info["gender"],
+            email=interviewer_info["email"],
         )
 
     new_interview = InterviewRepository.create(
         vacancyId=request_data["vacancyId"],
-        candidateId=candidateId,
-        interviewerId=interviewerId,
+        candidateId=candidateId.id,
+        interviewerId=interviewerId.id,
         interviewType=request_data["interviewType"],
         interviewDate=request_data["interviewDate"],
         duration=request_data["duration"],
