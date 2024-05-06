@@ -4,6 +4,7 @@ import styles from "./InterviewScrollable.module.css";
 import {InterviewContext} from "../../../contexts/InterviewContext";
 import {Link} from "react-router-dom";
 import {CircularProgress} from "@mui/material";
+import dayjs from "dayjs";
 
 function InterviewScrollable({interviewsObj, filterChanged}) {
 
@@ -16,8 +17,6 @@ function InterviewScrollable({interviewsObj, filterChanged}) {
         const savedInterviews = localStorage.getItem("interviews");
         const parsedInterviews = JSON.parse(savedInterviews);
 
-        console.log(parsedInterviews)
-
         let apiUrl = `http://127.0.0.1:8003/api/get/interviews?page=${currentPage}`;
 
         if(!interviewsObj || Object.keys(interviewsObj).length === 0){
@@ -28,14 +27,13 @@ function InterviewScrollable({interviewsObj, filterChanged}) {
                 apiUrl += `&interviewTypeFilter=${parsedInterviews.type}`;
             }
             if (parsedInterviews.date !== null) {
-                apiUrl += `&startDateFilter=${parsedInterviews.date}`;
+                apiUrl += `&startDateFilter=${dayjs(parsedInterviews.date).add(1, 'day')}`;
             }
             if (localStorage.interviews_sortOrder !== '') {
                 apiUrl += `&sortType=${localStorage.interviews_sortOrder}`;
             }
         }
 
-        console.log(apiUrl)
         if (!interviewsObj || Object.keys(interviewsObj).length === 0) {
             fetch(apiUrl)
                 .then(response => response.json())

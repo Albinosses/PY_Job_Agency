@@ -4,21 +4,38 @@ import styles from "./HireScrollable.module.css";
 import {HireContext} from "../../../contexts/HireContext";
 import {Link} from "react-router-dom";
 import {CircularProgress} from "@mui/material";
+import dayjs from "dayjs";
 
-function HireScrollable({hiresObj}) {
+function HireScrollable({hiresObj, filterChanged}) {
     const {hires, setHires, setCurrentHire} = useContext(HireContext)
 
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         setCurrentHire(undefined)
+        const savedHires = localStorage.getItem("hires");
+        const parsedHires = JSON.parse(savedHires);
+
+        let apiUrl = `http://127.0.0.1:8003/api/get/hires?page=${currentPage}`;
+
         if(!hiresObj || Object.keys(hiresObj).length === 0){
-            fetch(`http://127.0.0.1:8003/api/get/hires?page=${currentPage}`)
+            if (parsedHires.date !== null) {
+                apiUrl += `&hireDateFilter=${dayjs(parsedHires.date).add(1, 'day')}`;
+            }
+            if (localStorage.hires_sortOrder !== '') {
+                apiUrl += `&sortType=${localStorage.hires_sortOrder}`;
+            }
+        }
+
+        console.log(apiUrl)
+
+        if(!hiresObj || Object.keys(hiresObj).length === 0){
+            fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {setHires(data.hires)} )
                 .catch(err => console.log(err))
         }
-    }, [hiresObj, setHires, currentPage, setCurrentHire]);
+    }, [hiresObj, setHires, currentPage, setCurrentHire, filterChanged]);
 
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);

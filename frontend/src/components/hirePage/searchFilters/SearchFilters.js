@@ -6,7 +6,7 @@ import {DatePicker} from "@mui/x-date-pickers";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 
-function SearchFilters() {
+function SearchFilters({setFilterChanged}) {
     const [sortOrder, setSortOrder] = useState("");
 
     useEffect(() => {
@@ -29,7 +29,6 @@ function SearchFilters() {
 
     const saveFiltersToLocalStorage = () => {
         const hiresObject = {
-            input: inputText,
             date: date
         };
         localStorage.setItem("hires", JSON.stringify(hiresObject));
@@ -37,6 +36,7 @@ function SearchFilters() {
 
     const handleStartDateChange = (date) => {
         setDate(date);
+        console.log(date)
     };
 
     const changeSortOrder = (e) => {
@@ -49,12 +49,12 @@ function SearchFilters() {
 
     const handleClearFilters = () => {
         setClearFilters(true)
-        setInputText('')
         setDate(null)
         setSortOrder('')
 
         localStorage.setItem("hires_sortOrder", '');
         setSortOrder('');
+        setFilterChanged((prev) => !prev)
     }
 
     useEffect(() => {
@@ -66,6 +66,7 @@ function SearchFilters() {
 
     const handleApplyFilters = () => {
         saveFiltersToLocalStorage()
+        setFilterChanged((prev) => !prev)
     }
 
     return (

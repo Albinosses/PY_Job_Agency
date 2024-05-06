@@ -32,10 +32,10 @@ function VacancyScrollable(filterChanged ) {
             apiUrl += `&search=${parsedVacancies.input}`;
         }
         if (parsedVacancies.startDate !== null) {
-            apiUrl += `&startDateFilter=${parsedVacancies.startDate}`;
+            apiUrl += `&startDateFilter=${dayjs(parsedVacancies.startDate).add(1, 'day')}`;
         }
         if (parsedVacancies.endDate !== null) {
-            apiUrl += `&endDateFilter=${parsedVacancies.endDate}`;
+            apiUrl += `&endDateFilter=${dayjs(parsedVacancies.endDate).add(1, 'day')}`;
         }
         if (localStorage.vacancies_sortOrder !== '') {
             apiUrl += `&sortType=${localStorage.vacancies_sortOrder}`;
