@@ -13,7 +13,7 @@ function Interview({interview}) {
                     <div className={styles.vacancyTag}>Company</div>
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{dayjs(interview.InterviewDate).format('YYYY-MM-DD')}</div>
+            <div className={styles.vacancyDate}>{dayjs(interview.interviewDate).format('YYYY-MM-DD')}</div>
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
 
