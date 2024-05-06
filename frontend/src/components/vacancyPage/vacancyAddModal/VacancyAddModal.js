@@ -6,7 +6,6 @@ import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
-import {VacancyContext} from "../../../contexts/VacancyContext";
 import {GeneralContext} from "../../../contexts/GeneralContext";
 import {useNavigate} from "react-router-dom";
 
@@ -39,8 +38,6 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setOpen(false)
         resetState();
     };
-
-    const {updateVacancy} = useContext(VacancyContext)
 
     const resetState = () => {
         setJobTitle("");
@@ -234,7 +231,6 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                 throw new Error('Failed to add vacancy');
             }
 
-            const responseData = await response.json();
             navigate(0);
         } catch (error) {
             console.error('Error adding vacancy:', error);

@@ -44,7 +44,7 @@ function VacancyDetails() {
                 setCurrentVacancy(updatedVacancy)
             })
             .catch(err => console.log(err))
-    }, []);
+    });
 
     const handleOpen = (type) => {
         switch (type) {
@@ -101,7 +101,6 @@ function VacancyDetails() {
                 throw new Error('Failed to add vacancy');
             }
 
-            const responseData = await response.json();
             navigate(0);
         } catch (error) {
             console.error('Error adding vacancy:', error);

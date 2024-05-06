@@ -16,10 +16,9 @@ import HireDetails from "./components/hirePage/hireDetails/HireDetails";
 import VacancyDashboard from "./components/dashboards/VacancyDashboard";
 import InterviewDashboard from "./components/dashboards/InterviewDashboard";
 import HireDashboard from "./components/dashboards/HireDashboard";
-import {GeneralContext, GeneralContextProvider} from "./contexts/GeneralContext";
+import {GeneralContextProvider} from "./contexts/GeneralContext";
 import Graphs from "./components/dashboards/Graphs";
 import LoginPage from "./components/login/LoginPage";
-import {useContext, useEffect, useState} from "react";
 
 function App() {
 
