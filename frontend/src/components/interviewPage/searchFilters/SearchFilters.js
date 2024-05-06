@@ -146,12 +146,8 @@ function SearchFilters({setFilterChanged}) {
                             value={sortOrder}
                             autoWidth
                         >
-                            <MenuItem value={'old_first'}>Old first</MenuItem>
-                            <MenuItem value={'new_first'}>New first</MenuItem>
-                            <MenuItem value={'long_first'}>Long first </MenuItem>
-                            <MenuItem value={'short_first'}>Short first </MenuItem>
-                            <MenuItem value={'big_score_first'}>Big score first </MenuItem>
-                            <MenuItem value={'small_score_first'}>Small score first </MenuItem>
+                            <MenuItem value={'Old first'}>Old first</MenuItem>
+                            <MenuItem value={'New first'}>New first</MenuItem>
                         </Select>
                     </FormControl>
                 </div>

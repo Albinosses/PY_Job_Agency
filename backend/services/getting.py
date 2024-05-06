@@ -98,7 +98,7 @@ def get_interviews():
     if request.args.get("maxScoreFilter"):
         maxScore = request.args.get("maxScoreFilter")
     if request.args.get("startDateFilter"):
-        filter_by["publicationDate"] = request.args.get("startDateFilter")
+        filter_by["interviewDate"] = request.args.get("startDateFilter")
     if request.args.get("search"):
         search = request.args.get("search")
     if request.args.get("sortType"):

@@ -20,7 +20,6 @@ function InterviewInfo({interview}) {
 
 
     const [interviewer, setInterviewer] = useState()
-
     const [candidate, setCandidate] = useState()
 
     useEffect(() => {
@@ -43,8 +42,8 @@ function InterviewInfo({interview}) {
                     <ContactInfo contact={interviewer} owner={"Interviewer"}/>
                 </div>
             }
-            <StyledParagraph>Interview Type: {getFullType(interview.InterviewType)}</StyledParagraph>
-            <StyledParagraph>Interview Date: {dayjs(interview.InterviewDate).format('YYYY-MM-DD')}</StyledParagraph>
+            <StyledParagraph>Interview Type: {getFullType(interview.interviewType)}</StyledParagraph>
+            <StyledParagraph>Interview Date: {dayjs(interview.interviewDate).format('YYYY-MM-DD')}</StyledParagraph>
             <StyledParagraph>Duration: {interview.duration} min</StyledParagraph>
             <StyledParagraph>Feedback: {interview.feedback}</StyledParagraph>
             <StyledParagraph>Total Score: {interview.score} / 10</StyledParagraph>

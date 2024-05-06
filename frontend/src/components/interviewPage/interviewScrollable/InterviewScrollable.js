@@ -12,6 +12,7 @@ function InterviewScrollable({interviewsObj, filterChanged}) {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
+        setCurrentInterview(undefined)
         const savedInterviews = localStorage.getItem("interviews");
         const parsedInterviews = JSON.parse(savedInterviews);
 
@@ -34,7 +35,7 @@ function InterviewScrollable({interviewsObj, filterChanged}) {
             }
         }
 
-        setCurrentInterview(undefined)
+        console.log(apiUrl)
         if (!interviewsObj || Object.keys(interviewsObj).length === 0) {
             fetch(apiUrl)
                 .then(response => response.json())
