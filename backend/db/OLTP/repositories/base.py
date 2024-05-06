@@ -13,6 +13,16 @@ from datetime import datetime
 
 class VacancyRepository:
     @staticmethod
+    def get_all(filter_by=None, search=None):
+        query = Vacancy.query
+        if filter_by:
+            query = query.filter_by(**filter_by)
+        if search:
+            query = query.filter((Vacancy.jobTitle.ilike(f"%{search}%")))
+        print(query)
+        return query
+
+    @staticmethod
     def update_vacancy(id, parameters):
         for param in parameters:
             if param == "publicationDate":
@@ -228,7 +238,7 @@ class HireRepository:
         db.session.commit()
         return Hire.query.get(id)
     
-    
+
     @staticmethod
     def get_by_id(id: str):
         return Interview.query.get(id)

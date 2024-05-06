@@ -2,7 +2,17 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from db.OLTP.models import Vacancy, Interview, Hire, Country, Company, SkillSetVacancy, SkillLevel, Contact, Employee
+from db.OLTP.models import (
+    Vacancy,
+    Interview,
+    Hire,
+    Country,
+    Company,
+    SkillSetVacancy,
+    SkillLevel,
+    Contact,
+    Employee,
+)
 from services.models import VacancyRepository
 
 
@@ -13,8 +23,27 @@ get_bp = Blueprint("get", __name__, url_prefix="/get")
 def get_vacancies():
     # TODO: Add filtering
     page = request.args.get("page", 1, type=int)
-    vacancies = Vacancy.query.filter_by(jobTitle="Data Scientist").paginate(
-        page=page, per_page=10
+    filter_by = {}
+    search = ""
+    if request.args.get("employmentTypeFilter"):
+        filter_by["employmentType"] = request.args.get("employmentTypeFilter")
+    if request.args.get("statusFilter"):
+        filter_by["status"] = request.args.get("statusFilter")
+    if request.args.get("workSettingFilter"):
+        filter_by["workSetting"] = request.args.get("workSettingFilter")
+    if request.args.get("startDateFilter"):
+        filter_by["publicationDate"] = request.args.get("startDateFilter")
+    if request.args.get("endDateFilter"):
+        filter_by["closeDate"] = request.args.get("endDateFilter")
+    if request.args.get("search"):
+        search = request.args.get("search")
+    vacancies = (
+        VacancyRepository.get_all(
+            filter_by=filter_by,
+            search = search
+        )
+        .order_by(Vacancy.salary.desc())
+        .paginate(page=page, per_page=10)
     )
     return jsonify({"page": page, "vacancies": [v.json() for v in vacancies]}), 200
 
@@ -65,14 +94,14 @@ def get_vacancy(id):
             "vacancy": vacancy.json(),
             "hires": [h.json() for h in hires],
             "interviews": [i.json() for i in intervies],
-            "skills": skills
+            "skills": skills,
         }
     ), 200
 
 
 @get_bp.route("/contact", methods=["GET"])
 def get_contact():
-    id = request.args.get("id", type=int) 
+    id = request.args.get("id", type=int)
     contact = Contact.query.get(id)
     return jsonify(contact.json()), 200
 
@@ -90,11 +119,7 @@ def get_interview(id):
         s["level"] = SkillLevel.query.filter_by(id=skill.skillId).first().level
         skills.append(s)
     return jsonify(
-        {
-            "interview": interview.json(),
-            "vacancy": vacancy.json(),
-            "skills": skills
-        }
+        {"interview": interview.json(), "vacancy": vacancy.json(), "skills": skills}
     ), 200
 
 
@@ -116,7 +141,6 @@ def get_hire(id):
             "hire": hire.json(),
             "vacancy": vacancy.json(),
             "employeeContactId": contactId,
-            "skills": skills
+            "skills": skills,
         }
     ), 200
-
