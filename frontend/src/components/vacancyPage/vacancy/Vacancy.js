@@ -13,11 +13,23 @@ function Vacancy({vacancy}) {
             <div className={styles.vacancyHeader}>
                 <div className={styles.vacancyTitle}>{vacancy.jobTitle}</div>
                 <div className={styles.vacancyTags}>
-                    <div className={styles.vacancyTag}>{countries.find(country => country.id === vacancy.empCountryId).name}</div>
-                    <div className={styles.vacancyTag}>{companies.find(company => company.id === vacancy.companyId).name}</div>
+                    {countries && companies &&
+                        <>
+                            <div
+                                className={styles.vacancyTag}>{countries.find(country => country.id === vacancy.empCountryId).name}</div>
+                            <div
+                                className={styles.vacancyTag}>{companies.find(company => company.id === vacancy.companyId).name}</div>
+                        </>
+                    }
                 </div>
             </div>
-            <div className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')} - {dayjs(vacancy.closeDate).format('YYYY-MM-DD')}</div>
+            {vacancy.status === "C" &&
+                <div className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')} - {dayjs(vacancy.closeDate).format('YYYY-MM-DD')}</div>
+            }
+            {vacancy.status !== "C" &&
+                <div className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')}</div>
+            }
+
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
     );

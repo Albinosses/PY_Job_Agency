@@ -44,7 +44,7 @@ function InterviewScrollable({interviewsObj}) {
                         {interviewsObj ? (
                             interviewsObj
                                 .map(interview => (
-                                    <Link to={`/interview/${interview.id}`}
+                                    <Link key={interview.id} to={`/interview/${interview.id}`}
                                           onClick={() => setCurrentInterview(interview)}>
                                         <Interview
                                             key={interview.id}
@@ -53,7 +53,7 @@ function InterviewScrollable({interviewsObj}) {
                                     </Link>
                                 ))) : (
                             interviews.map(interview => (
-                                <Link to={`/interview/${interview.id}`} onClick={() => setCurrentInterview(interview)}>
+                                <Link  key={interview.id} to={`/interview/${interview.id}`} onClick={() => setCurrentInterview(interview)}>
                                     <Interview
                                         key={interview.id}
                                         interview={interview}

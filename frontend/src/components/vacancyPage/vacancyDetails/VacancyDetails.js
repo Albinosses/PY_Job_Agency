@@ -39,9 +39,6 @@ function VacancyDetails() {
                     skills: modifiedSkills
                 };
 
-
-                console.log(data)
-
                 setHires(data.hires)
                 setInterviews(data.interviews)
                 setCurrentVacancy(updatedVacancy)
@@ -65,16 +62,49 @@ function VacancyDetails() {
         }
     }
 
-    const handleDelete = () => {
-        //deleteVacancy(vacancy.id)
-        navigate(`/vacancy`)
+    const handleDelete = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8003/api/delete/vacancy/${id}`, {
+                method: "DELETE",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+            navigate(`/vacancy`)
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        }
     }
 
-    const handleCloseVacancy= () => {
-        currentVacancy.status = 'C'
-        currentVacancy.closeDate = dayjs().format('YYYY-MM-DD')
+    const handleCloseVacancy= async () => {
+        const vacancyToSend = currentVacancy
+        vacancyToSend.status = 'C'
+        vacancyToSend.closeDate = dayjs().format("MM/DD/YYYY")
+        vacancyToSend.publicationDate = dayjs(vacancyToSend.publicationDate).format("MM/DD/YYYY")
 
-        //updateVacancy(vacancy)
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/edit/vacancy', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(vacancyToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            navigate(0);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        }
     }
 
     return (

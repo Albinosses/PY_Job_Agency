@@ -11,7 +11,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
     const {countries} = useContext(GeneralContext)
 
     const [gender, setGender] = useState(contact?.gender || "")
-    const [birthDate, setBirthDate] = useState(contact?.birthDate || "")
+    const [birthDate, setBirthDate] = useState(contact?.birthDate || null)
     const [name, setName] = useState(contact?.name || "")
     const [surname, setSurname] = useState(contact?.surname || "")
     const [email, setEmail] = useState(contact?.email || "")
@@ -39,8 +39,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
     }
 
     const handleBirthDateChange = (date) => {
-        console.log(date)
-        setContact({...contact, birthDate: dayjs(date).format('YYYY-MM-DD')})
+        setContact({...contact, birthDate: dayjs(date).format('MM/DD/YYYY')})
         setBirthDate(date)
     }
 
@@ -135,7 +134,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                         onChange={handleCountryChange}
                     >
                         {countries.map(country => (
-                            <MenuItem value={country.id}>
+                            <MenuItem key={country.id} value={country.id}>
                                 {country.name}
                             </MenuItem>
                         ))}

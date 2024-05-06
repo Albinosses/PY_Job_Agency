@@ -43,7 +43,7 @@ function HireScrollable({hiresObj}) {
                         {hiresObj ? (
                             hiresObj
                                 .map(hire => (
-                                    <Link to={`/hire/${hire.id}`} onClick={() => setCurrentHire(hire)}>
+                                    <Link key={hire.id} to={`/hire/${hire.id}`} onClick={() => setCurrentHire(hire)}>
                                         <Hire
                                             key={hire.id}
                                             hire={hire}
@@ -51,7 +51,7 @@ function HireScrollable({hiresObj}) {
                                     </Link>
                                 ))) : (
                             hires.map(hire => (
-                                <Link to={`/hire/${hire.id}`} onClick={() => setCurrentHire(hire)}>
+                                <Link key={hire.id} to={`/hire/${hire.id}`} onClick={() => setCurrentHire(hire)}>
                                     <Hire
                                         key={hire.id}
                                         hire={hire}

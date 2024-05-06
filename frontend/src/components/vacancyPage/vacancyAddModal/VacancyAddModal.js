@@ -6,7 +6,6 @@ import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
-import {VacancyContext} from "../../../contexts/VacancyContext";
 import {GeneralContext} from "../../../contexts/GeneralContext";
 import {useNavigate} from "react-router-dom";
 
@@ -35,14 +34,10 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
         setCompanyId(e.target.value)
     }
 
-    //don't touch!!!
-    console.log(data)
     const handleClose = () => {
         setOpen(false)
         resetState();
     };
-
-    const {updateVacancy} = useContext(VacancyContext)
 
     const resetState = () => {
         setJobTitle("");
@@ -148,8 +143,6 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
 
     useEffect(() => {
         if (modalType === 'edit') {
-            console.log(data.empCountryId)
-
             setJobTitle(data.jobTitle);
             setDescription(data.description);
             setWorkSetting(data.workSetting);
@@ -168,18 +161,20 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
     }, [modalType, data]);
 
     const handleAddVacancy = async () => {
-        const data = {
+        const dataToSend = {
             'companyId': companyId,
             'empCountryId': countryId,
             'jobTitle': jobTitle,
             'salary': salary,
             'employmentType': type,
             'workSetting': workSetting,
-            'publicationDate': '12/12/2022',
+            'publicationDate': dayjs(startDate).format('MM/DD/YYYY'),
             'status': status,
             'description': description,
-            'closeDate': '12/12/2022'
+            'closeDate': status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : '01/01/0001',
+            'skills': items
         };
+
 
         try {
             const response = await fetch('http://127.0.0.1:8003/api/insert/vacancy', {
@@ -188,7 +183,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(dataToSend)
             });
 
             if (!response.ok) {
@@ -206,23 +201,42 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
     };
 
 
-    const handleEditVacancy = () => {
-        const vacancyData = {
-            id: data.id,
-            jobTitle: jobTitle,
-            company: "company",
-            empCountry: "country",
-            description: description,
-            salary: salary,
-            employmentType: type,
-            workSetting: workSetting,
-            status: status,
-            // publicationDate: startDate.format('YYYY-MM-DD'), // Format the date as needed
-            // closeDate: endDate.format('YYYY-MM-DD'), // Format the date as needed
-            // skills: items,
+    const handleEditVacancy = async () => {
+        const dataToSend = {
+            'id': data.id,
+            'companyId': companyId,
+            'empCountryId': countryId,
+            'jobTitle': jobTitle,
+            'salary': salary,
+            'employmentType': type,
+            'workSetting': workSetting,
+            'publicationDate': dayjs(startDate).format('MM/DD/YYYY'),
+            'status': status,
+            'description': description,
+            'closeDate': status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : '01/01/0001',
+            'skills': items
         };
-        updateVacancy(vacancyData)
-        handleClose()
+
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/edit/vacancy', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            navigate(0);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
     }
 
     return (

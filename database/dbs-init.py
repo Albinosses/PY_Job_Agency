@@ -73,5 +73,5 @@ def create_db_if_not_exist(params, sql_file):
         print("Db exists")
 
 
-create_db_if_not_exist(OLTP_params, "./db-sqls/OLTP.sql")
-create_db_if_not_exist(OLAP_params, "./db-sqls/OLAP.sql")
+create_db_if_not_exist(OLTP_params, "./database/db-sqls/OLTP.sql")
+create_db_if_not_exist(OLAP_params, "./database/db-sqls/OLAP.sql")

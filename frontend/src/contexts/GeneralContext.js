@@ -5,7 +5,7 @@ export const GeneralContext = createContext({})
 
 export const GeneralContextProvider = ({children}) => {
     const [countries, setCountries] = useState();
-    const [companies, setCompanies] = useState()
+    const [companies, setCompanies] = useState();
 
     useEffect(() => {
         fetch('http://127.0.0.1:8003/api/get/countries')

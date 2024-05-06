@@ -20,16 +20,16 @@ engine = create_engine(f'postgresql+psycopg2://{db_params["user"]}:{db_params["p
 con = engine.connect()
 
 csv_files = {
-    'Country': './data/countries.csv',
-    'Contact': './data/contacts.csv',
-    'Company': './data/companies.csv',
-    'SkillLevel': './data/skills.csv',
-    'Employee': './data/employee_without_resume.csv',
-    'Vacancy': './data/vacancies.csv',
-    'Interview': './data/interviews.csv',
-    'Hire': './data/hire.csv',
-    'SkillSetEmployee': './data/skill_set_employee.csv',
-    'SkillSetVacancy': './data/skill_set_vacancy.csv',
+    'Country': './database/data/countries.csv',
+    'Contact': './database/data/contacts.csv',
+    'Company': './database/data/companies.csv',
+    'SkillLevel': './database/data/skills.csv',
+    'Employee': './database/data/employee_without_resume.csv',
+    'Vacancy': './database/data/vacancies.csv',
+    'Interview': './database/data/interviews.csv',
+    'Hire': './database/data/hire.csv',
+    'SkillSetEmployee': './database/data/skill_set_employee.csv',
+    'SkillSetVacancy': './database/data/skill_set_vacancy.csv',
 }
 
 for table_name, file_path in csv_files.items():

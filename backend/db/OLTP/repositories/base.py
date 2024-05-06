@@ -146,7 +146,7 @@ class InterviewRepository:
     @staticmethod
     def create_interviewer(countryId, name, surname, birthDate, gender, email):
         birthDate_obj = datetime.strptime(birthDate, "%m/%d/%Y")
-
+        
         # Now format the datetime objects into the correct format "%Y-%m-%d"
         birthDate = birthDate_obj.strftime("%Y-%m-%d")
 

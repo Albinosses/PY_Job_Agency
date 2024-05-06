@@ -19,7 +19,7 @@ function SidePanel({onPageChange}) {
     return (
         <div className={styles.container}>
             <div className={styles.title}>HR System</div>
-            <Link to="/">
+            <Link to="/main">
                 <div className={`${styles.section} ${selectedItem === '' ? styles.blue : ''}`}>
                     <div className={styles.content}>
                         <img
@@ -101,6 +101,15 @@ function SidePanel({onPageChange}) {
                         >
                             <div className={styles.submenuItem}>
                                 Interviews
+                            </div>
+                        </div>
+                    </Link>
+                    <Link to="/dashboard/graph">
+                        <div
+                            className={`${styles.section} ${selectedItem.endsWith('dashboard/graph') ? styles.blue : ''}`}
+                        >
+                            <div className={styles.submenuItem}>
+                                Graphs
                             </div>
                         </div>
                     </Link>
