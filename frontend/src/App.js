@@ -23,8 +23,6 @@ import {useContext, useEffect, useState} from "react";
 
 function App() {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-
     return (
         <GeneralContextProvider>
             <InterviewProvider>
@@ -32,7 +30,7 @@ function App() {
                     <VacancyProvider>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <div className={styles.App}>
-                                {isLoggedIn && (
+                                {localStorage.isAuthenticated === "true" && (
                                     <div className={styles.sidePanel}>
                                         <SidePanel/>
                                     </div>
@@ -40,7 +38,7 @@ function App() {
                                 <div className={styles.content}>
                                 <Routes>
                                         <Route path="/" element={<LoginPage/>}/>
-                                        <Route path="/main" element={<MainPage setIsLoggedIn={setIsLoggedIn}/>}/>
+                                        <Route path="/main" element={<MainPage/>}/>
                                         <Route path="/interview" element={<InterviewPage/>}/>
                                         <Route path="/interview/:id" element={<InterviewDetails/>}/>
                                         <Route path="/hire" element={<HirePage/>}/>

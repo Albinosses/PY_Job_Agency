@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const defaultTheme = createTheme();
 
@@ -30,11 +30,17 @@ export default function LoginPage() {
         }
 
         if(mockUser.email === dataToCompare.email && mockUser.password === dataToCompare.password){
+            localStorage.setItem('isAuthenticated', "true");
             navigate('/main')
+            navigate(0)
         } else {
             setError(true)
         }
     };
+
+    useEffect(() => {
+        localStorage.setItem('isAuthenticated', "false");
+    }, []);
 
     return (
         <ThemeProvider theme={defaultTheme}>
