@@ -183,7 +183,6 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
             }
 
             const responseData = await response.json();
-            console.log(responseData)
             navigate(0);
         } catch (error) {
             console.error('Error adding vacancy:', error);

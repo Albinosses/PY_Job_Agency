@@ -32,6 +32,7 @@ const HireModal = ({open, setOpen, modalType, data, employeeContactId}) => {
 
     const [hireDate, setHireDate] = useState(data?.hireDate || "")
     const [employee, setEmployee] = useState({})
+    const [hireId, setHireId] = useState()
 
     const resetState = () => {
         setEmployee({id: 'temp'});
@@ -41,6 +42,7 @@ const HireModal = ({open, setOpen, modalType, data, employeeContactId}) => {
     useEffect(() => {
         if (modalType === "edit") {
             setHireDate(data.hireDate);
+            setHireId(data.id)
 
             fetch(`http://127.0.0.1:8003/api/get/contact?id=${employeeContactId}`)
                 .then(response => response.json())
@@ -115,15 +117,39 @@ const HireModal = ({open, setOpen, modalType, data, employeeContactId}) => {
         }
     }
 
-    const handleEditHire = () => {
-        const hireData = {
-            id: data.id,
-            vacancyId: data.vacancyId,
-            employee: employee,
-            hireDate: dayjs(hireDate).format('YYYY-MM-DD')
+    const handleEditHire = async () => {
+        const updatedEmployee = {...employee}
+        updatedEmployee.birthDate = dayjs(updatedEmployee.birthDate).format('MM/DD/YYYY')
+        updatedEmployee.resumeUploadDate = "02/02/2024"
+
+        const dataToSend = {
+            'id': hireId,
+            'vacancyId': currentVacancy.id,
+            'hireDate': dayjs(hireDate).format('MM/DD/YYYY'),
+            'employeeInfo': updatedEmployee
         };
-        updateHire(hireData)
-        handleClose()
+
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/edit/hire', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            navigate(0);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
     }
 
     return (
