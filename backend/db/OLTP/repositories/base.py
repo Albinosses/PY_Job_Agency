@@ -19,7 +19,6 @@ class VacancyRepository:
             query = query.filter_by(**filter_by)
         if search:
             query = query.filter((Vacancy.jobTitle.ilike(f"%{search}%")))
-        print(query)
         return query
 
     @staticmethod
@@ -106,6 +105,16 @@ class VacancyRepository:
 
 
 class InterviewRepository:
+    @staticmethod
+    def get_all(filter_by=None, search=None):
+        query = Interview.query
+        if filter_by:
+            query = query.filter_by(**filter_by)
+        if search:
+            query = query.filter((Interview.jobTitle.ilike(f"%{search}%")))
+        return query
+    
+
     @staticmethod
     def update_interview(id: str, parameters: dict):
         for param in parameters:

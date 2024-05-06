@@ -13,7 +13,7 @@ from db.OLTP.models import (
     Contact,
     Employee,
 )
-from services.models import VacancyRepository
+from services.models import VacancyRepository,InterviewRepository
 
 
 get_bp = Blueprint("get", __name__, url_prefix="/get")
@@ -83,7 +83,51 @@ def get_vacancies():
 def get_interviews():
     # TODO: Add filtering
     page = request.args.get("page", 1, type=int)
-    interviews = Interview.query.filter_by().paginate(page=page, per_page=10)
+
+    filter_by = {}
+    search = ""
+    sort_type = ""
+    interviews = []
+    minScore = 0
+    maxScore = 10
+
+    if request.args.get("interviewTypeFilter"):
+        filter_by["interviewType"] = request.args.get("interviewTypeFilter")
+    if request.args.get("minScoreFilter"):
+        minScore = request.args.get("minScoreFilter")
+    if request.args.get("maxScoreFilter"):
+        maxScore = request.args.get("maxScoreFilter")
+    if request.args.get("startDateFilter"):
+        filter_by["publicationDate"] = request.args.get("startDateFilter")
+    if request.args.get("endDateFilter"):
+        filter_by["closeDate"] = request.args.get("endDateFilter")
+    if request.args.get("search"):
+        search = request.args.get("search")
+    if request.args.get("sortType"):
+        sort_type = request.args.get("sortType")
+    if sort_type == "Old first":
+        interviews = (
+            InterviewRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).where(Interview.score>=minScore and Interview.score<=maxScore).
+            order_by(Interview.publicationDate.asc()).paginate(page=page, per_page=10)
+        )
+    elif sort_type == "New first":
+        interviews = (
+            InterviewRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).where(Interview.score>=minScore and Interview.score<=maxScore)
+            .order_by(Interview.publicationDate.desc()).paginate(page=page, per_page=10)
+        )
+    else:
+        interviews = (
+            InterviewRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).where(Interview.score>=minScore and Interview.score<=maxScore).paginate(page=page, per_page=10)
+        )
     return jsonify({"page": page, "interviews": [i.json() for i in interviews]}), 200
 
 
