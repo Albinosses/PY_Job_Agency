@@ -81,11 +81,31 @@ function VacancyDetails() {
         }
     }
 
-    const handleCloseVacancy= () => {
-        currentVacancy.status = 'C'
-        currentVacancy.closeDate = dayjs().format('YYYY-MM-DD')
+    const handleCloseVacancy= async () => {
+        const vacancyToSend = currentVacancy
+        vacancyToSend.status = 'C'
+        vacancyToSend.closeDate = dayjs().format("MM/DD/YYYY")
+        vacancyToSend.publicationDate = dayjs(vacancyToSend.publicationDate).format("MM/DD/YYYY")
 
-        //updateVacancy(vacancy)
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/edit/vacancy', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(vacancyToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            navigate(0);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        }
     }
 
     return (
