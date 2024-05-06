@@ -44,7 +44,7 @@ function VacancyDetails() {
                 setCurrentVacancy(updatedVacancy)
             })
             .catch(err => console.log(err))
-    });
+    }, []);
 
     const handleOpen = (type) => {
         switch (type) {

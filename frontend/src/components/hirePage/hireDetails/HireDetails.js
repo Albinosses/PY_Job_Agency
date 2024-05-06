@@ -35,7 +35,7 @@ const HireDetails = () => {
                 setCurrentVacancy(updatedVacancy);
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [id]);
 
     const handleDelete = async () => {
         try {
