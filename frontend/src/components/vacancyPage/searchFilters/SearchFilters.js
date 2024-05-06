@@ -7,7 +7,7 @@ import {VacancyContext} from "../../../contexts/VacancyContext";
 import dayjs from "dayjs";
 import Button from "@mui/material/Button";
 
-function SearchFilters() {
+function SearchFilters({setFilterChanged}) {
     const [sortOrder, setSortOrder] = useState('');
     const {vacancies, setVacancies} = useContext(VacancyContext)
 
@@ -120,6 +120,7 @@ function SearchFilters() {
 
         localStorage.setItem("vacancies_sortOrder", '');
         setSortOrder('');
+        setFilterChanged((prev) => !prev);
     }
 
     useEffect(() => {
@@ -131,6 +132,7 @@ function SearchFilters() {
 
     const handleApplyFilters = () => {
         saveFiltersToLocalStorage()
+        setFilterChanged((prev) => !prev)
     }
 
     return (

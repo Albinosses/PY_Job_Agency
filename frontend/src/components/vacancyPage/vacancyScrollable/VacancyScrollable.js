@@ -4,19 +4,46 @@ import styles from "./VacancyScrollable.module.css";
 import {Link} from "react-router-dom";
 import {VacancyContext} from "../../../contexts/VacancyContext";
 import {CircularProgress} from "@mui/material";
+import dayjs from "dayjs";
 
-function VacancyScrollable() {
+function VacancyScrollable(filterChanged ) {
     const {vacancies, setVacancies, setCurrentVacancy} = useContext(VacancyContext)
 
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
+        const savedVacancies = localStorage.getItem("vacancies");
+        const parsedVacancies = JSON.parse(savedVacancies);
+
+        console.log(parsedVacancies)
+
+        let apiUrl = `http://127.0.0.1:8003/api/get/vacancies?page=${currentPage}`;
+
+        if (parsedVacancies.status !== "") {
+            apiUrl += `&statusFilter=${parsedVacancies.status}`;
+        }
+        if (parsedVacancies.type !== "") {
+            apiUrl += `&employmentTypeFilter=${parsedVacancies.type}`;
+        }
+        if (parsedVacancies.workSetting !== "") {
+            apiUrl += `&workSettingFilter=${parsedVacancies.workSetting}`;
+        }
+        if (parsedVacancies.input !== "") {
+            apiUrl += `&search=${parsedVacancies.input}`;
+        }
+        if (parsedVacancies.startDate !== null) {
+            apiUrl += `&startDateFilter=${parsedVacancies.startDate}`;
+        }
+        if (parsedVacancies.endDate !== null) {
+            apiUrl += `&endDateFilter=${parsedVacancies.endDate}`;
+        }
+
         setCurrentVacancy(undefined)
-        fetch(`http://127.0.0.1:8003/api/get/vacancies?page=${currentPage}`)
+        fetch(apiUrl)
             .then(response => response.json())
             .then(data => {setVacancies(data.vacancies)} )
             .catch(err => console.log(err))
-    }, [setVacancies, currentPage]);
+    }, [setVacancies, currentPage, filterChanged]);
 
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);
