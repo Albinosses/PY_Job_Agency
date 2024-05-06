@@ -37,6 +37,9 @@ function VacancyScrollable(filterChanged ) {
         if (parsedVacancies.endDate !== null) {
             apiUrl += `&endDateFilter=${parsedVacancies.endDate}`;
         }
+        if (localStorage.vacancies_sortOrder !== '') {
+            apiUrl += `&sortType=${localStorage.vacancies_sortOrder}`;
+        }
 
         setCurrentVacancy(undefined)
         fetch(apiUrl)

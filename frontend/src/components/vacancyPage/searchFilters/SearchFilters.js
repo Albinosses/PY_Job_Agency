@@ -86,23 +86,6 @@ function SearchFilters({setFilterChanged}) {
         const newSortOrder = e.target.value;
         localStorage.setItem("vacancies_sortOrder", newSortOrder);
         setSortOrder(newSortOrder);
-
-        if (newSortOrder === 'new_first'){
-            const sortedVacancies = [...vacancies].sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
-            setVacancies(sortedVacancies);
-        }
-        if (newSortOrder === 'old_first'){
-            const sortedVacancies = [...vacancies].sort((a, b) => new Date(a.publicationDate) - new Date(b.publicationDate));
-            setVacancies(sortedVacancies);
-        }
-        if (newSortOrder === 'big_salary_first'){
-            const sortedVacancies = [...vacancies].sort((a, b) => b.salary - a.salary);
-            setVacancies(sortedVacancies);
-        }
-        if (newSortOrder === 'small_salary_first'){
-            const sortedVacancies = [...vacancies].sort((a, b) => a.salary - b.salary);
-            setVacancies(sortedVacancies);
-        }
     }
 
     const [clearFilters, setClearFilters] = useState(false)
@@ -236,10 +219,10 @@ function SearchFilters({setFilterChanged}) {
                             value={sortOrder}
                             autoWidth
                         >
-                            <MenuItem value={'old_first'}>Old first</MenuItem>
-                            <MenuItem value={'new_first'}>New first</MenuItem>
-                            <MenuItem value={'big_salary_first'}>Big salary first </MenuItem>
-                            <MenuItem value={'small_salary_first'}>Small salary first </MenuItem>
+                            <MenuItem value={'Old first'}>Old first</MenuItem>
+                            <MenuItem value={'New first'}>New first</MenuItem>
+                            <MenuItem value={'Big salary first'}>Big salary first </MenuItem>
+                            <MenuItem value={'Small salary first'}>Small salary first </MenuItem>
                         </Select>
                     </FormControl>
                 </div>
