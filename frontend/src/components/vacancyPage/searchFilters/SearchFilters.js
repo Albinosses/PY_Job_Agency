@@ -9,7 +9,6 @@ import Button from "@mui/material/Button";
 
 function SearchFilters({setFilterChanged}) {
     const [sortOrder, setSortOrder] = useState('');
-    const {vacancies, setVacancies} = useContext(VacancyContext)
 
     useEffect(() => {
         const savedSortOrder = localStorage.getItem("vacancies_sortOrder");

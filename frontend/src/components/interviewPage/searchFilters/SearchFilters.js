@@ -4,11 +4,10 @@ import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
 import CustomNumberInput from "../../NumberInput";
-import {InterviewContext} from "../../../contexts/InterviewContext";
 import dayjs from "dayjs";
 import Button from "@mui/material/Button";
 
-function SearchFilters() {
+function SearchFilters({setFilterChanged}) {
     const [sortOrder, setSortOrder] = useState('');
 
     useEffect(() => {
@@ -45,14 +44,6 @@ function SearchFilters() {
         localStorage.setItem("interviews", JSON.stringify(interviewsObject));
     };
 
-    const saveMinScoreToLocalStorage = (e, v) => {
-        setMinScore(v);
-    };
-
-    const saveMaxScoreToLocalStorage = (e, v) => {
-        setMaxScore(v);
-    };
-
     const saveTypeToLocalStorage = (e) => {
         const value = e.target.value;
         setType(value);
@@ -87,6 +78,7 @@ function SearchFilters() {
 
         localStorage.setItem("interviews_sortOrder", '');
         setSortOrder('');
+        setFilterChanged((prev) => !prev)
     }
 
     useEffect(() => {
@@ -98,6 +90,7 @@ function SearchFilters() {
 
     const handleApplyFilters = () => {
         saveFiltersToLocalStorage()
+        setFilterChanged((prev) => !prev)
     }
 
     return (
@@ -130,38 +123,6 @@ function SearchFilters() {
                             <MenuItem value={'T'}>Technical</MenuItem>
                         </Select>
                     </FormControl>
-                </div>
-            </div>
-            <div>
-                <div className={styles.minScoreContainer}>
-                    <span>Min-score:</span>
-                </div>
-            </div>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
-                    <CustomNumberInput
-                        sx={{width: 62}}
-                        value={minScore}
-                        min={0}
-                        max={maxScore}
-                        onChange={saveMinScoreToLocalStorage}
-                    />
-                </div>
-            </div>
-            <div>
-                <div className={styles.minScoreContainer}>
-                    <span>Max-score:</span>
-                </div>
-            </div>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
-                    <CustomNumberInput
-                        sx={{width: 62}}
-                        value={maxScore}
-                        min={minScore}
-                        max={10}
-                        onChange={saveMaxScoreToLocalStorage}
-                    />
                 </div>
             </div>
             <div className={styles.filter}>

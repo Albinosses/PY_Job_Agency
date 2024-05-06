@@ -5,21 +5,43 @@ import {InterviewContext} from "../../../contexts/InterviewContext";
 import {Link} from "react-router-dom";
 import {CircularProgress} from "@mui/material";
 
-function InterviewScrollable({interviewsObj}) {
+function InterviewScrollable({interviewsObj, filterChanged}) {
 
     const {interviews, setInterviews, setCurrentInterview} = useContext(InterviewContext)
 
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
+        const savedInterviews = localStorage.getItem("interviews");
+        const parsedInterviews = JSON.parse(savedInterviews);
+
+        console.log(parsedInterviews)
+
+        let apiUrl = `http://127.0.0.1:8003/api/get/interviews?page=${currentPage}`;
+
+        if(!interviewsObj || Object.keys(interviewsObj).length === 0){
+            if (parsedInterviews.input !== "") {
+                apiUrl += `&search=${parsedInterviews.input}`;
+            }
+            if (parsedInterviews.type !== "") {
+                apiUrl += `&interviewTypeFilter=${parsedInterviews.type}`;
+            }
+            if (parsedInterviews.date !== null) {
+                apiUrl += `&startDateFilter=${parsedInterviews.date}`;
+            }
+            if (localStorage.interviews_sortOrder !== '') {
+                apiUrl += `&sortType=${localStorage.interviews_sortOrder}`;
+            }
+        }
+
         setCurrentInterview(undefined)
         if (!interviewsObj || Object.keys(interviewsObj).length === 0) {
-            fetch(`http://127.0.0.1:8003/api/get/interviews?page=${currentPage}`)
+            fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => setInterviews(data.interviews))
                 .catch(err => console.log(err));
         }
-    }, [currentPage, interviewsObj, setInterviews, setCurrentInterview]);
+    }, [currentPage, interviewsObj, setInterviews, setCurrentInterview, filterChanged]);
 
     const handleNextPage = () => {
         setCurrentPage((prevPage) => prevPage + 1);
