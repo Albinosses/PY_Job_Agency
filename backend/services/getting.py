@@ -41,9 +41,7 @@ def get_vacancies():
         VacancyRepository.get_all(
             filter_by=filter_by,
             search = search
-        )
-        .order_by(Vacancy.salary.desc())
-        .paginate(page=page, per_page=10)
+        ).order_by(Vacancy.salary.desc()).paginate(page=page, per_page=10)
     )
     return jsonify({"page": page, "vacancies": [v.json() for v in vacancies]}), 200
 
