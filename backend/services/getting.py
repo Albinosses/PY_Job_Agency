@@ -99,8 +99,6 @@ def get_interviews():
         maxScore = request.args.get("maxScoreFilter")
     if request.args.get("startDateFilter"):
         filter_by["publicationDate"] = request.args.get("startDateFilter")
-    if request.args.get("endDateFilter"):
-        filter_by["closeDate"] = request.args.get("endDateFilter")
     if request.args.get("search"):
         search = request.args.get("search")
     if request.args.get("sortType"):
@@ -110,23 +108,21 @@ def get_interviews():
             InterviewRepository.get_all(
                 filter_by=filter_by,
                 search = search
-            ).where(Interview.score>=minScore and Interview.score<=maxScore).
-            order_by(Interview.publicationDate.asc()).paginate(page=page, per_page=10)
+            ).order_by(Interview.interviewDate.asc()).paginate(page=page, per_page=10)
         )
     elif sort_type == "New first":
         interviews = (
             InterviewRepository.get_all(
                 filter_by=filter_by,
                 search = search
-            ).where(Interview.score>=minScore and Interview.score<=maxScore)
-            .order_by(Interview.publicationDate.desc()).paginate(page=page, per_page=10)
+            ).order_by(Interview.interviewDate.desc()).paginate(page=page, per_page=10)
         )
     else:
         interviews = (
             InterviewRepository.get_all(
                 filter_by=filter_by,
                 search = search
-            ).where(Interview.score>=minScore and Interview.score<=maxScore).paginate(page=page, per_page=10)
+            ).paginate(page=page, per_page=10)
         )
     return jsonify({"page": page, "interviews": [i.json() for i in interviews]}), 200
 
