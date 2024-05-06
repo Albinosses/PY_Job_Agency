@@ -35,11 +35,6 @@ function SearchFilters() {
         localStorage.setItem("hires", JSON.stringify(hiresObject));
     };
 
-    let inputHandler = (e) => {
-        let lowerCase = e.target.value.toLowerCase();
-        setInputText(lowerCase);
-    };
-
     const handleStartDateChange = (date) => {
         setDate(date);
     };
@@ -77,17 +72,6 @@ function SearchFilters() {
         <div className={styles.container}>
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
-                    <TextField
-                        id="outlined-basic"
-                        onChange={inputHandler}
-                        variant="outlined"
-                        label="Search"
-                        value={inputText}
-                    />
-                </div>
-            </div>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
                     <DatePicker
                         label="Hire Date"
                         value={date}
@@ -107,8 +91,8 @@ function SearchFilters() {
                             onChange={changeSortOrder}
                             value={sortOrder}
                         >
-                            <MenuItem value={'old_first'}>Old first</MenuItem>
-                            <MenuItem value={'new_first'}>New first</MenuItem>
+                            <MenuItem value={'Old first'}>Old first</MenuItem>
+                            <MenuItem value={'New first'}>New first</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
