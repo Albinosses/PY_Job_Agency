@@ -39,6 +39,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
     const [interviewType, setInterviewType] = useState("H")
     const [interviewer, setInterviewer] = useState({})
     const [candidate, setCandidate] = useState({})
+    const [interviewId, setInterviewId] = useState()
 
     const resetState = () => {
         setCandidate({id: 'temp', birthDate: null});
@@ -57,6 +58,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
             setFeedback(data.feedback);
             setDuration(data.duration);
             setScore(data.score);
+            setInterviewId(data.id)
 
             fetch(`http://127.0.0.1:8003/api/get/contact?id=${data.candidateId}`)
                 .then(response => response.json())
@@ -146,20 +148,48 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
         }
     }
 
-    const handleEditInterview = () => {
-        const interviewData = {
-            id: data.id,
-            vacancyId: data.vacancyId,
-            candidate: candidate,
-            interviewer: interviewer,
-            InterviewType: interviewType,
-            InterviewDate: dayjs(interviewDate).format('YYYY-MM-DD'),
-            duration: duration,
-            feedback: feedback,
-            score: score
+    const handleEditInterview = async () => {
+        const updatedInterviewer = {...interviewer}
+        updatedInterviewer.birthDate = dayjs(updatedInterviewer.birthDate).format('MM/DD/YYYY')
+
+        const updatedCandidate = {...candidate}
+        updatedCandidate.birthDate = dayjs(updatedCandidate.birthDate).format('MM/DD/YYYY')
+
+
+        const dataToSend = {
+            'id': interviewId,
+            'vacancyId': currentVacancy.id,
+            'interviewType': interviewType,
+            'interviewDate': dayjs(interviewDate).format('MM/DD/YYYY'),
+            'duration': duration,
+            'feedback': feedback,
+            'score': score,
+            'candidateInfo': updatedCandidate,
+            'interviewerInfo': updatedInterviewer
         };
-        updateInterview(interviewData)
-        handleClose()
+
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/edit/interview', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            console.log(responseData)
+            navigate(0);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
     }
 
     const handleInterviewDateChange = (date) => {
@@ -208,7 +238,7 @@ const InterviewModal = ({open, setOpen, modalType, data}) => {
                         sx={{width: 300}}
                         label="Interview Date"
                         onChange={handleInterviewDateChange}
-                        value={interviewDate}
+                        value={dayjs(interviewDate)}
                     />
                     <TextField
                         sx={{width: 300}}

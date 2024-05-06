@@ -103,7 +103,7 @@ const ContactInfoEdit = ({type, owner, contact, setContact}) => {
                     sx={{width: 300}}
                     label="Birth date"
                     onChange={handleBirthDateChange}
-                    value={birthDate}
+                    value={dayjs(birthDate)}
                 />
             </div>
             <div className={styles.inputItem}>
