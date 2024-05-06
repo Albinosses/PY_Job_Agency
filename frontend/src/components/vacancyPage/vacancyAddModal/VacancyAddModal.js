@@ -164,7 +164,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
     }, [modalType, data]);
 
     const handleAddVacancy = async () => {
-        const data = {
+        const dataToSend = {
             'companyId': companyId,
             'empCountryId': countryId,
             'jobTitle': jobTitle,
@@ -178,7 +178,6 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
             'skills': items
         };
 
-        console.log(data)
 
         try {
             const response = await fetch('http://127.0.0.1:8003/api/insert/vacancy', {
@@ -187,7 +186,7 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(dataToSend)
             });
 
             if (!response.ok) {
@@ -205,26 +204,43 @@ function VacancyAddModal({open, setOpen, modalType, data}) {
     };
 
 
-    const handleEditVacancy = () => {
-        const vacancyData = {
-            id: data.id,
-            jobTitle: jobTitle,
-            companyId: companyId,
-            empCountryId: countryId,
-            description: description,
-            salary: salary,
-            employmentType: type,
-            workSetting: workSetting,
-            status: status,
-            publicationDate: dayjs(startDate).format('MM/DD/YYYY'), // Format the date as needed
-            closeDate: status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : '01/01/0001', // Format the date as needed
-            skills: items,
+    const handleEditVacancy = async () => {
+        const dataToSend = {
+            'id': data.id,
+            'companyId': companyId,
+            'empCountryId': countryId,
+            'jobTitle': jobTitle,
+            'salary': salary,
+            'employmentType': type,
+            'workSetting': workSetting,
+            'publicationDate': dayjs(startDate).format('MM/DD/YYYY'),
+            'status': status,
+            'description': description,
+            'closeDate': status === 'C' ? dayjs(endDate).format('MM/DD/YYYY') : '01/01/0001',
+            'skills': items
         };
 
-        console.log(vacancyData)
+        try {
+            const response = await fetch('http://127.0.0.1:8003/api/edit/vacancy', {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataToSend)
+            });
 
-        //updateVacancy(vacancyData)
-        handleClose()
+            if (!response.ok) {
+                throw new Error('Failed to add vacancy');
+            }
+
+            const responseData = await response.json();
+            navigate(0);
+        } catch (error) {
+            console.error('Error adding vacancy:', error);
+        } finally {
+            handleClose();
+        }
     }
 
     return (
