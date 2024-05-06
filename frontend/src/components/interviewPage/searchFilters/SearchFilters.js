@@ -9,8 +9,7 @@ import dayjs from "dayjs";
 import Button from "@mui/material/Button";
 
 function SearchFilters() {
-    const [sortOrder, setSortOrder] = useState("");
-    const {interviews, setInterviews} = useContext(InterviewContext)
+    const [sortOrder, setSortOrder] = useState('');
 
     useEffect(() => {
         const savedSortOrder = localStorage.getItem("interviews_sortOrder");
@@ -25,15 +24,13 @@ function SearchFilters() {
             setType(parsedInterviews.type);
             setMinScore(parsedInterviews.minScore);
             setMaxScore(parsedInterviews.maxScore);
-            setStartDate(parsedInterviews.startDate === null ? null : dayjs(parsedInterviews.startDate));
-            setEndDate(parsedInterviews.endDate === null ? null : dayjs(parsedInterviews.endDate));
+            setDate(parsedInterviews.date === null ? null : dayjs(parsedInterviews.date));
         }
     }, []);
 
-    const [inputText, setInputText] = useState("");
+    const [inputText, setInputText] = useState('');
     const [type, setType] = useState('');
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [date, setDate] = useState(null);
     const [minScore, setMinScore] = useState(0);
     const [maxScore, setMaxScore] = useState(10);
 
@@ -41,8 +38,7 @@ function SearchFilters() {
         const interviewsObject = {
             input: inputText,
             type: type,
-            startDate: startDate,
-            endDate: endDate,
+            date: date,
             minScore: minScore,
             maxScore: maxScore,
         };
@@ -68,48 +64,13 @@ function SearchFilters() {
     };
 
     const handleStartDateChange = (date) => {
-        setStartDate(date);
-        if (endDate && date > endDate) {
-            setEndDate(null);
-        }
-    };
-
-    const handleEndDateChange = (date) => {
-        setEndDate(date);
-        if (startDate && date < startDate) {
-            setStartDate(null);
-        }
+        setDate(date);
     };
 
     const changeSortOrder = (e) => {
         const newSortOrder = e.target.value;
         localStorage.setItem("interviews_sortOrder", newSortOrder);
         setSortOrder(newSortOrder);
-
-        if (newSortOrder === 'new_first'){
-            const sortedVacancies = [...interviews].sort((a, b) => new Date(b.InterviewDate) - new Date(a.InterviewDate));
-            setInterviews(sortedVacancies);
-        }
-        if (newSortOrder === 'old_first'){
-            const sortedVacancies = [...interviews].sort((a, b) => new Date(a.InterviewDate) - new Date(b.InterviewDate));
-            setInterviews(sortedVacancies);
-        }
-        if (newSortOrder === 'long_first'){
-            const sortedVacancies = [...interviews].sort((a, b) => b.duration - a.duration);
-            setInterviews(sortedVacancies);
-        }
-        if (newSortOrder === 'short_first'){
-            const sortedVacancies = [...interviews].sort((a, b) => a.duration - b.duration);
-            setInterviews(sortedVacancies);
-        }
-        if (newSortOrder === 'big_score_first'){
-            const sortedVacancies = [...interviews].sort((a, b) => b.score - a.score);
-            setInterviews(sortedVacancies);
-        }
-        if (newSortOrder === 'small_score_first'){
-            const sortedVacancies = [...interviews].sort((a, b) => a.score - b.score);
-            setInterviews(sortedVacancies);
-        }
     }
 
     const [clearFilters, setClearFilters] = useState(false)
@@ -121,8 +82,7 @@ function SearchFilters() {
         setType('')
         setMinScore(0)
         setMaxScore(10)
-        setStartDate(null)
-        setEndDate(null)
+        setDate(null)
         setSortOrder('')
 
         localStorage.setItem("interviews_sortOrder", '');
@@ -207,19 +167,9 @@ function SearchFilters() {
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
                     <DatePicker
-                        label="Start date"
-                        value={startDate}
+                        label="Interview Date"
+                        value={date}
                         onChange={handleStartDateChange}
-                    />
-                </div>
-            </div>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
-                    <DatePicker
-                        label="End date"
-                        value={endDate}
-                        onChange={handleEndDateChange}
-                        minDate={startDate}
                     />
                 </div>
             </div>

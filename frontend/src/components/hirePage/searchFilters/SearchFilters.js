@@ -1,15 +1,13 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./SearchFilters.module.css";
 import TextField from "@mui/material/TextField";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {DatePicker} from "@mui/x-date-pickers";
-import {HireContext} from "../../../contexts/HireContext";
 import Button from "@mui/material/Button";
 import dayjs from "dayjs";
 
 function SearchFilters() {
     const [sortOrder, setSortOrder] = useState("");
-    const {hires, setHires} = useContext(HireContext)
 
     useEffect(() => {
         const savedSortOrder = localStorage.getItem("hires_sortOrder");
@@ -22,20 +20,17 @@ function SearchFilters() {
         if (savedHires) {
             const parsedHires = JSON.parse(savedHires);
             setInputText(parsedHires.input)
-            setStartDate(parsedHires.startDate === null ? null : dayjs(parsedHires.startDate));
-            setEndDate(parsedHires.endDate === null ? null : dayjs(parsedHires.endDate));
+            setDate(parsedHires.date === null ? null : dayjs(parsedHires.date));
         }
     }, []);
 
     const [inputText, setInputText] = useState("");
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [date, setDate] = useState(null);
 
     const saveFiltersToLocalStorage = () => {
         const hiresObject = {
             input: inputText,
-            startDate: startDate,
-            endDate: endDate
+            date: date
         };
         localStorage.setItem("hires", JSON.stringify(hiresObject));
     };
@@ -46,42 +41,21 @@ function SearchFilters() {
     };
 
     const handleStartDateChange = (date) => {
-        setStartDate(date);
-        if (endDate && date > endDate) {
-            setEndDate(null);
-        }
-    };
-
-    const handleEndDateChange = (date) => {
-        setEndDate(date);
-        if (startDate && date < startDate) {
-            setStartDate(null);
-        }
+        setDate(date);
     };
 
     const changeSortOrder = (e) => {
         const newSortOrder = e.target.value;
         localStorage.setItem("hires_sortOrder", newSortOrder);
         setSortOrder(newSortOrder);
-
-        if (newSortOrder === 'new_first'){
-            const sortedVacancies = [...hires].sort((a, b) => new Date(b.hireDate) - new Date(a.hireDate));
-            setHires(sortedVacancies);
-        }
-        if (newSortOrder === 'old_first'){
-            const sortedVacancies = [...hires].sort((a, b) => new Date(a.hireDate) - new Date(b.hireDate));
-            setHires(sortedVacancies);
-        }
     }
 
     const [clearFilters, setClearFilters] = useState(false)
 
     const handleClearFilters = () => {
         setClearFilters(true)
-
         setInputText('')
-        setStartDate(null)
-        setEndDate(null)
+        setDate(null)
         setSortOrder('')
 
         localStorage.setItem("hires_sortOrder", '');
@@ -115,19 +89,9 @@ function SearchFilters() {
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
                     <DatePicker
-                        label="Start date"
-                        value={startDate}
+                        label="Hire Date"
+                        value={date}
                         onChange={handleStartDateChange}
-                    />
-                </div>
-            </div>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
-                    <DatePicker
-                        label="End date"
-                        value={endDate}
-                        onChange={handleEndDateChange}
-                        minDate={startDate}
                     />
                 </div>
             </div>
