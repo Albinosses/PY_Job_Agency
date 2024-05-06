@@ -1,9 +1,35 @@
-from db.OLTP.models import Vacancy, Interview, Hire, SkillSetVacancy, SkillLevel, Contact, Employee
+from db.OLTP.models import (
+    Vacancy,
+    Interview,
+    Hire,
+    SkillSetVacancy,
+    SkillLevel,
+    Contact,
+    Employee,
+)
 from db import db
 from datetime import datetime
 
 
 class VacancyRepository:
+    @staticmethod
+    def update_vacancy(id, parameters):
+        for param in parameters:
+            if param == "publicationDate":
+                publicationDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
+                publicationDate = publicationDate_obj.strftime("%Y-%m-%d")
+                setattr(Vacancy.query.get(id), "interviewDate", publicationDate)
+            if param == "closeDate":
+                closeDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
+                closeDate = closeDate_obj.strftime("%Y-%m-%d")
+                setattr(Vacancy.query.get(id), "closeDate", closeDate)
+            if param == "status" and parameters[param] != "C":
+                closeDate = None
+            else:
+                setattr(Vacancy.query.get(id), param, parameters[param])
+        db.session.commit()
+        return Vacancy.query.get(id)
+
     @staticmethod
     def delete(id: str):
         vacancy = Vacancy.query.get(id)
@@ -15,12 +41,10 @@ class VacancyRepository:
         for h in hires:
             h.vacancyId = None
         for s in skillsets:
-
             db.session.delete(s)
         db.session.delete(vacancy)
         db.session.commit()
         return 1
-    
 
     @staticmethod
     def get_by_id(id: str):
@@ -73,11 +97,35 @@ class VacancyRepository:
 
 class InterviewRepository:
     @staticmethod
+    def update_interview(id: str, parameters: dict):
+        for param in parameters:
+            if param == "interviewDate":
+                interviewDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
+                interviewDate = interviewDate_obj.strftime("%Y-%m-%d")
+                setattr(Interview.query.get(id), "interviewDate", interviewDate)
+            else:
+                setattr(Interview.query.get(id), param, parameters[param])
+        db.session.commit()
+        return Interview.query.get(id)
+
+    @staticmethod
+    def update_interviewer_or_candidate(id: str, parameters: dict):
+        for param in parameters:
+            if param == "birthDate":
+                birthDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
+                birthDate = birthDate_obj.strftime("%Y-%m-%d")
+                setattr(Contact.query.get(id), "birthDate", birthDate)
+            else:
+                setattr(Contact.query.get(id), param, parameters[param])
+        db.session.commit()
+        return Contact.query.get(id)
+
+    @staticmethod
     def get_by_id(id: str):
         return Interview.query.get(id)
-    
+
     @staticmethod
-    def create_interviewer(countryId,name,surname,birthDate,gender,email):
+    def create_interviewer(countryId, name, surname, birthDate, gender, email):
         birthDate_obj = datetime.strptime(birthDate, "%m/%d/%Y")
 
         # Now format the datetime objects into the correct format "%Y-%m-%d"
@@ -93,16 +141,16 @@ class InterviewRepository:
             surname=surname,
             birthDate=birthDate,
             gender=gender,
-            email=email
+            email=email,
         )
         db.session.add(new_interviewer)
         db.session.commit()
         db.session.flush()
         db.session.refresh(new_interviewer)
         return new_interviewer
-    
+
     @staticmethod
-    def create_candidate(countryId,name,surname,birthDate,gender,email):
+    def create_candidate(countryId, name, surname, birthDate, gender, email):
         birthDate_obj = datetime.strptime(birthDate, "%m/%d/%Y")
 
         # Now format the datetime objects into the correct format "%Y-%m-%d"
@@ -118,7 +166,7 @@ class InterviewRepository:
             surname=surname,
             birthDate=birthDate,
             gender=gender,
-            email=email
+            email=email,
         )
         db.session.add(new_candidate)
         db.session.commit()
@@ -169,10 +217,22 @@ class InterviewRepository:
         db.session.commit()
         return 1
 
+
 class HireRepository:
+    @staticmethod
+    def update(id, date: str):
+        resumeUploadDate_obj = datetime.strptime(date, "%m/%d/%Y")
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+        resumeUploadDate = resumeUploadDate_obj.strftime("%Y-%m-%d")
+        setattr(Hire.query.get(id), "hireDate", resumeUploadDate)
+        db.session.commit()
+        return Hire.query.get(id)
+    
+    
     @staticmethod
     def get_by_id(id: str):
         return Interview.query.get(id)
+
     @staticmethod
     def create_employee(contactId, resume, resumeUploadDate):
         resumeUploadDate_obj = datetime.strptime(resumeUploadDate, "%m/%d/%Y")
@@ -228,6 +288,13 @@ class SkillSetVacancyRepository:
         return Interview.query.get(id)
 
     @staticmethod
+    def delete(id: str):
+        skill = SkillSetVacancy.query.get(id)
+        db.session.delete(skill)
+        db.session.commit()
+        return 1
+
+    @staticmethod
     def create(vacancyId, skillId, weight):
         # last id
         last_id = SkillSetVacancy.query.order_by(SkillSetVacancy.id.desc()).first()
@@ -242,20 +309,16 @@ class SkillSetVacancyRepository:
         db.session.flush()
         db.session.refresh(new_skillset)
         return new_skillset
-    
+
     @staticmethod
-    def create_skill(skill,level):
+    def create_skill(skill, level):
         last_id = SkillLevel.query.order_by(SkillLevel.id.desc()).first()
         id = last_id.id + 1
 
-        new_skill = SkillLevel(
-            id=id, skill=skill, level=level
-        )
+        new_skill = SkillLevel(id=id, skill=skill, level=level)
 
         db.session.add(new_skill)
         db.session.commit()
         db.session.flush()
         db.session.refresh(new_skill)
         return new_skill
-    
-

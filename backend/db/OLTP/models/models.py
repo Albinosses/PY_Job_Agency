@@ -71,6 +71,13 @@ class SkillLevel(db.Model):
     SkillSetVacancy: Mapped[List["SkillSetVacancy"]] = relationship(
         "SkillSetVacancy", uselist=True, back_populates="SkillLevel_"
     )
+    def json(self):
+        return {
+            "id": self.id,
+            "skill": self.skill,
+            "level": self.level
+        }
+
 
 
 class Company(db.Model):
@@ -386,3 +393,11 @@ class SkillSetVacancy(db.Model):
     Vacancy_: Mapped["Vacancy"] = relationship(
         "Vacancy", back_populates="SkillSetVacancy"
     )
+
+    def json(self):
+        return {
+            "id": self.id,
+            "vacancyId": self.vacancyId,
+            "skillID": self.skillId,
+            "weight": self.weight,
+        }
