@@ -191,7 +191,7 @@ function SearchFilters({setFilterChanged}) {
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
                     <DatePicker
-                        label="Start date"
+                        label="Opening date"
                         value={startDate}
                         onChange={handleStartDateChange}
                     />
@@ -200,7 +200,7 @@ function SearchFilters({setFilterChanged}) {
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
                     <DatePicker
-                        label="End date"
+                        label="Closing date"
                         value={endDate}
                         onChange={handleEndDateChange}
                         minDate={startDate}
