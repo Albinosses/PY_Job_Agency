@@ -25,6 +25,8 @@ def get_vacancies():
     page = request.args.get("page", 1, type=int)
     filter_by = {}
     search = ""
+    sort_type = ""
+    vacancies = []
     if request.args.get("employmentTypeFilter"):
         filter_by["employmentType"] = request.args.get("employmentTypeFilter")
     if request.args.get("statusFilter"):
@@ -37,12 +39,43 @@ def get_vacancies():
         filter_by["closeDate"] = request.args.get("endDateFilter")
     if request.args.get("search"):
         search = request.args.get("search")
-    vacancies = (
-        VacancyRepository.get_all(
-            filter_by=filter_by,
-            search = search
-        ).order_by(Vacancy.salary.desc()).paginate(page=page, per_page=10)
-    )
+    if request.args.get("sortType"):
+        sort_type = request.args.get("sortType")
+    if sort_type == "Big salary first":
+        vacancies = (
+            VacancyRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).order_by(Vacancy.salary.desc()).paginate(page=page, per_page=10)
+        )
+    elif sort_type == "Small salary first":
+        vacancies = (
+            VacancyRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).order_by(Vacancy.salary.asc()).paginate(page=page, per_page=10)
+        )
+    elif sort_type == "Old first":
+        vacancies = (
+            VacancyRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).order_by(Vacancy.publicationDate.asc()).paginate(page=page, per_page=10)
+        )
+    elif sort_type == "New first":
+        vacancies = (
+            VacancyRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).order_by(Vacancy.publicationDate.desc()).paginate(page=page, per_page=10)
+        )
+    else:
+        vacancies = (
+            VacancyRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).paginate(page=page, per_page=10)
+        )
     return jsonify({"page": page, "vacancies": [v.json() for v in vacancies]}), 200
 
 
