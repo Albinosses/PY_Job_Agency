@@ -23,8 +23,13 @@ function Vacancy({vacancy}) {
                     }
                 </div>
             </div>
-            <div
-                className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')} - {dayjs(vacancy.closeDate).format('YYYY-MM-DD')}</div>
+            {vacancy.status === "C" &&
+                <div className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')} - {dayjs(vacancy.closeDate).format('YYYY-MM-DD')}</div>
+            }
+            {vacancy.status !== "C" &&
+                <div className={styles.vacancyDate}>{dayjs(vacancy.publicationDate).format('YYYY-MM-DD')}</div>
+            }
+
             <div className={styles.vacancyLink}>Learn more</div>
         </div>
     );
