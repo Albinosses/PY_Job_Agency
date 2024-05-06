@@ -239,6 +239,13 @@ class InterviewRepository:
 
 class HireRepository:
     @staticmethod
+    def get_all(filter_by=None, search=None):
+        query = Hire.query
+        if filter_by:
+            query = query.filter_by(**filter_by)
+        return query
+
+    @staticmethod
     def update(id, date: str):
         resumeUploadDate_obj = datetime.strptime(date, "%m/%d/%Y")
         # Now format the datetime objects into the correct format "%Y-%m-%d"

@@ -13,7 +13,7 @@ from db.OLTP.models import (
     Contact,
     Employee,
 )
-from services.models import VacancyRepository,InterviewRepository
+from services.models import VacancyRepository,InterviewRepository, HireRepository
 
 
 get_bp = Blueprint("get", __name__, url_prefix="/get")
@@ -129,9 +129,40 @@ def get_interviews():
 
 @get_bp.route("/hires", methods=["GET"])
 def get_hires():
+
     # TODO: Add filtering
     page = request.args.get("page", 1, type=int)
-    hires = Hire.query.filter_by().paginate(page=page, per_page=10)
+    filter_by = {}
+    search = ""
+    sort_type = ""
+    hires = []
+
+
+    if request.args.get("hireDateFilter"):
+        filter_by["hireDate"] = request.args.get("hireDateFilter")
+    if request.args.get("sortType"):
+        sort_type = request.args.get("sortType")
+    if sort_type == "Old first":
+        hires = (
+            HireRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).order_by(Hire.hireDate.asc()).paginate(page=page, per_page=10)
+        )
+    elif sort_type == "New first":
+        hires = (
+            HireRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).order_by(Hire.hireDate.desc()).paginate(page=page, per_page=10)
+        )
+    else:
+        hires = (
+            HireRepository.get_all(
+                filter_by=filter_by,
+                search = search
+            ).paginate(page=page, per_page=10)
+        )
     return jsonify({"page": page, "hires": [h.json() for h in hires]}), 200
 
 
