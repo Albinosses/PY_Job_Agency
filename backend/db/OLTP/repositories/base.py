@@ -29,11 +29,16 @@ class VacancyRepository:
                 publicationDate = publicationDate_obj.strftime("%Y-%m-%d")
                 setattr(Vacancy.query.get(id), "publicationDate", publicationDate)
             elif param == "closeDate":
-                closeDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
-                closeDate = closeDate_obj.strftime("%Y-%m-%d")
-                setattr(Vacancy.query.get(id), "closeDate", closeDate)
+                if parameters["status"] == "C":
+                    closeDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
+                    closeDate = closeDate_obj.strftime("%Y-%m-%d")
+                    setattr(Vacancy.query.get(id), "closeDate", closeDate)
+                else:
+                    closeDate = None
+                    setattr(Vacancy.query.get(id), "closeDate", closeDate)
             elif param == "status" and parameters[param] != "C":
                 closeDate = None
+                setattr(Vacancy.query.get(id), "closeDate", closeDate)
             else:
                 setattr(Vacancy.query.get(id), param, parameters[param])
         db.session.commit()
