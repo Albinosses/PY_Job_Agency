@@ -66,6 +66,14 @@ function SidePanel({onPageChange}) {
                     </div>
                 </div>
             </Link>
+            <Link to="/export">
+                <div
+                    className={`${styles.section} ${selectedItem === 'export' ? styles.blue : ''}`}>
+                    <div className={styles.content}>
+                        <div>Export</div>
+                    </div>
+                </div>
+            </Link>
                 <div className={styles.section}>
                     <div className={styles.content}
                         onClick={handleOpenDashboardMenu}

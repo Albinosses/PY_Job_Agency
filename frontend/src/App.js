@@ -19,6 +19,7 @@ import HireDashboard from "./components/dashboards/HireDashboard";
 import {GeneralContextProvider} from "./contexts/GeneralContext";
 import Graphs from "./components/dashboards/Graphs";
 import LoginPage from "./components/login/LoginPage";
+import Export from "./components/export/Export";
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
                                         <Route path="/dashboard/interview" element={<InterviewDashboard/>}/>
                                         <Route path="/dashboard/hire" element={<HireDashboard/>}/>
                                         <Route path="/dashboard/graph" element={<Graphs/>}/>
+                                        <Route path="/export" element={<Export/>}/>
                                     </Routes>
                                 </div>
                             </div>
