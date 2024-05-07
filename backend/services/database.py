@@ -9,5 +9,5 @@ database_bp = Blueprint("database", __name__, url_prefix="/database")
 
 @database_bp.route("/increment", methods=["GET"])
 def increment_db():
-    subprocess.run(["python", "../../database/incremental-etl.py"])
+    subprocess.run(["python", "./database/incremental-etl.py"])
     return jsonify("Successfully incremented"), 200
