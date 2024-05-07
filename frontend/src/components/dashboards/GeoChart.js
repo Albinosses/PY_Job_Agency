@@ -1,31 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Chart } from 'react-google-charts';
 
 const GeoChartComponent = () => {
+    const [Data, setData] = useState([])
 
-     // const dataExample = [
-     //     {
-     //         Country: "SomeCountry",
-     //         numberOfHires: 123
-     //     }
-     // ]
-
-    const data = [
-        ['Country', 'NumberOfHires'],
-        ['China', 1409517397],
-        ['India', 1339180127],
-        ['United States', 324459463],
-        ['Indonesia', 263991379],
-        ['Pakistan', 207906209],
-        // Add more data as needed
-    ];
+    useEffect(() => {
+        fetch("http://127.0.0.1:8003/api/get/graph_countries")
+            .then(response => response.json())
+            .then(data => {
+                const transformedData = data.map(entry => [entry.Country, entry.numberOfHires]);
+                transformedData.unshift(['Country', 'NumberOfHires']);
+                setData(transformedData)
+            } )
+            .catch(err => console.log(err))
+    }, []);
 
     return (
         <Chart
             width={'100%'}
             height={'700px'}
             chartType="GeoChart"
-            data={data}
+            data={Data}
         />
     );
 };
