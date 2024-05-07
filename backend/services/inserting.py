@@ -108,12 +108,16 @@ def insert_interview():
     # create or get interviewer
     interviewer_info = request_data["interviewerInfo"]
     countryId = interviewer_info["countryId"]
+    birthDate_obj = datetime.strptime(interviewer_info["birthDate"], "%m/%d/%Y")
+
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+    birthDate = birthDate_obj.strftime("%Y-%m-%d")
     print(interviewer_info)
     interviewerId = Contact.query.filter_by(
         countryId=countryId,
         name=interviewer_info["name"],
         surname=interviewer_info["surname"],
-        birthDate=interviewer_info["birthDate"],
+        birthDate=birthDate,
         gender=interviewer_info["gender"],
         email=interviewer_info["email"],
     ).first()
@@ -162,11 +166,15 @@ def insert_hire():
     # TODO: ДОРОБИТИ І ЗРОБИТИ ЛОГІЧНО З ФРОНТОМ
     request_data = request.get_json()
     employee_info = request_data["employeeInfo"]
+    birthDate_obj = datetime.strptime(employee_info["birthDate"], "%m/%d/%Y")
+
+        # Now format the datetime objects into the correct format "%Y-%m-%d"
+    birthDate = birthDate_obj.strftime("%Y-%m-%d")
     emplyeeContactId = Contact.query.filter_by(
         countryId=employee_info["countryId"],
         name=employee_info["name"],
         surname=employee_info["surname"],
-        birthDate=employee_info["birthDate"],
+        birthDate=birthDate,
         gender=employee_info["gender"],
         email=employee_info["email"],
     ).first()
