@@ -13,5 +13,10 @@
         "interviewerId": 9359,
         "candidateId": 9358,
         "interviewId": 58699
+    },
+    {
+        "interviewerId": 2,
+        "candidateId": 3,
+        "interviewId": 1
     }
 ]
