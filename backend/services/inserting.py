@@ -19,6 +19,8 @@ from services.models import (
     HireRepository,
     SkillSetVacancyRepository,
 )
+import os
+import json
 
 
 insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
@@ -27,6 +29,7 @@ insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
 @insert_bp.route("/vacancy", methods=["POST"])
 def insert_vacancy():
     request_data = request.get_json()
+    skillSets = []
     skills = request_data["skills"]
     new_vacancy = VacancyRepository.create(
         companyId=request_data["companyId"],
@@ -49,9 +52,25 @@ def insert_vacancy():
             skillId = SkillSetVacancyRepository.create_skill(
                 skill=skill["skillName"], level=skill["level"]
             )
-        SkillSetVacancyRepository.create(
+        skillSets.append(SkillSetVacancyRepository.create(
             vacancyId=new_vacancy.id, skillId=skillId.id, weight=skill["weight"] / 100
-        )
+        ))
+    file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "vacancy.json")
+    print(file_path)
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    # Add new data to the array
+
+    new_data = {
+        "vacancyId": new_vacancy.id,
+        "skillIds": [s.skillId for s in skillSets],
+    }
+    data.append(new_data)
+
+    # Save changes back to the file
+    with open(file_path, "w") as file:
+        json.dump(data, file, indent=4)
     return jsonify(new_vacancy.json()), 200
 
 
@@ -118,6 +137,23 @@ def insert_interview():
         feedback=request_data["feedback"],
         score=request_data["score"],
     )
+    file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "interview.json")
+    print(file_path)
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    # Add new data to the array
+
+    new_data = {
+        "interviewerId": new_interview.interviewerId,
+        "candidateId": new_interview.candidateId,
+        "interviewId": new_interview.id
+    }
+    data.append(new_data)
+
+    # Save changes back to the file
+    with open(file_path, "w") as file:
+        json.dump(data, file, indent=4)
     return jsonify(new_interview.json()), 200
 
 
@@ -156,4 +192,20 @@ def insert_hire():
         employeeId=employeeId.id,
         hireDate=request_data["hireDate"],
     )
+    file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "hire.json")
+    print(file_path)
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    # Add new data to the array
+
+    new_data = {
+        "hireId": new_hire.id,
+        "employeeId": new_hire.employeeId
+    }
+    data.append(new_data)
+
+    # Save changes back to the file
+    with open(file_path, "w") as file:
+        json.dump(data, file, indent=4)
     return jsonify(new_hire.json()), 200

@@ -1,6 +1,7 @@
 import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.OLTP.models import (
     Vacancy,
@@ -73,8 +74,10 @@ def edit_vacancy():
         result["level"] = skill_info["level"]
         result["weight"] = int(s.weight * 100)
         show_skill.append(result)
-
-    with open("../../database/incremental-etl-data/vacancy.json", "r") as file:
+# Construct the path
+    file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "vacancy.json")
+    print(file_path)
+    with open(file_path, "r") as file:
         data = json.load(file)
 
     # Add new data to the array
@@ -86,7 +89,7 @@ def edit_vacancy():
     data.append(new_data)
 
     # Save changes back to the file
-    with open("vacancy.json", "w") as file:
+    with open(file_path, "w") as file:
         json.dump(data, file, indent=4)
 
     return jsonify(
@@ -116,6 +119,24 @@ def edit_interview():
     updated_candidate = InterviewRepository.update_interviewer_or_candidate(
         candidate_params["id"], candidate_params
     )
+    file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "interview.json")
+    print(file_path)
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    # Add new data to the array
+
+    new_data = {
+        "interviewerId": updated_interviewer.id,
+        "candidateId": updated_candidate.id,
+        "interviewId": updated_interview.id
+    }
+    data.append(new_data)
+
+    # Save changes back to the file
+    with open(file_path, "w") as file:
+        json.dump(data, file, indent=4)
+
     return jsonify(
         {
             "updated_interview": updated_interview.json(),
@@ -133,6 +154,22 @@ def delete_hire():
         contact_params["id"], contact_params
     )
     hire_updated = HireRepository.update(request_data["id"], request_data["hireDate"])
+    file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "hire.json")
+    print(file_path)
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    # Add new data to the array
+
+    new_data = {
+        "hireId": hire_updated.id,
+        "employeeId": hire_updated.employeeId
+    }
+    data.append(new_data)
+
+    # Save changes back to the file
+    with open(file_path, "w") as file:
+        json.dump(data, file, indent=4)
     return jsonify(
         {"employeeInfo": new_contact.json(), "updated_hire": hire_updated.json()}
     ), 200
