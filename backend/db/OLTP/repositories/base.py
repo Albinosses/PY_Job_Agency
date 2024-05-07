@@ -27,12 +27,12 @@ class VacancyRepository:
             if param == "publicationDate":
                 publicationDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
                 publicationDate = publicationDate_obj.strftime("%Y-%m-%d")
-                setattr(Vacancy.query.get(id), "interviewDate", publicationDate)
-            if param == "closeDate":
+                setattr(Vacancy.query.get(id), "publicationDate", publicationDate)
+            elif param == "closeDate":
                 closeDate_obj = datetime.strptime(parameters[param], "%m/%d/%Y")
                 closeDate = closeDate_obj.strftime("%Y-%m-%d")
                 setattr(Vacancy.query.get(id), "closeDate", closeDate)
-            if param == "status" and parameters[param] != "C":
+            elif param == "status" and parameters[param] != "C":
                 closeDate = None
             else:
                 setattr(Vacancy.query.get(id), param, parameters[param])
