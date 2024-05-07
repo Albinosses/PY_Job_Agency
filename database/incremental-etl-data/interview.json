@@ -1,17 +1,1 @@
-[
-    {
-        "interviewerId": 1,
-        "candidateId": 1,
-        "interviewId": 1
-    },
-    {
-        "interviewerId": 2,
-        "candidateId": 3,
-        "interviewId": 1
-    },
-    {
-        "interviewerId": 9359,
-        "candidateId": 9358,
-        "interviewId": 58699
-    }
-]
+[]

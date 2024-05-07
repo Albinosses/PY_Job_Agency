@@ -49,14 +49,16 @@ function MainContent() {
         }, 5000)
     }
 
-    const handleRunIncrementalEtl = (event) => {
+    const handleRunIncrementalEtl = async () => {
         setIncrementalEtlIsDone(false)
         setIncrementalEtlIsRun(true)
+        await fetch('http://127.0.0.1:8003/api/database/increment')
+            .then(response => response)
+            .then(data => data )
+            .catch(err => console.log(err))
 
-        setTimeout(function () {
-            setIncrementalEtlIsRun(false)
-            setIncrementalEtlIsDone(true)
-        }, 5000)
+        setIncrementalEtlIsRun(false)
+        setIncrementalEtlIsDone(true)
     }
 
     return (
