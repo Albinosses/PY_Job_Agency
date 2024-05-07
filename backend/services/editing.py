@@ -2,6 +2,7 @@ import datetime
 from typing import Union
 from flask import Blueprint, request, jsonify
 import os
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.OLTP.models import (
     Vacancy,
@@ -21,9 +22,12 @@ from services.models import (
     SkillSetVacancyRepository,
 )
 import json
+import logging
 
 
 edit_bp = Blueprint("edit", __name__, url_prefix="/edit")
+logging.basicConfig(filename='edit.log', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 
 @edit_bp.route("/vacancy", methods=["POST"])
@@ -75,6 +79,7 @@ def edit_vacancy():
         result["weight"] = int(s.weight * 100)
         show_skill.append(result)
 # Construct the path
+    logger.info('Vacancy edited')
     file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "vacancy.json")
     print(file_path)
     with open(file_path, "r") as file:
@@ -119,6 +124,7 @@ def edit_interview():
     updated_candidate = InterviewRepository.update_interviewer_or_candidate(
         candidate_params["id"], candidate_params
     )
+    logger.info('Interview edited')
     file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "interview.json")
     print(file_path)
     with open(file_path, "r") as file:
@@ -147,13 +153,14 @@ def edit_interview():
 
 
 @edit_bp.route("/hire", methods=["POST"])
-def delete_hire():
+def edit_hire():
     request_data = request.get_json()
     contact_params = request_data["employeeInfo"]
     new_contact = InterviewRepository.update_interviewer_or_candidate(
         contact_params["id"], contact_params
     )
     hire_updated = HireRepository.update(request_data["id"], request_data["hireDate"])
+    logger.info('Hire edited')
     file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "hire.json")
     print(file_path)
     with open(file_path, "r") as file:
