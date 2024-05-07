@@ -21,6 +21,9 @@ from services.models import (
 )
 import os
 import json
+import logging
+logging.basicConfig(filename='create.log', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 
 insert_bp = Blueprint("insert", __name__, url_prefix="/insert")
@@ -55,6 +58,7 @@ def insert_vacancy():
         skillSets.append(SkillSetVacancyRepository.create(
             vacancyId=new_vacancy.id, skillId=skillId.id, weight=skill["weight"] / 100
         ))
+    logger.info('Vacancy created')
     file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "vacancy.json")
     print(file_path)
     with open(file_path, "r") as file:
@@ -137,6 +141,7 @@ def insert_interview():
         feedback=request_data["feedback"],
         score=request_data["score"],
     )
+    logger.info('Interview created')
     file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "interview.json")
     print(file_path)
     with open(file_path, "r") as file:
@@ -192,6 +197,7 @@ def insert_hire():
         employeeId=employeeId.id,
         hireDate=request_data["hireDate"],
     )
+    logger.info('Hire created')
     file_path = os.path.join(os.getcwd(), "database", "incremental-etl-data", "hire.json")
     print(file_path)
     with open(file_path, "r") as file:
