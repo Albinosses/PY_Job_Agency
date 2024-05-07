@@ -19,7 +19,7 @@ function SidePanel({onPageChange}) {
     return (
         <div className={styles.container}>
             <div className={styles.title}>HR System</div>
-            <Link to="/main">
+            <Link to="/">
                 <div className={`${styles.section} ${selectedItem === '' ? styles.blue : ''}`}>
                     <div className={styles.content}>
                         <img

@@ -15,7 +15,8 @@ const defaultTheme = createTheme();
 
 const mockUser = {
     email: "vsyman9@gmail.com",
-    password: "2204"
+    password: "2204",
+    power: "admin"
 }
 
 export default function LoginPage() {

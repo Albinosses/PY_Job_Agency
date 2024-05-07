@@ -30,15 +30,13 @@ function App() {
                     <VacancyProvider>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <div className={styles.App}>
-                                {localStorage.isAuthenticated === "true" && (
                                     <div className={styles.sidePanel}>
                                         <SidePanel/>
                                     </div>
-                                )}
                                 <div className={styles.content}>
                                 <Routes>
-                                        <Route path="/" element={<LoginPage/>}/>
-                                        <Route path="/main" element={<MainPage/>}/>
+                                        {/*<Route path="/" element={<LoginPage/>}/>*/}
+                                        <Route path="/" element={<MainPage/>}/>
                                         <Route path="/interview" element={<InterviewPage/>}/>
                                         <Route path="/interview/:id" element={<InterviewDetails/>}/>
                                         <Route path="/hire" element={<HirePage/>}/>
