@@ -1,6 +1,7 @@
 import datetime
 from typing import Union
 import psycopg2
+import os
 from flask import Flask, send_file
 import pandas as pd
 from flask import Blueprint, request, jsonify
@@ -345,7 +346,7 @@ def export_vacancies():
         conn = psycopg2.connect(
             dbname="OLAP",
             user="postgres",
-            password="1234",
+            password="2204",
             host="127.0.0.1",
             port="5432",
         )
@@ -424,7 +425,234 @@ def export_vacancies():
         r["position_status"] = result[11]
         data.append(r)
     df = pd.DataFrame(data)
-    csv_filename = '../vacancy.csv'
+    csv_filename = os.path.join(os.getcwd(), 'vacancy.csv')
+    df.to_csv(csv_filename, index=False)
+    # Send the CSV file as a response
+    return send_file(csv_filename, as_attachment=True)
+
+
+@get_bp.route("/export_hires", methods=["GET"])
+def export_hires():
+    def execute_query(sql):
+        conn = psycopg2.connect(
+            dbname="OLAP",
+            user="postgres",
+            password="2204",
+            host="127.0.0.1",
+            port="5432",
+        )
+        cur = conn.cursor()
+        cur.execute(sql)
+        result = cur.fetchall()
+        cur.close()
+        conn.close()
+        return result
+    rows = request.args.get("rows")
+    # SQL queries to retrieve data
+    sql_query_hires = f"""
+SELECT
+    dc.size AS company_size,
+    dc3.name AS company_country,
+    dc2.name AS position_country_name,
+    CASE
+        WHEN dar."employmentType" = 'F' THEN 'Full-time'
+        WHEN dar."employmentType" = 'C' THEN 'Contract'
+        WHEN dar."employmentType" = 'P' THEN 'Part-time'
+    END AS employmentType,
+    CASE
+        WHEN dar."workSetting" = 'P' THEN 'Office'
+        WHEN dar."workSetting" = 'H' THEN 'Hybrid'
+        WHEN dar."workSetting" = 'R' THEN 'Remote'
+    END AS workSetting,
+    dp."jobTitle",
+    CASE
+        WHEN de.gender = 'M' THEN 'Male'
+        WHEN de.gender = 'F' THEN 'Female'
+    END AS employee_gender,
+    CASE
+        WHEN da.id = 1 THEN '18-27'
+        WHEN da.id = 2 THEN '28-37'
+        WHEN da.id = 3 THEN '38-47'
+        WHEN da.id = 4 THEN '48-57'
+        WHEN da.id = 5 THEN '58-67'
+    END AS employee_age_gap,
+    dc4.name AS employee_country,
+    dt."date" AS hire_date,
+    fh.salary,
+    fh.comission,
+    fh.days,
+    fh."interviewN"
+    FROM
+    public."factHire" AS fh
+    JOIN
+    public."dimCompany" AS dc ON fh."companyId" = dc.id
+    JOIN
+    public."dimCountry" AS dc3 ON dc."countryId" = dc3.id
+    JOIN
+    public."dimPosition" AS dp ON fh."positionId" = dp.id
+    JOIN
+    public."dimCountry" AS dc2 ON dp."countryId" = dc2.id
+    JOIN
+    public."dimAdditionalRequirements" AS dar ON dp."additionalRId" = dar.id
+    JOIN
+    public."dimEmployee" AS de ON fh."employeeId" = de.id
+    JOIN
+    public."dimAge" AS da ON de."ageId" = da.id
+    JOIN
+    public."dimTime" AS dt ON fh."timeId" = dt.id
+    JOIN
+    public."dimCountry" AS dc4 ON de."countryId" = dc4.id
+    LIMIT {rows};
+    """
+
+    # Execute the queries
+    results_hires = execute_query(sql_query_hires)
+    # Process results to create the desired object
+    data = []
+    for result in results_hires:
+        r = {}
+        r["company_size"] = result[0]
+        r["company_country"] = result[1]
+        r["position_country"] = result[2]
+        r["position_employmentType"] = result[3]
+        r["position_workSetting"] = result[4]
+        r["position_name"] = result[5]
+        r["employee_gender"] = result[6]
+        r["employee_age_gap"] = result[7]
+        r["employee_country"] = result[8]
+        r["hire_date"] = result[9]
+        r["salary"] = result[10]
+        r["comission"] = result[11]
+        r["days"] = result[12]
+        r["interviewN"] = result[13]
+        data.append(r)
+    df = pd.DataFrame(data)
+    csv_filename = os.path.join(os.getcwd(), 'hire.csv')
+
+    df.to_csv(csv_filename, index=False)
+
+    # Send the CSV file as a response
+    return send_file(csv_filename, as_attachment=True)
+
+
+
+@get_bp.route("/export_interviews", methods=["GET"])
+def export_interviews():
+    def execute_query(sql):
+        conn = psycopg2.connect(
+            dbname="OLAP",
+            user="postgres",
+            password="2204",
+            host="127.0.0.1",
+            port="5432",
+        )
+        cur = conn.cursor()
+        cur.execute(sql)
+        result = cur.fetchall()
+        cur.close()
+        conn.close()
+        return result
+    rows = request.args.get("rows")
+    # SQL queries to retrieve data
+    sql_query_interviews = f"""
+    SELECT
+    dc.size AS company_size,
+    dc3.name AS company_country,
+    dc2.name AS position_country_name,
+    CASE
+        WHEN dar."employmentType" = 'F' THEN 'Full-time'
+        WHEN dar."employmentType" = 'C' THEN 'Contract'
+        WHEN dar."employmentType" = 'P' THEN 'Part-time'
+    END AS position_employmentType,
+    CASE
+        WHEN dar."workSetting" = 'P' THEN 'Office'
+        WHEN dar."workSetting" = 'H' THEN 'Hybrid'
+        WHEN dar."workSetting" = 'R' THEN 'Remote'
+    END AS position_workSetting,
+    dp."jobTitle" AS position_name,
+    CASE
+        WHEN de.gender = 'M' THEN 'Male'
+        WHEN de.gender = 'F' THEN 'Female'
+    END AS employee_gender,
+    CASE
+        WHEN da.id = 1 THEN '18-27'
+        WHEN da.id = 2 THEN '28-37'
+        WHEN da.id = 3 THEN '38-47'
+        WHEN da.id = 4 THEN '48-57'
+        WHEN da.id = 5 THEN '58-67'
+    END AS employee_age_gap,
+    dc4.name AS employee_country,
+    dt."date" AS interview_date,
+    fi.score AS interview_score,
+    fi."time" AS interview_duration,
+    di."fullName" AS interviewer_name,
+    CASE
+        WHEN di.gender = 'M' THEN 'Male'
+        WHEN di.gender = 'F' THEN 'Female'
+    END AS interviewer_gender,
+    dcandidate."fullName" AS candidate_name,
+    CASE
+        WHEN dcandidate.gender = 'M' THEN 'Male'
+        WHEN dcandidate.gender = 'F' THEN 'Female'
+    END AS candidate_gender,
+    dcandidate_country.name AS candidate_country
+    FROM
+    public."factInterview" AS fi
+    JOIN
+    public."dimCompany" AS dc ON fi."companyId" = dc.id
+    JOIN
+    public."dimCountry" AS dc3 ON dc."countryId" = dc3.id
+    JOIN
+    public."dimPosition" AS dp ON fi."positionId" = dp.id
+    JOIN
+    public."dimCountry" AS dc2 ON dp."countryId" = dc2.id
+    JOIN
+    public."dimAdditionalRequirements" AS dar ON dp."additionalRId" = dar.id
+    JOIN
+    public."dimEmployee" AS de ON fi."candidateId" = de.id
+    JOIN
+    public."dimAge" AS da ON de."ageId" = da.id
+    JOIN
+    public."dimTime" AS dt ON fi."timeId" = dt.id
+    JOIN
+    public."dimCountry" AS dc4 ON de."countryId" = dc4.id
+    JOIN
+    public."dimInterviewer" AS di ON fi."interviewerId" = di.id
+    JOIN
+    public."dimCandidate" AS dcandidate ON fi."candidateId" = dcandidate.id
+    JOIN
+    public."dimCountry" AS dcandidate_country ON dcandidate."countryId" = dcandidate_country.id
+    LIMIT {rows};
+    """
+
+    # Execute the queries
+    results_interviews = execute_query(sql_query_interviews)
+    # Process results to create the desired object
+    data = []
+    for result in results_interviews:
+        r = {}
+        r["company_size"] = result[0]
+        r["company_country"] = result[1]
+        r["position_country"] = result[2]
+        r["position_employmentType"] = result[3]
+        r["position_workSetting"] = result[4]
+        r["position_name"] = result[5]
+        r["employee_gender"] = result[6]
+        r["employee_age_gap"] = result[7]
+        r["employee_country"] = result[8]
+        r["interview_date"] = result[9]
+        r["interview_score"] = result[10]
+        r["interview_duration"] = result[11]
+        r["interviewer_name"] = result[12]
+        r["interviewer_gender"] = result[13]
+        r["candidate_name"] = result[14]
+        r["candidate_gender"] = result[15]
+        r["candidate_country"] = result[16]
+
+        data.append(r)
+    df = pd.DataFrame(data)
+    csv_filename = os.path.join(os.getcwd(), 'interview.csv')
+
     df.to_csv(csv_filename, index=False)
 
     # Send the CSV file as a response
