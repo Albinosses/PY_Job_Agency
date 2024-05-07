@@ -1,6 +1,8 @@
 import datetime
 from typing import Union
 import psycopg2
+from flask import Flask, send_file
+import pandas as pd
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.OLTP.models import (
@@ -336,3 +338,94 @@ def get_graph_countries():
         data.append(r)
     print(data)
     return jsonify(data), 200
+
+@get_bp.route("/export_vacancies", methods=["GET"])
+def export_vacancies():
+    def execute_query(sql):
+        conn = psycopg2.connect(
+            dbname="OLAP",
+            user="postgres",
+            password="1234",
+            host="127.0.0.1",
+            port="5432",
+        )
+        cur = conn.cursor()
+        cur.execute(sql)
+        result = cur.fetchall()
+        cur.close()
+        conn.close()
+        return result
+    rows = request.args.get("rows")
+    # SQL queries to retrieve data
+    sql_query_vacancies = f"""
+    SELECT
+    dc.size AS company_size,
+    dc3.name AS company_country,
+    dc2.name AS position_country_name,
+    CASE
+        WHEN dar."employmentType" = 'F' THEN 'Full-time'
+        WHEN dar."employmentType" = 'C' THEN 'Contract'
+        WHEN dar."employmentType" = 'P' THEN 'Part-time'
+    END AS position_employmentType,
+    CASE
+        WHEN dar."workSetting" = 'P' THEN 'Office'
+        WHEN dar."workSetting" = 'H' THEN 'Hybrid'
+        WHEN dar."workSetting" = 'R' THEN 'Remote'
+    END AS position_workSetting,
+    dp."jobTitle" AS position_name,
+    dt_published."date" AS vacancy_published_date,
+    dt_closed."date" AS vacancy_closed_date,
+    fv.salary AS vacancy_salary,
+    fv."daysSinceOpening" AS days_since_opening,
+    fv."interviewN" AS interview_count,
+    CASE
+        WHEN ds.status = 'O' THEN 'Opened'
+        WHEN ds.status = 'C' THEN 'Closed'
+        WHEN ds.status = 'P' THEN 'Postponed'
+    END AS position_workSetting
+    FROM
+    public."factVacancy" AS fv
+    JOIN
+    public."dimCompany" AS dc ON fv."companyId" = dc.id
+    JOIN
+    public."dimCountry" AS dc3 ON dc."countryId" = dc3.id
+    JOIN
+    public."dimPosition" AS dp ON fv."positionId" = dp.id
+    JOIN
+    public."dimCountry" AS dc2 ON dp."countryId" = dc2.id
+    JOIN
+    public."dimAdditionalRequirements" AS dar ON dp."additionalRId" = dar.id
+    JOIN
+    public."dimTime" AS dt_published ON fv."timePublishedId" = dt_published.id
+    LEFT JOIN
+    public."dimTime" AS dt_closed ON fv."timeClosedId" = dt_closed.id
+    JOIN
+    public."dimStatus" AS ds ON fv."statusId" = ds.id
+    LIMIT {rows};
+    """
+
+    # Execute the queries
+    results_vacancies = execute_query(sql_query_vacancies)
+    # Process results to create the desired object
+    data = []
+    for result in results_vacancies:
+        r = {}
+        r["company_size"] = result[0]
+        r["company_country"] = result[1]
+        r["position_country"] = result[2]
+        r["position_employmentType"] = result[3]
+        r["position_workSetting"] = result[4]
+        r["position_name"] = result[5]
+        r["vacancy_published_date"] = result[6]
+        r["vacancy_closed_date"] = result[7]
+        r["vacancy_salary"] = result[8]
+        r["days_since_opening"] = result[9]
+        r["interview_count"] = result[10]
+        r["position_status"] = result[11]
+        data.append(r)
+    df = pd.DataFrame(data)
+    csv_filename = '../vacancy.csv'
+    df.to_csv(csv_filename, index=False)
+
+    # Send the CSV file as a response
+    return send_file(csv_filename, as_attachment=True)
