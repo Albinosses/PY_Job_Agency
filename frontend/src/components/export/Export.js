@@ -16,6 +16,50 @@ const Export = () => {
         setNumberOfItems(v);
     };
 
+    const handleExport = () => {
+        let apiUrl = `http://127.0.0.1:8003/api/get/`
+
+        if (selectedEntity === 'V'){
+            apiUrl += 'export_vacancies'
+        }
+        if (selectedEntity === 'I'){
+            apiUrl += 'export_interviews'
+        }
+        if (selectedEntity === 'H'){
+            apiUrl += 'export_hires'
+        }
+
+        apiUrl += '?rows=' + numberOfItems
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                if (selectedEntity === 'V'){
+                    a.download = 'vacancies.csv';
+                }
+                if (selectedEntity === 'I'){
+                    a.download = 'interviews.csv';
+                }
+                if (selectedEntity === 'H'){
+                    a.download = 'hires.csv';
+                }
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.filter}>
@@ -52,8 +96,9 @@ const Export = () => {
                 <Button
                     variant="contained"
                     disabled={selectedEntity === ""}
+                    onClick={handleExport}
                 >
-                    Generate CSV
+                    Export
                 </Button>
             </div>
         </div>

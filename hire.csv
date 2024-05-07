@@ -1,0 +1,1001 @@
+company_size,company_country,position_country,position_employmentType,position_workSetting,position_name,employee_gender,employee_age_gap,employee_country,hire_date,salary,comission,days,interviewN
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2023-06-11,212000,519,143,7
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-11-11,93300,128,109,3
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2023-12-28,130000,794,90,11
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2023-10-14,100000,400,25,2
+M,United States,United States,Full-time,Office,Machine Learning Researcher,Female,28-37,United States,2023-05-01,224400,233,337,7
+M,United States,United States,Full-time,Office,Machine Learning Researcher,Male,38-47,United States,2023-11-03,138700,102,272,4
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2023-11-10,210000,286,147,4
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2022-08-12,168000,68,615,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2022-09-13,224400,145,620,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-06-23,138700,37,749,4
+M,United Kingdom,United Kingdom,Full-time,Office,Data Scientist,Male,18-27,United Kingdom,2023-02-07,43064,29,586,8
+M,United Kingdom,United Kingdom,Full-time,Office,Data Scientist,Female,38-47,United Kingdom,2023-06-19,36912,30,436,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-11-27,95000,158,90,3
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2022-10-07,75000,51,292,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-01-15,300000,273,220,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2022-09-17,234000,481,243,10
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,18-27,United States,2024-03-03,140000,13,1090,2
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,38-47,United States,2024-03-20,120000,136,220,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-10-31,204500,57,1251,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-02-07,142200,48,888,6
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2024-01-30,155000,268,231,8
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2023-05-24,110000,92,119,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2021-10-28,266500,219,304,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-10-31,152000,929,90,11
+L,United States,United States,Full-time,Office,Applied Scientist,Male,18-27,United States,2023-05-05,222200,91,611,5
+L,United States,United States,Full-time,Office,Applied Scientist,Female,38-47,United States,2023-04-01,136000,267,178,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-04-27,273400,93,738,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2022-10-13,182200,437,146,7
+M,United States,United States,Full-time,Office,BI Developer,Male,28-37,United States,2022-11-18,167500,59,566,4
+M,United States,United States,Full-time,Office,BI Developer,Male,28-37,United States,2023-05-21,106500,84,695,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-11-05,185900,244,343,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2022-10-11,129300,85,382,5
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,28-37,United States,2024-03-19,185000,102,814,9
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,28-37,United States,2022-12-03,79600,10,771,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2020-03-25,122000,1598,42,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2022-12-09,94500,29,329,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-10-29,247300,101,1225,10
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-07-01,139700,761,101,11
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2022-08-03,176000,392,157,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2023-08-06,100000,16,1251,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-05-27,204500,215,428,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2024-04-05,142200,48,294,2
+L,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2021-03-13,247600,520,119,5
+L,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2023-11-29,127300,73,697,8
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2020-12-12,223400,332,336,10
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2022-11-21,186200,321,116,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2024-02-28,167500,335,100,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-03-01,106500,38,836,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2021-08-03,185900,1518,49,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2021-12-31,129300,22,596,2
+M,United States,United States,Full-time,Remote,Research Analyst,Male,28-37,United States,2020-10-31,72000,207,139,8
+M,United States,United States,Full-time,Remote,Research Analyst,Female,38-47,United States,2023-05-16,64000,24,669,5
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,38-47,United States,2023-07-20,179820,93,386,4
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,18-27,United States,2022-06-25,143860,525,137,10
+M,United States,United States,Full-time,Office,Research Scientist,Male,38-47,United States,2024-03-31,283050,93,762,5
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2020-09-13,188700,353,107,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-12-16,133000,5320,10,8
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-05-18,58400,17,692,4
+M,United States,United States,Full-time,Office,Research Engineer,Male,38-47,United States,2023-09-03,141298,214,99,3
+M,United States,United States,Full-time,Office,Research Engineer,Female,38-47,United States,2023-09-29,115607,98,531,9
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-01-21,100000,34,732,5
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2022-06-01,75000,93,402,10
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Male,28-37,Canada,2023-12-04,266500,9691,11,8
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Female,28-37,Canada,2022-10-13,144400,167,303,7
+M,United Kingdom,United Kingdom,Full-time,Office,Data Engineer,Male,38-47,United Kingdom,2022-12-13,71363,32,676,6
+M,United Kingdom,United Kingdom,Full-time,Office,Data Engineer,Male,18-27,United Kingdom,2022-02-13,55368,206,148,11
+M,United States,United States,Full-time,Office,Research Scientist,Female,18-27,United States,2023-10-16,287500,59,971,4
+M,United States,United States,Full-time,Office,Research Scientist,Female,18-27,United States,2024-03-21,156000,57,1379,10
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2021-06-12,90000,324,139,10
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-08-31,70000,40,881,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-02-09,199000,231,215,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-02-12,162000,43,378,2
+M,United States,United States,Full-time,Remote,Data Engineer,Female,38-47,United States,2024-04-09,170884,540,174,11
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2023-08-19,113923,50,454,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2024-02-07,184000,170,108,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2022-04-12,123000,34,541,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2021-07-04,235750,772,168,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2024-03-13,174250,335,130,5
+M,United States,United States,Full-time,Remote,Research Scientist,Male,28-37,United States,2024-04-04,165000,195,127,3
+M,United States,United States,Full-time,Remote,Research Scientist,Male,28-37,United States,2022-03-16,118800,137,303,7
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2022-02-04,225000,390,231,8
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2022-03-14,150000,70,640,6
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-07-24,213900,20,1047,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2024-02-17,116800,12,1451,3
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2023-08-31,220000,55,1194,6
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2024-03-25,150000,83,361,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2022-09-08,150000,186,161,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2024-04-08,100000,212,165,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-01-02,247500,943,105,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-03-26,172200,52,1165,7
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-11-18,155000,227,307,9
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2021-09-20,120000,182,66,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-08-23,226700,47,722,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-07-11,133300,52,1023,8
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-10-04,184000,34,814,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2021-07-02,123000,246,275,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2022-11-21,130000,25,1031,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-09-21,117000,64,460,5
+M,United States,United States,Full-time,Remote,Data Science Engineer,Female,18-27,United States,2023-03-25,160000,750,96,9
+M,United States,United States,Full-time,Remote,Data Science Engineer,Male,38-47,United States,2024-03-19,140000,17,817,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-06-29,166000,294,282,10
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-02-25,73000,147,124,5
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2024-03-06,185900,263,106,3
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2022-09-25,129300,71,458,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2020-12-11,130000,361,72,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-05-15,104000,24,653,3
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2024-04-03,143000,114,313,5
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2023-10-29,116000,353,115,7
+M,United States,United States,Full-time,Remote,Research Scientist,Male,38-47,United States,2023-12-07,165000,208,396,10
+M,United States,United States,Full-time,Remote,Research Scientist,Male,28-37,United States,2023-10-20,118800,44,1068,8
+M,United States,United States,Full-time,Office,Research Scientist,Female,18-27,United States,2022-09-11,220000,38,861,3
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2024-04-12,180000,608,148,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-03-24,184000,182,456,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2024-04-04,123000,12,1041,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2022-07-15,215000,1640,59,9
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-04-26,200000,81,615,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-04-05,253000,408,341,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2021-12-07,131000,1638,12,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-06-28,220000,131,927,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-12-30,176000,421,188,9
+M,United Kingdom,United Kingdom,Full-time,Remote,Data Quality Analyst,Female,28-37,United Kingdom,2023-07-04,49216,44,506,9
+M,United Kingdom,United Kingdom,Full-time,Remote,Data Quality Analyst,Female,28-37,United Kingdom,2023-10-25,36912,21,446,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-12-10,210000,2019,52,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-02-20,147000,141,156,3
+M,United States,United States,Full-time,Office,Data Product Manager,Male,18-27,United States,2020-09-24,186000,2114,22,5
+M,United States,United States,Full-time,Office,Data Product Manager,Male,28-37,United States,2021-01-26,161000,51,318,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-03-30,205000,87,354,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2021-09-03,152000,494,77,5
+M,Canada,Canada,Full-time,Remote,Data Engineer,Male,38-47,Canada,2024-02-23,220000,237,186,4
+M,Canada,Canada,Full-time,Remote,Data Engineer,Female,28-37,Canada,2023-12-27,190000,46,1032,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-01-06,205000,1025,50,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-10-23,152000,238,64,2
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2024-02-06,137000,119,115,2
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2023-02-12,110000,147,300,8
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2024-04-25,172000,751,126,11
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2023-12-24,146000,529,69,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-07-22,148000,88,672,8
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-03-04,99000,262,208,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-09-29,150000,95,873,11
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-06-07,130000,116,506,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2022-06-19,105000,178,236,8
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-07-30,99000,40,495,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-01-01,52500,226,93,8
+M,United States,United States,Full-time,Remote,Machine Learning Scientist,Male,28-37,United States,2023-09-20,180514,238,76,2
+M,United States,United States,Full-time,Remote,Machine Learning Scientist,Female,18-27,United States,2024-03-05,108308,68,791,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2022-11-17,210000,56,377,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-05-23,147000,73,202,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-03-18,290300,1146,76,6
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-03-30,196685,20,1485,3
+M,United States,United States,Full-time,Office,AI Engineer,Female,28-37,United States,2021-12-21,220000,289,190,5
+M,United States,United States,Full-time,Office,AI Engineer,Male,28-37,United States,2023-12-21,176000,644,41,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2022-11-20,175000,236,74,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-01-11,130000,373,157,9
+M,United States,United States,Full-time,Office,Data Architect,Male,18-27,United States,2022-05-16,185000,89,625,6
+M,United States,United States,Full-time,Office,Data Architect,Female,38-47,United States,2022-05-17,150000,29,514,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2021-06-17,145000,172,464,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2024-03-24,115000,156,147,4
+M,United States,United States,Full-time,Office,MLOps Engineer,Female,18-27,United States,2022-08-23,133000,130,561,11
+M,United States,United States,Full-time,Office,MLOps Engineer,Female,28-37,United States,2020-03-16,58300,1527,21,11
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,18-27,United States,2023-01-01,115000,110,521,10
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,18-27,United States,2024-02-04,95000,182,287,11
+M,United Kingdom,United Kingdom,Full-time,Office,Data Engineer,Female,18-27,United Kingdom,2023-05-10,110244,11,1014,2
+M,United Kingdom,United Kingdom,Full-time,Office,Data Engineer,Male,18-27,United Kingdom,2024-04-11,39372,7,1073,4
+M,Spain,Spain,Full-time,Office,Data Scientist,Female,18-27,Spain,2023-11-30,43187,20,637,6
+M,Spain,Spain,Full-time,Office,Data Scientist,Male,18-27,Spain,2023-12-07,31310,44,285,8
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Female,38-47,United Kingdom,2024-04-08,92280,101,274,6
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Female,18-27,United Kingdom,2022-04-15,67672,80,421,10
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Male,18-27,United Kingdom,2020-07-06,92280,1180,43,11
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Male,18-27,United Kingdom,2024-01-21,67672,17,1176,6
+L,Ireland,Ireland,Full-time,Hybrid,Data Scientist,Male,38-47,Ireland,2023-05-31,75577,72,473,9
+M,Canada,Canada,Full-time,Remote,Deep Learning Engineer,Male,28-37,Canada,2022-11-12,303387,46,658,2
+M,Canada,Canada,Full-time,Remote,Deep Learning Engineer,Male,38-47,Canada,2024-05-03,100017,368,136,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-12-03,230300,98,1056,9
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2021-04-04,140000,177,436,11
+M,South Africa,South Africa,Full-time,Office,Data Engineer,Female,28-37,South Africa,2024-03-29,124935,44,287,2
+M,South Africa,South Africa,Full-time,Office,Data Engineer,Female,28-37,South Africa,2021-09-23,76050,57,463,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-09-01,224800,103,547,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2022-05-17,131100,77,770,9
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-03-08,258000,445,87,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2021-09-17,171000,161,212,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2024-02-07,196000,162,302,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-08-16,121000,26,924,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-12-13,195800,230,469,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2024-01-22,171500,121,353,5
+M,United States,United States,Full-time,Office,Data Modeler,Female,28-37,United States,2023-11-01,166000,50,333,2
+M,United States,United States,Full-time,Office,Data Modeler,Male,18-27,United States,2021-01-24,73100,812,45,10
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-10-11,220000,7000,11,7
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-02-14,160000,218,220,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2024-04-28,85000,83,358,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-05-21,65000,80,204,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-07-26,220000,85,1293,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-05-17,100000,84,357,6
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-04-17,185000,135,275,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2022-08-09,152000,40,752,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-08-09,220000,55,600,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2024-01-23,100000,12,1269,3
+M,Spain,Spain,Full-time,Office,Data Scientist,Female,28-37,Spain,2023-06-13,48585,21,1034,9
+M,Spain,Spain,Full-time,Office,Data Scientist,Male,18-27,Spain,2021-11-01,38868,91,171,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2022-11-16,220000,3143,21,6
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-09-06,100000,282,142,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2022-09-01,220000,200,165,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2022-07-22,100000,56,531,6
+M,United States,United States,Full-time,Office,Research Engineer,Male,18-27,United States,2023-07-16,220000,58,379,2
+M,United States,United States,Full-time,Office,Research Engineer,Female,18-27,United States,2023-11-10,100000,160,281,9
+M,Poland,Poland,Full-time,Remote,Data Analyst,Male,18-27,Poland,2022-11-27,110000,33,999,6
+M,Poland,Poland,Full-time,Remote,Data Analyst,Female,28-37,Poland,2023-05-31,80000,27,1197,8
+S,United Kingdom,United Kingdom,Full-time,Remote,Data Analyst,Female,28-37,United Kingdom,2023-10-03,36912,126,73,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-11-21,150200,57,662,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2022-08-23,71000,32,225,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-12-16,167200,43,769,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-07-14,121000,10,1262,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2024-03-18,133000,171,273,7
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-04-30,58400,23,505,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2022-06-21,135000,55,730,6
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-02-03,110000,42,259,2
+M,United Kingdom,United Kingdom,Full-time,Office,Data Product Owner,Female,18-27,United Kingdom,2024-02-25,104584,337,93,6
+M,United Kingdom,United Kingdom,Full-time,Office,Data Product Owner,Female,18-27,United Kingdom,2023-08-16,73824,61,605,10
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2021-02-06,187415,174,215,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2022-04-17,114080,117,195,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-10-08,187415,199,471,10
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2021-11-07,114080,274,229,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-06-24,166000,84,791,8
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-12-06,73100,192,133,7
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Male,18-27,Canada,2021-11-13,306400,318,241,5
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Male,38-47,Canada,2024-02-23,168700,37,453,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2020-11-05,187415,3231,29,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2024-01-22,114080,17,1341,4
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Male,28-37,United Kingdom,2023-05-10,32974,81,122,6
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Female,18-27,United Kingdom,2023-12-12,32974,94,193,11
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2024-02-07,165000,184,314,7
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2024-03-11,140000,71,1088,11
+M,United States,United States,Full-time,Remote,Analytics Engineer,Female,38-47,United States,2023-11-10,150000,62,974,8
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2022-04-15,167000,213,275,7
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2023-07-06,121000,46,658,5
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,28-37,United States,2023-11-21,185000,703,79,6
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,28-37,United States,2022-07-08,79600,61,518,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-03-09,190200,121,157,2
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-11-09,95100,23,842,4
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2022-12-08,133000,14,982,2
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2021-10-14,58400,49,179,3
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2023-11-10,90000,16,846,3
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2023-11-25,70000,215,130,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-08-13,166000,33,753,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2022-06-17,73100,322,125,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-07-05,135000,482,28,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-06-12,100000,13,749,2
+M,United Kingdom,United Kingdom,Full-time,Remote,Data Engineer,Male,18-27,United Kingdom,2023-11-03,180514,2256,12,3
+M,United Kingdom,United Kingdom,Full-time,Remote,Data Engineer,Male,18-27,United Kingdom,2022-11-21,108308,47,460,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-04-09,294000,225,327,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2022-11-18,192000,970,99,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-05-28,266000,238,168,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2022-06-06,167000,96,435,5
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,38-47,United States,2023-08-08,200000,180,555,10
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2023-11-01,150000,173,217,5
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2023-09-26,163800,276,89,3
+M,United States,United States,Full-time,Remote,Data Analyst,Male,18-27,United States,2022-02-06,88200,1386,35,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2020-11-14,180400,127,213,3
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2024-02-18,138800,29,946,4
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Female,38-47,United Kingdom,2023-10-02,67672,10,1368,4
+M,United Kingdom,United Kingdom,Full-time,Office,Data Analyst,Male,28-37,United Kingdom,2024-02-22,55368,264,63,6
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,18-27,United States,2022-12-18,319000,46,1038,3
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2022-07-05,206000,51,607,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-08-31,215000,146,589,8
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-10-08,142000,1543,46,10
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-10-20,266000,47,842,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-03-07,167000,387,151,7
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2023-11-02,140130,55,891,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2023-12-27,84870,87,195,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2023-09-06,178300,128,769,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-10-16,105400,107,544,11
+L,United States,United States,Full-time,Office,Applied Scientist,Female,18-27,United States,2020-11-11,222200,761,146,10
+L,United States,United States,Full-time,Office,Applied Scientist,Male,18-27,United States,2023-06-11,136000,57,357,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2022-02-15,215000,59,548,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-11-01,142000,5680,10,8
+M,United States,United States,Full-time,Remote,Research Scientist,Male,28-37,United States,2022-11-07,240000,297,364,9
+M,United States,United States,Full-time,Remote,Research Scientist,Female,18-27,United States,2024-04-22,210000,172,488,8
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-02-05,122000,78,391,5
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2022-06-16,94500,28,511,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2021-05-28,150000,49,306,2
+M,United States,United States,Full-time,Office,Data Science Consultant,Female,28-37,United States,2021-02-02,116000,247,141,6
+M,United States,United States,Full-time,Office,Data Science Consultant,Male,28-37,United States,2021-12-28,90000,210,236,11
+M,United States,United States,Full-time,Office,Data Science Consultant,Female,38-47,United States,2022-05-17,145000,141,513,10
+M,United States,United States,Full-time,Office,Data Science Consultant,Male,18-27,United States,2024-02-24,128000,168,229,6
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2023-11-24,154000,36,649,3
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2021-03-15,126000,210,210,7
+M,United States,United States,Full-time,Office,Machine Learning Scientist,Female,18-27,United States,2023-05-31,240000,215,503,9
+M,United States,United States,Full-time,Office,Machine Learning Scientist,Male,18-27,United States,2021-06-10,157250,44,358,2
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2022-07-29,219650,2441,9,2
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2022-04-30,136000,381,125,7
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2022-08-09,150000,52,290,2
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,28-37,United States,2023-06-09,180000,80,1239,11
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,38-47,United States,2022-04-15,125000,145,215,5
+L,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-03-25,247600,124,799,8
+L,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2020-10-30,127300,500,140,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-07-24,60000,53,341,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-08-31,55000,7,1139,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2021-05-30,250000,425,294,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-04-17,125000,101,185,3
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,38-47,United States,2023-11-27,190000,95,900,9
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2024-02-03,170000,567,45,3
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2022-11-27,202600,78,259,2
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2021-12-08,168800,161,210,4
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2023-10-16,132000,243,217,8
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2023-03-20,111000,500,111,10
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2023-03-15,203000,59,1027,6
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2023-12-13,127000,577,88,8
+M,United States,United States,Full-time,Remote,Business Intelligence Analyst,Male,18-27,United States,2023-11-27,125009,143,175,4
+M,United States,United States,Full-time,Remote,Business Intelligence Analyst,Male,28-37,United States,2024-01-11,83339,33,1250,10
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2023-08-10,112200,58,874,9
+M,United States,United States,Full-time,Remote,Data Analyst,Male,18-27,United States,2022-06-29,91800,71,579,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-04-16,200000,816,49,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-11-15,160000,337,190,8
+M,France,France,Full-time,Hybrid,AI Developer,Male,18-27,France,2022-09-17,161952,165,540,11
+M,United States,United States,Full-time,Office,Data Architect,Male,38-47,United States,2023-11-03,185000,44,1275,6
+M,United States,United States,Full-time,Office,Data Architect,Female,28-37,United States,2022-06-27,150000,110,204,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-01-30,160000,144,555,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-02-23,130000,142,502,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2024-04-16,145000,281,155,6
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2022-02-08,115000,1830,22,7
+M,United States,United States,Part-time,Office,Data Scientist,Male,38-47,United States,2023-02-06,133000,87,307,4
+M,United States,United States,Part-time,Office,Data Scientist,Male,38-47,United States,2024-04-18,58300,5,1266,2
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-08-01,254000,134,284,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2022-12-26,159000,89,267,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2022-06-25,170000,338,277,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-05-05,85000,233,164,9
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-01-11,130500,47,1403,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-09-16,116000,171,340,10
+M,United States,United States,Full-time,Remote,Research Analyst,Male,38-47,United States,2022-10-31,81400,69,415,7
+M,United States,United States,Full-time,Remote,Research Analyst,Male,28-37,United States,2022-08-25,43500,30,787,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2021-02-17,169000,830,112,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2023-03-20,92000,49,468,5
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2020-10-19,166000,702,130,11
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2023-05-02,73100,54,610,9
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2020-07-01,190000,245,155,4
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2022-06-18,165000,178,371,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-04-12,305600,670,228,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-05-31,146600,383,134,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2024-02-19,150000,82,184,2
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2021-11-11,120000,87,624,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-11-10,275000,809,153,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-03-21,146400,134,547,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-08-02,208500,112,372,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2022-05-07,165000,111,373,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2022-04-12,258700,160,242,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-07-05,172500,88,197,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2021-07-16,150000,143,525,10
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-11-18,130000,44,1172,8
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2024-02-26,185000,19,968,2
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2023-12-11,150000,139,270,5
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2022-05-04,166000,166,300,6
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2024-01-27,73100,39,741,8
+M,United States,United States,Full-time,Office,Business Intelligence Analyst,Female,38-47,United States,2024-04-30,198200,379,209,8
+M,United States,United States,Full-time,Office,Business Intelligence Analyst,Male,28-37,United States,2023-08-24,110200,60,183,2
+M,United States,United States,Full-time,Office,Machine Learning Researcher,Female,38-47,United States,2024-03-21,166000,11,1518,2
+M,United States,United States,Full-time,Office,Machine Learning Researcher,Male,38-47,United States,2020-08-03,73100,10965,0,3
+M,United States,United States,Full-time,Office,Machine Learning Researcher,Female,28-37,United States,2022-09-19,212000,824,90,7
+M,United States,United States,Full-time,Office,Machine Learning Researcher,Male,28-37,United States,2023-08-07,93300,46,502,5
+M,United States,United States,Full-time,Office,AI Engineer,Female,18-27,United States,2022-10-15,212000,203,261,5
+M,United States,United States,Full-time,Office,AI Engineer,Male,28-37,United States,2023-08-20,93300,13,703,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-07-12,166000,133,436,7
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-07-04,73100,36,410,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2021-11-29,167100,33,503,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-09-24,111400,23,978,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2023-02-20,133000,27,751,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-01-04,58400,190,154,10
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2023-06-27,166000,85,488,5
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2024-01-21,73100,17,844,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-01-06,170000,167,508,10
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2020-11-13,145000,500,58,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2022-12-31,212000,70,762,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2022-12-12,93300,41,911,8
+M,United States,United States,Full-time,Remote,Data Architect,Male,18-27,United States,2022-08-19,170000,24,705,2
+M,United States,United States,Full-time,Remote,Data Architect,Female,28-37,United States,2022-10-10,135000,87,467,6
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-04-22,145000,1051,69,10
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-08-02,115000,35,500,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2021-11-08,139810,6991,5,5
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2021-12-07,95325,139,172,5
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2023-11-24,278700,67,416,2
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2023-12-06,159300,27,869,3
+M,Canada,Canada,Full-time,Remote,Machine Learning Engineer,Female,38-47,Canada,2023-03-31,226700,335,271,8
+M,Canada,Canada,Full-time,Remote,Machine Learning Engineer,Male,18-27,Canada,2023-09-29,151100,308,270,11
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2023-07-11,247300,77,1117,7
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2023-10-27,139700,201,383,11
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2023-10-31,188000,591,175,11
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2022-12-11,139000,547,127,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2024-02-13,150000,45,499,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2024-02-07,160000,204,196,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-01-13,94000,29,988,6
+M,United States,United States,Full-time,Remote,Data Manager,Male,18-27,United States,2023-08-10,127000,378,185,11
+M,United States,United States,Full-time,Remote,Data Manager,Male,18-27,United States,2022-07-31,65000,71,273,6
+M,United States,United States,Full-time,Office,ML Engineer,Male,18-27,United States,2022-12-26,276000,386,393,11
+M,United States,United States,Full-time,Office,ML Engineer,Male,18-27,United States,2021-09-04,174000,70,375,3
+L,United States,United States,Full-time,Office,Applied Scientist,Male,28-37,United States,2021-09-21,260000,79,328,2
+L,United States,United States,Full-time,Office,Applied Scientist,Female,38-47,United States,2023-06-12,136000,780,61,7
+M,United States,United States,Full-time,Remote,Analytics Engineer,Female,28-37,United States,2022-06-30,250000,48,781,3
+M,United States,United States,Full-time,Remote,Analytics Engineer,Male,28-37,United States,2023-05-07,210000,128,410,5
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2023-06-17,188000,129,509,7
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2022-04-04,139000,131,425,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-09-20,238000,245,340,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-10-19,176000,82,535,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2024-03-20,204500,520,118,6
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-03-21,142200,87,818,10
+M,United States,United States,Full-time,Office,Data Science Director,Male,28-37,United States,2023-06-08,212000,79,1214,9
+M,United States,United States,Full-time,Office,Data Science Director,Female,18-27,United States,2022-11-07,190000,170,616,11
+L,United States,United States,Full-time,Office,Research Engineer,Male,18-27,United States,2023-11-12,261500,993,79,6
+L,United States,United States,Full-time,Office,Research Engineer,Male,18-27,United States,2024-03-11,134500,189,142,4
+L,United States,United States,Full-time,Office,Data Architect,Male,18-27,United States,2024-01-08,239000,466,154,6
+L,United States,United States,Full-time,Office,Data Architect,Female,28-37,United States,2023-11-18,122900,36,847,5
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,28-37,United States,2023-09-01,115000,149,77,2
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,28-37,United States,2022-01-06,95000,41,458,4
+M,Canada,Canada,Full-time,Remote,Data Scientist,Female,38-47,Canada,2023-07-16,158500,44,1274,7
+M,Canada,Canada,Full-time,Remote,Data Scientist,Male,28-37,Canada,2021-03-16,115000,101,228,4
+M,United States,United States,Full-time,Office,ML Engineer,Female,38-47,United States,2024-04-13,331640,200,828,10
+M,United States,United States,Full-time,Office,ML Engineer,Male,18-27,United States,2024-01-28,267720,297,450,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2022-10-02,180000,50,720,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2022-11-05,90000,82,385,7
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2021-07-06,83000,90,184,4
+M,United States,United States,Full-time,Remote,Data Analyst,Female,18-27,United States,2023-10-23,66000,69,429,9
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-09-10,224250,94,478,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-06-26,121550,25,1209,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2022-09-11,166000,949,35,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2021-02-25,73100,22,329,2
+M,United States,United States,Full-time,Office,Research Engineer,Male,18-27,United States,2021-07-06,141298,141,450,9
+M,United States,United States,Full-time,Office,Research Engineer,Female,18-27,United States,2022-05-27,115607,40,730,5
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2024-03-15,109000,16,1403,4
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2024-04-25,100000,62,647,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-01-12,205400,138,594,8
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-10-13,92900,845,33,6
+M,United States,United States,Full-time,Office,ML Engineer,Female,28-37,United States,2022-12-15,220000,92,598,5
+M,United States,United States,Full-time,Office,ML Engineer,Male,18-27,United States,2023-10-13,130000,51,1158,9
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2023-12-31,160000,2483,29,9
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2022-07-27,110000,78,638,9
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2021-02-27,230000,1399,74,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2021-11-28,100000,7500,4,6
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Male,28-37,United States,2023-10-21,186030,59,628,4
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Male,28-37,United States,2023-11-25,110200,206,107,4
+M,United States,United States,Full-time,Remote,Research Engineer,Female,28-37,United States,2024-02-24,130000,517,88,7
+M,United States,United States,Full-time,Remote,Research Engineer,Male,28-37,United States,2023-08-05,100000,74,408,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2024-02-11,242000,308,275,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2024-01-26,106200,173,276,9
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2024-03-30,220000,105,1148,11
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2021-07-10,120000,41,438,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2022-05-26,258000,597,173,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-12-05,171000,116,442,6
+M,United States,United States,Full-time,Office,Research Analyst,Male,28-37,United States,2023-09-08,91200,73,628,10
+M,United States,United States,Full-time,Office,Research Analyst,Female,18-27,United States,2023-10-10,58200,85,171,5
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2023-12-19,192000,146,395,6
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2023-07-24,178000,194,321,7
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2021-09-06,210000,137,382,5
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2024-01-09,130000,53,858,7
+M,United States,United States,Full-time,Office,Research Engineer,Female,18-27,United States,2023-11-17,160000,73,1099,10
+M,United States,United States,Full-time,Office,Research Engineer,Male,38-47,United States,2022-06-03,150000,106,639,9
+L,United States,United States,Full-time,Office,Applied Scientist,Male,18-27,United States,2023-11-15,260000,49,527,2
+L,United States,United States,Full-time,Office,Applied Scientist,Female,18-27,United States,2023-09-12,136000,33,621,3
+M,United States,United States,Full-time,Office,Data Architect,Female,38-47,United States,2023-04-29,206000,77,532,4
+M,United States,United States,Full-time,Office,Data Architect,Male,28-37,United States,2022-01-20,134000,143,188,4
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2022-11-13,180000,2000,45,10
+M,United States,United States,Full-time,Remote,Data Scientist,Male,28-37,United States,2023-06-17,135000,89,604,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2023-09-07,200000,5455,11,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2021-04-20,120000,1412,17,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2020-11-29,212000,471,45,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2024-03-08,93300,13,1090,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-09-29,106700,98,601,11
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-04-22,57700,149,174,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2022-10-13,266400,139,576,6
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-01-14,173300,108,320,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2022-02-19,125000,370,152,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2022-09-09,100000,50,703,7
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,28-37,United States,2021-11-15,165600,264,188,6
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,28-37,United States,2024-04-12,65800,39,672,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-02-08,210400,1670,63,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2022-09-09,170500,87,392,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2022-09-22,212000,140,453,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2021-03-27,93300,79,294,5
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2020-12-26,170000,490,52,3
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2023-07-28,160000,31,1026,4
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2024-04-01,185400,67,550,4
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2023-03-09,81536,30,411,3
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2024-02-16,193000,67,864,6
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2023-03-29,158000,50,631,4
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2023-09-28,170000,213,400,10
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2024-04-29,100000,9,1058,2
+L,United States,United States,Full-time,Office,Applied Scientist,Female,28-37,United States,2021-08-08,222200,334,299,9
+L,United States,United States,Full-time,Office,Applied Scientist,Female,18-27,United States,2024-04-19,136000,102,333,5
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-05-22,148000,30,976,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-04-02,99000,30,1161,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2022-11-20,204500,750,150,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-08-13,142200,143,248,5
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2022-01-31,95000,356,80,6
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2022-07-01,75000,65,521,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2023-07-14,115000,36,1125,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2024-03-01,105000,101,313,6
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-01-22,195800,70,975,7
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2022-08-12,161900,144,338,6
+M,United States,United States,Full-time,Remote,Data Analyst,Male,18-27,United States,2024-02-21,90000,112,201,5
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2022-07-16,80000,39,515,5
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2023-07-26,192500,441,131,6
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2023-02-24,140000,155,271,6
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,18-27,United States,2024-02-22,100000,68,511,7
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,38-47,United States,2024-01-28,75000,57,198,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2023-07-13,169000,86,393,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2021-09-03,91000,1264,18,5
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Female,28-37,Canada,2023-11-23,216600,819,119,9
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Male,38-47,Canada,2024-03-23,144400,42,1387,8
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2024-02-09,150000,1056,71,10
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2022-05-15,120000,90,133,2
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-06-14,133000,170,352,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2023-08-10,58400,11,522,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2022-05-28,166000,389,128,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2022-09-09,73100,191,210,11
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2023-10-04,166000,63,527,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-06-25,73100,22,850,5
+M,United States,United States,Full-time,Office,ML Engineer,Male,28-37,United States,2023-11-27,336300,611,55,2
+M,United States,United States,Full-time,Office,ML Engineer,Female,18-27,United States,2023-04-25,179000,75,1186,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-09-16,296400,1964,83,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-03-31,159600,75,1061,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-08-04,212000,426,224,9
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2022-09-19,93300,308,121,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2022-09-15,204500,107,956,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2022-08-14,142200,2064,31,9
+M,United States,United States,Full-time,Remote,Head of Data,Female,28-37,United States,2023-04-27,258500,322,401,10
+M,United States,United States,Full-time,Remote,Head of Data,Female,38-47,United States,2024-03-26,226500,653,156,9
+M,United States,United States,Full-time,Office,Research Scientist,Male,18-27,United States,2022-07-09,247250,48,518,2
+M,United States,United States,Full-time,Office,Research Scientist,Male,38-47,United States,2022-09-13,118400,757,86,11
+M,United States,United States,Full-time,Office,BI Analyst,Female,28-37,United States,2023-12-25,160000,75,1171,11
+M,United States,United States,Full-time,Office,BI Analyst,Male,38-47,United States,2021-09-25,140000,603,58,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2022-12-31,212000,131,404,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2021-11-07,93400,539,78,9
+M,United Kingdom,United Kingdom,Full-time,Remote,Data Scientist,Male,18-27,United Kingdom,2023-11-20,172256,273,284,9
+M,United Kingdom,United Kingdom,Full-time,Remote,Data Scientist,Male,38-47,United Kingdom,2024-03-01,123040,45,1090,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-11-01,219000,3764,32,11
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2021-12-02,132000,521,114,9
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2023-09-09,130500,80,407,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2022-10-28,116000,100,638,11
+M,United States,United States,Full-time,Office,Research Scientist,Female,38-47,United States,2023-12-18,323300,130,1120,9
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2022-03-21,184700,38,490,2
+M,United States,United States,Full-time,Office,Machine Learning Scientist,Male,18-27,United States,2022-07-05,250000,162,232,3
+M,United States,United States,Full-time,Office,Machine Learning Scientist,Male,38-47,United States,2022-02-11,200000,59,337,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-03-12,136000,122,558,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2021-08-05,91000,50,367,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-05-12,185900,877,53,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-12-06,129300,275,141,6
+M,Canada,Canada,Full-time,Remote,Data Analyst,Male,38-47,Canada,2021-08-06,143000,190,264,7
+M,Canada,Canada,Full-time,Remote,Data Analyst,Female,18-27,Canada,2023-12-06,78000,79,148,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-05-22,135000,32,628,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2020-09-30,110000,149,148,4
+M,Canada,Canada,Full-time,Office,Data Engineer,Female,38-47,Canada,2021-12-19,142000,316,225,10
+M,Canada,Canada,Full-time,Office,Data Engineer,Female,28-37,Canada,2021-05-14,102200,319,32,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2021-01-29,137500,86,241,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-08-31,81500,44,467,5
+M,United States,United States,Full-time,Remote,BI Analyst,Male,28-37,United States,2022-12-19,202000,967,94,9
+M,United States,United States,Full-time,Remote,BI Analyst,Male,28-37,United States,2023-10-19,147000,38,585,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2022-08-15,140000,183,268,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-03-07,125000,193,194,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-12-16,170625,111,383,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2022-06-17,127950,73,875,10
+M,United Kingdom,United Kingdom,Full-time,Office,Data Scientist,Male,38-47,United Kingdom,2024-01-12,123040,88,348,5
+M,United Kingdom,United Kingdom,Full-time,Office,Data Scientist,Male,28-37,United Kingdom,2023-09-03,86128,39,671,6
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2024-03-29,85256,32,540,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2024-04-12,71615,43,337,4
+L,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-01-03,100000,344,131,9
+S,United States,United States,Full-time,Office,Research Analyst,Female,18-27,United States,2023-12-20,100000,61,651,8
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-03-29,185000,73,380,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-03-06,125000,97,193,3
+M,United States,United States,Full-time,Remote,Data Management Analyst,Male,18-27,United States,2024-04-18,60000,45,133,2
+M,United States,United States,Full-time,Remote,Data Management Analyst,Male,28-37,United States,2020-07-28,52000,227,103,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-03-05,300000,524,143,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-08-17,260000,2167,36,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2022-05-25,225000,86,787,6
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2021-05-01,170000,671,38,3
+M,United States,United States,Full-time,Remote,Business Intelligence Analyst,Female,28-37,United States,2023-05-29,100000,51,294,3
+M,United States,United States,Full-time,Remote,Business Intelligence Analyst,Female,38-47,United States,2024-01-13,80000,561,57,8
+M,United States,United States,Full-time,Office,Machine Learning Modeler,Female,28-37,United States,2024-04-10,204500,361,255,9
+M,United States,United States,Full-time,Office,Machine Learning Modeler,Female,28-37,United States,2024-04-30,142200,333,128,6
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2023-05-13,135000,40,510,3
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2023-04-22,100000,97,411,8
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2023-11-08,297300,58,1277,5
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2022-08-04,198200,203,195,4
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2023-04-03,240000,99,729,6
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2023-12-20,190000,88,647,6
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,28-37,United States,2022-09-28,185000,1402,33,5
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,28-37,United States,2024-03-12,79600,21,1329,7
+L,United States,United States,Full-time,Office,Applied Scientist,Male,28-37,United States,2023-02-10,222200,165,673,10
+L,United States,United States,Full-time,Office,Applied Scientist,Female,28-37,United States,2024-03-14,136000,27,746,3
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2024-02-05,110000,61,812,9
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2023-12-30,95000,35,1239,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2024-04-29,324000,795,163,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2022-10-05,159000,157,456,9
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Female,18-27,Canada,2023-07-21,207700,1932,43,8
+M,Canada,Canada,Full-time,Office,Machine Learning Engineer,Female,28-37,Canada,2022-07-25,133700,39,850,5
+M,United States,United States,Full-time,Remote,Research Analyst,Female,18-27,United States,2023-11-03,71000,88,81,2
+M,United States,United States,Full-time,Remote,Research Analyst,Female,38-47,United States,2021-11-20,57000,18,481,3
+L,United States,United States,Full-time,Office,Applied Scientist,Male,28-37,United States,2023-02-17,222200,2306,53,11
+L,United States,United States,Full-time,Office,Applied Scientist,Female,38-47,United States,2023-08-29,136000,28,987,4
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,38-47,United States,2024-01-27,200000,73,954,7
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,18-27,United States,2023-10-16,150000,99,152,2
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2021-10-12,59000,28,641,6
+M,United States,United States,Full-time,Remote,Data Analyst,Female,38-47,United States,2022-03-28,50000,18,699,5
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2024-01-18,234000,517,181,8
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,28-37,United States,2023-03-14,208000,107,1067,11
+M,United States,United States,Full-time,Remote,Analytics Engineer,Male,38-47,United States,2023-08-24,187000,76,1225,10
+M,United States,United States,Full-time,Remote,Analytics Engineer,Female,38-47,United States,2022-08-26,128000,213,240,8
+M,United States,United States,Full-time,Remote,BI Analyst,Male,28-37,United States,2020-10-31,202000,191,264,5
+M,United States,United States,Full-time,Remote,BI Analyst,Female,18-27,United States,2023-10-23,147000,317,139,6
+L,Canada,Czech Republic,Contract,Remote,AI Engineer,Male,28-37,Czech Republic,2022-08-01,50000,109,46,2
+L,Spain,Spain,Full-time,Remote,Data Scientist,Male,28-37,Spain,2023-07-12,64781,60,482,9
+L,Netherlands,Netherlands,Full-time,Hybrid,Data Scientist,Female,28-37,Netherlands,2023-08-01,57223,61,468,10
+S,Luxembourg,Pakistan,,Remote,Data Science Consultant,Female,28-37,Pakistan,2022-08-24,21000,4,790,3
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-06-25,135000,646,115,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2022-12-22,120000,98,491,8
+M,United States,United States,Full-time,Remote,Data Architect,Male,18-27,United States,2021-04-12,150000,194,387,10
+M,United States,United States,Full-time,Remote,Data Architect,Male,28-37,United States,2022-07-01,140000,118,651,11
+M,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2024-02-03,190000,194,440,9
+M,United States,United States,Full-time,Office,Research Scientist,Male,38-47,United States,2024-02-23,165000,110,673,9
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2023-04-25,280000,82,514,3
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2023-07-18,190000,174,219,4
+M,United States,United States,Full-time,Office,Data Science Director,Female,28-37,United States,2023-12-13,212000,41,1029,4
+M,United States,United States,Full-time,Office,Data Science Director,Female,28-37,United States,2023-10-03,190000,54,529,3
+M,United Kingdom,United Kingdom,Full-time,Office,Business Intelligence Engineer,Male,38-47,United Kingdom,2023-10-16,43064,5,901,2
+M,United Kingdom,United Kingdom,Full-time,Office,Business Intelligence Engineer,Male,18-27,United Kingdom,2023-11-21,43064,46,519,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-02-22,245700,93,920,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2022-06-25,132300,252,289,11
+M,United States,United States,Full-time,Office,Data Specialist,Male,38-47,United States,2022-12-17,90000,71,510,8
+M,United States,United States,Full-time,Office,Data Specialist,Male,28-37,United States,2023-12-12,80000,74,108,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2022-11-11,212000,75,425,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-04-11,93300,76,552,9
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2020-11-26,212000,757,112,8
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-05-09,93300,228,143,7
+M,United States,United States,Full-time,Office,ML Engineer,Female,18-27,United States,2023-11-08,276000,99,1250,9
+M,United States,United States,Full-time,Office,ML Engineer,Male,28-37,United States,2023-12-24,174000,7457,7,6
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2024-05-04,133000,111,597,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2021-11-22,58300,11,526,2
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2024-03-02,145640,214,238,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2022-05-26,84400,64,527,8
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2024-02-07,300000,559,295,11
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2023-07-24,195000,331,324,11
+M,Canada,Canada,Full-time,Remote,Data Architect,Female,18-27,Canada,2024-04-02,190000,15,1299,2
+M,Canada,Canada,Full-time,Remote,Data Architect,Male,28-37,Canada,2023-08-21,107500,373,144,10
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2021-06-21,105000,116,496,11
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2022-12-09,75000,51,664,9
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-05-02,140000,33,856,4
+M,United States,United States,Full-time,Remote,Data Analyst,Female,18-27,United States,2023-08-21,98000,869,62,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2022-05-30,204500,130,551,7
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-11-20,142200,232,276,9
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2021-12-12,236160,235,201,4
+M,United States,United States,Full-time,Remote,Data Scientist,Male,38-47,United States,2023-10-23,159408,77,519,5
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-03-06,115000,137,210,5
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2024-02-05,85000,66,256,4
+M,United States,United States,Full-time,Office,Data Product Manager,Female,18-27,United States,2023-11-10,145000,8458,6,7
+M,United States,United States,Full-time,Office,Data Product Manager,Female,18-27,United States,2021-06-12,120000,271,133,6
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2022-05-20,120350,36,339,2
+M,United States,United States,Full-time,Remote,Data Analyst,Male,18-27,United States,2023-07-22,74400,7,1032,2
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2021-08-26,158494,158,400,8
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-10-15,88052,415,53,5
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,28-37,United States,2024-01-10,181500,111,491,6
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,38-47,United States,2023-01-06,127000,488,104,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2024-03-02,300000,743,222,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2024-01-23,260000,468,111,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-03-10,258000,79,978,6
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-05-18,171000,78,439,4
+M,Netherlands,Ukraine,Full-time,Remote,BI Data Analyst,Female,38-47,Ukraine,2022-10-18,25000,14,438,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2022-07-26,200000,49,616,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-04-12,150000,179,252,6
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2021-06-12,225300,53,424,2
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-06-07,197400,255,387,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-12-04,205500,52,1181,6
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-10-20,128500,559,115,10
+M,United States,United States,Full-time,Office,Data Architect,Female,28-37,United States,2023-10-14,191600,104,459,5
+M,United States,United States,Full-time,Office,Data Architect,Male,18-27,United States,2024-02-06,125600,285,242,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-08-04,245700,718,171,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2024-01-02,132300,113,235,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-07-14,130410,52,378,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-08-27,92000,42,768,7
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2023-08-27,183900,1999,46,10
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-05-26,108800,24,678,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2021-01-23,275000,1964,28,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2021-11-27,121200,35,524,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2020-08-31,166000,904,101,11
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-09-12,73100,8,1307,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-03-20,231250,62,927,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-03-06,111000,39,1139,8
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-01-13,300000,223,202,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-10-15,130000,46,702,5
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2023-04-30,210500,188,280,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-04-04,105300,15,1429,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2022-05-13,158400,85,839,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2022-07-25,85800,86,451,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-09-03,305600,167,367,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-12-29,146600,100,293,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-07-07,180400,626,72,5
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2024-03-20,138800,67,1034,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-06-27,258700,635,163,8
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-03-08,172500,124,693,10
+M,Canada,Canada,Full-time,Office,Data Scientist,Female,18-27,Canada,2024-03-14,156100,53,1329,9
+M,Canada,Canada,Full-time,Office,Data Scientist,Female,28-37,Canada,2022-02-20,100400,132,190,5
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2024-03-31,134200,99,746,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2021-08-30,103200,145,107,3
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2024-04-27,105000,210,275,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2021-06-12,85000,205,83,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2023-10-11,220000,807,150,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-06-30,160000,60,535,4
+M,United States,United States,Full-time,Remote,Data Analyst,Female,38-47,United States,2024-02-10,110000,282,117,6
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2024-03-26,95000,16,909,3
+M,United States,United States,Full-time,Remote,Data Analyst,Female,18-27,United States,2023-01-31,95400,266,197,11
+M,United States,United States,Full-time,Remote,Data Analyst,Male,18-27,United States,2024-03-05,57800,27,639,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-02-02,110000,36,1069,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-09-23,86000,150,172,6
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2020-10-01,125000,103,182,3
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2022-01-28,87500,162,189,7
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,38-47,United States,2021-06-07,185000,617,135,9
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,28-37,United States,2023-10-20,79600,207,211,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-02-23,275000,495,222,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2023-07-09,170000,143,238,4
+M,United States,United States,Full-time,Remote,Data Engineer,Female,38-47,United States,2023-09-11,133200,395,118,7
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2023-12-13,84000,76,385,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2021-10-16,171000,1140,15,2
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2021-07-25,93000,281,116,7
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,38-47,United States,2024-02-16,216450,459,118,5
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,18-27,United States,2021-08-17,123750,303,225,11
+L,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2020-10-14,212800,294,181,5
+L,United States,United States,Full-time,Office,Research Scientist,Male,28-37,United States,2022-02-23,124100,411,151,10
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2022-04-27,205000,109,566,6
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2024-02-23,166000,374,244,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2022-05-12,231650,249,512,11
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-03-28,189100,270,105,3
+M,Canada,Canada,Full-time,Remote,Data Engineer,Male,28-37,Canada,2024-01-21,160000,329,170,7
+M,Canada,Canada,Full-time,Remote,Data Engineer,Female,38-47,Canada,2023-05-30,120000,149,444,11
+M,Canada,Canada,Full-time,Office,Data Scientist,Male,18-27,Canada,2024-02-01,156100,911,60,7
+M,Canada,Canada,Full-time,Office,Data Scientist,Male,28-37,Canada,2022-09-13,100400,71,423,6
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-03-10,266875,55,728,3
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2023-09-06,128250,36,706,4
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2023-01-23,158600,130,306,5
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2022-04-11,115300,1349,47,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2024-04-01,225300,142,871,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-02-21,197400,288,308,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2024-01-21,109900,17,1293,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2023-12-25,61200,13,1160,5
+M,United States,United States,Full-time,Remote,Data Integration Engineer,Female,38-47,United States,2021-03-03,161000,89,362,4
+M,United States,United States,Full-time,Remote,Data Integration Engineer,Male,38-47,United States,2023-12-24,75000,60,186,3
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2024-03-26,166000,181,459,10
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2024-03-12,73100,10,1395,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2022-07-14,138510,22,622,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2022-11-03,95490,79,302,5
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-05-09,150000,125,120,2
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2022-08-22,110000,81,408,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-10-27,232200,194,659,11
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-03-11,133300,197,338,10
+M,Lithuania,Lithuania,Full-time,Office,Machine Learning Engineer,Male,28-37,Lithuania,2022-11-26,121788,102,358,6
+M,Lithuania,Lithuania,Full-time,Office,Machine Learning Engineer,Female,18-27,Lithuania,2024-03-08,79032,50,715,9
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,38-47,United States,2023-04-14,178250,1040,60,7
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,38-47,United States,2023-09-18,110500,184,60,2
+M,United States,United States,Full-time,Office,AI Engineer,Female,38-47,United States,2023-06-28,190000,64,595,4
+M,United States,United States,Full-time,Office,AI Engineer,Female,28-37,United States,2024-02-04,160000,496,129,8
+M,United States,United States,Full-time,Remote,Applied Scientist,Male,18-27,United States,2023-06-06,216000,177,367,6
+M,United States,United States,Full-time,Remote,Applied Scientist,Male,18-27,United States,2022-07-16,184000,116,870,11
+M,Canada,Canada,Full-time,Remote,Data Scientist,Male,18-27,Canada,2024-04-27,166000,38,439,2
+M,Canada,Canada,Full-time,Remote,Data Scientist,Female,28-37,Canada,2023-05-25,104000,335,155,10
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,28-37,United States,2022-10-20,185000,111,669,8
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,38-47,United States,2024-02-11,79600,39,1120,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2024-01-26,230000,123,745,8
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2021-07-22,196000,817,96,8
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2024-01-09,184000,341,216,8
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2024-01-30,123000,131,94,2
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Female,18-27,United States,2023-03-29,165600,307,108,4
+L,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,38-47,United States,2023-08-23,65800,145,68,3
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2024-04-01,186000,221,295,7
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2024-03-21,81800,115,213,6
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2021-10-30,135000,203,166,5
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2023-02-08,82500,1719,24,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-01-03,247250,118,629,6
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2024-02-10,160000,877,73,8
+M,United States,United States,Full-time,Office,Machine Learning Scientist,Female,18-27,United States,2021-04-15,169000,80,421,4
+M,United States,United States,Full-time,Office,Machine Learning Scientist,Male,18-27,United States,2024-01-25,105500,11,963,2
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-03-26,195800,52,377,2
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-10-30,161900,480,135,8
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Female,38-47,United States,2022-04-27,108500,71,538,7
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Male,28-37,United States,2020-09-29,78800,263,165,11
+M,United States,United States,Full-time,Office,Research Scientist,Female,38-47,United States,2024-04-16,225000,108,1147,11
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2023-01-08,166000,299,278,10
+M,United States,United States,Full-time,Office,BI Developer,Female,18-27,United States,2022-04-08,167500,121,484,7
+M,United States,United States,Full-time,Office,BI Developer,Male,28-37,United States,2024-05-02,106500,59,539,6
+M,United States,United States,Full-time,Remote,Business Intelligence Manager,Male,18-27,United States,2021-04-28,160000,250,256,8
+M,United States,United States,Full-time,Remote,Business Intelligence Manager,Female,28-37,United States,2024-03-25,110000,115,478,10
+M,Canada,Canada,Full-time,Office,Data Analyst,Female,28-37,Canada,2024-01-01,120000,6000,11,11
+M,Canada,Canada,Full-time,Office,Data Analyst,Female,28-37,Canada,2021-06-03,105000,91,462,8
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-11-16,110000,1100,10,2
+M,United States,United States,Full-time,Remote,Data Analyst,Female,38-47,United States,2022-03-09,87500,38,683,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2024-04-20,60000,11,1062,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2022-06-15,55000,33,411,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2024-04-02,145000,233,280,9
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2023-07-01,115000,55,519,5
+M,United States,United States,Full-time,Office,Research Scientist,Female,18-27,United States,2023-12-08,225000,52,1090,5
+M,United States,United States,Full-time,Office,Research Scientist,Male,18-27,United States,2021-03-19,166000,101,410,5
+M,United States,United States,Full-time,Office,Data Engineer,Male,38-47,United States,2024-01-28,135000,450,120,8
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2024-02-19,100000,170,176,6
+M,Portugal,Portugal,Full-time,Remote,Machine Learning Engineer,Female,18-27,Portugal,2023-08-10,105000,281,187,10
+M,Portugal,Portugal,Full-time,Remote,Machine Learning Engineer,Male,38-47,Portugal,2024-01-30,95000,61,467,6
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,38-47,United States,2022-07-05,289800,9315,14,9
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,28-37,United States,2023-02-13,214200,1785,42,7
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-09-10,167500,136,555,9
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2022-10-06,106500,21,515,2
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2020-05-04,220000,800,55,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-04-20,146000,51,578,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,18-27,United States,2023-05-20,128000,106,601,10
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-03-25,81500,31,1185,9
+M,United States,United States,Full-time,Office,Data Architect,Male,38-47,United States,2024-01-04,206000,117,527,6
+M,United States,United States,Full-time,Office,Data Architect,Male,18-27,United States,2023-02-20,134000,220,122,4
+M,United States,United States,Full-time,Office,Research Scientist,Female,18-27,United States,2024-04-15,370000,87,847,4
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2021-03-05,200000,268,299,8
+M,United States,United States,Full-time,Remote,Analytics Engineer,Female,28-37,United States,2022-03-30,175000,216,162,4
+M,United States,United States,Full-time,Remote,Analytics Engineer,Male,38-47,United States,2024-03-15,160000,69,231,2
+M,United States,United States,Full-time,Remote,Data Integration Specialist,Female,28-37,United States,2021-11-19,240000,124,675,7
+M,United States,United States,Full-time,Remote,Data Integration Specialist,Female,38-47,United States,2021-09-19,100000,104,335,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-03-06,180000,46,970,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-09-09,160000,59,675,5
+M,Canada,Canada,Full-time,Office,Business Intelligence Engineer,Male,18-27,Canada,2023-07-02,143000,191,375,10
+M,Canada,Canada,Full-time,Office,Business Intelligence Engineer,Female,38-47,Canada,2020-12-16,127000,1588,24,6
+L,United States,United States,Full-time,Office,Applied Scientist,Male,38-47,United States,2021-10-08,249300,371,302,9
+L,United States,United States,Full-time,Office,Applied Scientist,Female,28-37,United States,2023-08-28,149300,367,122,6
+L,United States,United States,Full-time,Office,Applied Scientist,Female,18-27,United States,2023-05-02,222200,177,314,5
+L,United States,United States,Full-time,Office,Applied Scientist,Female,28-37,United States,2023-05-20,136000,65,1050,10
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2022-05-26,190000,55,347,2
+M,United States,United States,Full-time,Remote,Data Engineer,Female,38-47,United States,2022-08-17,160000,60,533,4
+M,United States,United States,Full-time,Office,Research Scientist,Male,18-27,United States,2023-06-15,248100,138,540,6
+M,United States,United States,Full-time,Office,Research Scientist,Male,38-47,United States,2022-08-09,145900,25,869,3
+M,United States,United States,Full-time,Office,Data Science Practitioner,Female,18-27,United States,2022-12-05,170200,1510,62,11
+M,United States,United States,Full-time,Office,Data Science Practitioner,Female,38-47,United States,2023-03-30,83900,533,63,8
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,18-27,United States,2023-11-07,100000,652,23,3
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,38-47,United States,2024-04-04,75000,246,122,8
+M,United Kingdom,United Kingdom,Full-time,Office,Data Scientist,Male,18-27,United Kingdom,2021-08-29,166000,158,367,7
+M,United Kingdom,United Kingdom,Full-time,Office,Data Scientist,Female,28-37,United Kingdom,2023-09-01,90000,22,1008,5
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2024-04-30,160000,19,1255,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2021-05-31,94100,45,314,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2023-12-09,226600,33,1366,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,18-27,United States,2023-04-04,140100,649,108,10
+L,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-03-14,247600,82,1056,7
+L,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-06-17,127300,2652,24,10
+L,United States,United States,Full-time,Office,Applied Scientist,Male,28-37,United States,2021-08-29,222200,121,552,6
+L,United States,United States,Full-time,Office,Applied Scientist,Female,28-37,United States,2024-03-23,136000,107,191,3
+L,United States,United States,Full-time,Office,Applied Scientist,Female,38-47,United States,2023-08-28,260000,55,474,2
+L,United States,United States,Full-time,Office,Applied Scientist,Male,38-47,United States,2024-03-02,136000,100,610,9
+L,United States,United States,Full-time,Office,Applied Scientist,Male,18-27,United States,2021-09-15,222200,295,188,5
+L,United States,United States,Full-time,Office,Applied Scientist,Male,28-37,United States,2022-06-10,136000,40,681,4
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2024-03-11,156000,96,890,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-07-23,124000,590,42,4
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2023-12-02,200000,225,222,5
+M,United States,United States,Full-time,Office,Data Engineer,Female,18-27,United States,2022-11-30,132600,179,111,3
+M,United States,United States,Full-time,Office,Research Engineer,Male,18-27,United States,2023-11-22,308000,353,393,9
+M,United States,United States,Full-time,Office,Research Engineer,Female,38-47,United States,2023-10-20,190400,302,63,2
+M,United States,United States,Full-time,Office,Data Architect,Male,38-47,United States,2023-08-28,155000,580,147,11
+M,United States,United States,Full-time,Office,Data Architect,Female,18-27,United States,2022-07-18,136000,140,340,7
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2024-02-08,160000,784,102,10
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2024-04-03,75000,281,120,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2024-02-17,214500,119,988,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2023-08-23,132600,25,807,3
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2024-01-30,111000,42,658,5
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2024-01-01,104000,368,99,7
+L,United States,United States,Full-time,Office,Applied Scientist,Male,38-47,United States,2022-12-10,260000,443,323,11
+L,United States,United States,Full-time,Office,Applied Scientist,Male,28-37,United States,2023-07-31,136000,203,234,7
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2022-04-16,85000,80,265,5
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2021-01-18,75000,296,38,3
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2022-12-22,180250,46,588,3
+M,United States,United States,Full-time,Remote,Data Scientist,Female,38-47,United States,2021-10-24,118000,3540,15,9
+L,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2021-07-08,212800,137,466,6
+L,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-01-17,111600,558,80,8
+M,United States,United States,Full-time,Remote,Data Analyst,Male,38-47,United States,2024-04-19,157500,454,191,11
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-07-08,132500,972,75,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2022-04-03,85000,32,267,2
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2020-05-18,75000,130,115,4
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2021-09-20,93918,66,214,3
+M,United States,United States,Full-time,Office,Data Analyst,Male,18-27,United States,2023-12-26,51962,15,690,4
+M,United States,United States,Full-time,Remote,Business Intelligence Analyst,Female,28-37,United States,2024-02-14,171000,239,215,6
+M,United States,United States,Full-time,Remote,Business Intelligence Analyst,Female,18-27,United States,2023-03-31,152000,70,654,6
+L,United States,United States,Full-time,Office,Machine Learning Engineer,Female,28-37,United States,2024-01-13,223600,5031,20,9
+L,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-10-13,115000,54,635,6
+M,United States,United States,Full-time,Office,Data Engineer,Female,28-37,United States,2022-08-29,166000,2668,28,9
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2021-07-03,73100,124,324,11
+M,United States,United States,Full-time,Remote,Business Intelligence Developer,Female,28-37,United States,2022-10-16,140000,43,987,6
+M,United States,United States,Full-time,Remote,Business Intelligence Developer,Female,18-27,United States,2024-03-23,110000,11,964,2
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-11-08,130900,58,339,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2022-10-28,72700,119,92,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-08-01,333500,1551,43,4
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2023-02-26,144000,38,564,3
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Female,18-27,United States,2024-03-17,180000,123,366,5
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Female,38-47,United States,2021-09-23,118200,31,581,3
+M,United States,United States,Full-time,Remote,Data Architect,Female,28-37,United States,2022-06-24,354200,398,445,10
+M,United States,United States,Full-time,Remote,Data Architect,Female,18-27,United States,2021-09-19,221800,145,306,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2022-07-15,166000,37350,2,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2023-11-29,73000,32,1025,9
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2024-01-19,156600,147,478,9
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2023-02-28,137200,29,469,2
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2022-07-10,149000,179,375,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2022-01-30,65300,260,138,11
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2022-12-08,187000,317,177,6
+M,United States,United States,Full-time,Remote,Data Engineer,Male,18-27,United States,2023-08-04,180000,857,84,8
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2023-10-24,119636,725,33,4
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2022-06-14,70374,132,187,7
+M,United States,United States,Full-time,Remote,Data Analyst,Female,18-27,United States,2023-02-22,105000,34,610,4
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2020-09-26,67000,160,84,4
+M,United States,United States,Full-time,Remote,Data Analyst,Female,38-47,United States,2024-02-19,102000,40,891,7
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2022-04-01,94770,84,509,9
+M,United States,United States,Full-time,Office,Data Architect,Male,38-47,United States,2021-08-26,186000,832,123,11
+M,United States,United States,Full-time,Office,Data Architect,Female,18-27,United States,2023-03-01,81800,63,261,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2024-02-16,133000,104,257,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2024-05-01,58400,46,694,11
+M,United States,United States,Full-time,Remote,Analytics Engineer,Female,28-37,United States,2024-02-16,169900,79,1182,11
+M,United States,United States,Full-time,Remote,Analytics Engineer,Male,28-37,United States,2023-04-10,164100,70,821,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-09-21,305600,346,353,8
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2021-11-08,172500,584,133,9
+M,United States,United States,Full-time,Remote,Data Analyst,Female,38-47,United States,2023-04-15,105000,40,654,5
+M,United States,United States,Full-time,Remote,Data Analyst,Female,38-47,United States,2022-02-22,75000,972,27,7
+M,Netherlands,Netherlands,Full-time,Remote,Analytics Engineer,Female,28-37,Netherlands,2022-07-12,37573,24,475,6
+L,United Kingdom,United Kingdom,Full-time,Remote,AI Research Engineer,Female,18-27,United Kingdom,2024-02-08,36940,30,609,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Female,38-47,United States,2022-08-26,180240,196,506,11
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2022-12-02,120160,146,330,8
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-04-08,212000,33,956,3
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2022-10-25,93400,56,834,10
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2023-09-08,275000,258,480,9
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,28-37,United States,2021-12-23,170000,160,318,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-03-01,119000,65,638,7
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2023-11-23,71400,57,622,10
+M,United States,United States,Full-time,Office,Data Analyst,Female,38-47,United States,2023-12-15,115950,34,676,4
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2023-05-06,69570,10436,2,6
+M,United States,United States,Full-time,Remote,Data Scientist,Female,28-37,United States,2023-05-12,225100,7503,15,10
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2022-05-13,140900,119,416,7
+M,United States,United States,Full-time,Office,Data Science Consultant,Male,28-37,United States,2022-03-29,116000,21,548,2
+M,United States,United States,Full-time,Office,Data Science Consultant,Female,28-37,United States,2023-01-05,90000,1286,14,4
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-06-14,212000,66,960,6
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2024-02-18,93300,472,89,9
+M,United States,United States,Full-time,Office,ML Engineer,Female,18-27,United States,2023-07-22,179000,54,987,6
+M,United States,United States,Full-time,Office,ML Engineer,Female,18-27,United States,2024-04-12,144000,115,188,3
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2023-09-14,250800,246,306,6
+M,United States,United States,Full-time,Office,Research Scientist,Female,18-27,United States,2024-03-16,167200,295,312,11
+M,United States,United States,Full-time,Office,Research Scientist,Male,38-47,United States,2023-10-23,144000,147,393,8
+M,United States,United States,Full-time,Office,Research Scientist,Male,18-27,United States,2022-03-20,76000,585,13,2
+M,United States,United States,Full-time,Office,Data Lead,Male,38-47,United States,2022-08-07,230000,183,691,11
+M,United States,United States,Full-time,Office,Data Lead,Male,38-47,United States,2020-10-08,180000,90,200,2
+M,United States,United States,Full-time,Remote,Data Scientist,Female,18-27,United States,2023-05-12,156450,82,766,8
+M,United States,United States,Full-time,Remote,Data Scientist,Male,18-27,United States,2022-07-20,119200,941,57,9
+M,United States,United States,Full-time,Remote,Research Scientist,Female,38-47,United States,2023-10-12,150000,62,972,8
+M,United States,United States,Full-time,Remote,Research Scientist,Male,38-47,United States,2024-02-21,130000,23,1108,4
+M,United States,United States,Full-time,Office,Head of Data,Male,18-27,United States,2023-05-19,247500,72,683,4
+M,United States,United States,Full-time,Office,Head of Data,Male,18-27,United States,2023-10-18,172200,54,1107,7
+M,United States,United States,Full-time,Office,ML Engineer,Female,38-47,United States,2024-03-08,155000,62,745,6
+M,United States,United States,Full-time,Office,ML Engineer,Female,18-27,United States,2024-04-11,125000,31,804,4
+M,United States,United States,Full-time,Remote,Data Engineer,Male,38-47,United States,2021-05-02,175000,465,94,5
+M,United States,United States,Full-time,Remote,Data Engineer,Female,28-37,United States,2023-09-05,97500,133,402,11
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2023-11-11,220000,268,205,5
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2023-12-20,185000,97,478,5
+M,United States,United States,Full-time,Office,Data Analyst,Female,28-37,United States,2023-05-31,100000,55000,0,11
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2024-01-18,75000,82,364,8
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2024-04-07,303050,237,703,11
+M,United States,United States,Full-time,Office,Research Scientist,Female,28-37,United States,2023-06-18,202350,3541,20,7
+L,Portugal,Portugal,Full-time,Hybrid,AI Engineer,Female,28-37,Portugal,2023-07-19,21593,22,148,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2024-02-24,201650,275,220,6
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2023-05-05,124600,192,292,9
+M,United States,United States,Full-time,Office,Business Intelligence Analyst,Male,38-47,United States,2021-01-05,198200,244,122,3
+M,United States,United States,Full-time,Office,Business Intelligence Analyst,Male,38-47,United States,2023-09-13,110200,116,426,9
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2024-03-22,212000,482,110,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,38-47,United States,2023-07-07,93400,31,1045,7
+M,United States,United States,Full-time,Office,Data Analyst,Female,18-27,United States,2024-04-21,145000,41,1071,6
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2023-05-18,110000,48,802,7
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Male,28-37,United States,2023-10-17,89500,17,789,3
+M,United States,United States,Full-time,Remote,Business Intelligence Engineer,Female,18-27,United States,2020-06-29,65000,230,99,7
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,38-47,United States,2023-06-10,328400,2956,50,9
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2021-10-10,205600,1411,51,7
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-11-11,184800,4107,9,4
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-01-31,161900,102,239,3
+M,United States,United States,Full-time,Remote,Data Engineer,Female,18-27,United States,2022-08-29,85000,1063,36,9
+M,United States,United States,Full-time,Remote,Data Engineer,Male,28-37,United States,2023-02-08,61800,6,1121,2
+M,United Kingdom,United Kingdom,Full-time,Office,Data Engineer,Female,18-27,United Kingdom,2023-07-08,70748,8,836,2
+M,United Kingdom,United Kingdom,Full-time,Office,Data Engineer,Female,28-37,United Kingdom,2021-10-12,67056,89,302,8
+M,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2020-10-05,116000,621,84,9
+M,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2022-07-03,72500,863,42,10
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Male,18-27,United States,2022-11-15,215000,611,88,5
+M,United States,United States,Full-time,Remote,Machine Learning Engineer,Female,38-47,United States,2024-05-04,169850,484,193,11
+M,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,18-27,United States,2021-05-14,225000,1904,65,11
+M,United States,United States,Full-time,Office,Business Intelligence Engineer,Male,18-27,United States,2024-05-06,180000,58,1401,9
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2023-12-22,147400,161,229,5
+M,United States,United States,Full-time,Office,Data Scientist,Male,18-27,United States,2022-02-20,107682,98,385,7
+M,United States,United States,Full-time,Office,Data Scientist,Female,18-27,United States,2023-11-20,225300,402,252,9
+M,United States,United States,Full-time,Office,Data Scientist,Female,28-37,United States,2022-07-12,197400,74,671,5
+M,United States,United States,Full-time,Office,Analytics Engineer,Female,18-27,United States,2023-08-23,160000,312,231,9
+M,United States,United States,Full-time,Office,Analytics Engineer,Male,28-37,United States,2024-01-13,136000,63,540,5
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,38-47,United States,2021-07-26,204600,203,151,3
+M,United States,United States,Full-time,Office,Machine Learning Engineer,Male,18-27,United States,2024-01-02,126500,50,1132,9
+M,United States,United States,Full-time,Remote,Data Architect,Female,38-47,United States,2024-04-22,210000,58,907,5
+M,United States,United States,Full-time,Remote,Data Architect,Male,38-47,United States,2021-04-14,115000,163,247,7
+L,United States,United States,Full-time,Office,Data Analyst,Male,38-47,United States,2023-08-27,86500,169,282,11
+L,United States,United States,Full-time,Office,Data Analyst,Male,28-37,United States,2020-03-24,40400,808,15,6
+L,United States,United States,Full-time,Office,Applied Scientist,Female,38-47,United States,2022-06-21,260000,199,457,7
+L,United States,United States,Full-time,Office,Applied Scientist,Male,38-47,United States,2024-01-19,136000,22,931,3
+M,United States,United States,Full-time,Office,Data Scientist,Male,28-37,United States,2024-04-08,329700,634,260,10
+M,United States,United States,Full-time,Office,Data Scientist,Female,38-47,United States,2023-05-19,192351,123,860,11
+M,United States,United States,Full-time,Office,Data Engineer,Female,38-47,United States,2024-04-25,280000,346,162,4
+M,United States,United States,Full-time,Office,Data Engineer,Male,28-37,United States,2023-06-30,160000,99,646,8
+M,United States,United States,Full-time,Office,Business Intelligence Analyst,Female,18-27,United States,2023-12-02,106700,103,568,11
+M,United States,United States,Full-time,Office,Business Intelligence Analyst,Female,18-27,United States,2022-08-11,97000,87,335,6
+M,United States,United States,Full-time,Remote,Data Analyst,Male,28-37,United States,2023-06-10,175000,362,121,5
+M,United States,United States,Full-time,Remote,Data Analyst,Female,28-37,United States,2024-03-31,150000,336,223,10
