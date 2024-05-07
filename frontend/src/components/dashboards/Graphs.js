@@ -3,63 +3,11 @@ import {Bar} from 'react-chartjs-2'
 import {Chart as ChartJS} from 'chart.js/auto'
 import GeoChart from "./GeoChart";
 
-// const Data = [
-//     {
-//         year: 2021,
-//         numberOfVacancies: 1200,
-//         monthlyVacancies:[
-//             {
-//                 month: 1,
-//                 numberOfVacancies: 200
-//             },
-//             {
-//                 month: 2,
-//                 numberOfVacancies: 400
-//             }
-//         ]
-//     }
-// ]
-
-
-const generateRandomNumber = () => Math.floor(Math.random() * 1000) + 200; // Generates a random number between 200 and 1200
-
-const generateMonthlyData = () => {
-    const monthlyVacancies = [];
-    for (let i = 1; i <= 12; i++) {
-        monthlyVacancies.push({
-            month: i,
-            numberOfVacancies: generateRandomNumber()
-        });
-    }
-    return monthlyVacancies;
-};
-
-const Data = [
-    {
-        year: 2021,
-        numberOfVacancies: 1200,
-        monthlyVacancies: generateMonthlyData()
-    },
-    {
-        year: 2022,
-        numberOfVacancies: 1200,
-        monthlyVacancies: generateMonthlyData()
-    },
-    {
-        year: 2023,
-        numberOfVacancies: 1200,
-        monthlyVacancies: generateMonthlyData()
-    },
-    {
-        year: 2024,
-        numberOfVacancies: 1200,
-        monthlyVacancies: generateMonthlyData()
-    }
-];
 
 const VacanciesChart = () => {
     const [granularity, setGranularity] = useState('yearly')
     const [selectedYear, setSelectedYear] = useState(null);
+    const [Data, SetData] = useState([])
     const [userData, setUserData] = useState({
         labels: [],
         datasets: [{
@@ -82,7 +30,20 @@ const VacanciesChart = () => {
             }]
         };
         setUserData(newData);
-    }, [granularity, selectedYear]);
+    }, [granularity, selectedYear, Data]);
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8003/api/get/graph")
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) => a.year - b.year);
+                data.forEach(item => {
+                    item.monthlyVacancies.sort((a, b) => a.month - b.month);
+                });
+                SetData(data)
+            } )
+            .catch(err => console.log(err))
+    }, []);
 
     const handleGranularityChange = (event) => {
         setGranularity(event.target.value);
