@@ -95,17 +95,17 @@ function SearchFilters({setFilterChanged}) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.filter}>
-                <div className={styles.filterContent}>
-                    <TextField
-                        id="outlined-basic"
-                        onChange={inputHandler}
-                        variant="outlined"
-                        label="Search"
-                        value={inputText}
-                    />
-                </div>
-            </div>
+            {/*<div className={styles.filter}>*/}
+            {/*    <div className={styles.filterContent}>*/}
+            {/*        <TextField*/}
+            {/*            id="outlined-basic"*/}
+            {/*            onChange={inputHandler}*/}
+            {/*            variant="outlined"*/}
+            {/*            label="Search"*/}
+            {/*            value={inputText}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*</div>*/}
             <div className={styles.filter}>
                 <div className={styles.filterContent}>
                     <FormControl sx={{minWidth: 85}}>

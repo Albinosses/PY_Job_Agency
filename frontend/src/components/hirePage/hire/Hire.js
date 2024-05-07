@@ -15,14 +15,22 @@ function Hire({hire}) {
             .catch(err => console.log(err))
     }, []);
 
+    console.log(hire)
+    console.log(vacancy)
 
     return (
         <div className={styles.vacancyContainer}>
             <div className={styles.vacancyHeader}>
                 <div className={styles.vacancyTags}>
-                    <div className={styles.vacancyTag}>Country</div>
-                    {vacancy && companies &&
-                        <div className={styles.vacancyTag}>{companies.find(company => company.id === vacancy.companyId).name}</div>
+                    {vacancy && companies && countries &&
+                        <>
+                            <div
+                                className={styles.vacancyTag}>{countries.find(country => country.id === vacancy.empCountryId).name}
+                            </div>
+                            <div
+                                className={styles.vacancyTag}>{companies.find(company => company.id === vacancy.companyId).name}
+                            </div>
+                        </>
                     }
                 </div>
             </div>

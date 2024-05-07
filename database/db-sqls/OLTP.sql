@@ -84,7 +84,7 @@ ALTER TABLE public."Employee" OWNER TO postgres;
 
 CREATE TABLE public."Hire" (
     id integer NOT NULL,
-    "vacancyId" integer NOT NULL,
+    "vacancyId" integer,
     "employeeId" integer NOT NULL,
     "hireDate" date NOT NULL
 );
@@ -98,7 +98,7 @@ ALTER TABLE public."Hire" OWNER TO postgres;
 
 CREATE TABLE public."Interview" (
     id integer NOT NULL,
-    "vacancyId" integer NOT NULL,
+    "vacancyId" integer,
     "candidateId" integer NOT NULL,
     "interviewerId" integer NOT NULL,
     "interviewType" "char" NOT NULL,
@@ -143,7 +143,7 @@ ALTER TABLE public."SkillSetEmployee" OWNER TO postgres;
 
 CREATE TABLE public."SkillSetVacancy" (
     id integer NOT NULL,
-    "vacancyId" integer NOT NULL,
+    "vacancyId" integer,
     "skillId" integer NOT NULL,
     weight double precision NOT NULL
 );
