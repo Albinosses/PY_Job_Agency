@@ -3,12 +3,12 @@ import { Chart } from 'react-google-charts';
 
 const GeoChartComponent = () => {
 
-    // const dataExample = [
-    //     {
-    //         Country: "SomeCountry",
-    //         numberOfHires: 123
-    //     }
-    // ]
+     // const dataExample = [
+     //     {
+     //         Country: "SomeCountry",
+     //         numberOfHires: 123
+     //     }
+     // ]
 
     const data = [
         ['Country', 'NumberOfHires'],
