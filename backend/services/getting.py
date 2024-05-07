@@ -236,7 +236,7 @@ def get_graph():
         conn = psycopg2.connect(
             dbname="OLAP",
             user="postgres",
-            password="1234",
+            password="2204",
             host="127.0.0.1",
             port="5432",
         )
@@ -296,3 +296,43 @@ def get_graph():
     # Print the formatted results
     print(year_results)
     return jsonify(year_results), 200
+
+@get_bp.route("/graph_countries", methods=["GET"])
+def get_graph_countries():
+    def execute_query(sql):
+        conn = psycopg2.connect(
+            dbname="OLAP",
+            user="postgres",
+            password="2204",
+            host="127.0.0.1",
+            port="5432",
+        )
+        cur = conn.cursor()
+        cur.execute(sql)
+        result = cur.fetchall()
+        cur.close()
+        conn.close()
+        return result
+
+    # SQL queries to retrieve data
+    sql_query_vacancies = """
+    SELECT
+    dc.name AS Country,
+    COUNT(*) AS numberOfHires
+    FROM "factHire" f
+    JOIN "dimCompany" c ON f."companyId" = c.id
+    JOIN "dimCountry" dc ON c."countryId" = dc.id
+    GROUP BY dc.name;
+    """
+
+    # Execute the queries
+    results_vacancies = execute_query(sql_query_vacancies)
+    # Process results to create the desired object
+    data = []
+    for result in results_vacancies:
+        r = {}
+        r["Country"] = result[0]
+        r["numberOfHires"] = result[1]
+        data.append(r)
+    print(data)
+    return jsonify(data), 200
