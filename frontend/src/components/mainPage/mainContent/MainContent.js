@@ -61,33 +61,33 @@ function MainContent() {
 
     return (
         <div className={styles.container}>
-            <div className={styles.buttonContainer}>
-                <Button
-                    component="label"
-                    role={undefined}
-                    variant="contained"
-                    tabIndex={-1}
-                    size="large"
-                >
-                    Upload file
-                    <VisuallyHiddenInput type="file" accept='.csv' onChange={handleFileUpload}/>
-                </Button>
-                {uploadedFile ?
-                    <Chip label={uploadedFile.name}/> :
-                    <Chip label="predefined dataset"/>
-                }
-            </div>
-            <div className={styles.buttonContainer}>
-                <Button
-                    variant="contained"
-                    onClick={handleRunDbsInit}
-                    size="large"
-                >
-                    Initialize Databases
-                </Button>
-                {dbIsBeingInitialized && <CircularProgress/>}
-                {dbIsInitialized && <CheckIcon/>}
-            </div>
+            {/*<div className={styles.buttonContainer}>*/}
+            {/*    <Button*/}
+            {/*        component="label"*/}
+            {/*        role={undefined}*/}
+            {/*        variant="contained"*/}
+            {/*        tabIndex={-1}*/}
+            {/*        size="large"*/}
+            {/*    >*/}
+            {/*        Upload file*/}
+            {/*        <VisuallyHiddenInput type="file" accept='.csv' onChange={handleFileUpload}/>*/}
+            {/*    </Button>*/}
+            {/*    {uploadedFile ?*/}
+            {/*        <Chip label={uploadedFile.name}/> :*/}
+            {/*        <Chip label="predefined dataset"/>*/}
+            {/*    }*/}
+            {/*</div>*/}
+            {/*<div className={styles.buttonContainer}>*/}
+            {/*    <Button*/}
+            {/*        variant="contained"*/}
+            {/*        onClick={handleRunDbsInit}*/}
+            {/*        size="large"*/}
+            {/*    >*/}
+            {/*        Initialize Databases*/}
+            {/*    </Button>*/}
+            {/*    {dbIsBeingInitialized && <CircularProgress/>}*/}
+            {/*    {dbIsInitialized && <CheckIcon/>}*/}
+            {/*</div>*/}
             <div className={styles.buttonContainer}>
                 <Button
                     variant="contained"

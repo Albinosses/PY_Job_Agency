@@ -26,7 +26,7 @@ function SidePanel({onPageChange}) {
                             src={mainButton}
                             alt="Main"
                         />
-                        <div>Main page</div>
+                        <div>Admin page</div>
                     </div>
                 </div>
             </Link>

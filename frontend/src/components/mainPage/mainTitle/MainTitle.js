@@ -6,7 +6,7 @@ function MainTitle() {
         <div className={styles.container}>
             <div className={styles.section}>
                 <div className={styles.header}>
-                    <div className={styles.title}>Main Page</div>
+                    <div className={styles.title}>Admin Page</div>
                 </div>
             </div>
         </div>
